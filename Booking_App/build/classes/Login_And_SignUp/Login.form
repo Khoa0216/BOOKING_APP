@@ -68,7 +68,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="confirm_login" max="32767" attributes="0"/>
                               <Component id="Change_to_signup" max="32767" attributes="0"/>
-                              <Component id="jLabel1" max="32767" attributes="0"/>
+                              <Component id="Label_ChangeTo_SignUp" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -95,7 +95,7 @@
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Component id="confirm_login" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="Label_ChangeTo_SignUp" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Change_to_signup" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="36" max="32767" attributes="0"/>
@@ -281,7 +281,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Change_to_signupActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="Label_ChangeTo_SignUp">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
