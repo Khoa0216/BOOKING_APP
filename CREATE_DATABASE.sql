@@ -6,7 +6,8 @@ CREATE TABLE NGUOIDUNG (
     MATKHAU VARCHAR2(100) NOT NULL,
     HOTEN VARCHAR2(100),
     EMAIL VARCHAR2(100),
-    LOAITK VARCHAR2(20) CHECK (LOAITK IN ('KHACHHANG', 'DOANHNGHIEP', 'NHANVIEN'))
+    LOAITK VARCHAR2(20) CHECK (LOAITK IN ('KHACHHANG', 'DOANHNGHIEP', 'NHANVIEN')),
+    SODIENTHOAI VARCHAR2(20)
 );
 
 -- ===============================
@@ -15,7 +16,7 @@ CREATE TABLE NGUOIDUNG (
 CREATE TABLE KHACHHANG (
     ID NUMBER PRIMARY KEY REFERENCES NGUOIDUNG(ID),
     CCCD VARCHAR2(20),
-    DIACHI VARCHAR2(200)
+    NGAYSINH DATE
 );
 
 -- ===============================
@@ -118,3 +119,21 @@ CREATE TABLE HOIDAP (
     TRALOI CLOB,
     NGAYTRALOI DATE
 );
+
+
+-- ===============================
+-- Tạo sequence để tự tăng id của nguoidung
+-- ===============================
+CREATE SEQUENCE SEQ_NGUOIDUNG_ID START WITH 1 INCREMENT BY 1;
+
+-- ===============================
+-- Tạo trigger cho mỗi lần insert vào bảng nguoidung
+-- ===============================
+CREATE OR REPLACE TRIGGER TRG_AUTO_ID_NGUOIDUNG
+BEFORE INSERT ON NGUOIDUNG
+FOR EACH ROW
+BEGIN
+  IF :NEW.ID IS NULL THEN
+    SELECT SEQ_NGUOIDUNG_ID.NEXTVAL INTO :NEW.ID FROM dual;
+  END IF;
+END;
