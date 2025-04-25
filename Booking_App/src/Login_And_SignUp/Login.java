@@ -215,7 +215,7 @@ public class Login extends javax.swing.JFrame {
                 MenuFrame.setVisible(true);
                 this.dispose();
             }
-            if (accountType.equals("DOANHNGHIEP")){
+            if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
                 System.out.println("menu doanh nghiep");
                 Menu_DoanhNghiep MenuFrame= new Menu_DoanhNghiep();
                 MenuFrame.pack();
