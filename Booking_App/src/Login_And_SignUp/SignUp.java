@@ -117,7 +117,7 @@ public class SignUp extends javax.swing.JFrame {
         Choose_DN.setBackground(new java.awt.Color(0, 102, 102));
         Choose_DN.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         Choose_DN.setForeground(new java.awt.Color(255, 255, 255));
-        Choose_DN.setText("Doanh nghiệp");
+        Choose_DN.setText("Doanh Nghiệp");
         Choose_DN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Choose_DN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
