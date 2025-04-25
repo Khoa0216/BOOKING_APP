@@ -198,13 +198,10 @@ public class Login extends javax.swing.JFrame {
         
         // lấy thông tin tài khoản và mật khẩu người dùng nhập
         String username = Dien_username.getText(); // Dien_username là TextField cho username
-        System.out.println(username);
         String password = new String(Dien_password.getPassword()); // Dien_password là PasswordField cho mật khẩu
-        System.out.println(password);
 
         // kiểm tra đăng nhập
         String accountType = Login_And_SignUp.checkLogin(username, password);
-        System.out.println(accountType);
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
             
