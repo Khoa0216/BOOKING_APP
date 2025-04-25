@@ -1,6 +1,14 @@
 
 package Login_And_SignUp;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 public class SignUpDoanhNghiep extends javax.swing.JFrame {
     
     private String fullname;
@@ -27,59 +35,184 @@ public class SignUpDoanhNghiep extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        Group_Choose_Button = new javax.swing.ButtonGroup();
+        BackGround = new javax.swing.JPanel();
+        Nen_tren = new javax.swing.JPanel();
+        Nen_duoi = new javax.swing.JPanel();
+        Label_Information_Fill = new javax.swing.JLabel();
+        Business_Name = new javax.swing.JLabel();
+        Business_Name_Fill = new javax.swing.JTextField();
+        Choose_hotel = new javax.swing.JRadioButton();
+        Choose_transportation = new javax.swing.JRadioButton();
+        Label_Address = new javax.swing.JLabel();
+        Address_Fill = new javax.swing.JTextField();
+        Label_Describe = new javax.swing.JLabel();
+        Describe_Fill = new javax.swing.JScrollPane();
+        Describe_Mota_Fill = new javax.swing.JTextArea();
+        Check_condition = new javax.swing.JCheckBox();
+        SignUp_Confirm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(244, 244, 242));
-        jPanel1.setPreferredSize(new java.awt.Dimension(650, 750));
+        BackGround.setBackground(new java.awt.Color(244, 244, 242));
+        BackGround.setPreferredSize(new java.awt.Dimension(650, 750));
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel2.setPreferredSize(new java.awt.Dimension(650, 105));
+        Nen_tren.setBackground(new java.awt.Color(0, 102, 102));
+        Nen_tren.setPreferredSize(new java.awt.Dimension(650, 105));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout Nen_trenLayout = new javax.swing.GroupLayout(Nen_tren);
+        Nen_tren.setLayout(Nen_trenLayout);
+        Nen_trenLayout.setHorizontalGroup(
+            Nen_trenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 650, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        Nen_trenLayout.setVerticalGroup(
+            Nen_trenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 105, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel3.setPreferredSize(new java.awt.Dimension(650, 105));
+        Nen_duoi.setBackground(new java.awt.Color(0, 102, 102));
+        Nen_duoi.setPreferredSize(new java.awt.Dimension(650, 105));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout Nen_duoiLayout = new javax.swing.GroupLayout(Nen_duoi);
+        Nen_duoi.setLayout(Nen_duoiLayout);
+        Nen_duoiLayout.setHorizontalGroup(
+            Nen_duoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 650, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        Nen_duoiLayout.setVerticalGroup(
+            Nen_duoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 105, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        Label_Information_Fill.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        Label_Information_Fill.setForeground(new java.awt.Color(0, 102, 102));
+        Label_Information_Fill.setText("NHẬP THÔNG TIN DOANH NGHIỆP");
+
+        Business_Name.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        Business_Name.setForeground(new java.awt.Color(0, 0, 0));
+        Business_Name.setText("Tên Doanh Nghiệp:");
+
+        Business_Name_Fill.setBackground(new java.awt.Color(249, 249, 249));
+        Business_Name_Fill.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Business_Name_Fill.setForeground(new java.awt.Color(102, 102, 102));
+
+        Choose_hotel.setBackground(new java.awt.Color(244, 244, 242));
+        Group_Choose_Button.add(Choose_hotel);
+        Choose_hotel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        Choose_hotel.setForeground(new java.awt.Color(0, 102, 102));
+        Choose_hotel.setText("Khách Sạn");
+        Choose_hotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Choose_hotelActionPerformed(evt);
+            }
+        });
+
+        Choose_transportation.setBackground(new java.awt.Color(244, 244, 242));
+        Group_Choose_Button.add(Choose_transportation);
+        Choose_transportation.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        Choose_transportation.setForeground(new java.awt.Color(0, 102, 102));
+        Choose_transportation.setText("Hãng Phương Tiện");
+
+        Label_Address.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        Label_Address.setForeground(new java.awt.Color(0, 0, 0));
+        Label_Address.setText("Địa Chỉ:");
+
+        Address_Fill.setBackground(new java.awt.Color(249, 249, 249));
+        Address_Fill.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Address_Fill.setForeground(new java.awt.Color(102, 102, 102));
+
+        Label_Describe.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        Label_Describe.setForeground(new java.awt.Color(0, 0, 0));
+        Label_Describe.setText("Mô Tả");
+
+        Describe_Mota_Fill.setBackground(new java.awt.Color(249, 249, 249));
+        Describe_Mota_Fill.setColumns(20);
+        Describe_Mota_Fill.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Describe_Mota_Fill.setForeground(new java.awt.Color(102, 102, 102));
+        Describe_Mota_Fill.setLineWrap(true);
+        Describe_Mota_Fill.setRows(5);
+        Describe_Mota_Fill.setWrapStyleWord(true);
+        Describe_Fill.setViewportView(Describe_Mota_Fill);
+
+        Check_condition.setBackground(new java.awt.Color(244, 244, 242));
+        Check_condition.setForeground(new java.awt.Color(102, 102, 102));
+        Check_condition.setText("Đồng ý cung cấp thông tin của tôi trong quá trình sử dụng.");
+
+        SignUp_Confirm.setBackground(new java.awt.Color(0, 102, 102));
+        SignUp_Confirm.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        SignUp_Confirm.setForeground(new java.awt.Color(255, 255, 255));
+        SignUp_Confirm.setText("Đăng Ký");
+        SignUp_Confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUp_ConfirmActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
+        BackGround.setLayout(BackGroundLayout);
+        BackGroundLayout.setHorizontalGroup(
+            BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Nen_tren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nen_duoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(Choose_hotel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Choose_transportation)
+                .addGap(100, 100, 100))
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(Label_Information_Fill))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Check_condition)
+                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Business_Name)
+                                .addComponent(Business_Name_Fill)
+                                .addComponent(Label_Address)
+                                .addComponent(Address_Fill)
+                                .addComponent(Label_Describe)
+                                .addComponent(Describe_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))))
+                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(SignUp_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 540, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        BackGroundLayout.setVerticalGroup(
+            BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackGroundLayout.createSequentialGroup()
+                .addComponent(Nen_tren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Label_Information_Fill)
+                .addGap(18, 18, 18)
+                .addComponent(Business_Name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Business_Name_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Label_Address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Address_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Choose_hotel)
+                    .addComponent(Choose_transportation))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_Describe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Check_condition)
+                .addGap(18, 18, 18)
+                .addComponent(SignUp_Confirm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(Nen_duoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,18 +220,108 @@ public class SignUpDoanhNghiep extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Choose_hotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choose_hotelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Choose_hotelActionPerformed
+
+    private void SignUp_ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUp_ConfirmActionPerformed
+        // TODO add your handling code here:
+        
+        // Lấy thông tin người đăng ký nhập
+        String business_name = Business_Name_Fill.getText();
+        String address = Address_Fill.getText();
+        String loaiDN = "";
+        String mota = Describe_Mota_Fill.getText();
+        
+        if (Choose_hotel.isSelected()){
+            loaiDN="KHACHSAN";
+        } else if (Choose_transportation.isSelected()){
+            loaiDN="HANGPHUONGTIEN";
+        }
+
+        if (!Check_condition.isSelected()) {
+            JOptionPane.showMessageDialog(this,
+                "Bạn phải đồng ý với điều khoản để đăng ký!",
+                "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if (business_name.isEmpty() || address.isEmpty() || (!Choose_hotel.isSelected() && !Choose_transportation.isSelected())) {
+            JOptionPane.showMessageDialog(this,
+                "Bạn phải điền đầy đủ thông tin!",
+                "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String sqlNguoiDung = 
+            "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) " +
+            "VALUES (?, ?, ?, 'DOANHNGHIEP')";
+        String sqlDoanhNghiep = 
+            "INSERT INTO booking_app.DOANHNGHIEP (ID, TENDN, LOAIDN, DIACHI, MOTA) VALUES (?, ?, ?, ?, ?)";
+
+        Connection conn = null;
+        try {
+            conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
+            conn.setAutoCommit(false);
+
+            // 1. Insert NGUOIDUNG và lấy ID sinh tự động
+            int newId;
+            try (PreparedStatement stmt1 = conn.prepareStatement(
+                     sqlNguoiDung, new String[]{"ID"})) {
+                stmt1.setString(1, this.password);
+                stmt1.setString(2, this.fullname);
+                stmt1.setString(3, this.username);
+                stmt1.executeUpdate();
+
+                try (ResultSet rs = stmt1.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        newId = rs.getInt(1);
+                    } else {
+                        throw new SQLException("Không lấy được ID từ NGUOIDUNG");
+                    }
+                }
+            }
+
+            // 2. Insert DOANHNGHIEP với ID vừa lấy được
+            try (PreparedStatement stmt2 = conn.prepareStatement(sqlDoanhNghiep)) {
+                stmt2.setInt(1, newId);
+                stmt2.setString(2, business_name);
+                stmt2.setString(3, loaiDN);
+                stmt2.setString(4, address);
+                stmt2.setString(5, mota);
+                stmt2.executeUpdate();
+            }
+
+            conn.commit();
+            JOptionPane.showMessageDialog(this,
+                "Đăng ký thành công!", "Thành công",
+                JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            try {
+                if (conn != null) conn.rollback();
+            } catch (SQLException ex) {
+            }
+            JOptionPane.showMessageDialog(this,
+                "Đăng ký thất bại: " + e.getMessage(),
+                "Lỗi", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException ex) {
+            }
+        }
+    }//GEN-LAST:event_SignUp_ConfirmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,8 +360,21 @@ public class SignUpDoanhNghiep extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField Address_Fill;
+    private javax.swing.JPanel BackGround;
+    private javax.swing.JLabel Business_Name;
+    private javax.swing.JTextField Business_Name_Fill;
+    private javax.swing.JCheckBox Check_condition;
+    private javax.swing.JRadioButton Choose_hotel;
+    private javax.swing.JRadioButton Choose_transportation;
+    private javax.swing.JScrollPane Describe_Fill;
+    private javax.swing.JTextArea Describe_Mota_Fill;
+    private javax.swing.ButtonGroup Group_Choose_Button;
+    private javax.swing.JLabel Label_Address;
+    private javax.swing.JLabel Label_Describe;
+    private javax.swing.JLabel Label_Information_Fill;
+    private javax.swing.JPanel Nen_duoi;
+    private javax.swing.JPanel Nen_tren;
+    private javax.swing.JButton SignUp_Confirm;
     // End of variables declaration//GEN-END:variables
 }

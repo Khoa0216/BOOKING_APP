@@ -55,7 +55,6 @@ public class SignUpKhachHang extends javax.swing.JFrame {
         BirthDay_Fill = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 750));
 
         BackGround.setBackground(new java.awt.Color(244, 244, 242));
 
