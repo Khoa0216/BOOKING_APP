@@ -15,7 +15,7 @@ public class Login_And_SignUp {
     }
     
     public static String checkLogin(String username, String password) {
-        String query = "SELECT LOAITK FROM NGUOIDUNG WHERE ID = ? AND MATKHAU = ?"; //câu lệnh query SQL, ? là nơi sẽ thay thế giá trị vào. (*)
+        String query = "SELECT LOAITK FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ? AND MATKHAU = ?"; //câu lệnh query SQL, ? là nơi sẽ thay thế giá trị vào. (*)
 
         
         // cấu trúc try-with-resources
@@ -25,7 +25,7 @@ public class Login_And_SignUp {
             }
             Lợi ích: không cần phải gọi close() tài nguyên thủ công sau khi sử dụng (dù lỗi hay không).
         */
-        try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678"); 
+        try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             // thiết lập các tham số trong câu lệnh SQL (*)
@@ -46,5 +46,7 @@ public class Login_And_SignUp {
             return null;
         }
     }
+    
+    
     
 }
