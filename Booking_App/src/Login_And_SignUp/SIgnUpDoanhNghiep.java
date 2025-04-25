@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Login_And_SignUp;
 
-/**
- *
- * @author LENOVO
- */
-public class SIgnUpDoanhNghiep extends javax.swing.JFrame {
-
-    /**
-     * Creates new form SIgnUpDoanhNghiep
-     */
-    public SIgnUpDoanhNghiep() {
+public class SignUpDoanhNghiep extends javax.swing.JFrame {
+    
+    private String fullname;
+    private String username;
+    private String password;
+    
+    public SignUpDoanhNghiep(String fullname, String username, String password) {
+        initComponents();
+        this.fullname=fullname;
+        this.username=username;
+        this.password=password;
+    }
+    
+    public SignUpDoanhNghiep() {
         initComponents();
     }
 
@@ -31,7 +32,6 @@ public class SIgnUpDoanhNghiep extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 750));
 
         jPanel1.setBackground(new java.awt.Color(244, 244, 242));
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 750));
@@ -117,20 +117,21 @@ public class SIgnUpDoanhNghiep extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SIgnUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SIgnUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SIgnUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SIgnUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpDoanhNghiep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SIgnUpDoanhNghiep().setVisible(true);
+                new SignUpDoanhNghiep().setVisible(true);
             }
         });
     }

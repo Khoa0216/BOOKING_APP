@@ -278,6 +278,26 @@ public class SignUp extends javax.swing.JFrame {
 
     private void Choose_DNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choose_DNActionPerformed
         // TODO add your handling code here:
+        // lấy thông tin người đăng ký nhập
+        String fullname = Full_Name_Fill.getText(); // Email_Fill là TextField cho username
+        String username = Email_Fill.getText(); // Email_Fill là TextField cho username
+        String password = new String(Password_Fill.getPassword()); // Password_Fill là PasswordField cho mật khẩu
+        String confirm_password = new String(Confirm_Password_Fill.getPassword()); // Password_Fill là PasswordField cho mật khẩu
+        
+        if(fullname.isEmpty() || username.isEmpty() || password.isEmpty() || confirm_password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Bạn phải điền đầy đủ thông tin!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(!password.equals(confirm_password)){
+            JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không khớp!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        SignUpDoanhNghiep SUKHFrame = new SignUpDoanhNghiep(fullname, username, password);
+        SUKHFrame.pack();
+        SUKHFrame.setLocationRelativeTo(null);//Hiện ở giữa màn hình
+        SUKHFrame.setVisible(true);//Cho phép hiện JFrame
+        this.dispose();
     }//GEN-LAST:event_Choose_DNActionPerformed
 
 
