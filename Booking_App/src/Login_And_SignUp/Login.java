@@ -1,6 +1,6 @@
 package Login_And_SignUp;
-import Screen_After_Login.Menu_KhachHang;
-import Screen_After_Login.Menu_DoanhNghiep;
+import Screen_After_Login.Menu_DoanhNghiep_HangPhuongTien;
+import Screen_After_Login.Menu_DoanhNghiep_KhachSan;
 
 import javax.swing.JOptionPane;
 
@@ -206,15 +206,15 @@ public class Login extends javax.swing.JFrame {
             // Hiển thị menu tùy theo loại tài khoản
             
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
-                Menu_KhachHang MenuFrame= new Menu_KhachHang();
+                Menu_DoanhNghiep_HangPhuongTien MenuFrame= new Menu_DoanhNghiep_HangPhuongTien();
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
                 this.dispose();
             }
             if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
-                System.out.println("menu doanh nghiep");
-                Menu_DoanhNghiep MenuFrame= new Menu_DoanhNghiep();
+                
+                Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan();
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
