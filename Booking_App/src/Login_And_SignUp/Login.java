@@ -1,4 +1,8 @@
 package Login_And_SignUp;
+import Screen_After_Login.Menu_KhachHang;
+import Screen_After_Login.Menu_DoanhNghiep;
+
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -21,7 +25,7 @@ public class Login extends javax.swing.JFrame {
         Forgotten_password = new javax.swing.JButton();
         confirm_login = new javax.swing.JButton();
         Change_to_signup = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Label_ChangeTo_SignUp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,10 +117,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tôi chưa có tài khoản");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_ChangeTo_SignUp.setForeground(new java.awt.Color(102, 102, 102));
+        Label_ChangeTo_SignUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_ChangeTo_SignUp.setText("Tôi chưa có tài khoản");
+        Label_ChangeTo_SignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
@@ -128,13 +132,12 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Forgotten_password)
-                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Password)
-                                .addComponent(Username)
-                                .addComponent(Dien_username, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
-                                .addComponent(Dien_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Password)
+                            .addComponent(Username)
+                            .addComponent(Dien_username, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                            .addComponent(Dien_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(Login))
@@ -143,8 +146,8 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(confirm_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Change_to_signup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                            .addComponent(Label_ChangeTo_SignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +168,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(confirm_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_ChangeTo_SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Change_to_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -192,15 +195,49 @@ public class Login extends javax.swing.JFrame {
 
     private void confirm_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_loginActionPerformed
         // TODO add your handling code here:
+        
+        // lấy thông tin tài khoản và mật khẩu người dùng nhập
+        String username = Dien_username.getText(); // Dien_username là TextField cho username
+        String password = new String(Dien_password.getPassword()); // Dien_password là PasswordField cho mật khẩu
+
+        // kiểm tra đăng nhập
+        String accountType = Login_And_SignUp.checkLogin(username, password);
+        if (accountType != null) {
+            // Hiển thị menu tùy theo loại tài khoản
+            
+            if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
+                Menu_KhachHang MenuFrame= new Menu_KhachHang();
+                MenuFrame.pack();
+                MenuFrame.setLocationRelativeTo(null);
+                MenuFrame.setVisible(true);
+                this.dispose();
+            }
+            if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
+                System.out.println("menu doanh nghiep");
+                Menu_DoanhNghiep MenuFrame= new Menu_DoanhNghiep();
+                MenuFrame.pack();
+                MenuFrame.setLocationRelativeTo(null);
+                MenuFrame.setVisible(true);
+                this.dispose();
+            }
+            // Chuyển hướng tới giao diện chính cho người dùng
+        } else {
+            //JOptionPane để hiện lên thông báo không đăng nhập thành công.
+            //this là form hiện tại (làm cửa sổ cha).
+            //"Đăng nhập thất bại!" là thông tin thông báo.
+            //"Lỗi" là title của bảng thông báo.
+            //JOptionPane.ERROR_MESSAGE để hiện lên icon dấu x đỏ cảnh báo.
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_confirm_loginActionPerformed
 
     private void Change_to_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Change_to_signupActionPerformed
         // TODO add your handling code here:
         SignUp SUFrame = new SignUp();
         SUFrame.pack();
-        SUFrame.setLocationRelativeTo(null);//Hiện ở giữa màn hình
-        SUFrame.setVisible(true);//Cho phép hiện JFrame
-        this.dispose();
+        SUFrame.setLocationRelativeTo(null);// hiện ở giữa màn hình
+        SUFrame.setVisible(true);// cho phép hiện JFrame
+        this.dispose(); // tắt màn hình hiện tại đi
     }//GEN-LAST:event_Change_to_signupActionPerformed
 
 
@@ -243,12 +280,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField Dien_password;
     private javax.swing.JTextField Dien_username;
     private javax.swing.JButton Forgotten_password;
+    private javax.swing.JLabel Label_ChangeTo_SignUp;
     private javax.swing.JLabel Login;
     private javax.swing.JPanel Nen_duoi;
     private javax.swing.JPanel Nen_tren;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Username;
     private javax.swing.JButton confirm_login;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
