@@ -1,5 +1,5 @@
 package Login_And_SignUp;
-import Screen_After_Login.Menu_DoanhNghiep_HangPhuongTien;
+import Screen_After_Login.Menu_KhachHang;
 import Screen_After_Login.Menu_DoanhNghiep_KhachSan;
 
 import javax.swing.JOptionPane;
@@ -199,14 +199,17 @@ public class Login extends javax.swing.JFrame {
         // lấy thông tin tài khoản và mật khẩu người dùng nhập
         String username = Dien_username.getText(); // Dien_username là TextField cho username
         String password = new String(Dien_password.getPassword()); // Dien_password là PasswordField cho mật khẩu
-
+        
+        System.out.println(username);
+        System.out.println(password);
         // kiểm tra đăng nhập
         String accountType = Login_And_SignUp.checkLogin(username, password);
+        System.out.println(accountType);
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
             
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
-                Menu_DoanhNghiep_HangPhuongTien MenuFrame= new Menu_DoanhNghiep_HangPhuongTien();
+                Menu_KhachHang MenuFrame= new Menu_KhachHang();
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
