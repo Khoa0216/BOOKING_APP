@@ -1,27 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Screen_After_Login;
 
-/**
- *
- * @author bobui
- */
-<<<<<<< HEAD:Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_HangPhuongTien.java
-public class Menu_DoanhNghiep_HangPhuongTien extends javax.swing.JFrame {
-=======
-public class KhachHang extends javax.swing.JFrame {
->>>>>>> 948f8327dc057126a41540d9558b41d56019575d:Booking_App/src/Screen_After_Login/Menu_KhachHang.java
 
-    /**
-     * Creates new form KhachHang
-     */
-<<<<<<< HEAD:Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_HangPhuongTien.java
+public class Menu_DoanhNghiep_HangPhuongTien extends javax.swing.JFrame {
+
     public Menu_DoanhNghiep_HangPhuongTien() {
-=======
-    public KhachHang() {
->>>>>>> 948f8327dc057126a41540d9558b41d56019575d:Booking_App/src/Screen_After_Login/Menu_KhachHang.java
         initComponents();
     }
 
@@ -286,7 +268,7 @@ public class KhachHang extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-=======
+
             java.util.logging.Logger.getLogger(KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -296,16 +278,16 @@ public class KhachHang extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(KhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
->>>>>>> 948f8327dc057126a41540d9558b41d56019575d:Booking_App/src/Screen_After_Login/Menu_KhachHang.java
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD:Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_HangPhuongTien.java
+
                 new Menu_DoanhNghiep_HangPhuongTien().setVisible(true);
-=======
+
                 new KhachHang().setVisible(true);
->>>>>>> 948f8327dc057126a41540d9558b41d56019575d:Booking_App/src/Screen_After_Login/Menu_KhachHang.java
+
             }
         });
     }

@@ -11,7 +11,7 @@ package Screen_After_Login;
 public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
 
     /**
-     * Creates new form Quan_Ly
+     * Creates new form Menu_DoanhNghiep_KhachSan
      */
     public Menu_DoanhNghiep_KhachSan() {
         initComponents();
