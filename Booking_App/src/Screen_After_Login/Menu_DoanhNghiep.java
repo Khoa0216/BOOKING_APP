@@ -13,6 +13,8 @@ public class Menu_DoanhNghiep extends javax.swing.JFrame {
     /**
      * Creates new form Quan_Ly
      */
+    
+//    Test
     public Menu_DoanhNghiep() {
         initComponents();
     }
