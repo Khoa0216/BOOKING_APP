@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java>
-
 public class OracleDataBase_Connection {
     public static Connection getConnection(String user, String password) throws SQLException {
         String url = "jdbc:oracle:thin:@localhost:1521/booking_pdb";  // Địa chỉ CSDL Booking_pdb
