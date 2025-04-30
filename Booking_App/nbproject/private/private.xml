@@ -3,23 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/Login.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/OracleDataBase_Connection.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_KhachSan.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Screen_After_Login.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_KhachHang.java</file>
-=======
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/SignUp.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/Login.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/SignUpDoanhNghiep.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/OracleDataBase_Connection.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/SignUpKhachHang.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_KhachHang.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Screen_After_Login/Screen_After_Login.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_KhachSan.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_HangPhuongTien.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Login_And_SignUp/Login_And_SignUp.java</file>
->>>>>>> e9062de86f6d031bdb9bdd7fc9cf8aab936c3498
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/OracleDataBase_Connection.java</file>
         </group>
     </open-files>
 </project-private>
