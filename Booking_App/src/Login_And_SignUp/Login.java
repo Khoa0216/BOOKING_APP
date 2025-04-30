@@ -1,6 +1,7 @@
 package Login_And_SignUp;
 import Screen_After_Login.Menu_KhachHang;
 import Screen_After_Login.Menu_DoanhNghiep_KhachSan;
+import Screen_After_Login.Menu_DoanhNghiep_PhuongTien;
 
 import javax.swing.JOptionPane;
 
@@ -200,14 +201,14 @@ public class Login extends javax.swing.JFrame {
         String username = Dien_username.getText(); // Dien_username là TextField cho username
         String password = new String(Dien_password.getPassword()); // Dien_password là PasswordField cho mật khẩu
         
-        System.out.println(username);
-        System.out.println(password);
+        //System.out.println(username);
+        //System.out.println(password);
         // kiểm tra đăng nhập
         String accountType = Login_And_SignUp.checkLogin(username, password);
-        System.out.println(accountType);
+        //System.out.println(accountType);
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
-            
+            // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
                 Menu_KhachHang MenuFrame= new Menu_KhachHang();
                 MenuFrame.pack();
@@ -215,15 +216,25 @@ public class Login extends javax.swing.JFrame {
                 MenuFrame.setVisible(true);
                 this.dispose();
             }
-            if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
+            else if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
                 
-                Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan();
-                MenuFrame.pack();
-                MenuFrame.setLocationRelativeTo(null);
-                MenuFrame.setVisible(true);
-                this.dispose();
+                String bussinessTypeString = Login_And_SignUp.checkLoaiDN(username, password);
+                if (bussinessTypeString.equals("KHACHSAN")){
+                    Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan();
+                    MenuFrame.pack();
+                    MenuFrame.setLocationRelativeTo(null);
+                    MenuFrame.setVisible(true);
+                    this.dispose();
+                } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
+                    Menu_DoanhNghiep_PhuongTien MenuFrame= new Menu_DoanhNghiep_PhuongTien();
+                    MenuFrame.pack();
+                    MenuFrame.setLocationRelativeTo(null);
+                    MenuFrame.setVisible(true);
+                    this.dispose();
+                }
+                
             }
-            // Chuyển hướng tới giao diện chính cho người dùng
+            
         } else {
             //JOptionPane để hiện lên thông báo không đăng nhập thành công.
             //this là form hiện tại (làm cửa sổ cha).
@@ -244,38 +255,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Change_to_signupActionPerformed
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
