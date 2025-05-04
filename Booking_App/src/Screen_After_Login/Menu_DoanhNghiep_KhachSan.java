@@ -5,6 +5,10 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     public Menu_DoanhNghiep_KhachSan() {
         initComponents();
     }
+    public Menu_DoanhNghiep_KhachSan(String tenNguoiDung){
+        initComponents();
+        jLabel6.setText("Hello" + tenNguoiDung);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

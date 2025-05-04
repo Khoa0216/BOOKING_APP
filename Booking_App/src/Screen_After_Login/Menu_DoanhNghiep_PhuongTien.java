@@ -16,6 +16,10 @@ public class Menu_DoanhNghiep_PhuongTien extends javax.swing.JFrame {
     public Menu_DoanhNghiep_PhuongTien() {
         initComponents();
     }
+    public Menu_DoanhNghiep_PhuongTien(String tenNguoiDung) {
+        initComponents();
+        jLabel6.setText("HELLO, " + tenNguoiDung);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
