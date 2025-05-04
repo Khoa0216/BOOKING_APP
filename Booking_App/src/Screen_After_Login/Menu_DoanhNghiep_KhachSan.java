@@ -46,7 +46,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(900, 700));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jButton3.setText("Thêm dịch vụ");
         jButton3.setBorderPainted(false);
