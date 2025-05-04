@@ -1,9 +1,49 @@
 package Screen_After_Login;
 
-public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
+import java.sql.*;
+import Login_And_SignUp.OracleDataBase_Connection;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
+public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
+    
+    private final String user = "DN_KS";
+    private final String password = "123";
+    
+    private final String header[] = {"ID", "Tên phòng", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"}; 
+    private final DefaultTableModel table = new DefaultTableModel(header, 0);
+    
+    
+    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
+    Connection conn = null;
+    
     public Menu_DoanhNghiep_KhachSan() {
         initComponents();
+        loadTable();
+    }
+    
+    public void loadTable(){
+        try {
+            conn = my_conn.getConnection(this.user, this.password);
+            String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from phong_dangtai";
+            Statement st = conn.createStatement();
+            ResultSet result = st.executeQuery(query);
+            ResultSetMetaData metadata = result.getMetaData();
+            int num_col = metadata.getColumnCount();
+            table.setRowCount(0);
+            while(result.next()){
+                Vector row = new Vector();
+                for (int i = 1; i <= num_col; i++){
+                    row.addElement(result.getString(i));
+                }
+                table.addRow(row);
+
+            }
+            jTable1.setModel(table);
+            result.close();
+            conn.close();
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -143,15 +183,27 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tên Phòng", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(jTable1);
 
         txtIdUser.addActionListener(new java.awt.event.ActionListener() {
@@ -309,9 +361,6 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -325,7 +374,11 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
