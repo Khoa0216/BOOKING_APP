@@ -46,6 +46,26 @@ public class Login_And_SignUp {
             return null;
         }
     }
+    public static String getUserName(String email ) {
+        String query = "SELECT TENNGUOIDUNG FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL =  ?";
+    
+        try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+    
+            stmt.setString(1, email);
+    
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                return rs.getString("TENNGUOIDUNG"); 
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public static String checkLoaiDN(String username, String password) {
         String query = "SELECT BOOKING_APP.DOANHNGHIEP.LOAIDN"

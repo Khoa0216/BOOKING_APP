@@ -204,13 +204,19 @@ public class Login extends javax.swing.JFrame {
         //System.out.println(username);
         //System.out.println(password);
         // kiểm tra đăng nhập
+        
         String accountType = Login_And_SignUp.checkLogin(username, password);
-        //System.out.println(accountType);
+        
+        String userName = Login_And_SignUp.getUserName(username);
+        
+        System.out.println(accountType);
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
-                Menu_KhachHang MenuFrame= new Menu_KhachHang();
+                
+                Menu_KhachHang MenuFrame= new Menu_KhachHang(username);
+                
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
@@ -220,13 +226,13 @@ public class Login extends javax.swing.JFrame {
                 
                 String bussinessTypeString = Login_And_SignUp.checkLoaiDN(username, password);
                 if (bussinessTypeString.equals("KHACHSAN")){
-                    Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan();
+                    Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan(username);
                     MenuFrame.pack();
                     MenuFrame.setLocationRelativeTo(null);
                     MenuFrame.setVisible(true);
                     this.dispose();
                 } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
-                    Menu_DoanhNghiep_PhuongTien MenuFrame= new Menu_DoanhNghiep_PhuongTien();
+                    Menu_DoanhNghiep_PhuongTien MenuFrame= new Menu_DoanhNghiep_PhuongTien(username);
                     MenuFrame.pack();
                     MenuFrame.setLocationRelativeTo(null);
                     MenuFrame.setVisible(true);
