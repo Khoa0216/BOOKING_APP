@@ -27,7 +27,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         this.email = email;
         this.cc = Login_And_SignUp.Login_And_SignUp.getCCCD(email);
         this.date = Login_And_SignUp.Login_And_SignUp.getDOB(email);
-        jLabel3.setText("HELLO, " + this.name);
+        jLabel3.setText("HELLO, " + this.name + "!");
     }
 
     /**
