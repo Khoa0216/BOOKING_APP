@@ -1,17 +1,33 @@
 
 package Screen_After_Login;
 
+
+import Login_And_SignUp.Login;
+import Update_UI.Update_UI;
 public class Menu_KhachHang extends javax.swing.JFrame {
 
     /**
      * Creates new form KhachHang
      */
+    public String name;
+    public String email;
+    public String cc;
+    public String date;
     public Menu_KhachHang() {
         initComponents();
     }
-    public Menu_KhachHang(String tenNguoiDung) {
+    public Menu_KhachHang(String tenNguoiDung ) {
         initComponents();
-        Label_Welcome.setText("Xin Chào, " + tenNguoiDung + " !");
+        this.name = tenNguoiDung;
+        jLabel3.setText("HELLO, " + this.name);
+    }
+    public Menu_KhachHang(String tenNguoiDung,String email) {
+        initComponents();
+        this.name = tenNguoiDung;
+        this.email = email;
+        this.cc = Login_And_SignUp.Login_And_SignUp.getCCCD(email);
+        this.date = Login_And_SignUp.Login_And_SignUp.getDOB(email);
+        jLabel3.setText("HELLO, " + this.name);
     }
 
     /**
@@ -31,7 +47,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        Label_Welcome = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -87,7 +103,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         jButton4.setText("Tài khoản");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                AccBtn(evt);
             }
         });
 
@@ -127,10 +143,9 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        Label_Welcome.setBackground(new java.awt.Color(249, 249, 249));
-        Label_Welcome.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        Label_Welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label_Welcome.setText("HELLO,....");
+        jLabel3.setBackground(new java.awt.Color(249, 249, 249));
+        jLabel3.setText("HELLO,....");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel3.setBackground(new java.awt.Color(235, 235, 235));
 
@@ -214,15 +229,15 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_Welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(Label_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -231,16 +246,20 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void AccBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccBtn
+        Update_UI LGFrame = new Update_UI(this.name,this.email);
+        LGFrame.pack();
+        LGFrame.setLocationRelativeTo(null);//Hiện ở giữa màn hình
+        LGFrame.setVisible(true);//Cho phép hiện JFrame
+        this.dispose();
+    }//GEN-LAST:event_AccBtn
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -251,7 +270,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Label_Welcome;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -263,6 +281,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
