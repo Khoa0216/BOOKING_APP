@@ -4,6 +4,11 @@ import java.sql.*;
 import Login_And_SignUp.OracleDataBase_Connection;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import database.jdbcHelper;
+import model.Phong_KS;
+import DAO.PhongKS_DAO;
+import java.lang.Integer;
+import java.lang.Long;
 
 public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     
@@ -14,8 +19,9 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     private final DefaultTableModel table = new DefaultTableModel(header, 0);
     
     
-    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
-    Connection conn = null;
+//    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
+//    Connection conn = null;
+    private jdbcHelper jdbc = new jdbcHelper(this.user, this.password);
     
     public Menu_DoanhNghiep_KhachSan() {
         initComponents();
@@ -24,10 +30,10 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     
     public void loadTable(){
         try {
-            conn = my_conn.getConnection(this.user, this.password);
+
             String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from phong_dangtai";
-            Statement st = conn.createStatement();
-            ResultSet result = st.executeQuery(query);
+//            Statement st = conn.createStatement();
+            ResultSet result = this.jdbc.query(query);
             ResultSetMetaData metadata = result.getMetaData();
             int num_col = metadata.getColumnCount();
             table.setRowCount(0);
@@ -41,7 +47,6 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
             }
             jTable1.setModel(table);
             result.close();
-            conn.close();
         } catch (Exception e) {
         }
     }
@@ -67,12 +72,12 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        txtIdUser = new javax.swing.JTextField();
-        txtUserAddress = new javax.swing.JTextField();
+        txtTenPhong = new javax.swing.JTextField();
+        txtSoLuong = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtUserPhone = new javax.swing.JTextField();
+        txtGia = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtUserName = new javax.swing.JTextField();
+        txtLoaiPhong = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -206,31 +211,31 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         jTable1.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(jTable1);
 
-        txtIdUser.addActionListener(new java.awt.event.ActionListener() {
+        txtTenPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdUserActionPerformed(evt);
+                txtTenPhongActionPerformed(evt);
             }
         });
 
-        txtUserAddress.addActionListener(new java.awt.event.ActionListener() {
+        txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserAddressActionPerformed(evt);
+                txtSoLuongActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Tên Phòng");
 
-        txtUserPhone.addActionListener(new java.awt.event.ActionListener() {
+        txtGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserPhoneActionPerformed(evt);
+                txtGiaActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Loại Phòng");
 
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+        txtLoaiPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
+                txtLoaiPhongActionPerformed(evt);
             }
         });
 
@@ -250,17 +255,17 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtUserPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLoaiPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -270,19 +275,19 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(67, 67, 67)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtUserPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLoaiPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUserAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))))
                 .addContainerGap())
         );
@@ -416,24 +421,35 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void txtIdUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUserActionPerformed
+    private void txtTenPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenPhongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdUserActionPerformed
+    }//GEN-LAST:event_txtTenPhongActionPerformed
 
-    private void txtUserPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserPhoneActionPerformed
+    private void txtGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserPhoneActionPerformed
+    }//GEN-LAST:event_txtGiaActionPerformed
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+    private void txtLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoaiPhongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
+    }//GEN-LAST:event_txtLoaiPhongActionPerformed
 
-    private void txtUserAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserAddressActionPerformed
+    private void txtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserAddressActionPerformed
+    }//GEN-LAST:event_txtSoLuongActionPerformed
 
     private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
         // TODO add your handling code here:
+        String tenPhong = txtTenPhong.getText();
+        String loaiPhong = txtLoaiPhong.getText();
+        Long gia = Long.valueOf(txtGia.getText());
+        Long tongSoLuong = Long.valueOf(txtSoLuong.getText());
+        
+        Phong_KS phong = new Phong_KS(Integer.valueOf(2), Integer.valueOf(10), 
+                tenPhong, loaiPhong, "", gia, tongSoLuong, tongSoLuong);
+        
+        PhongKS_DAO dao = new PhongKS_DAO();
+        dao.insert(phong);
+        this.loadTable();
     }//GEN-LAST:event_insertActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -508,11 +524,11 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtIdUser;
+    private javax.swing.JTextField txtGia;
+    private javax.swing.JTextField txtLoaiPhong;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtUserAddress;
-    private javax.swing.JTextField txtUserName;
-    private javax.swing.JTextField txtUserPhone;
+    private javax.swing.JTextField txtSoLuong;
+    private javax.swing.JTextField txtTenPhong;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
