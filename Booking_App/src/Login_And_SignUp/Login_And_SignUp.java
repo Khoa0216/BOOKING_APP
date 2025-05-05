@@ -47,8 +47,9 @@ public class Login_And_SignUp {
         }
     }
     public static String getUserName(String email ) {
-        String query = "SELECT BOOKING_APP.NGUOIDUNG.HOTEN FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ?";
-    
+        System.out.println(email);
+        String query = "SELECT HOTEN FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ?";
+        
         try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
              PreparedStatement stmt = conn.prepareStatement(query)) {
     
@@ -66,11 +67,58 @@ public class Login_And_SignUp {
             return null;
         }
     }
+    public static String getDOB(String email){
+        String query = "SELECT TO_CHAR(NGAYSINH, 'DD/MM/YYYY') AS NGAYSINH "
+             + "FROM BOOKING_APP.NGUOIDUNG ND "
+             + "JOIN BOOKING_APP.KHACHHANG KH ON ND.ID = KH.ID "
+             + "WHERE EMAIL = ?";
+    
+        try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+    
+            stmt.setString(1, email);
+    
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getString("NGAYSINH"); 
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static String getCCCD(String email){
+        String query = "SELECT KH.CCCD "
+                + " FROM BOOKING_APP.NGUOIDUNG ND JOIN BOOKING_APP.KHACHHANG KH "
+                + " ON ND.ID = KH.ID"
+                + " WHERE EMAIL =  ?";
+    
+        try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+    
+            stmt.setString(1, email);
+    
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                return rs.getString("CCCD"); 
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     
     public static String checkLoaiDN(String username, String password) {
-        String query = "SELECT BOOKING_APP.DOANHNGHIEP.LOAIDN"
-                    + " FROM BOOKING_APP.NGUOIDUNG JOIN BOOKING_APP.DOANHNGHIEP"
-                    + " ON BOOKING_APP.NGUOIDUNG.ID=BOOKING_APP.DOANHNGHIEP.ID"
+        String query = "SELECT BOOKING_APP.DOANHNGHIEP.LOAIDN "
+                    + " FROM BOOKING_APP.NGUOIDUNG JOIN BOOKING_APP.DOANHNGHIEP "
+                    + " ON BOOKING_APP.NGUOIDUNG.ID=BOOKING_APP.DOANHNGHIEP.ID "
                     + " WHERE EMAIL = ? AND MATKHAU = ?"; //câu lệnh query SQL, ? là nơi sẽ thay thế giá trị vào. (*)
 
         
@@ -102,5 +150,11 @@ public class Login_And_SignUp {
             return null;
         }
     }
+    
+    public static void setHoTen(String name){
+        
+    }
+    
+    
     
 }
