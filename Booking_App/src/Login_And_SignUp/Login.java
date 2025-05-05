@@ -207,7 +207,7 @@ public class Login extends javax.swing.JFrame {
         
         String accountType = Login_And_SignUp.checkLogin(username, password);
         
-        String userName = Login_And_SignUp.getUserName(username);
+        String HoTenTK = Login_And_SignUp.getUserName(username);
         
         System.out.println(accountType);
         if (accountType != null) {
@@ -215,7 +215,7 @@ public class Login extends javax.swing.JFrame {
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
                 
-                Menu_KhachHang MenuFrame= new Menu_KhachHang(username);
+                Menu_KhachHang MenuFrame= new Menu_KhachHang(HoTenTK);
                 
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);

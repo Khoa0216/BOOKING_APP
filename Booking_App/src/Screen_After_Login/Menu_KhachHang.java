@@ -11,7 +11,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }
     public Menu_KhachHang(String tenNguoiDung) {
         initComponents();
-        jLabel3.setText("HELLO, " + tenNguoiDung);
+        jLabel3.setText("Xin Chào, " + tenNguoiDung + " !");
     }
 
     /**
@@ -80,11 +80,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 102, 102));
         jButton3.setText("Trợ giúp");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton4.setBackground(new java.awt.Color(249, 249, 249));
         jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
@@ -133,6 +128,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         );
 
         jLabel3.setBackground(new java.awt.Color(249, 249, 249));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setText("HELLO,....");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -218,7 +214,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(

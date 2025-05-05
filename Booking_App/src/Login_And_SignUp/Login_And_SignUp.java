@@ -47,7 +47,7 @@ public class Login_And_SignUp {
         }
     }
     public static String getUserName(String email ) {
-        String query = "SELECT TENNGUOIDUNG FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL =  ?";
+        String query = "SELECT BOOKING_APP.NGUOIDUNG.HOTEN FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ?";
     
         try (Connection conn = OracleDataBase_Connection.getConnection("nguoidung_user", "12345678");
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -57,7 +57,7 @@ public class Login_And_SignUp {
             ResultSet rs = stmt.executeQuery();
     
             if (rs.next()) {
-                return rs.getString("TENNGUOIDUNG"); 
+                return rs.getString("HOTEN"); 
             } else {
                 return null;
             }
