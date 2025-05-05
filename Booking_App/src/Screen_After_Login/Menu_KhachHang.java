@@ -129,8 +129,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         Label_Welcome.setBackground(new java.awt.Color(249, 249, 249));
         Label_Welcome.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        Label_Welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_Welcome.setText("HELLO,....");
-        Label_Welcome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel3.setBackground(new java.awt.Color(235, 235, 235));
 
@@ -214,8 +214,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(Label_Welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
