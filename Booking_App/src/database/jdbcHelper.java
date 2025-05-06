@@ -21,11 +21,13 @@ public class jdbcHelper {
     static String url = "jdbc:oracle:thin:@localhost:1521/booking_pdb";
     static String user;
     static String pass;
+
     
     public jdbcHelper(String user, String pass){
-        jdbcHelper.user = user;
-        jdbcHelper.pass = pass;
+        this.user = user;
+        this.pass = pass;
     }
+    
     
     static {
         try {

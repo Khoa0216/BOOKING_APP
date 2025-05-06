@@ -1,13 +1,33 @@
 
 package Screen_After_Login;
 
+
+import Login_And_SignUp.Login;
+import Update_UI.Update_UI;
 public class Menu_KhachHang extends javax.swing.JFrame {
 
     /**
      * Creates new form KhachHang
      */
+    public String name;
+    public String email;
+    public String cc;
+    public String date;
     public Menu_KhachHang() {
         initComponents();
+    }
+    public Menu_KhachHang(String tenNguoiDung ) {
+        initComponents();
+        this.name = tenNguoiDung;
+        jLabel3.setText("HELLO, " + this.name);
+    }
+    public Menu_KhachHang(String tenNguoiDung,String email) {
+        initComponents();
+        this.name = tenNguoiDung;
+        this.email = email;
+        this.cc = Login_And_SignUp.Login_And_SignUp.getCCCD(email);
+        this.date = Login_And_SignUp.Login_And_SignUp.getDOB(email);
+        jLabel3.setText("HELLO, " + this.name);
     }
 
     /**
@@ -83,7 +103,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         jButton4.setText("Tài khoản");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                AccBtn(evt);
             }
         });
 
@@ -100,10 +120,9 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -227,16 +246,24 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void AccBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccBtn
+        Update_UI LGFrame = new Update_UI(this.name,this.email);
+        LGFrame.pack();
+        LGFrame.setLocationRelativeTo(null);//Hiện ở giữa màn hình
+        LGFrame.setVisible(true);//Cho phép hiện JFrame
+        this.dispose();
+    }//GEN-LAST:event_AccBtn
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

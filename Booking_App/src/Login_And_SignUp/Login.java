@@ -199,18 +199,25 @@ public class Login extends javax.swing.JFrame {
         
         // lấy thông tin tài khoản và mật khẩu người dùng nhập
         String username = Dien_username.getText(); // Dien_username là TextField cho username
-        String password = new String(Dien_password.getPassword()); // Dien_password là PasswordField cho mật khẩu
+        String password = new String(Dien_password.getPassword());
+       // Dien_password là PasswordField cho mật khẩu
         
         //System.out.println(username);
         //System.out.println(password);
         // kiểm tra đăng nhập
+        
         String accountType = Login_And_SignUp.checkLogin(username, password);
+        
+        String name = Login_And_SignUp.getUserName(username);
+        //System.out.println(name);
         //System.out.println(accountType);
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
-                Menu_KhachHang MenuFrame= new Menu_KhachHang();
+                
+                Menu_KhachHang MenuFrame= new Menu_KhachHang(name,username);
+                 //Menu_KhachHang MenuFrame= new Menu_KhachHang(name);
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
@@ -220,13 +227,13 @@ public class Login extends javax.swing.JFrame {
                 
                 String bussinessTypeString = Login_And_SignUp.checkLoaiDN(username, password);
                 if (bussinessTypeString.equals("KHACHSAN")){
-                    Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan();
+                    Menu_DoanhNghiep_KhachSan MenuFrame= new Menu_DoanhNghiep_KhachSan(name);
                     MenuFrame.pack();
                     MenuFrame.setLocationRelativeTo(null);
                     MenuFrame.setVisible(true);
                     this.dispose();
                 } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
-                    Menu_DoanhNghiep_PhuongTien MenuFrame= new Menu_DoanhNghiep_PhuongTien();
+                    Menu_DoanhNghiep_PhuongTien MenuFrame= new Menu_DoanhNghiep_PhuongTien(name);
                     MenuFrame.pack();
                     MenuFrame.setLocationRelativeTo(null);
                     MenuFrame.setVisible(true);
@@ -253,6 +260,40 @@ public class Login extends javax.swing.JFrame {
         SUFrame.setVisible(true);// cho phép hiện JFrame
         this.dispose(); // tắt màn hình hiện tại đi
     }//GEN-LAST:event_Change_to_signupActionPerformed
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Menu_DoanhNghiep_KhachSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Menu_DoanhNghiep_KhachSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Menu_DoanhNghiep_KhachSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Menu_DoanhNghiep_KhachSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>n
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }
 
 
 

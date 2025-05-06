@@ -13,7 +13,7 @@ public class Phong_KS {
     private Long tongSoluong;
     private Long soluongConLai;
 
-    public Phong_KS(Integer id, Integer doanhnghie_id, String tenPhong, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai) {
+    public Phong_KS(Integer id, Integer doanhnghie_id, String tenPhong, String loaiPhong, Long gia, String moTa, Long tongSoluong, Long soluongConLai) {
         this.id = id;
         this.doanhnghie_id = doanhnghie_id;
         this.tenPhong = tenPhong;
