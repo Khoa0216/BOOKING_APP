@@ -8,9 +8,8 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/DAO/PhongKS_DAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Interface/IPhongKS.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/Login.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/Login_And_SignUp.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Login_And_SignUp/SignUpDoanhNghiep.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/utils/message.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_PhuongTien.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_KhachSan.java</file>
         </group>
     </open-files>
 </project-private>
