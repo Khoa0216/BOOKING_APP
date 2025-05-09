@@ -18,7 +18,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     public Menu_KhachHang(String email) {
         initComponents();
         this.nguoidung=Login_SignUp_Check.getNguoiDung(email);
-        Welcome_Label.setText("Xin Chào, " + this.nguoidung.getHOTEN() + "!");
+        //Welcome_Label.setText("Xin Chào, " + this.nguoidung.getHOTEN() + "!");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,150 +29,18 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BackGround = new javax.swing.JPanel();
-        Green_Panel = new javax.swing.JPanel();
-        Black_Line = new javax.swing.JPanel();
-        O_AnhXuLy = new javax.swing.JPanel();
-        AnhCaNhan = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        White_Header = new javax.swing.JPanel();
-        Welcome_Label = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        BackGround.setBackground(new java.awt.Color(249, 249, 249));
-        BackGround.setPreferredSize(new java.awt.Dimension(1700, 1200));
-
-        Green_Panel.setBackground(new java.awt.Color(0, 102, 102));
-        Green_Panel.setPreferredSize(new java.awt.Dimension(300, 1200));
-
-        Black_Line.setBackground(new java.awt.Color(0, 0, 0));
-        Black_Line.setPreferredSize(new java.awt.Dimension(2, 1200));
-
-        javax.swing.GroupLayout Black_LineLayout = new javax.swing.GroupLayout(Black_Line);
-        Black_Line.setLayout(Black_LineLayout);
-        Black_LineLayout.setHorizontalGroup(
-            Black_LineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-        Black_LineLayout.setVerticalGroup(
-            Black_LineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
-        );
-
-        O_AnhXuLy.setBackground(new java.awt.Color(0, 95, 95));
-        O_AnhXuLy.setPreferredSize(new java.awt.Dimension(250, 125));
-
-        AnhCaNhan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AnhCaNhan.setText("Ảnh cá Nhân");
-        AnhCaNhan.setPreferredSize(new java.awt.Dimension(115, 115));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("EMAIL người dùng");
-
-        javax.swing.GroupLayout O_AnhXuLyLayout = new javax.swing.GroupLayout(O_AnhXuLy);
-        O_AnhXuLy.setLayout(O_AnhXuLyLayout);
-        O_AnhXuLyLayout.setHorizontalGroup(
-            O_AnhXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(O_AnhXuLyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AnhCaNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        O_AnhXuLyLayout.setVerticalGroup(
-            O_AnhXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(O_AnhXuLyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(O_AnhXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AnhCaNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout Green_PanelLayout = new javax.swing.GroupLayout(Green_Panel);
-        Green_Panel.setLayout(Green_PanelLayout);
-        Green_PanelLayout.setHorizontalGroup(
-            Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Green_PanelLayout.createSequentialGroup()
-                .addComponent(O_AnhXuLy, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addComponent(Black_Line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        Green_PanelLayout.setVerticalGroup(
-            Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Green_PanelLayout.createSequentialGroup()
-                .addComponent(Black_Line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(Green_PanelLayout.createSequentialGroup()
-                .addComponent(O_AnhXuLy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        White_Header.setBackground(new java.awt.Color(244, 244, 242));
-        White_Header.setPreferredSize(new java.awt.Dimension(1450, 125));
-
-        Welcome_Label.setBackground(new java.awt.Color(0, 102, 102));
-        Welcome_Label.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        Welcome_Label.setForeground(new java.awt.Color(0, 102, 102));
-        Welcome_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Welcome_Label.setText("Xin Chào, <TÊN>!");
-        Welcome_Label.setMaximumSize(new java.awt.Dimension(600, 90));
-        Welcome_Label.setMinimumSize(new java.awt.Dimension(600, 90));
-        Welcome_Label.setPreferredSize(new java.awt.Dimension(900, 125));
-
-        javax.swing.GroupLayout White_HeaderLayout = new javax.swing.GroupLayout(White_Header);
-        White_Header.setLayout(White_HeaderLayout);
-        White_HeaderLayout.setHorizontalGroup(
-            White_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(White_HeaderLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(Welcome_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(640, Short.MAX_VALUE))
-        );
-        White_HeaderLayout.setVerticalGroup(
-            White_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, White_HeaderLayout.createSequentialGroup()
-                .addComponent(Welcome_Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
-        BackGround.setLayout(BackGroundLayout);
-        BackGroundLayout.setHorizontalGroup(
-            BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackGroundLayout.createSequentialGroup()
-                .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(White_Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        BackGroundLayout.setVerticalGroup(
-            BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(White_Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        setPreferredSize(new java.awt.Dimension(1700, 1200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 1712, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 1212, Short.MAX_VALUE)
         );
 
         pack();
@@ -214,13 +82,5 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AnhCaNhan;
-    private javax.swing.JPanel BackGround;
-    private javax.swing.JPanel Black_Line;
-    private javax.swing.JPanel Green_Panel;
-    private javax.swing.JPanel O_AnhXuLy;
-    private javax.swing.JLabel Welcome_Label;
-    private javax.swing.JPanel White_Header;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
