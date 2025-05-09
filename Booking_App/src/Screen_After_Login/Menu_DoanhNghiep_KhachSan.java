@@ -87,7 +87,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         insert = new javax.swing.JButton();
         update = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
-        formKS = new GUI.Components.formKS();
+        formKS = new GUI.Component.formKS();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 700));
@@ -270,9 +270,8 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(insert)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(delete)
-                        .addComponent(back))
+                    .addComponent(delete)
+                    .addComponent(back)
                     .addComponent(update)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -409,7 +408,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton delete;
-    private GUI.Components.formKS formKS;
+    private GUI.Component.formKS formKS;
     private javax.swing.JButton insert;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
