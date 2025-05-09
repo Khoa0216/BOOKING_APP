@@ -19,7 +19,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
     private final String header[] = {"ID", "Tên phòng", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"}; 
     private DefaultTableModel table;
     
-    private PhongKS_DAO dao = new PhongKS_DAO();
+    private PhongKS_DAO Phong_dao = new PhongKS_DAO();
     private Integer ID_dn = 12;
     
     
@@ -31,14 +31,17 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         initComponents();
         loadTable();
     }
-    
+    public boolean isCellEditable(int row, int column) {
+        return false; // KHÔNG cho sửa ô nào cả
+    }
     
     public void loadTable(){
         try {
             this.table = new DefaultTableModel(header, 0); 
-            String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from phong_dangtai";
+            String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from phong_dangtai"
+                    + " where doanhnghiep_id=?";
 //            Statement st = conn.createStatement();
-            ResultSet result = this.jdbc.query(query);
+            ResultSet result = this.jdbc.query(query, this.ID_dn);
             ResultSetMetaData metadata = result.getMetaData();
             int num_col = metadata.getColumnCount();
             table.setRowCount(0);
@@ -180,9 +183,16 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         myTable.setCellSelectionEnabled(true);
@@ -309,14 +319,14 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         // TODO add your handling code here:
         Phong_KS data = formKS.getData();
 
-        this.dao.insert(data);
+        this.Phong_dao.insert(data);
         this.loadTable();
     }//GEN-LAST:event_insertActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
         Phong_KS data = formKS.getData();
-        dao.update(data);
+        Phong_dao.update(data);
         loadTable();     
     }//GEN-LAST:event_updateActionPerformed
 
@@ -334,7 +344,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
             String ID = myTable.getValueAt(selectedRow, 0).toString();
             
-            this.dao.delete(Integer.valueOf(ID));
+            this.Phong_dao.delete(Integer.valueOf(ID));
             System.out.println("Tên phòng được chọn: " + ID);
             this.loadTable();
         } else {
@@ -352,7 +362,7 @@ public class Menu_DoanhNghiep_KhachSan extends javax.swing.JFrame {
         int selectedRow = myTable.getSelectedRow();
         if (selectedRow != -1){
             String ID = myTable.getValueAt(selectedRow, 0).toString();
-            Phong_KS data = dao.selectByID(Integer.valueOf(ID));
+            Phong_KS data = Phong_dao.selectByID(Integer.valueOf(ID));
             formKS.setData(data.getId(), data.getTenPhong(), data.getLoaiPhong(),
                     data.getTongSoluong(), data.getSoluongConLai(), data.getGia(), data.getMoTa());
         }
