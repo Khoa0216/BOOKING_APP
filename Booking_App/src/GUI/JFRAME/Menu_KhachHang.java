@@ -1,7 +1,7 @@
 package GUI.JFRAME;
 
 import DAO.Login_SignUp_Check;
-import DATABASE_Connection.QueryHelper;
+import database.QueryHelper;
 import MODEL.NGUOIDUNG;
 import java.sql.ResultSet;
 

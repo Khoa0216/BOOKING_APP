@@ -1,7 +1,7 @@
 package DAO;
 
-import DATABASE_Connection.Oracle_connection;
-import DATABASE_Connection.QueryHelper;
+import database.Oracle_connection;
+import database.QueryHelper;
 import MODEL.DOANHNGHIEP;
 import MODEL.KHACHHANG;
 import MODEL.NGUOIDUNG;

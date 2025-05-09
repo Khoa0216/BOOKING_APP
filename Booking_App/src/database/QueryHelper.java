@@ -1,4 +1,4 @@
-package DATABASE_Connection;
+package database;
 import java.sql.*;
 
 public class QueryHelper {
