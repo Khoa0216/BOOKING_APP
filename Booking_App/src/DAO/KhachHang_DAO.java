@@ -12,13 +12,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.message;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class KhachHang_DAO implements IKhachHang<KHACHHANG, String>{
     private jdbcHelper jdbc = new jdbcHelper("nguoidung_user","12345678");
     
     @Override
     public KHACHHANG select(String email) {
-        String sql = "SELECT ND.HOTEN, KH.CCCD, KH.NGAYSINH, ND.MATKHAU "
+        String sql = "SELECT ND.HOTEN, KH.CCCD, TO_CHAR(KH.NGAYSINH, 'DD/MM/YYYY') AS NGAYSINH, ND.MATKHAU "
                 + " FROM BOOKING_APP.NGUOIDUNG ND JOIN BOOKING_APP.KHACHHANG KH"
                 + " ON ND.ID = KH.ID "
                 + " WHERE EMAIL = ?";
@@ -46,13 +49,18 @@ public class KhachHang_DAO implements IKhachHang<KHACHHANG, String>{
             jdbc.update(sqlND, n.getHOTEN(), n.getMATKHAU(), n.getEMAIL());
 
         // Update KHACHHANG
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date utilDate = sdf.parse(n.getNGAYSINH()); // n.getNGAYSINH() là String
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
             String sqlKH = "UPDATE BOOKING_APP.KHACHHANG SET CCCD = ?, NGAYSINH = ? "
                             + "WHERE ID = (SELECT ID FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ? and LOAITK = ?)";
-            jdbc.update(sqlKH, n.getCCCD(), n.getNGAYSINH(), n.getEMAIL(), n.getLOAITK());
+            jdbc.update(sqlKH, n.getCCCD(), sqlDate, n.getEMAIL(), n.getLOAITK());
+            
 
             message.alert(null, "Cập nhật thành công");
         } catch (Exception ex) {
-            
+            ex.printStackTrace(); // <--- QUAN TRỌNG để biết lỗi gì
+            System.out.println("Lỗi: " + ex.getMessage());
             Logger.getLogger(KhachHang_DAO.class.getName()).log(Level.SEVERE, null, ex);
             message.alert(null, "Lỗi khi cập nhật");
         }
