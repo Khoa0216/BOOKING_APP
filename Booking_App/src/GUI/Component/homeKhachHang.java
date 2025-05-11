@@ -12,6 +12,7 @@ import utils.message;
 public class homeKhachHang extends javax.swing.JPanel {
     private JPanel parent;
     private CardLayout cardLayout;
+    private KHACHHANG kh;
     
     public homeKhachHang(){
         initComponents();
@@ -22,9 +23,9 @@ public class homeKhachHang extends javax.swing.JPanel {
     }
     public void setHelloLabel(String email){
         KhachHang_DAO khdao = new KhachHang_DAO();
-        KHACHHANG KH = new KHACHHANG();
-        KH = khdao.select(email);
-        HelloLabel.setText("Hello, " + KH.getHOTEN());
+        kh = new KHACHHANG();
+        kh = khdao.select(email);
+        HelloLabel.setText("Xin Chào, " + kh.getHOTEN() + " !");
     }
     public homeKhachHang(JPanel parent, CardLayout cardLayout,String email){
         initComponents();

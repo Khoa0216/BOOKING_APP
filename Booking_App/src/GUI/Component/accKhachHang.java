@@ -4,17 +4,45 @@
  */
 package GUI.Component;
 
-/**
- *
- * @author bobui
- */
-public class accKhachHang extends javax.swing.JPanel {
+import DAO.KhachHang_DAO;
+import MODEL.KHACHHANG;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-    /**
-     * Creates new form accKhachHang
-     */
+public class accKhachHang extends javax.swing.JPanel {
+    private JPanel parent;
+    private CardLayout cardLayout;
+    private KHACHHANG kh;
+   
     public accKhachHang() {
         initComponents();
+    }
+    public accKhachHang(String email) {
+        initComponents();
+        setText(email);
+    }
+    public void setText(String email){
+        KhachHang_DAO khdao = new KhachHang_DAO();
+        kh = new KHACHHANG();
+        kh = khdao.select(email);
+        emailTextField.setText(kh.getEMAIL());
+        dateTextField.setText(kh.getNGAYSINH());
+        idTextField.setText(kh.getCCCD());
+        nameTextField.setText(kh.getHOTEN());
+        
+    }
+    public accKhachHang(JPanel parent, CardLayout cardLayout,String email){
+        initComponents();
+        this.parent = parent;
+        this.cardLayout = cardLayout; 
+        setText(email);
+    }
+    public KHACHHANG getData(){
+        String name = nameTextField.getText();
+        String date = dateTextField.getText();
+        String id = idTextField.getText();   
+        return new KHACHHANG(name,id,date);
     }
 
     /**
@@ -26,22 +54,240 @@ public class accKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        emailLabel = new javax.swing.JLabel();
+        emailTextField = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        dateLabel = new javax.swing.JLabel();
+        dateTextField = new javax.swing.JTextField();
+        passLabel = new javax.swing.JLabel();
+        passconfirmTextField = new javax.swing.JTextField();
+        commitBtn = new javax.swing.JButton();
+        inforLabel = new javax.swing.JLabel();
+        passLabel1 = new javax.swing.JLabel();
+        passTextField = new javax.swing.JTextField();
+
         setMaximumSize(new java.awt.Dimension(1400, 1200));
         setPreferredSize(new java.awt.Dimension(1400, 1200));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 600));
+
+        emailLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        emailLabel.setText("Email");
+        emailLabel.setToolTipText("");
+
+        emailTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+
+        NameLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        NameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        NameLabel.setText("Họ và Tên");
+
+        nameTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        nameTextField.setPreferredSize(new java.awt.Dimension(250, 50));
+        nameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTextFieldActionPerformed(evt);
+            }
+        });
+
+        idLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        idLabel.setText("CCCD");
+
+        idTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+
+        dateLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        dateLabel.setText("Ngày sinh");
+
+        dateTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+
+        passLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        passLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        passLabel.setText("Xác nhận mật khẩu");
+
+        passconfirmTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        passconfirmTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passconfirmTextFieldActionPerformed(evt);
+            }
+        });
+
+        commitBtn.setBackground(new java.awt.Color(0, 102, 102));
+        commitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        commitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        commitBtn.setText("Lưu");
+        commitBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        commitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commitBtnActionPerformed(evt);
+            }
+        });
+
+        inforLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        inforLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inforLabel.setText("Hồ Sơ Của Tôi");
+
+        passLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        passLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        passLabel1.setText("Mật khẩu");
+
+        passTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        passTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passTextFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(inforLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(commitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(idLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(50, 50, 50))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(passLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(44, 44, 44)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dateTextField)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(idTextField)
+                            .addComponent(passTextField))))
+                .addGap(0, 140, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(inforLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(commitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(350, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(350, 350, 350))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(300, 300, 300)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextFieldActionPerformed
+
+    private void commitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitBtnActionPerformed
+        String email = emailTextField.getText();
+        String name = nameTextField.getText();
+        String date = dateTextField.getText();
+        String id = idTextField.getText();
+        String password = passTextField.getText();
+        String passwordcf = passconfirmTextField.getText(); // nếu bạn muốn cập nhật mật khẩu
+
+        if (name.isEmpty() || date.isEmpty() || id.isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!password.isEmpty()) {
+            if (!password.equals(passwordcf)) {
+                JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không khớp", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else {
+                kh.setMATKHAU(password); // cập nhật mật khẩu mới
+            }
+        }
+        
+        //gán tt           
+        kh.setHOTEN(name);
+        kh.setCCCD(id);
+        kh.setNGAYSINH(date);
+        // cập nhật
+        KhachHang_DAO dao = new KhachHang_DAO();
+        dao.update(kh);
+        
+        setText(email);
+    }//GEN-LAST:event_commitBtnActionPerformed
+
+    private void passconfirmTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passconfirmTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passconfirmTextFieldActionPerformed
+
+    private void passTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JButton commitBtn;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateTextField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel emailTextField;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JLabel inforLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel passLabel;
+    private javax.swing.JLabel passLabel1;
+    private javax.swing.JTextField passTextField;
+    private javax.swing.JTextField passconfirmTextField;
     // End of variables declaration//GEN-END:variables
 }
