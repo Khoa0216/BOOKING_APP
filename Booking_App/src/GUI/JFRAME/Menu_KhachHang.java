@@ -13,18 +13,20 @@ import java.sql.ResultSet;
 import java.awt.CardLayout;
 
 
+
 public class Menu_KhachHang extends javax.swing.JFrame {
     private CardLayout CLayout;
     private homeKhachHang homeKH;
     private accKhachHang accKH;
     private NGUOIDUNG nguoidung; 
+    private String email;
     public Menu_KhachHang() {
         initComponents();
         
     }
     public Menu_KhachHang(String email) {
         initComponents();
-        
+        this.email = email;
         this.CLayout = (CardLayout) rightPanel.getLayout();
         
         homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
@@ -48,18 +50,18 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         HelpBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
+        orderBtn = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1700, 1200));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user (1).png"))); // NOI18N
-        UserIcon.setPreferredSize(new java.awt.Dimension(64, 64));
 
         HomeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         HomeBtn.setForeground(new java.awt.Color(0, 102, 102));
+        HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-icon-silhouette.png"))); // NOI18N
         HomeBtn.setText("Trang chủ");
         HomeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +84,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         AccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         AccountBtn.setForeground(new java.awt.Color(0, 102, 102));
+        AccountBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
         AccountBtn.setText("Tài khoản");
         AccountBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +94,15 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         YourEmail.setForeground(new java.awt.Color(255, 255, 255));
         YourEmail.setText("Your Email");
+
+        orderBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        orderBtn.setForeground(new java.awt.Color(0, 102, 102));
+        orderBtn.setText("Đặt");
+        orderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
         DashBoard.setLayout(DashBoardLayout);
@@ -102,7 +114,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 37, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
@@ -119,11 +132,13 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(77, 77, 77)
                 .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(45, 45, 45)
+                .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(45, 45, 45)
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -157,14 +172,20 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
+        homeKH.updateUserInfo(this.email);
         CLayout = (CardLayout)(rightPanel.getLayout());
         CLayout.show(rightPanel, "home"); // Hiện panel "home"
+        
     }//GEN-LAST:event_HomeBtnActionPerformed
 
     private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
         CLayout = (CardLayout)(rightPanel.getLayout());
         CLayout.show(rightPanel,"acc");
     }//GEN-LAST:event_AccountBtnActionPerformed
+
+    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -206,6 +227,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
+    private javax.swing.JButton orderBtn;
     private javax.swing.JPanel rightPanel;
     // End of variables declaration//GEN-END:variables
 }
