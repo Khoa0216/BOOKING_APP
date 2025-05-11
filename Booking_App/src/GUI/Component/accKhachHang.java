@@ -9,6 +9,9 @@ import MODEL.KHACHHANG;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class accKhachHang extends javax.swing.JPanel {
     private JPanel parent;
@@ -24,12 +27,13 @@ public class accKhachHang extends javax.swing.JPanel {
     }
     public void setText(String email){
         KhachHang_DAO khdao = new KhachHang_DAO();
-        kh = new KHACHHANG();
         kh = khdao.select(email);
+
         emailTextField.setText(kh.getEMAIL());
-        dateTextField.setText(kh.getNGAYSINH());
         idTextField.setText(kh.getCCCD());
         nameTextField.setText(kh.getHOTEN());
+        dateTextField.setText(kh.getNGAYSINH());
+        
         
     }
     public accKhachHang(JPanel parent, CardLayout cardLayout,String email){
@@ -261,7 +265,6 @@ public class accKhachHang extends javax.swing.JPanel {
         KhachHang_DAO dao = new KhachHang_DAO();
         dao.update(kh);
         
-        setText(email);
     }//GEN-LAST:event_commitBtnActionPerformed
 
     private void passconfirmTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passconfirmTextFieldActionPerformed

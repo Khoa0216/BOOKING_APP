@@ -33,6 +33,14 @@ public class homeKhachHang extends javax.swing.JPanel {
         this.cardLayout = cardLayout; 
         setHelloLabel(email);
     }
+    public void updateUserInfo(String email) {
+    KhachHang_DAO dao = new KhachHang_DAO();
+    KHACHHANG kh = dao.select(email);
+    
+    HelloLabel.setText(kh.getHOTEN());
+        
+    
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
