@@ -12,6 +12,18 @@ public class KHACHHANG extends NGUOIDUNG{
         this.ID=ng.getID();
         this.LOAITK=ng.getLOAITK();
     }
+    public KHACHHANG(String name, String cccd, String date){
+        this.HOTEN = name;
+        this.CCCD = cccd;
+        this.NGAYSINH = date;
+    }
+    public KHACHHANG(String name, String email, String cccd, String date, String pass) {
+        this.HOTEN = name;
+        this.EMAIL = email;
+        this.CCCD = cccd;
+        this.NGAYSINH = date;
+        this.MATKHAU = pass;
+    }
 
     public String getCCCD() {
         return CCCD;
@@ -29,7 +41,7 @@ public class KHACHHANG extends NGUOIDUNG{
 
     @Override
     public String getLOAITK() {
-        return LOAITK;
+        return "KHACHHANG";
     }
 
     @Override
@@ -78,7 +90,8 @@ public class KHACHHANG extends NGUOIDUNG{
     public void setNGAYSINH(String NGAYSINH) {
         this.NGAYSINH = NGAYSINH;
     }
-
+    
+    
     
     
 }
