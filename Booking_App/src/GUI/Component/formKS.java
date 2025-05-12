@@ -78,7 +78,7 @@ public class formKS extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMota = new javax.swing.JTextArea();
 
-        setPreferredSize(new java.awt.Dimension(785, 340));
+        setPreferredSize(new java.awt.Dimension(819, 340));
         setLayout(null);
 
         txtTenPhong.addActionListener(new java.awt.event.ActionListener() {

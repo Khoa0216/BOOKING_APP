@@ -63,7 +63,7 @@ public class Login_SignUp_Check {
             }
             Lợi ích: không cần phải gọi close() tài nguyên thủ công sau khi sử dụng (dù lỗi hay không).
         */
-        try (Connection conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
+        try (Connection conn = Oracle_connection.getConnection("dn_ks", "123");
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             // thiết lập các tham số trong câu lệnh SQL (*)
@@ -153,7 +153,7 @@ public class Login_SignUp_Check {
 
         Connection conn = null;
         try {
-            conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
+            conn = Oracle_connection.getConnection("DN_KS", "123");
             conn.setAutoCommit(false);
 
             // 1. Insert NGUOIDUNG và lấy ID sinh tự động
@@ -199,10 +199,10 @@ public class Login_SignUp_Check {
         }
     }
     
-    public static NGUOIDUNG getNguoiDung(String username){
+    public static NGUOIDUNG getNguoiDung(String email){
         
         String sql="SELECT * FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL=?";
-        ResultSet rs=QueryHelper.executeSelect(sql, username);
+        ResultSet rs=QueryHelper.executeSelect(sql, email);
         NGUOIDUNG nguoidung=new NGUOIDUNG();
             
         try {

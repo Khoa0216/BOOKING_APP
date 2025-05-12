@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import GUI.JFRAME.Menu_KhachSan;
+import MODEL.NGUOIDUNG;
+
 public class LoginPanel extends javax.swing.JPanel {
 
     private JPanel parent;
@@ -211,17 +214,17 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         // lấy thông tin tài khoản và mật khẩu người dùng nhập
-        String username = Dien_username.getText(); // Dien_username là TextField cho username
+        String email = Dien_username.getText(); // Dien_username là TextField cho username
         String password = new String(Dien_password.getPassword());
         // Dien_password là PasswordField cho mật khẩu
-        String accountType = Login_SignUp_Check.checkLogin(username, password);
+        String accountType = Login_SignUp_Check.checkLogin(email, password);
         
         if (accountType != null) {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
                 
-                Menu_KhachHang MenuFrame= new Menu_KhachHang(username);
+                Menu_KhachHang MenuFrame= new Menu_KhachHang(email);
                  //Menu_KhachHang MenuFrame= new Menu_KhachHang(name);
                 MenuFrame.pack();
                 MenuFrame.setLocationRelativeTo(null);
@@ -231,9 +234,16 @@ public class LoginPanel extends javax.swing.JPanel {
                 
             } else if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
                 
-                String bussinessTypeString = Login_SignUp_Check.checkLoaiDN(username, password);
+                String bussinessTypeString = Login_SignUp_Check.checkLoaiDN(email, password);
                 if (bussinessTypeString.equals("KHACHSAN")){
                     
+                    NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
+                    Menu_KhachSan MenuFrame = new Menu_KhachSan(user.getHOTEN());
+                    MenuFrame.pack();
+                    MenuFrame.setLocationRelativeTo(null);
+                    MenuFrame.setVisible(true);
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
+                    currentFrame.dispose();
                 } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
                     
                 }

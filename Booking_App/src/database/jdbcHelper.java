@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import database.Oracle_connection;
 
 /**
  *
@@ -17,10 +18,9 @@ import java.sql.SQLException;
  */
 public class jdbcHelper {
 
-    static String driver = "oracle.jdbc.driver.OracleDriver";
-    static String url = "jdbc:oracle:thin:@localhost:1521/booking_pdb";
-    static String user;
-    static String pass;
+
+    private static String user;
+    private static String pass;
 
     
     public jdbcHelper(String user, String pass){
@@ -29,16 +29,9 @@ public class jdbcHelper {
     }
     
     
-    static {
-        try {
-            Class.forName(driver); // nap driver
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static PreparedStatement getPstm(String sql, Object... args) throws SQLException {
-        Connection cn = DriverManager.getConnection(url, user, pass);
+        Connection cn = Oracle_connection.getConnection(user, pass);
         PreparedStatement pstm;
         if (sql.trim().startsWith("{")) { // Nếu sql truyền vào bắt đầu = "{" => Câu lệnh gọi thủ tục PROC
             pstm = cn.prepareCall(sql);
