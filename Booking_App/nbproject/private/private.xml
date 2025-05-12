@@ -3,16 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/DAO/PhongKS_DAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_KhachSan.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/model/Phong_KS.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Components/formKS.java</file>
-=======
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachHang.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/LoginPanel.java</file>
-            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/JFRAME/Main_Login_Register_JF.java</file>
->>>>>>> 21a683d7cf104dd2710078a404b0e9dc7c13c38e
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/DAO/Login_SignUp_Check.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/LoginPanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/RegisterPanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/SignUpDoanhNghiep.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Main.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/JFRAME/Main_Login_Register_JF.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/database/Oracle_connection.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/SignUpKhachHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/database/jdbcHelper.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/database/QueryHelper.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_PhuongTien.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/formKS.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/formPhuongTien.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/Screen_After_Login/Menu_DoanhNghiep_PhuongTien.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachSan.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/model/Chuyen_DangTai.java</file>
         </group>
     </open-files>
 </project-private>
