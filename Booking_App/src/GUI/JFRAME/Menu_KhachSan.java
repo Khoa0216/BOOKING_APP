@@ -20,7 +20,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private DefaultTableModel table;
     
     private PhongKS_DAO Phong_dao = new PhongKS_DAO();
-    private Integer ID_dn = 12;
+    private Integer ID_dn = 11;
     
     
 //    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
@@ -38,7 +38,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     public void loadTable(){
         try {
             this.table = new DefaultTableModel(header, 0); 
-            String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from phong_dangtai"
+            String query = "select id, tenphong, loaiphong, gia, soluongconlai, tongsoluong from booking_app.phong_dangtai"
                     + " where doanhnghiep_id=?";
 //            Statement st = conn.createStatement();
             ResultSet result = this.jdbc.query(query, this.ID_dn);

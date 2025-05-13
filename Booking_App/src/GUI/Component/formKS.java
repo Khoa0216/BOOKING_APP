@@ -21,7 +21,7 @@ public class formKS extends javax.swing.JPanel {
     
     public Phong_KS getData(){
         Integer ID = Integer.valueOf(txtID.getText());
-        Integer ID_Dn = Integer.valueOf("12");
+        Integer ID_Dn = Integer.valueOf("11");
         String tenPhong = txtTenPhong.getText();
         String loaiPhong = txtLoaiPhong.getText();
         Long soLuong = Long.valueOf(txtSoLuong.getText());

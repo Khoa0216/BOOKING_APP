@@ -19,19 +19,19 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     public void insert(Phong_KS phong){
         Integer Id = phong.getId();
         try{
-            String sql = "Select Id form Phong_Dangtai";
+            String sql = "Select Id from booking_app.Phong_Dangtai";
             ResultSet rs = jdbcHelper.query(sql);
             while (rs.next()) {
-                if (rs.getString(1).equals(Id)) {
+                if (rs.getString(1).equals(String.valueOf(Id))) {
                     JOptionPane.showMessageDialog(null, "Đã trùng mã phong!!!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         
-        String queryInsert = "Insert into phong_dangtai\n"
+        String queryInsert = "Insert into booking_app.phong_dangtai\n"
                 + "(ID, DoanhNghiep_ID, TenPhong, LoaiPhong, Gia, SoLuongConLai, TongSoLuong) \n" 
                 + "values (?, ?, ?, ?, ?, ?, ?)";
         
@@ -46,7 +46,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     @Override
     public void update(Phong_KS e) {
        try{
-           String sql = "update Phong_DangTai set TenPhong=?, LoaiPhong=?,"
+           String sql = "update booking_app.Phong_DangTai set TenPhong=?, LoaiPhong=?,"
                    + " Gia=?, MoTa=?, SoLuongConLai=?, TongSoLuong=?"
                    + " where ID=?";
            int row = jdbcHelper.update(sql, e.getTenPhong(), e.getLoaiPhong(), e.getGia(),
@@ -61,7 +61,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     @Override
     public void delete(Integer k) {
           try {
-            String sql = "Delete from Phong_DangTai where ID=?";
+            String sql = "Delete from booking_app.Phong_DangTai where ID=?";
             int row = jdbcHelper.update(sql, k);
             if (row > 0) {
 //                ImageIcon icon = new ImageIcon("src/icons/Accept.png");
@@ -79,14 +79,11 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     @Override
     public Phong_KS selectByID(Integer k) {
         try{
-            String sql = "select * from Phong_DangTai where ID=?";
+            String sql = "select * from booking_app.Phong_DangTai where ID=?";
             ResultSet rs = jdbcHelper.query(sql, k);
             ResultSetMetaData metadata = rs.getMetaData();
             int num_col = metadata.getColumnCount();
             while (rs.next()) {
-                for (int i = 1; i <= num_col; i++){
-                    System.out.println(rs.getString(i));
-                }
                 Integer ID = Integer.valueOf(rs.getString(1));
                 Integer ID_dn = Integer.valueOf(rs.getString(2));
                 String tenPhong = rs.getString(3);
@@ -94,7 +91,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
                 Long gia = Long.valueOf(rs.getString(5));
                 String moTa = rs.getString(6);
                 Long soLuongConLai = Long.valueOf(rs.getString(7));
-                Long tongSoLuong = Long.valueOf(rs.getString(9));
+                Long tongSoLuong = Long.valueOf(rs.getString(8));
                 return new Phong_KS(ID, ID_dn, tenPhong, loaiPhong, gia, 
                         moTa, tongSoLuong, soLuongConLai);
             }
