@@ -219,7 +219,8 @@ public class LoginPanel extends javax.swing.JPanel {
         // Dien_password là PasswordField cho mật khẩu
         String accountType = Login_SignUp_Check.checkLogin(email, password);
         
-        if (accountType != null) {
+        if (accountType != null) 
+        {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
@@ -252,7 +253,16 @@ public class LoginPanel extends javax.swing.JPanel {
                     JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                     currentFrame.dispose();
                 }
-                
+            }
+            else if (accountType.equals("ADMIN")){
+                NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
+                Menu_QuanLyDonDat MenuFrame = new Menu_QuanLyDonDat(user.getHOTEN());
+                MenuFrame.pack();
+                MenuFrame.setLocationRelativeTo(null);
+                MenuFrame.setVisible(true);
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
+                currentFrame.dispose();
+ 
             }
         } else {
             //JOptionPane để hiện lên thông báo không đăng nhập thành công.

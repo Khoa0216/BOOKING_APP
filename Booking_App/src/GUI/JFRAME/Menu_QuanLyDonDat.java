@@ -8,6 +8,7 @@ package GUI.JFRAME;
 import javax.swing.*;
 import GUI.Component.*;
 import java.awt.CardLayout;
+import java.awt.Panel;
 public class Menu_QuanLyDonDat extends javax.swing.JFrame {
 
     /**
@@ -15,9 +16,29 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
      */
     
     private CardLayout cardLayout;
-    
+    private contentDonDat mainContent;
+    private DashBoard dashBoard;
+         
     public Menu_QuanLyDonDat() {
         initComponents();
+    }
+    
+    public Menu_QuanLyDonDat(String name) {
+        initComponents();
+        initCardLayout();
+    }
+    
+    public void initCardLayout(){
+        content.setLayout(new CardLayout());
+        this.cardLayout = (CardLayout) content.getLayout();
+        
+        dashBoard = new DashBoard();
+        mainContent = new contentDonDat();
+        
+        content.add(mainContent, "mainContent");
+        content.add(dashBoard, "dashBoard");
+        
+        cardLayout.show(content, "mainContent");
     }
 
     /**
@@ -37,6 +58,7 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
         orderBtn = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1700, 1200));
@@ -108,7 +130,8 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(106, 106, 106))
         );
         DashBoardLayout.setVerticalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +150,21 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(601, Short.MAX_VALUE))
+                .addContainerGap(624, Short.MAX_VALUE))
+        );
+
+        content.setPreferredSize(new java.awt.Dimension(1400, 1200));
+        content.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1400, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,11 +173,16 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1400, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1223, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,6 +247,7 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
+    private javax.swing.JPanel content;
     private javax.swing.JButton orderBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,8 +6,12 @@ CREATE TABLE NGUOIDUNG (
     EMAIL VARCHAR2(100),
     MATKHAU VARCHAR2(100) NOT NULL,
     HOTEN VARCHAR2(100),
-    LOAITK VARCHAR2(20) CHECK (LOAITK IN ('KHACHHANG', 'DOANHNGHIEP'))
+    LOAITK VARCHAR2(20) CHECK (LOAITK IN ('KHACHHANG', 'DOANHNGHIEP', 'ADMIN'))
 );
+
+insert into booking_app.nguoidung values(102, 'admin@gmail.com', '123', 'admin', 'ADMIN');
+SELECT * FROM NGUOIDUNG
+
 
 -- ===============================
 -- 2. KHÁCH HÀNG
@@ -138,7 +142,7 @@ BEGIN
     SELECT SEQ_NGUOIDUNG_ID.NEXTVAL INTO :NEW.ID FROM dual;
   END IF;
 END;
-
+/
 -- Fake data for booking PDB: ~10–20 rows per table
 
 -- 1. NGUOIDUNG (20 rows)
