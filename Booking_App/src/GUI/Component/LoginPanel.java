@@ -245,7 +245,12 @@ public class LoginPanel extends javax.swing.JPanel {
                     JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                     currentFrame.dispose();
                 } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
-                    
+                    Menu_PhuongTien MenuFrame= new Menu_PhuongTien(username);
+                    MenuFrame.pack();
+                    MenuFrame.setLocationRelativeTo(null);
+                    MenuFrame.setVisible(true);
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
+                    currentFrame.dispose();
                 }
                 
             }
