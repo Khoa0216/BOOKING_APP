@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import GUI.JFRAME.Menu_KhachSan;
+import GUI.JFRAME.*;
 import MODEL.NGUOIDUNG;
 
 public class LoginPanel extends javax.swing.JPanel {
@@ -245,7 +245,7 @@ public class LoginPanel extends javax.swing.JPanel {
                     JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                     currentFrame.dispose();
                 } else if (bussinessTypeString.equals("HANGPHUONGTIEN")){
-                    Menu_PhuongTien MenuFrame= new Menu_PhuongTien(username);
+                    Menu_PhuongTien MenuFrame= new Menu_PhuongTien(email);
                     MenuFrame.pack();
                     MenuFrame.setLocationRelativeTo(null);
                     MenuFrame.setVisible(true);
