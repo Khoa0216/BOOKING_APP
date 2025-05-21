@@ -10,17 +10,29 @@ public class RegisterPanel extends javax.swing.JPanel {
     private JPanel parent;
     private CardLayout cardLayout;
     private SignUpKhachHang signUpKhachHang;
+<<<<<<< HEAD
     private SignUpDoanhNghiep signUpDoanhNghiep;
+=======
+    private SignUpKhachSan signUpKS;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
     public RegisterPanel() {
         initComponents();
     }
 
+<<<<<<< HEAD
     public RegisterPanel(JPanel parent, CardLayout cardLayout, SignUpKhachHang signUpKhachHang, SignUpDoanhNghiep signUpDoanhNghiep) {
         this.parent = parent;
         this.cardLayout = cardLayout;
         this.signUpKhachHang=signUpKhachHang;
         this.signUpDoanhNghiep=signUpDoanhNghiep;
+=======
+    public RegisterPanel(JPanel parent, CardLayout cardLayout, SignUpKhachHang signUpKhachHang, SignUpKhachSan signUpKS) {
+        this.parent = parent;
+        this.cardLayout = cardLayout;
+        this.signUpKhachHang=signUpKhachHang;
+        this.signUpKS=signUpKS;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         initComponents();
     }
     /**
@@ -32,7 +44,10 @@ public class RegisterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Green_Panel = new javax.swing.JPanel();
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         White_Panel = new javax.swing.JPanel();
         SignUp = new javax.swing.JLabel();
         Full_Name = new javax.swing.JLabel();
@@ -50,6 +65,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         Login = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
+<<<<<<< HEAD
         setPreferredSize(new java.awt.Dimension(1300, 750));
 
         Green_Panel.setBackground(new java.awt.Color(0, 102, 102));
@@ -65,6 +81,9 @@ public class RegisterPanel extends javax.swing.JPanel {
             Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 750, Short.MAX_VALUE)
         );
+=======
+        setPreferredSize(new java.awt.Dimension(650, 750));
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         White_Panel.setBackground(new java.awt.Color(244, 244, 242));
         White_Panel.setPreferredSize(new java.awt.Dimension(650, 750));
@@ -122,7 +141,11 @@ public class RegisterPanel extends javax.swing.JPanel {
         Choose_DN.setBackground(new java.awt.Color(0, 102, 102));
         Choose_DN.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         Choose_DN.setForeground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         Choose_DN.setText("Doanh Nghiệp");
+=======
+        Choose_DN.setText("Khách Sạn");
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         Choose_DN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Choose_DN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +176,28 @@ public class RegisterPanel extends javax.swing.JPanel {
         White_Panel.setLayout(White_PanelLayout);
         White_PanelLayout.setHorizontalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 650, Short.MAX_VALUE)
+=======
+            .addGroup(White_PanelLayout.createSequentialGroup()
+                .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(Choose_KH, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Label_OR)
+                        .addGap(18, 18, 18)
+                        .addComponent(Choose_DN, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(SignUp))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(132, Short.MAX_VALUE))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
@@ -166,6 +210,7 @@ public class RegisterPanel extends javax.swing.JPanel {
                             .addComponent(Confirm_Password_Fill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Password_Fill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Email_Fill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                             .addComponent(Full_Name_Fill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(White_PanelLayout.createSequentialGroup()
                             .addGap(161, 161, 161)
@@ -185,16 +230,39 @@ public class RegisterPanel extends javax.swing.JPanel {
                                         .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(170, 170, 170)))))
+=======
+                            .addComponent(Full_Name_Fill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                     .addContainerGap(78, Short.MAX_VALUE)))
         );
         White_PanelLayout.setVerticalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 750, Short.MAX_VALUE)
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
                     .addGap(132, 132, 132)
                     .addComponent(SignUp)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, White_PanelLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(SignUp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Choose_DN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Choose_KH, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label_OR)))
+                .addGap(18, 18, 18)
+                .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
+            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(White_PanelLayout.createSequentialGroup()
+                    .addGap(186, 186, 186)
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                     .addComponent(Full_Name)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Full_Name_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,6 +278,7 @@ public class RegisterPanel extends javax.swing.JPanel {
                     .addComponent(Confirm_Password)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Confirm_Password_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                     .addGap(38, 38, 38)
                     .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Choose_DN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,23 +290,34 @@ public class RegisterPanel extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(132, Short.MAX_VALUE)))
+=======
+                    .addContainerGap(274, Short.MAX_VALUE)))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+            .addComponent(White_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -266,15 +346,30 @@ public class RegisterPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_Choose_KHActionPerformed
 
+<<<<<<< HEAD
     private void Choose_DNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choose_DNActionPerformed
         // TODO add your handling code here:
         
+=======
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+        // TODO add your handling code here:
+         cardLayout.show(parent, "login");
+    }//GEN-LAST:event_LoginActionPerformed
+
+    private void Choose_DNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Choose_DNActionPerformed
+        // TODO add your handling code here:
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         // lấy thông tin người đăng ký nhập
         String fullname = Full_Name_Fill.getText(); // Email_Fill là TextField cho username
         String username = Email_Fill.getText(); // Email_Fill là TextField cho username
         String password = new String(Password_Fill.getPassword()); // Password_Fill là PasswordField cho mật khẩu
         String confirm_password = new String(Confirm_Password_Fill.getPassword()); // Password_Fill là PasswordField cho mật khẩu
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         if(fullname.isEmpty() || username.isEmpty() || password.isEmpty() || confirm_password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Bạn phải điền đầy đủ thông tin!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
@@ -284,6 +379,7 @@ public class RegisterPanel extends javax.swing.JPanel {
             return;
         }
         NGUOIDUNG nguoidung=new NGUOIDUNG(username, password, fullname);
+<<<<<<< HEAD
         signUpDoanhNghiep.SetThongTin(nguoidung);
         
         cardLayout.show(parent, "SUDN");
@@ -294,6 +390,13 @@ public class RegisterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          cardLayout.show(parent, "login");
     }//GEN-LAST:event_LoginActionPerformed
+=======
+        signUpKS.SetThongTin(nguoidung);
+
+        cardLayout.show(parent, "SUKS");
+
+    }//GEN-LAST:event_Choose_DNActionPerformed
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,7 +408,10 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JTextField Email_Fill;
     private javax.swing.JLabel Full_Name;
     private javax.swing.JTextField Full_Name_Fill;
+<<<<<<< HEAD
     private javax.swing.JPanel Green_Panel;
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     private javax.swing.JLabel Have_An_Account;
     private javax.swing.JLabel Label_OR;
     private javax.swing.JButton Login;

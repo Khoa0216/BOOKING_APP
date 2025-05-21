@@ -3,7 +3,11 @@ package GUI.JFRAME;
 import DAO.Login_SignUp_Check;
 import GUI.Component.LoginPanel;
 import GUI.Component.RegisterPanel;
+<<<<<<< HEAD
 import GUI.Component.SignUpDoanhNghiep;
+=======
+import GUI.Component.SignUpKhachSan;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 import GUI.Component.SignUpKhachHang;
 import database.QueryHelper;
 import MODEL.NGUOIDUNG;
@@ -51,6 +55,10 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
         orderBtn = new javax.swing.JButton();
+<<<<<<< HEAD
+=======
+        AccountBtn1 = new javax.swing.JButton();
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +113,19 @@ public class Menu_KhachHang extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        AccountBtn1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        AccountBtn1.setForeground(new java.awt.Color(0, 102, 102));
+        AccountBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
+        AccountBtn1.setText("Đăng xuất");
+        AccountBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccountBtn1ActionPerformed(evt);
+            }
+        });
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
         DashBoard.setLayout(DashBoardLayout);
         DashBoardLayout.setHorizontalGroup(
@@ -116,7 +137,12 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+<<<<<<< HEAD
                     .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AccountBtn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                 .addGap(0, 23, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
@@ -141,7 +167,13 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AccountBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
 
         rightPanel.setPreferredSize(new java.awt.Dimension(1400, 1200));
@@ -187,6 +219,18 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_orderBtnActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void AccountBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtn1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+
+        // Mở màn hình đăng nhập
+        Main_Login_Register_JF login = new Main_Login_Register_JF();
+        login.setVisible(true);
+    }//GEN-LAST:event_AccountBtn1ActionPerformed
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,6 +265,10 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountBtn;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton AccountBtn1;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     private javax.swing.JPanel DashBoard;
     private javax.swing.JButton HelpBtn;
     private javax.swing.JButton HomeBtn;

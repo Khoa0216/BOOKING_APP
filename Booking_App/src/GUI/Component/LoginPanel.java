@@ -34,7 +34,10 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Green_Panel = new javax.swing.JPanel();
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         White_Panel = new javax.swing.JPanel();
         Username = new javax.swing.JLabel();
         Dien_username = new javax.swing.JTextField();
@@ -48,6 +51,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(51, 51, 51));
         setName(""); // NOI18N
+<<<<<<< HEAD
         setPreferredSize(new java.awt.Dimension(1300, 750));
 
         Green_Panel.setBackground(new java.awt.Color(0, 102, 102));
@@ -63,6 +67,9 @@ public class LoginPanel extends javax.swing.JPanel {
             Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 750, Short.MAX_VALUE)
         );
+=======
+        setPreferredSize(new java.awt.Dimension(650, 750));
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         White_Panel.setBackground(new java.awt.Color(244, 244, 242));
         White_Panel.setPreferredSize(new java.awt.Dimension(650, 750));
@@ -189,6 +196,7 @@ public class LoginPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -199,6 +207,15 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -233,6 +250,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                 currentFrame.dispose();
                 
+<<<<<<< HEAD
             } else if (accountType.equals("DOANHNGHIEP")){ // NẾU LÀ DOANH NGHIỆP.
                 
                 String bussinessTypeString = Login_SignUp_Check.checkLoaiDN(email, password);
@@ -253,6 +271,16 @@ public class LoginPanel extends javax.swing.JPanel {
                     JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                     currentFrame.dispose();
                 }
+=======
+            } else if (accountType.equals("KHACHSAN")){ // NẾU LÀ DOANH NGHIỆP.
+                NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
+                Menu_KhachSan MenuFrame = new Menu_KhachSan(user.getHOTEN());
+                MenuFrame.pack();
+                MenuFrame.setLocationRelativeTo(null);
+                MenuFrame.setVisible(true);
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
+                currentFrame.dispose();
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
             }
             else if (accountType.equals("ADMIN")){
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
@@ -285,7 +313,10 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField Dien_password;
     private javax.swing.JTextField Dien_username;
     private javax.swing.JButton Forgotten_password;
+<<<<<<< HEAD
     private javax.swing.JPanel Green_Panel;
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     private javax.swing.JLabel Label_ChangeTo_SignUp;
     private javax.swing.JLabel Login;
     private javax.swing.JLabel Password;

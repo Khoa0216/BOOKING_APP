@@ -9,7 +9,11 @@ public class Main_Login_Register_JF extends javax.swing.JFrame {
     private LoginPanel LPanel;
     private RegisterPanel RPanel;
     private SignUpKhachHang SUKhachHangPanel;
+<<<<<<< HEAD
     private SignUpDoanhNghiep SUDoanhNghiepPanel;
+=======
+    private SignUpKhachSan SUKhachSanPanel;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     /**
      * Creates new form Main_Login_Register_JF
      */
@@ -20,14 +24,23 @@ public class Main_Login_Register_JF extends javax.swing.JFrame {
 
         LPanel = new LoginPanel(Main_Login_Register, this.CLayout);
         SUKhachHangPanel = new SignUpKhachHang(Main_Login_Register, this.CLayout);
+<<<<<<< HEAD
         SUDoanhNghiepPanel = new SignUpDoanhNghiep(Main_Login_Register, this.CLayout);
         RPanel = new RegisterPanel(Main_Login_Register, this.CLayout, SUKhachHangPanel, SUDoanhNghiepPanel);
+=======
+        SUKhachSanPanel = new SignUpKhachSan(Main_Login_Register, this.CLayout);
+        RPanel = new RegisterPanel(Main_Login_Register, this.CLayout, SUKhachHangPanel, SUKhachSanPanel);
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
         Main_Login_Register.add(LPanel, "login");
         Main_Login_Register.add(RPanel, "register");
         Main_Login_Register.add(SUKhachHangPanel, "SUKH");
+<<<<<<< HEAD
         Main_Login_Register.add(SUDoanhNghiepPanel, "SUDN");
+=======
+        Main_Login_Register.add(SUKhachSanPanel, "SUKS");
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         CLayout.show(Main_Login_Register, "login");
     }
@@ -44,8 +57,14 @@ public class Main_Login_Register_JF extends javax.swing.JFrame {
         Main_Login_Register = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+<<<<<<< HEAD
 
         Main_Login_Register.setPreferredSize(new java.awt.Dimension(1300, 750));
+=======
+        setPreferredSize(new java.awt.Dimension(650, 750));
+
+        Main_Login_Register.setPreferredSize(new java.awt.Dimension(650, 750));
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         Main_Login_Register.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -3,6 +3,12 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+<<<<<<< HEAD
+=======
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[650, 750]"/>
+    </Property>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -42,7 +48,11 @@
     <Container class="javax.swing.JPanel" name="Main_Login_Register">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+<<<<<<< HEAD
           <Dimension value="[1300, 750]"/>
+=======
+          <Dimension value="[650, 750]"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         </Property>
       </Properties>
 

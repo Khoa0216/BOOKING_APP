@@ -2,7 +2,11 @@ package DAO;
 
 import database.Oracle_connection;
 import database.QueryHelper;
+<<<<<<< HEAD
 import MODEL.DOANHNGHIEP;
+=======
+import MODEL.KHACHSAN;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 import MODEL.KHACHHANG;
 import MODEL.NGUOIDUNG;
 import java.sql.Connection;
@@ -48,6 +52,7 @@ public class Login_SignUp_Check {
             return null;
         }
     }
+<<<<<<< HEAD
     
     public static String checkLoaiDN(String username, String password) {
         String query = "SELECT BOOKING_APP.DOANHNGHIEP.LOAIDN "
@@ -85,6 +90,9 @@ public class Login_SignUp_Check {
         }
     }
     
+=======
+       
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     public static void InsertKHACHHANG(KHACHHANG khachhang){
         // Parse ngày sinh từ String sang java.sql.Date
         java.sql.Date NgaySinh;
@@ -147,9 +155,15 @@ public class Login_SignUp_Check {
         }
     }
             
+<<<<<<< HEAD
     public static void InsertDOANHNGHIEP(DOANHNGHIEP doanhnghiep){
         String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'DOANHNGHIEP')";
         String sqlDoanhNghiep = "INSERT INTO booking_app.DOANHNGHIEP (ID, TENDN, LOAIDN, DIACHI, MOTA) VALUES (?, ?, ?, ?, ?)";
+=======
+    public static void InsertDOANHNGHIEP(KHACHSAN doanhnghiep){
+        String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'DOANHNGHIEP')";
+        String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI, MOTA) VALUES (?, ?, ?, ?)";
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         Connection conn = null;
         try {
@@ -173,6 +187,7 @@ public class Login_SignUp_Check {
                 }
             }
 
+<<<<<<< HEAD
             // 2. Insert DOANHNGHIEP với ID vừa lấy được
             try (PreparedStatement stmt2 = conn.prepareStatement(sqlDoanhNghiep)) {
                 stmt2.setInt(1, newId);
@@ -180,6 +195,14 @@ public class Login_SignUp_Check {
                 stmt2.setString(3, doanhnghiep.getLOAIDN());
                 stmt2.setString(4, doanhnghiep.getDIACHI());
                 stmt2.setString(5, doanhnghiep.getMOTA());
+=======
+            // 2. Insert KHACHSAN với ID vừa lấy được
+            try (PreparedStatement stmt2 = conn.prepareStatement(sqlDoanhNghiep)) {
+                stmt2.setInt(1, newId);
+                stmt2.setString(2, doanhnghiep.getTENDN());
+                stmt2.setString(3, doanhnghiep.getDIACHI());
+                stmt2.setString(4, doanhnghiep.getMOTA());
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                 stmt2.executeUpdate();
             }
 

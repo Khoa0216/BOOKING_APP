@@ -63,6 +63,10 @@
                       <Component id="HomeBtn" max="32767" attributes="0"/>
                       <Component id="ManageBtn" pref="254" max="32767" attributes="0"/>
                       <Component id="orderBtn" alignment="0" max="32767" attributes="0"/>
+<<<<<<< HEAD
+=======
+                      <Component id="AccountBtn1" alignment="1" pref="254" max="32767" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                   </Group>
                   <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
               </Group>
@@ -93,6 +97,11 @@
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="AccountBtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
+=======
+                  <Component id="AccountBtn1" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,6 +195,26 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderBtnActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JButton" name="AccountBtn1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/logout.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AccountBtn1ActionPerformed"/>
+          </Events>
+        </Component>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="rightPanel">

@@ -58,10 +58,17 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
         orderBtn = new javax.swing.JButton();
+<<<<<<< HEAD
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1700, 1200));
+=======
+        AccountBtn1 = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1200));
@@ -113,11 +120,25 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        AccountBtn1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        AccountBtn1.setForeground(new java.awt.Color(0, 102, 102));
+        AccountBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
+        AccountBtn1.setText("Đăng xuất");
+        AccountBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccountBtn1ActionPerformed(evt);
+            }
+        });
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
         DashBoard.setLayout(DashBoardLayout);
         DashBoardLayout.setHorizontalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashBoardLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(23, 23, 23)
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -132,6 +153,24 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(106, 106, 106))
+=======
+                .addContainerGap()
+                .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addGap(106, 106, 106))
+            .addGroup(DashBoardLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AccountBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                        .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 23, Short.MAX_VALUE))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
         DashBoardLayout.setVerticalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +189,13 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addContainerGap(624, Short.MAX_VALUE))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AccountBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
 
         content.setPreferredSize(new java.awt.Dimension(1400, 1200));
@@ -182,7 +227,11 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
             .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1223, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(0, 0, Short.MAX_VALUE))
+=======
+                .addGap(0, 23, Short.MAX_VALUE))
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
 
         pack();
@@ -204,6 +253,13 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_orderBtnActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void AccountBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AccountBtn1ActionPerformed
+
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     /**
      * @param args the command line arguments
      */
@@ -241,6 +297,10 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountBtn;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton AccountBtn1;
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     private javax.swing.JPanel DashBoard;
     private javax.swing.JButton HelpBtn;
     private javax.swing.JButton HomeBtn;

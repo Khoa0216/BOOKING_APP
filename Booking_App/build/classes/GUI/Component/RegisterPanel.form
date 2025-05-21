@@ -6,7 +6,11 @@
       <Color blue="33" green="33" red="33" type="rgb"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+<<<<<<< HEAD
       <Dimension value="[1300, 750]"/>
+=======
+      <Dimension value="[650, 750]"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     </Property>
   </Properties>
   <AuxValues>
@@ -24,26 +28,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" alignment="1" attributes="0">
               <Component id="White_Panel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="Green_Panel" min="-2" max="-2" attributes="0"/>
           </Group>
+=======
+          <Component id="White_Panel" alignment="0" max="32767" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+<<<<<<< HEAD
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="Green_Panel" min="-2" max="-2" attributes="0"/>
                   <Component id="White_Panel" min="-2" max="-2" attributes="0"/>
               </Group>
+=======
+              <Component id="White_Panel" min="-2" max="-2" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< HEAD
     <Container class="javax.swing.JPanel" name="Green_Panel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -67,6 +80,8 @@
         </DimensionLayout>
       </Layout>
     </Container>
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     <Container class="javax.swing.JPanel" name="White_Panel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -80,9 +95,38 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <EmptySpace min="0" pref="650" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+=======
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                          <Component id="Choose_KH" min="-2" pref="162" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="Label_OR" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="Choose_DN" min="-2" pref="162" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="SignUp" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="Login" max="32767" attributes="0"/>
+                              <Component id="Have_An_Account" min="-2" pref="155" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="132" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Confirm_Password" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -95,6 +139,7 @@
                               <Component id="Email_Fill" alignment="0" max="32767" attributes="0"/>
                               <Component id="Full_Name_Fill" alignment="0" min="-2" pref="494" max="-2" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                               <Component id="SignUp" min="-2" max="-2" attributes="0"/>
@@ -119,6 +164,8 @@
                                   </Group>
                               </Group>
                           </Group>
+=======
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                       </Group>
                       <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
@@ -127,12 +174,35 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <EmptySpace min="0" pref="750" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       <Component id="SignUp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+=======
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                  <Component id="SignUp" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="334" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="Choose_DN" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="Choose_KH" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="Label_OR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Have_An_Account" min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Login" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                       <Component id="Full_Name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Full_Name_Fill" min="-2" pref="40" max="-2" attributes="0"/>
@@ -148,6 +218,7 @@
                       <Component id="Confirm_Password" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Confirm_Password_Fill" min="-2" pref="40" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Choose_DN" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
@@ -161,6 +232,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Login" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace pref="132" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="274" max="32767" attributes="0"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                   </Group>
               </Group>
           </Group>
@@ -314,7 +388,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+<<<<<<< HEAD
             <Property name="text" type="java.lang.String" value="Doanh Nghi&#x1ec7;p"/>
+=======
+            <Property name="text" type="java.lang.String" value="Kh&#xe1;ch S&#x1ea1;n"/>
+>>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
