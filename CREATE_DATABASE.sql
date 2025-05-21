@@ -1,0 +1,144 @@
+-- ===============================
+-- 1. NGƯỜI DÙNG
+-- ===============================
+CREATE TABLE NGUOIDUNG (
+    ID NUMBER PRIMARY KEY,
+    EMAIL VARCHAR2(100),
+    MATKHAU VARCHAR2(100) NOT NULL,
+    HOTEN VARCHAR2(100),
+    LOAITK VARCHAR2(20) CHECK (LOAITK IN ('KHACHHANG', 'DOANHNGHIEP'))
+);
+
+-- ===============================
+-- 2. KHÁCH HÀNG
+-- ===============================
+CREATE TABLE KHACHHANG (
+    ID NUMBER PRIMARY KEY REFERENCES NGUOIDUNG(ID),
+    CCCD VARCHAR2(20),
+    NGAYSINH DATE
+);
+
+-- ===============================
+-- 3. DOANH NGHIỆP
+-- ===============================
+CREATE TABLE DOANHNGHIEP (
+    ID NUMBER PRIMARY KEY REFERENCES NGUOIDUNG(ID),
+    TENDN VARCHAR2(100),
+    LOAIDN VARCHAR2(20) CHECK (LOAIDN IN ('KHACHSAN', 'HANGPHUONGTIEN')),
+    DIACHI VARCHAR2(200),
+    MOTA CLOB
+);
+
+-- ===============================
+-- 4. NHÂN VIÊN
+-- ===============================
+CREATE TABLE NHANVIEN (
+    ID NUMBER PRIMARY KEY REFERENCES NGUOIDUNG(ID),
+    BOPHAN VARCHAR2(50)
+);
+
+-- ===============================
+-- 5. PHÒNG ĐĂNG TẢI
+-- ===============================
+CREATE TABLE PHONG_DANGTAI (
+    ID NUMBER PRIMARY KEY,
+    DOANHNGHIEP_ID NUMBER REFERENCES DOANHNGHIEP(ID),
+    TENPHONG VARCHAR2(100),
+    LOAIPHONG VARCHAR2(50),
+    GIA NUMBER,
+    MOTA CLOB,
+    SOLUONGCONLAI NUMBER,
+    NGAYDANG DATE DEFAULT SYSDATE
+);
+
+-- ===============================
+-- 6. CHUYẾN ĐĂNG TẢI
+-- ===============================
+CREATE TABLE CHUYEN_DANGTAI (
+    ID NUMBER PRIMARY KEY,
+    DOANHNGHIEP_ID NUMBER REFERENCES DOANHNGHIEP(ID),
+    LOAIPHUONGTIEN VARCHAR2(50),
+    DIEMDI VARCHAR2(100),
+    DIEMDEN VARCHAR2(100),
+    NGAYGIOKHOIHANH DATE,
+    GIA NUMBER,
+    MOTA CLOB,
+    SOLUONGCONLAI NUMBER,
+    NGAYDANG DATE DEFAULT SYSDATE
+);
+
+-- ===============================
+-- 7. ĐẶT PHÒNG
+-- ===============================
+CREATE TABLE DATPHONG (
+    ID NUMBER PRIMARY KEY,
+    KHACHHANG_ID NUMBER REFERENCES KHACHHANG(ID),
+    PHONG_ID NUMBER REFERENCES PHONG_DANGTAI(ID),
+    NGAYNHAN DATE,
+    SONGAY NUMBER,
+    TRANGTHAI VARCHAR2(20)
+);
+
+-- ===============================
+-- 8. ĐẶT VÉ
+-- ===============================
+CREATE TABLE DATVE (
+    ID NUMBER PRIMARY KEY,
+    KHACHHANG_ID NUMBER REFERENCES KHACHHANG(ID),
+    CHUYEN_ID NUMBER REFERENCES CHUYEN_DANGTAI(ID),
+    SOLUONG NUMBER,
+    NGAYDAT DATE,
+    TRANGTHAI VARCHAR2(20)
+);
+
+-- ===============================
+-- 9. THANH TOÁN (Chung cho cả đơn đặt phòng và vé)
+-- ===============================
+CREATE TABLE THANHTOAN (
+    ID NUMBER PRIMARY KEY,
+    KHACHHANG_ID NUMBER REFERENCES KHACHHANG(ID),
+    LOAIDON VARCHAR2(10) CHECK (LOAIDON IN ('PHONG', 'VE')),
+    MADON NUMBER NOT NULL, -- Tham chiếu đến DATPHONG.ID hoặc DATVE.ID
+    SOTIEN NUMBER,
+    PHUONGTHUC VARCHAR2(20), -- MOMO, VNPAY, THEDTIN
+    TRANGTHAI VARCHAR2(20) CHECK (TRANGTHAI IN ('CHOTHANHTOAN', 'DATHANHTOAN', 'THATBAI')),
+    NGAYGIAODICH DATE DEFAULT SYSDATE,
+    MAGIAODICH_DOITAC VARCHAR2(100)
+);
+
+-- ===============================
+-- 10. HỎI ĐÁP / KHIẾU NẠI
+-- ===============================
+CREATE TABLE HOIDAP (
+    ID NUMBER PRIMARY KEY,
+    KHACHHANG_ID NUMBER REFERENCES KHACHHANG(ID),
+    NOIDUNG CLOB,
+    NGAYGUI DATE DEFAULT SYSDATE,
+    NHANVIEN_ID NUMBER REFERENCES NHANVIEN(ID),
+    TRALOI CLOB,
+    NGAYTRALOI DATE
+);
+
+
+-- ===============================
+-- Tạo sequence để tự tăng id của nguoidung
+-- ===============================
+CREATE SEQUENCE SEQ_NGUOIDUNG_ID START WITH 1 INCREMENT BY 1;
+
+-- ===============================
+-- Tạo trigger cho mỗi lần insert vào bảng nguoidung
+-- ===============================
+CREATE OR REPLACE TRIGGER TRG_AUTO_ID_NGUOIDUNG
+BEFORE INSERT ON NGUOIDUNG
+FOR EACH ROW
+BEGIN
+  IF :NEW.ID IS NULL THEN
+    SELECT SEQ_NGUOIDUNG_ID.NEXTVAL INTO :NEW.ID FROM dual;
+  END IF;
+END;
+
+SELECT * 
+FROM NGUOIDUNG JOIN KHACHHANG ON NGUOIDUNG.ID=KHACHHANG.ID;
+
+SELECT * 
+FROM NGUOIDUNG JOIN DOANHNGHIEP ON NGUOIDUNG.ID=DOANHNGHIEP.ID;
