@@ -46,14 +46,8 @@ public class SignUpKhachHang extends javax.swing.JPanel {
         Check_Condition = new javax.swing.JCheckBox();
         SignUp_Confirm = new javax.swing.JButton();
         BirthDay_Fill = new javax.swing.JTextField();
-<<<<<<< HEAD
-        Green_Panel = new javax.swing.JPanel();
-
-        setPreferredSize(new java.awt.Dimension(1300, 750));
-=======
 
         setPreferredSize(new java.awt.Dimension(650, 750));
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
 
         White_Panel.setBackground(new java.awt.Color(244, 244, 242));
         White_Panel.setPreferredSize(new java.awt.Dimension(650, 750));
@@ -128,11 +122,7 @@ public class SignUpKhachHang extends javax.swing.JPanel {
                             .addGap(202, 202, 202)
                             .addComponent(SignUp_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(179, 179, 179)))
-<<<<<<< HEAD
-                    .addContainerGap(65, Short.MAX_VALUE)))
-=======
                     .addContainerGap(71, Short.MAX_VALUE)))
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
         White_PanelLayout.setVerticalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,46 +148,16 @@ public class SignUpKhachHang extends javax.swing.JPanel {
                     .addContainerGap(176, Short.MAX_VALUE)))
         );
 
-<<<<<<< HEAD
-        Green_Panel.setBackground(new java.awt.Color(0, 102, 102));
-        Green_Panel.setPreferredSize(new java.awt.Dimension(650, 750));
-
-        javax.swing.GroupLayout Green_PanelLayout = new javax.swing.GroupLayout(Green_Panel);
-        Green_Panel.setLayout(Green_PanelLayout);
-        Green_PanelLayout.setHorizontalGroup(
-            Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        Green_PanelLayout.setVerticalGroup(
-            Green_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-
-=======
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
             .addComponent(White_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Green_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
                 .addComponent(White_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -236,10 +196,6 @@ public class SignUpKhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField CCCD_Fill;
     private javax.swing.JLabel CCCD_label;
     private javax.swing.JCheckBox Check_Condition;
-<<<<<<< HEAD
-    private javax.swing.JPanel Green_Panel;
-=======
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
     private javax.swing.JLabel Label_Information_Fill;
     private javax.swing.JButton SignUp_Confirm;
     private javax.swing.JPanel White_Panel;

@@ -58,25 +58,10 @@
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="commitBtn" min="-2" pref="116" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="dateLabel" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="idLabel" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="NameLabel" alignment="0" pref="200" max="32767" attributes="0"/>
-                                          <Component id="emailLabel" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="passLabel1" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  </Group>
-=======
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="passLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -93,26 +78,19 @@
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
+                                  <Component id="changeBtn" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="commitBtn1" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <EmptySpace pref="77" max="32767" attributes="0"/>
-                                  <Component id="commitBtn" min="-2" pref="116" max="-2" attributes="0"/>
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
                               </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="nameTextField" pref="309" max="32767" attributes="0"/>
-                                  <Component id="emailTextField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="idTextField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="passTextField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="passconfirmTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dateTextField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="nameTextField" alignment="1" pref="309" max="32767" attributes="0"/>
+                              <Component id="emailTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="idTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="passTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="passconfirmTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="dateTextField" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="passLabel" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="141" max="32767" attributes="0"/>
@@ -154,14 +132,10 @@
                       <Component id="passconfirmTextField" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <Component id="commitBtn" min="-2" pref="48" max="-2" attributes="0"/>
-=======
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="commitBtn" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="changeBtn" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="commitBtn1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
               </Group>
           </Group>
         </DimensionLayout>
@@ -257,7 +231,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passconfirmTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="commitBtn">
+        <Component class="javax.swing.JButton" name="changeBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -268,7 +242,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh S&#x1eed;a"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -276,7 +250,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitBtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeBtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="inforLabel">
@@ -307,8 +281,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passTextFieldActionPerformed"/>
           </Events>
         </Component>
-<<<<<<< HEAD
-=======
         <Component class="javax.swing.JButton" name="commitBtn1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -320,7 +292,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a"/>
+            <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -331,7 +303,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitBtn1ActionPerformed"/>
           </Events>
         </Component>
->>>>>>> 4a56a4d7c5754b2892b99892cf1af0a4f610c3c8
       </SubComponents>
     </Container>
   </SubComponents>
