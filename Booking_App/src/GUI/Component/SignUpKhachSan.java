@@ -47,6 +47,8 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Describe_Mota_Fill = new javax.swing.JTextArea();
         Check_condition = new javax.swing.JCheckBox();
         SignUp_Confirm = new javax.swing.JButton();
+        Have_An_Account = new javax.swing.JLabel();
+        Login = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 750));
 
@@ -100,6 +102,21 @@ public class SignUpKhachSan extends javax.swing.JPanel {
             }
         });
 
+        Have_An_Account.setForeground(new java.awt.Color(102, 102, 102));
+        Have_An_Account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Have_An_Account.setText("Tôi đã có tài khoản");
+        Have_An_Account.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        Login.setBackground(new java.awt.Color(255, 255, 255));
+        Login.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        Login.setForeground(new java.awt.Color(0, 102, 102));
+        Login.setText("Đăng Nhập");
+        Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout White_PanelLayout = new javax.swing.GroupLayout(White_Panel);
         White_Panel.setLayout(White_PanelLayout);
         White_PanelLayout.setHorizontalGroup(
@@ -111,24 +128,25 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                         .addComponent(Label_Information_Fill))
                     .addGroup(White_PanelLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(Label_Describe)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addComponent(Label_Describe))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Have_An_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
+                    .addGap(65, 65, 65)
                     .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(White_PanelLayout.createSequentialGroup()
-                            .addGap(65, 65, 65)
-                            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Check_condition)
-                                .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Business_Name)
-                                    .addComponent(Business_Name_Fill)
-                                    .addComponent(Label_Address)
-                                    .addComponent(Address_Fill)
-                                    .addComponent(Describe_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))))
-                        .addGroup(White_PanelLayout.createSequentialGroup()
-                            .addGap(247, 247, 247)
-                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Check_condition)
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Business_Name)
+                            .addComponent(Business_Name_Fill)
+                            .addComponent(Label_Address)
+                            .addComponent(Address_Fill)
+                            .addComponent(Describe_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
                     .addContainerGap(67, Short.MAX_VALUE)))
         );
         White_PanelLayout.setVerticalGroup(
@@ -138,7 +156,13 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                 .addComponent(Label_Information_Fill)
                 .addGap(181, 181, 181)
                 .addComponent(Label_Describe)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addComponent(SignUp_Confirm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
                     .addGap(198, 198, 198)
@@ -153,16 +177,14 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                     .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Check_condition)
-                    .addGap(18, 18, 18)
-                    .addComponent(SignUp_Confirm)
-                    .addContainerGap(132, Short.MAX_VALUE)))
+                    .addContainerGap(184, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(White_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+            .addComponent(White_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +216,11 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Login_SignUp_Check.InsertDOANHNGHIEP(this.khachsan);
     }//GEN-LAST:event_SignUp_ConfirmActionPerformed
 
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(parent, "login");
+    }//GEN-LAST:event_LoginActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address_Fill;
@@ -202,9 +229,11 @@ public class SignUpKhachSan extends javax.swing.JPanel {
     private javax.swing.JCheckBox Check_condition;
     private javax.swing.JScrollPane Describe_Fill;
     private javax.swing.JTextArea Describe_Mota_Fill;
+    private javax.swing.JLabel Have_An_Account;
     private javax.swing.JLabel Label_Address;
     private javax.swing.JLabel Label_Describe;
     private javax.swing.JLabel Label_Information_Fill;
+    private javax.swing.JButton Login;
     private javax.swing.JButton SignUp_Confirm;
     private javax.swing.JPanel White_Panel;
     // End of variables declaration//GEN-END:variables
