@@ -10,6 +10,8 @@ import javax.swing.SwingUtilities;
 
 import GUI.JFRAME.*;
 import MODEL.NGUOIDUNG;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class LoginPanel extends javax.swing.JPanel {
 
@@ -208,28 +210,59 @@ public class LoginPanel extends javax.swing.JPanel {
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
                 
                 Menu_KhachHang MenuFrame= new Menu_KhachHang(email);
+                
+                // Lấy kích thước màn hình
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+                // Căn giữa theo chiều ngang
+                int centerX = (screenSize.width - MenuFrame.getWidth()) / 2;
+                
+                
                  //Menu_KhachHang MenuFrame= new Menu_KhachHang(name);
                 MenuFrame.pack();
-                MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
+                
+                // Đặt y = 0 để sát phía trên
+                MenuFrame.setLocation(centerX, 0);
+                
                 JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                 currentFrame.dispose();
                 
             } else if (accountType.equals("KHACHSAN")){ // NẾU LÀ DOANH NGHIỆP.
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
                 Menu_KhachSan MenuFrame = new Menu_KhachSan(user.getHOTEN());
+                
+                // Lấy kích thước màn hình
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+                // Căn giữa theo chiều ngang
+                int centerX = (screenSize.width - MenuFrame.getWidth()) / 2;
+                
                 MenuFrame.pack();
-                MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
+                
+                // Đặt y = 0 để sát phía trên
+                MenuFrame.setLocation(centerX, 0);
+                
                 JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                 currentFrame.dispose();
             }
             else if (accountType.equals("ADMIN")){
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
                 Menu_QuanLyDonDat MenuFrame = new Menu_QuanLyDonDat(user.getHOTEN());
+                
+                // Lấy kích thước màn hình
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+                // Căn giữa theo chiều ngang
+                int centerX = (screenSize.width - MenuFrame.getWidth()) / 2;
+                
                 MenuFrame.pack();
-                MenuFrame.setLocationRelativeTo(null);
                 MenuFrame.setVisible(true);
+                
+                // Đặt y = 0 để sát phía trên
+                MenuFrame.setLocation(centerX, 0);
+                
                 JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
                 currentFrame.dispose();
  

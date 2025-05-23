@@ -81,7 +81,7 @@ public class accKhachHang extends javax.swing.JPanel {
         commitBtn1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1400, 1200));
-        setPreferredSize(new java.awt.Dimension(1400, 1200));
+        setPreferredSize(new java.awt.Dimension(1320, 1025));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 600));
 

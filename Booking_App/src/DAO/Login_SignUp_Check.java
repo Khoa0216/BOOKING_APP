@@ -102,7 +102,11 @@ public class Login_SignUp_Check {
                 if (conn != null) conn.rollback();
             } catch (SQLException ex) {
             }
-            JOptionPane.showMessageDialog(null, "Đăng ký thất bại: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            if (e.getErrorCode() == 1) { // ORA-00001
+                JOptionPane.showMessageDialog(null, "Email đã được đăng ký!", "Lỗi trùng email", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Đăng ký thất bại: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
         } finally {
             try {
                 if (conn != null) conn.close();
@@ -112,12 +116,12 @@ public class Login_SignUp_Check {
     }
             
     public static void InsertDOANHNGHIEP(KHACHSAN doanhnghiep){
-        String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'DOANHNGHIEP')";
+        String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'KHACHSAN')";
         String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI, MOTA) VALUES (?, ?, ?, ?)";
 
         Connection conn = null;
         try {
-            conn = Oracle_connection.getConnection("DN_KS", "123");
+            conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
             conn.setAutoCommit(false);
 
             // 1. Insert NGUOIDUNG và lấy ID sinh tự động
@@ -153,7 +157,11 @@ public class Login_SignUp_Check {
                 if (conn != null) conn.rollback();
             } catch (SQLException ex) {
             }
-            JOptionPane.showMessageDialog(null, "Đăng ký thất bại: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            if (e.getErrorCode() == 1) { // ORA-00001: unique constraint violated
+                JOptionPane.showMessageDialog(null, "Email đã được đăng ký!", "Lỗi trùng email", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Đăng ký thất bại: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
         } finally {
             try {
                 if (conn != null) conn.close();

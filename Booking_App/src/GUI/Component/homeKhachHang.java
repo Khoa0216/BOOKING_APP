@@ -52,7 +52,7 @@ public class homeKhachHang extends javax.swing.JPanel {
         KsLabel5 = new javax.swing.JLabel();
         KsLabel2 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1400, 1200));
+        setPreferredSize(new java.awt.Dimension(1320, 1025));
 
         HelloLabel.setBackground(new java.awt.Color(255, 255, 242));
         HelloLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
