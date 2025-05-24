@@ -210,6 +210,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         // Mở màn hình đăng nhập
         Main_Login_Register_JF login = new Main_Login_Register_JF();
+        login.pack();
+        login.setLocationRelativeTo(null);//Hiện ở giữa màn hình
         login.setVisible(true);
     }//GEN-LAST:event_logoutBtnActionPerformed
 

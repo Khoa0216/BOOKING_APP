@@ -109,7 +109,7 @@ public class formKS extends javax.swing.JPanel {
         txtLoaiPhong.setBounds(130, 20, 169, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel4.setText("Số lương");
+        jLabel4.setText("Số lượng");
         add(jLabel4);
         jLabel4.setBounds(10, 80, 108, 22);
 
