@@ -55,9 +55,11 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1720, 1025));
+        setResizable(false);
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
-        DashBoard.setPreferredSize(new java.awt.Dimension(300, 1200));
+        DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user (1).png"))); // NOI18N
 
@@ -126,10 +128,10 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +160,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGap(66, 66, 66))
         );
 
-        rightPanel.setPreferredSize(new java.awt.Dimension(1400, 1200));
+        rightPanel.setPreferredSize(new java.awt.Dimension(1320, 1025));
         rightPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -2,29 +2,29 @@ package model;
 
 import java.lang.Integer;
 import java.lang.Long;
+import java.time.LocalDate; 
 
 public class Phong_KS {
     private Integer id;
-    private Integer doanhnghie_id;
-    private String tenPhong;
+    private Integer idKS;
     private String loaiPhong;
     private String moTa;
     private Long gia;
     private Long tongSoluong;
     private Long soluongConLai;
+    private LocalDate ngayDang;
 
-    public Phong_KS(Integer id, Integer doanhnghie_id, String tenPhong, String loaiPhong, Long gia, String moTa, Long tongSoluong, Long soluongConLai) {
+    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang) {
         this.id = id;
-        this.doanhnghie_id = doanhnghie_id;
-        this.tenPhong = tenPhong;
+        this.idKS = idKS;
         this.loaiPhong = loaiPhong;
         this.moTa = moTa;
         this.gia = gia;
         this.tongSoluong = tongSoluong;
         this.soluongConLai = soluongConLai;
+        this.ngayDang = ngayDang;
     }
 
-    // Getter và Setter cho id
     public Integer getId() {
         return id;
     }
@@ -33,25 +33,14 @@ public class Phong_KS {
         this.id = id;
     }
 
-    // Getter và Setter cho doanhnghie_id
-    public Integer getDoanhnghie_id() {
-        return doanhnghie_id;
+    public Integer getIdKS() {
+        return idKS;
     }
 
-    public void setDoanhnghie_id(Integer doanhnghie_id) {
-        this.doanhnghie_id = doanhnghie_id;
+    public void setIdKS(Integer idKS) {
+        this.idKS = idKS;
     }
 
-    // Getter và Setter cho tenPhong
-    public String getTenPhong() {
-        return tenPhong;
-    }
-
-    public void setTenPhong(String tenPhong) {
-        this.tenPhong = tenPhong;
-    }
-
-    // Getter và Setter cho loaiPhong
     public String getLoaiPhong() {
         return loaiPhong;
     }
@@ -60,7 +49,6 @@ public class Phong_KS {
         this.loaiPhong = loaiPhong;
     }
 
-    // Getter và Setter cho moTa
     public String getMoTa() {
         return moTa;
     }
@@ -68,16 +56,15 @@ public class Phong_KS {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
-    
-    public Long getGia(){
-        return this.gia;
+
+    public Long getGia() {
+        return gia;
     }
-    
-    public void setGia(Long gia){
+
+    public void setGia(Long gia) {
         this.gia = gia;
     }
 
-    // Getter và Setter cho tongSoluong
     public Long getTongSoluong() {
         return tongSoluong;
     }
@@ -86,7 +73,6 @@ public class Phong_KS {
         this.tongSoluong = tongSoluong;
     }
 
-    // Getter và Setter cho soluongConLai
     public Long getSoluongConLai() {
         return soluongConLai;
     }
@@ -94,4 +80,14 @@ public class Phong_KS {
     public void setSoluongConLai(Long soluongConLai) {
         this.soluongConLai = soluongConLai;
     }
+
+    public LocalDate getNgayDang() {
+        return ngayDang;
+    }
+
+    public void setNgayDang(LocalDate ngayDang) {
+        this.ngayDang = ngayDang;
+    }
+
+    
 }
