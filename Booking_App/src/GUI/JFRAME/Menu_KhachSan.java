@@ -383,6 +383,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             data.setId(Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString()));
             this.Phong_dao.update(data);
             this.loadTable();
+            formKS.resetFields();
         } else {
             message.alert(null, "Vui lòng chọn Id trong bảng");
         }     
@@ -405,6 +406,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             this.Phong_dao.delete(ID);
             System.out.println("Tên phòng được chọn: " + ID);
             this.loadTable();
+            formKS.resetFields();
         } else {
             message.alert(null, "Vui lòng chọn Id trong bảng");
         }
