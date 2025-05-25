@@ -85,7 +85,7 @@ public class formKS extends javax.swing.JPanel {
             }
         });
         add(txtSoLuong);
-        txtSoLuong.setBounds(130, 80, 169, 22);
+        txtSoLuong.setBounds(130, 80, 170, 20);
 
         txtGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +93,7 @@ public class formKS extends javax.swing.JPanel {
             }
         });
         add(txtGia);
-        txtGia.setBounds(620, 20, 169, 22);
+        txtGia.setBounds(620, 20, 170, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel3.setText("Loại Phòng");
@@ -106,7 +106,7 @@ public class formKS extends javax.swing.JPanel {
             }
         });
         add(txtLoaiPhong);
-        txtLoaiPhong.setBounds(130, 20, 169, 30);
+        txtLoaiPhong.setBounds(130, 20, 170, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setText("Số lượng");
@@ -124,7 +124,7 @@ public class formKS extends javax.swing.JPanel {
             }
         });
         add(txtSoLuongConLai);
-        txtSoLuongConLai.setBounds(620, 80, 169, 22);
+        txtSoLuongConLai.setBounds(620, 80, 170, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setText("Số lượng còn lại");
