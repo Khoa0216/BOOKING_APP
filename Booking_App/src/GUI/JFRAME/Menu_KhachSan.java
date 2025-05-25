@@ -420,10 +420,19 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         selectedRow = myTable.getSelectedRow();
         if (selectedRow != -1){
             int modelRow = myTable.convertRowIndexToModel(selectedRow);
-            formKS.setFields(myTable.getModel().getValueAt(modelRow, 1).toString(),
-                            myTable.getModel().getValueAt(modelRow, 2).toString(),
-                            myTable.getModel().getValueAt(modelRow, 3).toString(),
-                            myTable.getModel().getValueAt(modelRow, 4).toString());
+            Integer ID = Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString());
+            Phong_KS data = this.Phong_dao.selectByID(ID);
+            String loaiPhong = data.getLoaiPhong();
+            Long soLuong = data.getTongSoluong();
+            Long soLuongConLai = data.getSoluongConLai();
+            Long gia = data.getGia();
+            String moTa = data.getMoTa();
+            
+            formKS.setData(loaiPhong, soLuong, soLuongConLai, gia, moTa);
+//            formKS.setFields(myTable.getModel().getValueAt(modelRow, 1).toString(),
+//                            myTable.getModel().getValueAt(modelRow, 2).toString(),
+//                            myTable.getModel().getValueAt(modelRow, 3).toString(),
+//                            myTable.getModel().getValueAt(modelRow, 4).toString());
         }
     }//GEN-LAST:event_myTableMouseClicked
 
