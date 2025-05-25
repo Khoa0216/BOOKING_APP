@@ -243,6 +243,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         back.setText("Quay lại");
         back.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         back.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         delete.setText("Xóa");
         delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -441,6 +446,12 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+        selectedRow=-1;
+        formKS.resetFields();
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments
