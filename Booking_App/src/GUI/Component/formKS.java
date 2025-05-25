@@ -29,6 +29,14 @@ public class formKS extends javax.swing.JPanel {
         txtSoLuong.setText("");
         txtSoLuongConLai.setText("");
     }
+    
+    public void setFields(String LPString, String GiaString, String SLString, String CLString) {
+        txtGia.setText(GiaString);
+        txtLoaiPhong.setText(LPString);
+        txtSoLuong.setText(SLString);
+        txtSoLuongConLai.setText(CLString);
+    }
+    
     public Phong_KS getData(Integer ID_KS){
         Integer ID = 1;
         String loaiPhong = txtLoaiPhong.getText();

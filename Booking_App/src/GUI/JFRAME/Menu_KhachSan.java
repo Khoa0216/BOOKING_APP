@@ -28,6 +28,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     
     private PhongKS_DAO Phong_dao = new PhongKS_DAO();
     private Integer idKS;
+    private int selectedRow=-1;
     
     
 //    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
@@ -125,7 +126,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1720, 1025));
         setPreferredSize(new java.awt.Dimension(1720, 1025));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
@@ -375,14 +375,13 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
-        int viewRow = myTable.getSelectedRow();
-        if (viewRow != -1) { // Kiểm tra đã chọn dòng nào chưa
-            int modelRow = myTable.convertRowIndexToModel(viewRow);
-            String ID = myTable.getModel().getValueAt(modelRow, 0).toString();
-            Phong_KS data = this.Phong_dao.selectByID(Integer.valueOf(ID));
-            
+
+        if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
+            int modelRow = myTable.convertRowIndexToModel(selectedRow);
+            Phong_KS data = formKS.getData(this.idKS);
+            data.setId(Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString()));
+            System.out.println(data.getId());
             this.Phong_dao.update(data);
-            System.out.println("Tên phòng được chọn: " + ID);
             this.loadTable();
         } else {
             message.alert(null, "Vui lòng chọn Id trong bảng");
@@ -418,13 +417,13 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
     private void myTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myTableMouseClicked
         // TODO add your handling code here:
-        int selectedRow = myTable.getSelectedRow();
+        selectedRow = myTable.getSelectedRow();
         if (selectedRow != -1){
-            String ID = myTable.getValueAt(selectedRow, 0).toString();
-            Phong_KS data = Phong_dao.selectByID(Integer.valueOf(ID));
-            formKS.setData(data.getLoaiPhong(),
-                    data.getTongSoluong(), data.getSoluongConLai(), 
-                    data.getGia(), data.getMoTa());
+            int modelRow = myTable.convertRowIndexToModel(selectedRow);
+            formKS.setFields(myTable.getModel().getValueAt(modelRow, 1).toString(),
+                            myTable.getModel().getValueAt(modelRow, 2).toString(),
+                            myTable.getModel().getValueAt(modelRow, 3).toString(),
+                            myTable.getModel().getValueAt(modelRow, 4).toString());
         }
     }//GEN-LAST:event_myTableMouseClicked
 
