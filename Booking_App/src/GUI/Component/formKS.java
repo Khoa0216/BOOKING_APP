@@ -22,6 +22,13 @@ public class formKS extends javax.swing.JPanel {
         initComponents();
     }
     
+    public void resetFields() {
+        txtGia.setText("");
+        txtLoaiPhong.setText("");
+        txtMota.setText("");
+        txtSoLuong.setText("");
+        txtSoLuongConLai.setText("");
+    }
     public Phong_KS getData(Integer ID_KS){
         Integer ID = 1;
         String loaiPhong = txtLoaiPhong.getText();

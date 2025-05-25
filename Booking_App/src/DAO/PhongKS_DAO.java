@@ -81,7 +81,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
                 Long soLuongConLai = Long.valueOf(rs.getString("SoLuongConLai"));
                 Long tongSoLuong = Long.valueOf(rs.getString("TongSoLuong"));
                 Date ngayDang = rs.getDate("Ngay_Dang");
-                return new Phong_KS(ID, idKS, loaiP, 
+                return new Phong_KS(Id, idKS, loaiP, 
                         moTa, gia, tongSoLuong, soLuongConLai, ngayDang.toLocalDate());
             }
         }catch(Exception e){

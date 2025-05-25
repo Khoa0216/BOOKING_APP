@@ -12,6 +12,11 @@ import java.lang.Long;
 import utils.message;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableRowSorter;
 
 public class Menu_KhachSan extends javax.swing.JFrame {
     
@@ -37,29 +42,55 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         return false; // KHÔNG cho sửa ô nào cả
     }
     
-    public void loadTable(){
+    public void loadTable() {
         try {
-            this.table = new DefaultTableModel(header, 0); 
-            String query = "select id, loaiphong, gia, soluongconlai, tongsoluong from booking_app.phong"
-                    + " where KhachSan_ID=?";
-//            Statement st = conn.createStatement();
+            this.table = new DefaultTableModel(header, 0);
+
+            String query = "SELECT id, loaiphong, gia, soluongconlai, tongsoluong " +
+                           "FROM booking_app.phong " +
+                           "WHERE KhachSan_ID = ? " +
+                           "ORDER BY gia DESC";
+
             ResultSet result = this.jdbc.query(query, this.idKS);
             ResultSetMetaData metadata = result.getMetaData();
             int num_col = metadata.getColumnCount();
-            table.setRowCount(0);
-            while(result.next()){
-                Vector row = new Vector();
-                for (int i = 1; i <= num_col; i++){
-                    row.addElement(result.getString(i));
-                }
-                table.addRow(row);
 
+            table.setRowCount(0);
+
+            while (result.next()) {
+                Vector<Object> row = new Vector<>();
+
+                for (int i = 1; i <= num_col; i++) {
+                    String colName = metadata.getColumnName(i).toLowerCase();
+                    Object value;
+
+                    switch (colName) {
+                        case "gia", "soluongconlai", "tongsoluong", "id" -> value = result.getLong(i);
+                        default -> value = result.getString(i);
+                    }
+
+                    row.add(value);
+                }
+                //System.out.println("Thêm row: " + row);
+                table.addRow(row);
             }
-            myTable.setModel(table);
+
             result.close();
+
+            myTable.setRowSorter(null);     // Xóa RowSorter đang giữ trạng thái cũ
+            myTable.setModel(table);        // Gán lại model mới
+            myTable.revalidate();           // Cập nhật lại
+            myTable.repaint();
+            
+            // Ẩn cột ID (cột đầu tiên)
+            TableColumnModel columnModel = myTable.getColumnModel();
+            columnModel.removeColumn(columnModel.getColumn(0));
+
         } catch (Exception e) {
+            e.printStackTrace(); // Ghi log lỗi để dễ debug hơn
         }
     }
+
     public Menu_KhachSan(String tenNguoiDung, Integer ID){
         this.idKS = ID;
         initComponents();
@@ -338,14 +369,16 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         Phong_KS data = formKS.getData(this.idKS);
 
         this.Phong_dao.insert(data);
+        formKS.resetFields();
         this.loadTable();
     }//GEN-LAST:event_insertActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
-        int selectedRow = myTable.getSelectedRow();
-        if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
-            String ID = myTable.getValueAt(selectedRow, 0).toString();
+        int viewRow = myTable.getSelectedRow();
+        if (viewRow != -1) { // Kiểm tra đã chọn dòng nào chưa
+            int modelRow = myTable.convertRowIndexToModel(viewRow);
+            String ID = myTable.getModel().getValueAt(modelRow, 0).toString();
             Phong_KS data = this.Phong_dao.selectByID(Integer.valueOf(ID));
             
             this.Phong_dao.update(data);
