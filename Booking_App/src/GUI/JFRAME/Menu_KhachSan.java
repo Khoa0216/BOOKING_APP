@@ -195,23 +195,23 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
         myTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Phòng", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"
+                "ID", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -238,6 +238,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(myTable);
+        myTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         back.setText("Quay lại");
         back.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
