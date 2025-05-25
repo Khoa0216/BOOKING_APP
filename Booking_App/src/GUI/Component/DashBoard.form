@@ -13,31 +13,8 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="187" max="-2" attributes="0"/>
-              <EmptySpace pref="138" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="96" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="116" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+    <Property name="columns" type="int" value="0"/>
+    <Property name="rows" type="int" value="1"/>
   </Layout>
-  <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x111;&#xe2;y l&#xe0; Dash Board"/>
-      </Properties>
-    </Component>
-  </SubComponents>
 </Form>

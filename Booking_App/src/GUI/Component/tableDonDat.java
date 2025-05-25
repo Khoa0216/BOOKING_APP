@@ -1,29 +1,62 @@
 package GUI.Component;
 
+
 /**
  *
  * @author Admin
  */
 
-import GUI.Component.*;
-import java.awt.*;
 
-public class contentDonDat extends javax.swing.JPanel {
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import database.jdbcHelper;
+import utils.message;
+import DAO.DonDat_DAO;
+import java.util.Arrays;
+import model.DonDat;
+import java.util.Vector;
+
+public class tableDonDat extends javax.swing.JPanel {
 
     /**
      * Creates new form contentDonDat
      */
-    private CardLayout CLayout;
-    private DashBoard dashBoard = new DashBoard();
+    private final String user = "booking_app";
+    private final String pass = "12345678";
+    private jdbcHelper jdbc = new jdbcHelper(user, pass);
     
-    public contentDonDat() {
+    private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", "Mã doanh nghiệp",
+        "Tên doang nghiệp", "Giá", "Ngày đặt"}; 
+    private DefaultTableModel table;
+        
+    public tableDonDat() {
         initComponents();
+        loadTable();
+    }
+    public void loadTable(){
+        this.table = new DefaultTableModel(header, 0);
+        Vector<DonDat> donDatList = DonDat_DAO.selectAll();
+        for (DonDat d : donDatList){
+            Vector<Object> row = new Vector<>(Arrays.asList(
+                    d.getId(),
+                    d.getIdKH(),
+                    d.getTenKH(),
+                    d.getIdKS(),
+                    d.getTenKS(),
+                    d.getGia(),
+                    d.getNgayDat()
+            ));
+            table.addRow(row);
+        }
+        myTable.setRowSorter(null);     // Xóa RowSorter đang giữ trạng thái cũ
+        myTable.setModel(table);        // Gán lại model mới
+        myTable.revalidate();           // Cập nhật lại
+        myTable.repaint();
     }
     
-    public void initCardLayout(){
-        this.CLayout = (CardLayout) hiddenContent.getLayout();
-        hiddenContent.add(dashBoard, "Dash Board");
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,14 +68,15 @@ public class contentDonDat extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        myTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnSua = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        hiddenContent = new javax.swing.JPanel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        setPreferredSize(new java.awt.Dimension(520, 520));
+
+        myTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -53,7 +87,7 @@ public class contentDonDat extends javax.swing.JPanel {
                 "Mã Khách hàng", "Tên Khách hàng", "Mã Doanh Nghiệp", "Tên Doanh Nghiệp", "Giá", "Ngày Đặt"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(myTable);
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -95,8 +129,6 @@ public class contentDonDat extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        hiddenContent.setLayout(new java.awt.CardLayout());
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,27 +136,20 @@ public class contentDonDat extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(hiddenContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(123, 123, 123))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(hiddenContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -134,7 +159,6 @@ public class contentDonDat extends javax.swing.JPanel {
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-        this.CLayout.show(hiddenContent, "Dash Board");
     }//GEN-LAST:event_btnThongKeActionPerformed
 
 
@@ -142,9 +166,8 @@ public class contentDonDat extends javax.swing.JPanel {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JPanel hiddenContent;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable myTable;
     // End of variables declaration//GEN-END:variables
 }

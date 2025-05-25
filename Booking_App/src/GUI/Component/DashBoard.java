@@ -1,4 +1,9 @@
 package GUI.Component;
+import javax.swing.*;
+import java.awt.*;
+import java.util.Arrays;
+import org.knowm.xchart.*;
+import org.knowm.xchart.style.Styler;
 
 /**
  *
@@ -10,7 +15,54 @@ public class DashBoard extends javax.swing.JPanel {
      * Creates new form DashBoard
      */
     public DashBoard() {
-        initComponents();
+        
+        // layout lưới 2×2 với khoảng cách 5px
+        setLayout(new GridLayout(2, 2, 5, 5));
+
+        // Chart 1: Bar chart
+        CategoryChart barChart = new CategoryChartBuilder()
+            .width(0).height(0)  // size tính tự động theo panel
+            .title("Doanh thu Q1")
+            .xAxisTitle("Tháng")
+            .yAxisTitle("Triệu VND")
+            .build();
+        barChart.addSeries("Doanh thu",
+            Arrays.asList("Th01","Th02","Th03"),
+            Arrays.asList(120, 150, 180)
+        );
+        add(new XChartPanel<>(barChart));
+
+        // Chart 2: Pie chart
+        PieChart pieChart = new PieChartBuilder().title("Tỷ lệ SP").build();
+        pieChart.addSeries("SP A", 40);
+        pieChart.addSeries("SP B", 30);
+        pieChart.addSeries("SP C", 30);
+        add(new XChartPanel<>(pieChart));
+
+        // Chart 3: Line chart
+        XYChart lineChart = new XYChartBuilder()
+            .title("Giá theo ngày")
+            .xAxisTitle("Ngày")
+            .yAxisTitle("Giá")
+            .build();
+        lineChart.addSeries("Cổ phiếu",
+            new double[]{1,2,3,4,5},
+            new double[]{10,12,11,14,13}
+        );
+        add(new XChartPanel<>(lineChart));
+
+        // Chart 4: Histogram
+        Histogram hist = new Histogram(
+            Arrays.asList(1,2,2,3,3,3,4,4,5), 5);
+        CategoryChart histChart = new CategoryChartBuilder()
+            .title("Phân bố")
+            .xAxisTitle("Giá trị")
+            .yAxisTitle("Tần suất")
+            .build();
+        histChart.addSeries("Tần suất",
+            hist.getxAxisData(), hist.getyAxisData()
+        );
+        add(new XChartPanel<>(histChart));
     }
 
     /**
@@ -22,30 +74,10 @@ public class DashBoard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("đây là Dash Board");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
-        );
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

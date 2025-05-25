@@ -9,6 +9,8 @@ import javax.swing.*;
 import GUI.Component.*;
 import java.awt.CardLayout;
 import java.awt.Panel;
+import database.jdbcHelper;
+import utils.message;
 public class Menu_QuanLyDonDat extends javax.swing.JFrame {
 
     /**
@@ -16,11 +18,12 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
      */
     
     private CardLayout cardLayout;
-    private contentDonDat mainContent;
+    private tableDonDat table;
     private DashBoard dashBoard;
          
     public Menu_QuanLyDonDat() {
         initComponents();
+        initCardLayout();
     }
     
     public Menu_QuanLyDonDat(String name) {
@@ -33,12 +36,12 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         this.cardLayout = (CardLayout) content.getLayout();
         
         dashBoard = new DashBoard();
-        mainContent = new contentDonDat();
+        table = new tableDonDat();
         
-        content.add(mainContent, "mainContent");
+        content.add(table, "table");
         content.add(dashBoard, "dashBoard");
         
-        cardLayout.show(content, "mainContent");
+        cardLayout.show(content, "table");
     }
 
     /**
@@ -58,10 +61,10 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
         orderBtn = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1720, 1025));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
@@ -113,6 +116,15 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
             }
         });
 
+        btnThongKe.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        btnThongKe.setForeground(new java.awt.Color(0, 102, 102));
+        btnThongKe.setText("Thống Kê");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
         DashBoard.setLayout(DashBoardLayout);
         DashBoardLayout.setHorizontalGroup(
@@ -124,7 +136,8 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                     .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                 .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
@@ -148,6 +161,8 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -174,16 +189,18 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        content.getAccessibleContext().setAccessibleParent(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +211,7 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
 
     private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBtnActionPerformed
         // TODO add your handling code here:
+        cardLayout.show(content, "table");
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
@@ -203,6 +221,11 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
     private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_orderBtnActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(content, "dashBoard");
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +270,7 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JPanel content;
     private javax.swing.JButton orderBtn;
     // End of variables declaration//GEN-END:variables
