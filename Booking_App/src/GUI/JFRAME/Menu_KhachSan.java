@@ -380,7 +380,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             int modelRow = myTable.convertRowIndexToModel(selectedRow);
             Phong_KS data = formKS.getData(this.idKS);
             data.setId(Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString()));
-            System.out.println(data.getId());
             this.Phong_dao.update(data);
             this.loadTable();
         } else {
@@ -398,11 +397,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = myTable.getSelectedRow();
         if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
-            String ID = myTable.getValueAt(selectedRow, 0).toString();
+            int modelRow = myTable.convertRowIndexToModel(selectedRow);
+            int ID = Integer.parseInt(myTable.getModel().getValueAt(modelRow, 0).toString());
             
-            this.Phong_dao.delete(Integer.valueOf(ID));
+            this.Phong_dao.delete(ID);
             System.out.println("Tên phòng được chọn: " + ID);
             this.loadTable();
         } else {
