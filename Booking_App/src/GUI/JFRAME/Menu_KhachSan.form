@@ -31,7 +31,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="1291" max="-2" attributes="0"/>
+                      <Component id="scrollBar" min="-2" pref="1291" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="formKS" min="-2" pref="271" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="243" max="-2" attributes="0"/>
+              <Component id="scrollBar" min="-2" pref="243" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -168,7 +168,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="scrollBar">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>

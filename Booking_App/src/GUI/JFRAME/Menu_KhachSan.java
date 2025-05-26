@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import database.jdbcHelper;
 import model.Phong_KS;
 import DAO.PhongKS_DAO;
+import GUI.Component.CustomScrollBar;
 import java.lang.Integer;
 import java.lang.Long;
 import utils.message;
@@ -44,6 +45,8 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     }
     
     public void loadTable() {
+        scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());
+        scrollBar.getHorizontalScrollBar().setUI(new CustomScrollBar());
         try {
             this.table = new DefaultTableModel(header, 0);
 
@@ -113,7 +116,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         UserIcon = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollBar = new javax.swing.JScrollPane();
         myTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
@@ -237,7 +240,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 myTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(myTable);
+        scrollBar.setViewportView(myTable);
         myTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         back.setText("Quay lại");
@@ -337,7 +340,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, 1291, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +362,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(formKS, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
 
@@ -507,9 +510,9 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable myTable;
+    private javax.swing.JScrollPane scrollBar;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables

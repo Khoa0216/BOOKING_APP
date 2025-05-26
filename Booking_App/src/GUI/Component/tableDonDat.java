@@ -9,14 +9,18 @@ package GUI.Component;
 
 import java.awt.*;
 import javax.swing.*;
+import GUI.Component.CustomScrollBar;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import database.jdbcHelper;
 import utils.message;
 import DAO.DonDat_DAO;
+import java.util.ArrayList;
 import java.util.Arrays;
 import model.DonDat;
 import java.util.Vector;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 public class tableDonDat extends javax.swing.JPanel {
 
@@ -27,15 +31,36 @@ public class tableDonDat extends javax.swing.JPanel {
     private final String pass = "12345678";
     private jdbcHelper jdbc = new jdbcHelper(user, pass);
     
+    private final ImageIcon icDelete = new ImageIcon(getClass().getResource("/image/delete.png"));
+    private final ImageIcon icEdit   = new ImageIcon(getClass().getResource("/image/edit.png"));
+    private final ImageIcon icPdf    = new ImageIcon(getClass().getResource("/image/pdf.png"));
+    private final ImageIcon icSearch = new ImageIcon(getClass().getResource("/image/search.png"));
+    
     private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", "Mã doanh nghiệp",
         "Tên doang nghiệp", "Giá", "Ngày đặt"}; 
     private DefaultTableModel table;
+    
         
     public tableDonDat() {
         initComponents();
         loadTable();
+        setIcon();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        myTable.setDefaultRenderer(Object.class, centerRenderer);
     }
+    
+    public void setIcon(){
+        btnSearch.setIcon(icSearch);
+        btnSua.setIcon(icEdit);
+        btnXoa.setIcon(icDelete);
+        btnXuatPdf.setIcon(icPdf);
+    }
+    
     public void loadTable(){
+
+        scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());
+        scrollBar.getHorizontalScrollBar().setUI(new CustomScrollBar());
         this.table = new DefaultTableModel(header, 0);
         Vector<DonDat> donDatList = DonDat_DAO.selectAll();
         for (DonDat d : donDatList){
@@ -67,27 +92,38 @@ public class tableDonDat extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollBar = new javax.swing.JScrollPane();
         myTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnSua = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        btnXuatPdf = new javax.swing.JButton();
+        txtFieldSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        CBSort = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(520, 520));
 
         myTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Khách hàng", "Tên Khách hàng", "Mã Doanh Nghiệp", "Tên Doanh Nghiệp", "Giá", "Ngày Đặt"
+                "Mã Đơn", "Mã Khách hàng", "Tên Khách hàng", "Mã Doanh Nghiệp", "Tên Doanh Nghiệp", "Giá", "Ngày Đặt"
             }
-        ));
-        jScrollPane1.setViewportView(myTable);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Long.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        scrollBar.setViewportView(myTable);
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -96,27 +132,52 @@ public class tableDonDat extends javax.swing.JPanel {
             }
         });
 
-        btnThongKe.setText("Thống kê");
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
-        btnXoa.setText("Xóa");
+        btnXuatPdf.setText("Xuất pdf");
+
+        txtFieldSearch.setText("...");
+        txtFieldSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldSearchActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setText("Tìm kiếm");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        CBSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Theo mã đơn", "Theo giá giảm", "Theo ngày đặt gần nhất" }));
+        CBSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBSortActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnThongKe)
-                .addGap(18, 18, 18)
                 .addComponent(btnXoa)
                 .addGap(18, 18, 18)
                 .addComponent(btnSua)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(btnXuatPdf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
+                .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addGap(18, 18, 18)
+                .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,8 +185,11 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXoa)
-                    .addComponent(btnThongKe)
-                    .addComponent(btnSua))
+                    .addComponent(btnSua)
+                    .addComponent(btnXuatPdf)
+                    .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
+                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -136,10 +200,8 @@ public class tableDonDat extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(scrollBar)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -148,7 +210,7 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -157,17 +219,49 @@ public class tableDonDat extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void txtFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldSearchActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void CBSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBSortActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)myTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        myTable.setRowSorter(sorter);
+        
+        final int COL_MADON = 0;
+        final int COL_GIA = 5;
+        final int COL_NGAYDAT = 6;
+        
+        String selection = (String) CBSort.getSelectedItem();
+        
+        ArrayList<RowSorter.SortKey> keys = new ArrayList<>();
+        switch (CBSort.getSelectedIndex()) {
+            case 0: keys.add(new RowSorter.SortKey(COL_MADON, SortOrder.ASCENDING));  break;
+            case 1: keys.add(new RowSorter.SortKey(COL_GIA,     SortOrder.DESCENDING)); break;
+            case 2: keys.add(new RowSorter.SortKey(COL_NGAYDAT,    SortOrder.DESCENDING)); break;
+        }
+        sorter.setSortKeys(keys);
+    }//GEN-LAST:event_CBSortActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBSort;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatPdf;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable myTable;
+    private javax.swing.JScrollPane scrollBar;
+    private javax.swing.JTextField txtFieldSearch;
     // End of variables declaration//GEN-END:variables
 }
