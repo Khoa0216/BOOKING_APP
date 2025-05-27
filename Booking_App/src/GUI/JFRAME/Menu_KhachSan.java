@@ -17,6 +17,8 @@ import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
+import GUI.Component.PhotoFrame;
+import javax.swing.JOptionPane;
 
 public class Menu_KhachSan extends javax.swing.JFrame {
     
@@ -29,6 +31,8 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private PhongKS_DAO Phong_dao = new PhongKS_DAO();
     private Integer idKS;
     private int selectedRow=-1;
+    
+    private int selectedPhongID = -1; //1 phần của chức năng thêm ảnh
     
     
 //    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
@@ -122,11 +126,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         update = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         formKS = new GUI.Component.formKS();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1720, 1025));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
@@ -283,6 +287,13 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ảnh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -302,7 +313,9 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                         .addComponent(delete)
                         .addGap(18, 18, 18)
                         .addComponent(back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 771, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 678, Short.MAX_VALUE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
         );
@@ -318,7 +331,9 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                     .addComponent(delete)
                     .addComponent(back)
                     .addComponent(update)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -428,6 +443,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         if (selectedRow != -1){
             int modelRow = myTable.convertRowIndexToModel(selectedRow);
             Integer ID = Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString());
+            this.selectedPhongID = ID;
             Phong_KS data = this.Phong_dao.selectByID(ID);
             String loaiPhong = data.getLoaiPhong();
             Long soLuong = data.getTongSoluong();
@@ -452,6 +468,14 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         selectedRow=-1;
         formKS.resetFields();
     }//GEN-LAST:event_backActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (this.selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một phòng trong bảng trước!");
+        return;
+    }
+    new PhotoFrame(selectedPhongID).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,6 +526,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private javax.swing.JButton delete;
     private GUI.Component.formKS formKS;
     private javax.swing.JButton insert;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
