@@ -9,10 +9,11 @@ import java.sql.*;
 import model.DonDat;
 import java.util.Vector;
 import database.jdbcHelper;
+import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.message;
-import java.time.LocalDateTime;
+import java.time.*;
 public class DonDat_DAO {
     static public Vector<DonDat> selectAll(){
         Vector<DonDat> donDatList = new Vector<>();
@@ -43,5 +44,13 @@ public class DonDat_DAO {
             Logger.getLogger(DonDat_DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return donDatList;
+    }
+    
+    static public Integer countOrderWithDate(String date){
+        String query = "SELECT count(*) \n" +
+                        "FROM DATPHONG \n" +
+                        "WHERE TRUNC(ngay_dat) = TO_DATE(?,'YYYY-MM-DD')";
+        BigDecimal cnt = (BigDecimal) jdbcHelper.value(query, date);
+        return cnt.intValue();
     }
 }
