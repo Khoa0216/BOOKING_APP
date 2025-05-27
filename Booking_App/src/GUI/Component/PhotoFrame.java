@@ -10,7 +10,7 @@ import java.sql.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import database.jdbcHelper;
-import DATABASE_Connection.Oracle_connection;
+import database.Oracle_connection;
 /**
  *
  * @author Admin

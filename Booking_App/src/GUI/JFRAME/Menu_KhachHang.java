@@ -6,6 +6,8 @@ import GUI.Component.RegisterPanel;
 import GUI.Component.SignUpKhachSan;
 import GUI.Component.SignUpKhachHang;
 import database.QueryHelper;
+
+import GUI.Component.HomePage;
 import MODEL.NGUOIDUNG;
 import GUI.Component.homeKhachHang;
 import GUI.Component.accKhachHang;
@@ -20,13 +22,29 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private accKhachHang accKH;
     private NGUOIDUNG nguoidung; 
     private String email;
+    private HomePage homePage = new HomePage();
+    
     public Menu_KhachHang() {
         initComponents();
+        email = "test";
+        this.email = email;
+        rightPanel.setLayout(new CardLayout());
+        this.CLayout = (CardLayout) rightPanel.getLayout();
         
+//        homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
+//        accKH = new accKhachHang(rightPanel, this.CLayout,email);
+        
+        // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
+//        rightPanel.add(homeKH,"home");
+//        rightPanel.add(accKH,"acc");
+        rightPanel.add(homePage, "Home page");
+         
+        CLayout.show(rightPanel, "Home page");
     }
     public Menu_KhachHang(String email) {
         initComponents();
         this.email = email;
+        rightPanel.setLayout(new CardLayout());
         this.CLayout = (CardLayout) rightPanel.getLayout();
         
         homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
@@ -35,6 +53,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
         rightPanel.add(homeKH,"home");
         rightPanel.add(accKH,"acc");
+        rightPanel.add(homePage, "Home page");
          
         CLayout.show(rightPanel, "home");
 
@@ -189,9 +208,9 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
-        homeKH.updateUserInfo(this.email);
-        CLayout = (CardLayout)(rightPanel.getLayout());
-        CLayout.show(rightPanel, "home"); // Hiện panel "home"  
+//        homeKH.updateUserInfo(this.email);
+//        CLayout = (CardLayout)(rightPanel.getLayout());
+        CLayout.show(rightPanel, "Home page"); // Hiện panel "home"  
     }//GEN-LAST:event_HomeBtnActionPerformed
 
     private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
