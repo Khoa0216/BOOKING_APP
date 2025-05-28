@@ -20,7 +20,9 @@ import java.awt.image.BufferedImage;
 public class PhotoFrame extends javax.swing.JFrame {
     private int phongID;
     private JLabel[] lblAnhs;
-    private File[] selectedFiles = new File[3]; // Lưu ảnh đã chọn
+   
+    private File[] selectedFiles = new File[3];      // Ảnh người dùng chọn mới
+    private byte[][] imageLoaded = new byte[3][];    // Ảnh đã load từ DB
     private int selectedIndex = -1; // Ảnh đang được chọn (0 - 2)
     
     public PhotoFrame(int phongID) {
@@ -37,6 +39,8 @@ public class PhotoFrame extends javax.swing.JFrame {
                 }
             });
         }
+        
+        
         jButton1.addActionListener(e ->chonAnh());
         jButton2.addActionListener(e ->chonAnh());
         jButton4.addActionListener(e -> xoaAnh());
@@ -69,6 +73,7 @@ public class PhotoFrame extends javax.swing.JFrame {
         return;
     }
         selectedFiles[selectedIndex] = null;
+        imageLoaded[selectedIndex] = null;
         lblAnhs[selectedIndex].setIcon(null);
         lblAnhs[selectedIndex].setText("Ảnh " + (selectedIndex + 1));
     }
@@ -76,13 +81,15 @@ public class PhotoFrame extends javax.swing.JFrame {
     
     private void luuAnhVaoDB() {
         try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
-            String sql = "UPDATE PHONG SET ANH_1 = ?, ANH_2 = ?, ANH_3 = ? WHERE ID = ?";
+            String sql = "UPDATE PHONG SET ANH1 = ?, ANH2 = ?, ANH3 = ? WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             for (int i = 0; i < 3; i++) {
                 if (selectedFiles[i] != null) {
                     FileInputStream fis = new FileInputStream(selectedFiles[i]);
                     ps.setBinaryStream(i + 1, fis, (int) selectedFiles[i].length());
+                } else if (imageLoaded[i] != null) {
+                    ps.setBinaryStream(i + 1, new ByteArrayInputStream(imageLoaded[i]), imageLoaded[i].length);
                 } else {
                     ps.setNull(i + 1, java.sql.Types.BLOB);
                 }
@@ -104,21 +111,23 @@ public class PhotoFrame extends javax.swing.JFrame {
     
     private void loadAnhTuDatabase() {
         try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
-            String sql = "SELECT ANH_1, ANH_2, ANH_3 FROM PHONG WHERE ID = ?";
+            String sql = "SELECT ANH1, ANH2, ANH3 FROM PHONG WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, phongID);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 Blob[] blobs = new Blob[3];
-                blobs[0] = rs.getBlob("ANH_1");
-                blobs[1] = rs.getBlob("ANH_2");
-                blobs[2] = rs.getBlob("ANH_3");
+                blobs[0] = rs.getBlob("ANH1");
+                blobs[1] = rs.getBlob("ANH2");
+                blobs[2] = rs.getBlob("ANH3");
 
                 for (int i = 0; i < 3; i++) {
                     if (blobs[i] != null) {
-                        InputStream is = blobs[i].getBinaryStream();
-                        BufferedImage img = ImageIO.read(is);
+                        byte[] imageData = blobs[i].getBytes(1, (int) blobs[i].length());
+                        imageLoaded[i] = imageData; // <- Lưu dữ liệu ảnh để sau này có thể giữ lại nếu người dùng không sửa
+                        
+                        BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageData));
                         ImageIcon icon = new ImageIcon(
                             img.getScaledInstance(150, 150, Image.SCALE_SMOOTH));
                         lblAnhs[i].setIcon(icon);
