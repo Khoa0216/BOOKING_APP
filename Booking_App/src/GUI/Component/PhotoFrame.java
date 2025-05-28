@@ -11,6 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import database.jdbcHelper;
 import database.Oracle_connection;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 /**
  *
  * @author Admin
@@ -24,8 +26,6 @@ public class PhotoFrame extends javax.swing.JFrame {
     public PhotoFrame(int phongID) {
         initComponents();
         this.phongID = phongID;
-        
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         lblAnhs = new JLabel[]{jLabel1, jLabel4, jLabel5};//Tên label bạn đặt trong UI
         for (int i = 0; i < lblAnhs.length; i++) {
@@ -41,6 +41,10 @@ public class PhotoFrame extends javax.swing.JFrame {
         jButton2.addActionListener(e ->chonAnh());
         jButton4.addActionListener(e -> xoaAnh());
         jButton3.addActionListener(e -> luuAnhVaoDB());
+        
+        loadAnhTuDatabase();
+                
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     private void chonAnh() {
         if (selectedIndex == -1) {
@@ -97,6 +101,41 @@ public class PhotoFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi khi lưu ảnh.");
         }
     }
+    
+    private void loadAnhTuDatabase() {
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
+            String sql = "SELECT ANH_1, ANH_2, ANH_3 FROM PHONG WHERE ID = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, phongID);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Blob[] blobs = new Blob[3];
+                blobs[0] = rs.getBlob("ANH_1");
+                blobs[1] = rs.getBlob("ANH_2");
+                blobs[2] = rs.getBlob("ANH_3");
+
+                for (int i = 0; i < 3; i++) {
+                    if (blobs[i] != null) {
+                        InputStream is = blobs[i].getBinaryStream();
+                        BufferedImage img = ImageIO.read(is);
+                        ImageIcon icon = new ImageIcon(
+                            img.getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+                        lblAnhs[i].setIcon(icon);
+                        lblAnhs[i].setText("");
+                    } else {
+                        lblAnhs[i].setIcon(null);
+                        lblAnhs[i].setText("Ảnh " + (i + 1));
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Không thể tải ảnh từ database.");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
