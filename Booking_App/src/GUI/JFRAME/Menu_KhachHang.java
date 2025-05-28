@@ -11,6 +11,8 @@ import GUI.Component.HomePage;
 import MODEL.NGUOIDUNG;
 import GUI.Component.homeKhachHang;
 import GUI.Component.accKhachHang;
+import GUI.Component.datKhachHang;
+
 import java.sql.ResultSet;
 import java.awt.CardLayout;
 
@@ -18,8 +20,8 @@ import java.awt.CardLayout;
 
 public class Menu_KhachHang extends javax.swing.JFrame {
     private CardLayout CLayout;
-    private homeKhachHang homeKH;
     private accKhachHang accKH;
+    private datKhachHang datKH;
     private NGUOIDUNG nguoidung; 
     private String email;
     private HomePage homePage = new HomePage();
@@ -28,13 +30,14 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         initComponents();
         email = "test";
         this.email = email;
+        
         rightPanel.setLayout(new CardLayout());
         this.CLayout = (CardLayout) rightPanel.getLayout();
         
-//        homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
-//        accKH = new accKhachHang(rightPanel, this.CLayout,email);
+//       homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
+//       accKH = new accKhachHang(rightPanel, this.CLayout,email);
         
-        // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
+        //Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
 //        rightPanel.add(homeKH,"home");
 //        rightPanel.add(accKH,"acc");
         rightPanel.add(homePage, "Home page");
@@ -47,15 +50,17 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         rightPanel.setLayout(new CardLayout());
         this.CLayout = (CardLayout) rightPanel.getLayout();
         
-        homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
+        
         accKH = new accKhachHang(rightPanel, this.CLayout,email);
+        datKH = new datKhachHang(rightPanel, this.CLayout,email);
+        
         
         // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
-        rightPanel.add(homeKH,"home");
         rightPanel.add(accKH,"acc");
+        rightPanel.add(datKH,"dat");
         rightPanel.add(homePage, "Home page");
          
-        CLayout.show(rightPanel, "home");
+        CLayout.show(rightPanel, "Home page");
 
     }
     @SuppressWarnings("unchecked")
@@ -209,7 +214,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
 //        homeKH.updateUserInfo(this.email);
-//        CLayout = (CardLayout)(rightPanel.getLayout());
+        CLayout = (CardLayout)(rightPanel.getLayout());
         CLayout.show(rightPanel, "Home page"); // Hiện panel "home"  
     }//GEN-LAST:event_HomeBtnActionPerformed
 
@@ -220,6 +225,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
     private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
         // TODO add your handling code here:
+        CLayout = (CardLayout)(rightPanel.getLayout());
+        CLayout.show(rightPanel,"dat");
     }//GEN-LAST:event_orderBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed

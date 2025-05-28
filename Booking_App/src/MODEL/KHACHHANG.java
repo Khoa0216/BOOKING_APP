@@ -17,8 +17,9 @@ public class KHACHHANG extends NGUOIDUNG{
         this.CCCD = cccd;
         this.NGAYSINH = date;
     }
-    public KHACHHANG(String name, String email, String cccd, String date, String pass) {
+    public KHACHHANG(String name, String email, String cccd, String date, String pass,int id) {
         this.HOTEN = name;
+        this.ID = id;
         this.EMAIL = email;
         this.CCCD = cccd;
         this.NGAYSINH = date;

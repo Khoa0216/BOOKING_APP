@@ -171,7 +171,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="txtPrice" pref="160" max="32767" attributes="0"/>
+                          <Component id="txtPrice" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -206,6 +206,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBookingActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="txtScore">
           <Properties>

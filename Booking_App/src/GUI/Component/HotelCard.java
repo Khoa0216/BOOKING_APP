@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
-import model.PhongCard;
+import MODEL.PhongCard;
 
 public class HotelCard extends javax.swing.JPanel {
 
@@ -155,6 +155,11 @@ public class HotelCard extends javax.swing.JPanel {
         btnDetail.setText("Xem chi tiết");
 
         btnBooking.setText("Đặt");
+        btnBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingActionPerformed(evt);
+            }
+        });
 
         txtScore.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtScore.setText("Score");
@@ -186,7 +191,7 @@ public class HotelCard extends javax.swing.JPanel {
                                 .addGap(21, 21, 21))))
                     .addGroup(rightPanlLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
+                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         rightPanlLayout.setVerticalGroup(
@@ -229,6 +234,12 @@ public class HotelCard extends javax.swing.JPanel {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnBookingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

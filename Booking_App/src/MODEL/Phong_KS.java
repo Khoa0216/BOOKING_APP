@@ -1,4 +1,4 @@
-package model;
+package MODEL;
 
 import java.lang.Integer;
 import java.lang.Long;
