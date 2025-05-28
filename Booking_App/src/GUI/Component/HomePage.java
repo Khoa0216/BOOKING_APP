@@ -27,8 +27,6 @@ public class HomePage extends javax.swing.JPanel {
         
         
         List<PhongCard> listPhong = this.fakeData();
-//        PhongCard phong = listPhong.get(1);
-//        HotelCard hotelCard = new HotelCard(phong);
         
         int gap=10;
         for (PhongCard phong : listPhong){

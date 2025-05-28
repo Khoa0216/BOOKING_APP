@@ -59,7 +59,7 @@ public class jdbcHelper {
         try {
             ResultSet rs = jdbcHelper.query(sql, args);
             if (rs.next()) { // Neu co gia tri
-                return rs.getObject(0); // Lay gia tri dau tien
+                return rs.getObject(1); // Lay gia tri dau tien
             }
             return null; // khong co gia tri tra ve null
         } catch (Exception e) {

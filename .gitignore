@@ -2,3 +2,21 @@
 /JavaApplication9/build/
 /test123/nbproject/private/
 /test123/build/
+# Ignore NetBeans specific folders
+nbproject/private/
+build/
+dist/
+
+# Ignore class files
+*.class
+
+# Ignore backup files
+*~
+
+# Ignore generated files
+*.form
+*.iml
+*.log
+
+# MacOS system files
+.DS_Store

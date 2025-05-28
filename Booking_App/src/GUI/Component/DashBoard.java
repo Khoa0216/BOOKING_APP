@@ -1,70 +1,86 @@
 package GUI.Component;
-import javax.swing.*;
-import java.awt.*;
-import java.util.Arrays;
-import org.knowm.xchart.*;
-import org.knowm.xchart.style.Styler;
 
-/**
- *
- * @author Admin
- */
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.util.*;
+import javax.swing.*;
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.XChartPanel;
+import java.time.*;
+import DAO.DonDat_DAO;
+import database.jdbcHelper;
+
 public class DashBoard extends javax.swing.JPanel {
 
     /**
      * Creates new form DashBoard
      */
+    private final String user = "booking_app";
+    private final String pass = "12345678";
+    private jdbcHelper jdbc = new jdbcHelper(user, pass);
+    
     public DashBoard() {
-        
-        // layout lưới 2×2 với khoảng cách 5px
-        setLayout(new GridLayout(2, 2, 5, 5));
+        initComponents();
 
-        // Chart 1: Bar chart
-        CategoryChart barChart = new CategoryChartBuilder()
-            .width(0).height(0)  // size tính tự động theo panel
-            .title("Doanh thu Q1")
-            .xAxisTitle("Tháng")
-            .yAxisTitle("Triệu VND")
-            .build();
-        barChart.addSeries("Doanh thu",
-            Arrays.asList("Th01","Th02","Th03"),
-            Arrays.asList(120, 150, 180)
-        );
-        add(new XChartPanel<>(barChart));
-
-        // Chart 2: Pie chart
-        PieChart pieChart = new PieChartBuilder().title("Tỷ lệ SP").build();
-        pieChart.addSeries("SP A", 40);
-        pieChart.addSeries("SP B", 30);
-        pieChart.addSeries("SP C", 30);
-        add(new XChartPanel<>(pieChart));
-
-        // Chart 3: Line chart
-        XYChart lineChart = new XYChartBuilder()
-            .title("Giá theo ngày")
-            .xAxisTitle("Ngày")
-            .yAxisTitle("Giá")
-            .build();
-        lineChart.addSeries("Cổ phiếu",
-            new double[]{1,2,3,4,5},
-            new double[]{10,12,11,14,13}
-        );
-        add(new XChartPanel<>(lineChart));
-
-        // Chart 4: Histogram
-        Histogram hist = new Histogram(
-            Arrays.asList(1,2,2,3,3,3,4,4,5), 5);
-        CategoryChart histChart = new CategoryChartBuilder()
-            .title("Phân bố")
-            .xAxisTitle("Giá trị")
-            .yAxisTitle("Tần suất")
-            .build();
-        histChart.addSeries("Tần suất",
-            hist.getxAxisData(), hist.getyAxisData()
-        );
-        add(new XChartPanel<>(histChart));
+        initLineChart();
     }
+    
+    public void initLineChart(){
+       // 2. Tạo dữ liệu 7 ngày gần nhất + số booking (ví dụ ngẫu nhiên)
+        List<Date> dates = new ArrayList<>();
+        List<Integer> counts = new ArrayList<>();
+        Random rnd = new Random();
+        for (int i = 7; i > 1; --i) {
+            LocalDate date = LocalDate.now().minusDays(i);
+            String dateString = String.valueOf(date);
+            Date utilDate = Date.from(date
+                                .atStartOfDay(ZoneId.systemDefault())
+                                .toInstant());
+            dates.add(utilDate);
+            
+            Integer numOrder = DonDat_DAO.countOrderWithDate(dateString);
+            System.out.println("Date " + date + " have: " + numOrder);
+            counts.add(numOrder); // số ngẫu nhiên từ 20–100
+        }
 
+        // 3. Xây Line Chart với XChart
+        XYChart bookingChart = new XYChartBuilder()
+            .width(400).height(300)
+            .title("Đơn đặt phòng trong 7 ngày")
+            .xAxisTitle("Ngày")
+            .yAxisTitle("Số đơn")
+            .build();
+        bookingChart.getStyler().setLegendVisible(false);
+        bookingChart.getStyler().setDatePattern("dd/MM");
+        bookingChart.getStyler().setXAxisLabelRotation(45);
+        bookingChart.addSeries("Booking", dates, counts);
+
+        // 4. Nhúng chart vào jPanel1 (ô hàng 1, cột 1)
+        pn1.setLayout(new BorderLayout());
+        pn2.setLayout(new BorderLayout());
+        pn3.setLayout(new BorderLayout());
+        pn4.setLayout(new BorderLayout());
+        
+        XChartPanel<XYChart> chartPanel = new XChartPanel<>(bookingChart);
+        pn1.add(chartPanel, BorderLayout.CENTER);
+        
+//        pn2.add(chartPanel, BorderLayout.CENTER);
+//        
+//        pn3.add(chartPanel, BorderLayout.CENTER);
+//        
+//        pn4.add(chartPanel, BorderLayout.CENTER);
+        
+        
+
+        // 5. jPanel2, jPanel3, jPanel4 có thể dùng tương tự cho các chart khác
+        // Ví dụ: jPanel2.add(new XChartPanel<>(anotherChart));
+        // … 
+
+        // 6. Cập nhật giao diện
+        this.revalidate();
+        this.repaint(); 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,10 +90,96 @@ public class DashBoard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.GridLayout());
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        pn1 = new javax.swing.JPanel();
+        pn2 = new javax.swing.JPanel();
+        pn3 = new javax.swing.JPanel();
+        pn4 = new javax.swing.JPanel();
+
+        setPreferredSize(new java.awt.Dimension(1200, 1050));
+
+        jPanel1.setLayout(new java.awt.GridLayout(2, 2, 10, 10));
+
+        javax.swing.GroupLayout pn1Layout = new javax.swing.GroupLayout(pn1);
+        pn1.setLayout(pn1Layout);
+        pn1Layout.setHorizontalGroup(
+            pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        pn1Layout.setVerticalGroup(
+            pn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pn1);
+
+        javax.swing.GroupLayout pn2Layout = new javax.swing.GroupLayout(pn2);
+        pn2.setLayout(pn2Layout);
+        pn2Layout.setHorizontalGroup(
+            pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        pn2Layout.setVerticalGroup(
+            pn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pn2);
+
+        javax.swing.GroupLayout pn3Layout = new javax.swing.GroupLayout(pn3);
+        pn3.setLayout(pn3Layout);
+        pn3Layout.setHorizontalGroup(
+            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        pn3Layout.setVerticalGroup(
+            pn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pn3);
+
+        javax.swing.GroupLayout pn4Layout = new javax.swing.GroupLayout(pn4);
+        pn4.setLayout(pn4Layout);
+        pn4Layout.setHorizontalGroup(
+            pn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        pn4Layout.setVerticalGroup(
+            pn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pn4);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pn1;
+    private javax.swing.JPanel pn2;
+    private javax.swing.JPanel pn3;
+    private javax.swing.JPanel pn4;
     // End of variables declaration//GEN-END:variables
 }
