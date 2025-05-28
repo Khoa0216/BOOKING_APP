@@ -24,7 +24,9 @@ public class PhotoFrame extends javax.swing.JFrame {
     public PhotoFrame(int phongID) {
         initComponents();
         this.phongID = phongID;
-
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         lblAnhs = new JLabel[]{jLabel1, jLabel4, jLabel5};//Tên label bạn đặt trong UI
         for (int i = 0; i < lblAnhs.length; i++) {
             final int index = i;
@@ -34,11 +36,11 @@ public class PhotoFrame extends javax.swing.JFrame {
                     selectedIndex = index;
                 }
             });
+        }
         jButton1.addActionListener(e ->chonAnh());
         jButton2.addActionListener(e ->chonAnh());
         jButton4.addActionListener(e -> xoaAnh());
         jButton3.addActionListener(e -> luuAnhVaoDB());
-        }
     }
     private void chonAnh() {
         if (selectedIndex == -1) {
