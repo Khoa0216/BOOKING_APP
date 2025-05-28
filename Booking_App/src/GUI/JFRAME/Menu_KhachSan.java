@@ -5,10 +5,9 @@ import java.util.Vector;
 import java.util.Hashtable;
 import javax.swing.table.DefaultTableModel;
 import database.jdbcHelper;
-import MODEL.Phong_KS;
+import model.Phong_KS;
 import DAO.PhongKS_DAO;
 import GUI.Component.CustomScrollBar;
-import GUI.Component.formKS;
 import java.lang.Integer;
 import java.lang.Long;
 import utils.message;
@@ -131,6 +130,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
+        formKS = new GUI.Component.formKS();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -530,6 +530,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private javax.swing.JLabel UserIcon;
     private javax.swing.JButton back;
     private javax.swing.JButton delete;
+    private GUI.Component.formKS formKS;
     private javax.swing.JButton insert;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

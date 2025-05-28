@@ -4,7 +4,7 @@ package DAO;
  *
  * @author Admin
  */
-import MODEL.Phong_KS;
+import model.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
 import java.awt.HeadlessException;
@@ -14,7 +14,6 @@ import java.sql.*;
 import javax.swing.*;
 import utils.message;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     @Override
@@ -89,29 +88,5 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
             e.printStackTrace();
         }
         return null;
-    }
-    public List<Phong_KS> selectByKhachSan(Integer ks_id) {
-        List<Phong_KS> list = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM booking_app.phong WHERE KHACHSAN_ID = ?";
-            ResultSet rs = jdbcHelper.query(sql, ks_id);
-        
-        while (rs.next()) {
-            Integer Id = rs.getInt("ID");
-            Integer idKS = rs.getInt("KhachSan_ID");
-            String loaiP = rs.getString("LoaiPhong");
-            Long gia = rs.getLong("Gia");
-            String moTa = rs.getString("MoTa");
-            Long soLuongConLai = rs.getLong("SoLuongConLai");
-            Long tongSoLuong = rs.getLong("TongSoLuong");
-            Date ngayDang = rs.getDate("Ngay_Dang");
-            
-            Phong_KS phong = new Phong_KS(Id, idKS, loaiP, moTa, gia, tongSoLuong, soLuongConLai, ngayDang.toLocalDate());
-            list.add(phong);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    return list;
     }
 }

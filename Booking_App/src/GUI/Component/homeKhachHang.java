@@ -45,15 +45,12 @@ public class homeKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         HelloLabel = new javax.swing.JLabel();
         KsLabel3 = new javax.swing.JLabel();
         KsLabel1 = new javax.swing.JLabel();
         KsLabel4 = new javax.swing.JLabel();
         KsLabel5 = new javax.swing.JLabel();
         KsLabel2 = new javax.swing.JLabel();
-
-        jMenu1.setText("jMenu1");
 
         setPreferredSize(new java.awt.Dimension(1320, 1025));
 
@@ -88,7 +85,7 @@ public class homeKhachHang extends javax.swing.JPanel {
                 .addComponent(KsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(KsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(KsLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -115,7 +112,6 @@ public class homeKhachHang extends javax.swing.JPanel {
     private javax.swing.JLabel KsLabel3;
     private javax.swing.JLabel KsLabel4;
     private javax.swing.JLabel KsLabel5;
-    private javax.swing.JMenu jMenu1;
     // End of variables declaration//GEN-END:variables
    
 }

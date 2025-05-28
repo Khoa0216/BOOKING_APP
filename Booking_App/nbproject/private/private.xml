@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/DashBoard.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/DAO/Chuyen_DangTaiDAO.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/DAO/DatPhong_DAO.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/DAO/ChiTietDatPhong_DAO.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/MODEL/Phong_KS.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/MODEL/DatPhong.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/MODEL/ChiTietDatPhong.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/Interface/IDatPhong.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/Interface/IChiTietDatPhong.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/DAO/KhachHang_DAO.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/homeKhachHang.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachHang.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/HotelCard.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/PhotoFrame.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/RegisterPanel.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/datKhachHang.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/Component/HomePage.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/MODEL/PhongCard.java</file>
-            <file>file:/Users/bobui/Documents/GitHub/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachSan.java</file>
+            <file>file:/D:/HK4/JAVA/BOOKING_APP-Test/Booking_App/src/GUI/JFRAME/CardDemo.java</file>
+            <file>file:/D:/HK4/JAVA/BOOKING_APP-Test/Booking_App/src/GUI/JFRAME/Menu_KhachSan.java</file>
+            <file>file:/D:/HK4/JAVA/BOOKING_APP-Test/Booking_App/src/GUI/Component/PhotoFrame.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,9 +6,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
-import MODEL.PhongCard;
+import model.PhongCard;
 import GUI.Component.HotelCard;
-import MODEL.PhongCard;
+import model.PhongCard;
 public class HomePage extends javax.swing.JPanel {
 
     /**

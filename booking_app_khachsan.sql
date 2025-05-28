@@ -119,7 +119,8 @@ END;
 -- ===============================
 -- DỮ LIỆU MẪU
 -- ===============================
-
+select * from NGUOIDUNG
+select * from PHONG
 -- NGUOIDUNG
 INSERT INTO NGUOIDUNG(ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (1, 'kh1@example.com', '123', 'Nguyễn Văn A', 'KHACHHANG');
 INSERT INTO NGUOIDUNG(ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (2, 'hotel1@example.com', '456', 'Sunrise Hotel', 'KHACHSAN');

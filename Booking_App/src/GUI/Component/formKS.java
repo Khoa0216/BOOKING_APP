@@ -7,7 +7,7 @@ package GUI.Component;
 import java.util.Hashtable;
 import java.lang.reflect.Field;
 import javax.swing.*;
-import MODEL.Phong_KS;
+import model.Phong_KS;
 import java.lang.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
