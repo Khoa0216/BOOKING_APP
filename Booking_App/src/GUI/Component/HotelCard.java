@@ -186,7 +186,7 @@ public class HotelCard extends javax.swing.JPanel {
                                 .addGap(21, 21, 21))))
                     .addGroup(rightPanlLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
+                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         rightPanlLayout.setVerticalGroup(
@@ -226,7 +226,7 @@ public class HotelCard extends javax.swing.JPanel {
                     .addComponent(rightPanl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -8,6 +8,7 @@ import java.lang.Integer;
 import java.lang.Double;
 
 public class PhongCard {
+    private Integer idP;
     private String imagePath;
     private String loaiPhong;
     private Integer star;
