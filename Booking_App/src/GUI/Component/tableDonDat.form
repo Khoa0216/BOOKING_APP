@@ -65,6 +65,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="myTableMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -78,8 +81,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSua" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnXuatPdf" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="225" max="32767" attributes="0"/>
+                  <Component id="btnXuatExcel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="232" max="32767" attributes="0"/>
                   <Component id="txtFieldSearch" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
@@ -95,7 +98,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnXuatPdf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXuatExcel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtFieldSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="CBSort" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,10 +125,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnXuatPdf">
+        <Component class="javax.swing.JButton" name="btnXuatExcel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t pdf"/>
+            <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t excel"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatExcelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFieldSearch">
           <Properties>

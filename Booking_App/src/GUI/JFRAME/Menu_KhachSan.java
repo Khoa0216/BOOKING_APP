@@ -27,7 +27,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private final String password = "123";
     
     private final String header[] = {"ID", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"}; 
-    private DefaultTableModel table;
+    private DefaultTableModel model;
     
     private PhongKS_DAO Phong_dao = new PhongKS_DAO();
     private Integer idKS;
@@ -52,7 +52,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());
         scrollBar.getHorizontalScrollBar().setUI(new CustomScrollBar());
         try {
-            this.table = new DefaultTableModel(header, 0);
+            this.model = new DefaultTableModel(header, 0);
 
             String query = "SELECT id, loaiphong, gia, soluongconlai, tongsoluong " +
                            "FROM booking_app.phong " +
@@ -63,7 +63,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             ResultSetMetaData metadata = result.getMetaData();
             int num_col = metadata.getColumnCount();
 
-            table.setRowCount(0);
+            model.setRowCount(0);
 
             while (result.next()) {
                 Vector<Object> row = new Vector<>();
@@ -80,13 +80,13 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                     row.add(value);
                 }
                 //System.out.println("Thêm row: " + row);
-                table.addRow(row);
+                model.addRow(row);
             }
 
             result.close();
 
             myTable.setRowSorter(null);     // Xóa RowSorter đang giữ trạng thái cũ
-            myTable.setModel(table);        // Gán lại model mới
+            myTable.setModel(model);        // Gán lại model mới
             myTable.revalidate();           // Cập nhật lại
             myTable.repaint();
             
@@ -433,6 +433,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             System.out.println("Tên phòng được chọn: " + ID);
             this.loadTable();
             formKS.resetFields();
+            model.removeRow(modelRow);
         } else {
             message.alert(null, "Vui lòng chọn Id trong bảng");
         }

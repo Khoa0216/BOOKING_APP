@@ -14,13 +14,19 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import database.jdbcHelper;
 import utils.message;
+import utils.csvExporter;
 import DAO.DonDat_DAO;
 import java.util.ArrayList;
 import java.util.Arrays;
 import model.DonDat;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableRowSorter;
+import java.time.*;
+
+
 
 public class tableDonDat extends javax.swing.JPanel {
 
@@ -30,15 +36,17 @@ public class tableDonDat extends javax.swing.JPanel {
     private final String user = "booking_app";
     private final String pass = "12345678";
     private jdbcHelper jdbc = new jdbcHelper(user, pass);
+    private int selectedRow = -1;
+    private Integer selectecDonID = -1;
     
     private final ImageIcon icDelete = new ImageIcon(getClass().getResource("/image/delete.png"));
     private final ImageIcon icEdit   = new ImageIcon(getClass().getResource("/image/edit.png"));
-    private final ImageIcon icPdf    = new ImageIcon(getClass().getResource("/image/pdf.png"));
+    private final ImageIcon icSave    = new ImageIcon(getClass().getResource("/image/save_as.png"));
     private final ImageIcon icSearch = new ImageIcon(getClass().getResource("/image/search.png"));
     
     private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", "Mã doanh nghiệp",
         "Tên doang nghiệp", "Giá", "Ngày đặt"}; 
-    private DefaultTableModel table;
+    private DefaultTableModel model;
     
         
     public tableDonDat() {
@@ -54,14 +62,27 @@ public class tableDonDat extends javax.swing.JPanel {
         btnSearch.setIcon(icSearch);
         btnSua.setIcon(icEdit);
         btnXoa.setIcon(icDelete);
-        btnXuatPdf.setIcon(icPdf);
+        btnXuatExcel.setIcon(icSave);
     }
     
     public void loadTable(){
 
         scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());
         scrollBar.getHorizontalScrollBar().setUI(new CustomScrollBar());
-        this.table = new DefaultTableModel(header, 0);
+        this.model = new DefaultTableModel(header, 0){
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                switch (columnIndex) {
+                    case 0: return Integer.class;   
+                    case 1: return Integer.class;    
+                    case 2: return String.class;    
+                    case 3: return Integer.class;   
+                    case 4: return String.class;
+                    case 5: return Long.class;
+                    default: return Object.class;
+                }
+            }
+        };;
         Vector<DonDat> donDatList = DonDat_DAO.selectAll();
         for (DonDat d : donDatList){
             Vector<Object> row = new Vector<>(Arrays.asList(
@@ -73,10 +94,10 @@ public class tableDonDat extends javax.swing.JPanel {
                     d.getGia(),
                     d.getNgayDat()
             ));
-            table.addRow(row);
+            model.addRow(row);
         }
         myTable.setRowSorter(null);     // Xóa RowSorter đang giữ trạng thái cũ
-        myTable.setModel(table);        // Gán lại model mới
+        myTable.setModel(model);        // Gán lại model mới
         myTable.revalidate();           // Cập nhật lại
         myTable.repaint();
     }
@@ -97,7 +118,7 @@ public class tableDonDat extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        btnXuatPdf = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         txtFieldSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         CBSort = new javax.swing.JComboBox<>();
@@ -123,6 +144,11 @@ public class tableDonDat extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        myTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myTableMouseClicked(evt);
+            }
+        });
         scrollBar.setViewportView(myTable);
 
         btnSua.setText("Sửa");
@@ -139,7 +165,12 @@ public class tableDonDat extends javax.swing.JPanel {
             }
         });
 
-        btnXuatPdf.setText("Xuất pdf");
+        btnXuatExcel.setText("Xuất excel");
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
 
         txtFieldSearch.setText("...");
         txtFieldSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -171,8 +202,8 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
-                .addComponent(btnXuatPdf)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(btnXuatExcel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearch)
@@ -186,7 +217,7 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXoa)
                     .addComponent(btnSua)
-                    .addComponent(btnXuatPdf)
+                    .addComponent(btnXuatExcel)
                     .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -221,6 +252,12 @@ public class tableDonDat extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        if (this.selectedRow != -1){
+            Integer rowModel = myTable.convertRowIndexToModel(selectedRow);
+            Integer ID = (Integer) myTable.getModel().getValueAt(rowModel, 0);
+            DonDat_DAO.delete(ID);
+            model.removeRow(rowModel);
+        }       
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSearchActionPerformed
@@ -252,13 +289,33 @@ public class tableDonDat extends javax.swing.JPanel {
         sorter.setSortKeys(keys);
     }//GEN-LAST:event_CBSortActionPerformed
 
+    private void myTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myTableMouseClicked
+        // TODO add your handling code here:
+        this.selectedRow = myTable.getSelectedRow();
+    }//GEN-LAST:event_myTableMouseClicked
+
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        // TODO add your handling code here:
+        LocalDate date = LocalDate.now();
+        String pathDir = "./CSV/DonDat";
+        String name = "donDat_" + String.valueOf(date) + ".csv";
+             
+        try {
+            csvExporter.exportToCSV(myTable, pathDir, name);
+            message.alert(null, "Xuất Excel thành công!");
+        } catch (Exception ex) {
+            Logger.getLogger(tableDonDat.class.getName()).log(Level.SEVERE, null, ex);
+            message.alert(null, "Lỗi: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBSort;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnXuatPdf;
+    private javax.swing.JButton btnXuatExcel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable myTable;
     private javax.swing.JScrollPane scrollBar;

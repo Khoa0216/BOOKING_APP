@@ -46,6 +46,21 @@ public class DonDat_DAO {
         return donDatList;
     }
     
+    static public void delete(Integer id){
+        String query = "delete from booking_app.datphong where id=?";
+        Integer row = jdbcHelper.update(query, id);
+        if (row > 0){
+            message.alert(null, "Xóa thành công");
+        }
+        else{
+            message.alert(null, "Xóa thất bại, vui lòng thử lại");
+        }
+    }
+    
+    static public void update(DonDat d){
+        
+    }
+    
     static public Integer countOrderWithDate(String date){
         String query = "SELECT count(*) \n" +
                         "FROM DATPHONG \n" +

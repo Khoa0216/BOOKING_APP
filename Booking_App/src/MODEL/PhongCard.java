@@ -10,7 +10,7 @@ import java.lang.Double;
 public class PhongCard {
     private String imagePath;
     private String loaiPhong;
-    private Integer start;
+    private Integer star;
     private String location;
     private String description;
     private Double score;
@@ -27,10 +27,10 @@ public class PhongCard {
     
     
     
-    public PhongCard(String imagePath, String loaiPhong, Integer start, String location, String description, Double score, Integer reviews, Double price) {
+    public PhongCard(String imagePath, String loaiPhong, Integer star, String location, String description, Double score, Integer reviews, Double price) {
         this.imagePath = imagePath;
         this.loaiPhong = loaiPhong;
-        this.start = start;
+        this.star = star;
         this.location = location;
         this.description = description;
         this.score = score;
@@ -55,11 +55,11 @@ public class PhongCard {
     }
 
     public Integer getStart() {
-        return start;
+        return star;
     }
 
     public void setStart(Integer start) {
-        this.start = start;
+        this.star = start;
     }
 
     public String getLocation() {
