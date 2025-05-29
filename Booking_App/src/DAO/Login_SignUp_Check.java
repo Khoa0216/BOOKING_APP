@@ -5,6 +5,7 @@ import database.QueryHelper;
 import MODEL.KHACHSAN;
 import MODEL.KHACHHANG;
 import MODEL.NGUOIDUNG;
+import MODEL.ThanhToan_model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -192,5 +193,44 @@ public class Login_SignUp_Check {
         }
         return nguoidung;
         
+    }
+    
+    public static void InsertThanhToan (ThanhToan_model tt) throws ParseException, SQLException{
+        java.sql.Date NgayGiaoDich;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date utilDate = sdf.parse(tt.getNgayGiaoDich());
+        NgayGiaoDich = new java.sql.Date(utilDate.getTime());
+        
+        String sqlThanhToan = "INSERT INTO THANHTOAN (ID,NGAY_GIAODICH,SOTIEN,SOTHE,TEN_CHUTHE,TENTHE) VALUES (?,?,?,?,?,?)";
+        
+        Connection conn = null;
+        try {
+            conn = Oracle_connection.getConnection("booking_app", "12345678");
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sqlThanhToan)) {
+                stmt.setInt(1, tt.getId());
+                stmt.setString(2, tt.getNgayGiaoDich());
+                stmt.setDouble(3, tt.getSotien());
+                stmt.setString(4, tt.getSothe());
+                stmt.setString(5, tt.getChuthe());
+                stmt.setString(6, tt.getTenthe());
+                stmt.executeUpdate();
+            }
+            
+                conn.commit();
+                JOptionPane.showMessageDialog(null, "Xác nhận thanh toán thành công!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+            } catch (SQLException e) {
+                try {
+                    if (conn != null) conn.rollback();
+                } catch (SQLException ex) {
+                }
+                    JOptionPane.showMessageDialog(null, "Thanh toán thất bại: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    if (conn != null) conn.close();
+                } catch (SQLException ex) {
+                }
+            }
     }
 }
