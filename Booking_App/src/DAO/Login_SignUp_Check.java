@@ -30,7 +30,7 @@ public class Login_SignUp_Check {
         */
         try (Connection conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
+            
             // thiết lập các tham số trong câu lệnh SQL (*)
             stmt.setString(1, username);
             stmt.setString(2, password);

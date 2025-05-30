@@ -61,11 +61,11 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         accKH = new accKhachHang(rightPanel, this.CLayout,email);
         
         // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
-        rightPanel.add(homeKH,"home");
+        rightPanel.add(homeKH,"Home page");
         rightPanel.add(accKH,"acc");
         rightPanel.add(homePage, "Home page");
          
-        CLayout.show(rightPanel, "home");
+        CLayout.show(rightPanel, "Home page");
 
     }
     @SuppressWarnings("unchecked")
@@ -218,6 +218,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
 //        homeKH.updateUserInfo(this.email);
 //        CLayout = (CardLayout)(rightPanel.getLayout());
+        homePage.loadData();
         CLayout.show(rightPanel, "Home page"); // Hiện panel "home"  
     }//GEN-LAST:event_HomeBtnActionPerformed
 

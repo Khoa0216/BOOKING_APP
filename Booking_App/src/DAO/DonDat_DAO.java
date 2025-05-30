@@ -6,7 +6,7 @@ package DAO;
  */
 import java.lang.*;
 import java.sql.*;
-import model.DonDat;
+import MODEL.DonDat;
 import java.util.Vector;
 import database.jdbcHelper;
 import java.math.BigDecimal;

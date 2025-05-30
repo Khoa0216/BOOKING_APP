@@ -208,6 +208,7 @@ public class LoginPanel extends javax.swing.JPanel {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
+                
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
                 Menu_KhachHang MenuFrame= new Menu_KhachHang(user);
                 

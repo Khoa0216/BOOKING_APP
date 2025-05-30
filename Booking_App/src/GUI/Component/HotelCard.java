@@ -12,12 +12,12 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.*;
 
-import model.PhongCard;
+import MODEL.PhongCard;
 import GUI.JFRAME.DatPhong;
 import MODEL.NGUOIDUNG;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Phong_KS;
+import MODEL.Phong_KS;
 
 public class HotelCard extends javax.swing.JPanel {
 
@@ -74,6 +74,7 @@ public class HotelCard extends javax.swing.JPanel {
         //Title
         txtTitle.setText(data.getLoaiPhong());
         
+        tenKSLabel.setText(data.getTenKS());
         
         //Star
         numStar.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 0));
@@ -84,7 +85,6 @@ public class HotelCard extends javax.swing.JPanel {
         
         //Location
         txtLocation.setText("<html><font color='#007BFF'><u>" + data.getLocation() + "</u></font></html>");
-        
         
         //Desc
         txtDescription.setText("<html><i>\"" + data.getMoTa()+ "\"</i></html>");
@@ -115,6 +115,7 @@ public class HotelCard extends javax.swing.JPanel {
         numStar = new javax.swing.JPanel();
         txtLocation = new javax.swing.JLabel();
         txtDescription = new javax.swing.JLabel();
+        tenKSLabel = new javax.swing.JLabel();
         rightPanl = new javax.swing.JPanel();
         btnDetail = new javax.swing.JButton();
         btnBooking = new javax.swing.JButton();
@@ -153,6 +154,8 @@ public class HotelCard extends javax.swing.JPanel {
 
         txtDescription.setText("Mô tả");
 
+        tenKSLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
@@ -167,13 +170,15 @@ public class HotelCard extends javax.swing.JPanel {
                         .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(tenKSLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(tenKSLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(numStar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
@@ -259,8 +264,10 @@ public class HotelCard extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(rightPanl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -281,6 +288,7 @@ public class HotelCard extends javax.swing.JPanel {
     private javax.swing.JLabel image;
     private javax.swing.JPanel numStar;
     private javax.swing.JPanel rightPanl;
+    private javax.swing.JLabel tenKSLabel;
     private javax.swing.JLabel txtDescription;
     private javax.swing.JLabel txtLocation;
     private javax.swing.JLabel txtPrice;
