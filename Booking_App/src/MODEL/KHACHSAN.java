@@ -4,6 +4,7 @@ public class KHACHSAN extends NGUOIDUNG{
     private String TENDN;
     private String DIACHI;
     private String MOTA;
+    private String TINH;
     
     public KHACHSAN(){};
     public KHACHSAN(NGUOIDUNG ng){
@@ -87,5 +88,11 @@ public class KHACHSAN extends NGUOIDUNG{
 
     public void setMOTA(String MOTA) {
         this.MOTA = MOTA;
+    }
+    public void setTINH(String tinh){
+        this.TINH = tinh;
+    }
+    public String getTINH(){
+        return this.TINH;
     }
 }

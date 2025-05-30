@@ -49,6 +49,8 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         SignUp_Confirm = new javax.swing.JButton();
         Have_An_Account = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
+        tinhTextField = new javax.swing.JTextField();
+        tinhLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(650, 750));
 
@@ -60,7 +62,6 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Label_Information_Fill.setText("NHẬP THÔNG TIN KHÁCH SẠN");
 
         Business_Name.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Business_Name.setForeground(new java.awt.Color(0, 0, 0));
         Business_Name.setText("Tên Doanh Nghiệp:");
 
         Business_Name_Fill.setBackground(new java.awt.Color(249, 249, 249));
@@ -68,7 +69,6 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Business_Name_Fill.setForeground(new java.awt.Color(102, 102, 102));
 
         Label_Address.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Label_Address.setForeground(new java.awt.Color(0, 0, 0));
         Label_Address.setText("Địa Chỉ:");
 
         Address_Fill.setBackground(new java.awt.Color(249, 249, 249));
@@ -76,7 +76,6 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Address_Fill.setForeground(new java.awt.Color(102, 102, 102));
 
         Label_Describe.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Label_Describe.setForeground(new java.awt.Color(0, 0, 0));
         Label_Describe.setText("Mô Tả");
 
         Describe_Mota_Fill.setBackground(new java.awt.Color(249, 249, 249));
@@ -107,7 +106,6 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Have_An_Account.setText("Tôi đã có tài khoản");
         Have_An_Account.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Login.setBackground(new java.awt.Color(255, 255, 255));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         Login.setForeground(new java.awt.Color(0, 102, 102));
         Login.setText("Đăng Nhập");
@@ -117,6 +115,9 @@ public class SignUpKhachSan extends javax.swing.JPanel {
             }
         });
 
+        tinhLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 16)); // NOI18N
+        tinhLabel.setText("Tỉnh thành");
+
         javax.swing.GroupLayout White_PanelLayout = new javax.swing.GroupLayout(White_Panel);
         White_Panel.setLayout(White_PanelLayout);
         White_PanelLayout.setHorizontalGroup(
@@ -124,39 +125,53 @@ public class SignUpKhachSan extends javax.swing.JPanel {
             .addGroup(White_PanelLayout.createSequentialGroup()
                 .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(White_PanelLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(Label_Information_Fill))
-                    .addGroup(White_PanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(Label_Describe))
-                    .addGroup(White_PanelLayout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Have_An_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(Label_Information_Fill))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Business_Name)
+                            .addComponent(Label_Describe)
+                            .addComponent(Business_Name_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                            .addComponent(Label_Address)
+                            .addComponent(Address_Fill)
+                            .addComponent(tinhTextField)
+                            .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
                     .addGap(65, 65, 65)
                     .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Check_condition)
-                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Business_Name)
-                            .addComponent(Business_Name_Fill)
-                            .addComponent(Label_Address)
-                            .addComponent(Address_Fill)
-                            .addComponent(Describe_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)))
+                        .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(67, Short.MAX_VALUE)))
         );
         White_PanelLayout.setVerticalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(White_PanelLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(65, 65, 65)
                 .addComponent(Label_Information_Fill)
-                .addGap(181, 181, 181)
+                .addGap(18, 18, 18)
+                .addComponent(Business_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Business_Name_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_Address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Address_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tinhTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label_Describe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(SignUp_Confirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,15 +180,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                 .addGap(65, 65, 65))
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
-                    .addGap(198, 198, 198)
-                    .addComponent(Business_Name)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Business_Name_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(Label_Address)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Address_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(41, 41, 41)
+                    .addGap(383, 383, 383)
                     .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Check_condition)
@@ -201,13 +208,15 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         this.khachsan.setTENDN(Business_Name_Fill.getText());
         this.khachsan.setDIACHI(Address_Fill.getText());
         this.khachsan.setMOTA(Describe_Mota_Fill.getText());
+        this.khachsan.setTINH(tinhTextField.getText());
+        
         
         if (!Check_condition.isSelected()) {
             JOptionPane.showMessageDialog(this,
                 "Bạn phải đồng ý với điều khoản để đăng ký!",
                 "Cảnh báo", JOptionPane.WARNING_MESSAGE);
             return;
-        } else if (this.khachsan.getTENDN().isEmpty() || this.khachsan.getDIACHI().isEmpty()) {
+        } else if (this.khachsan.getTENDN().isEmpty() || this.khachsan.getDIACHI().isEmpty() || this.khachsan.getTINH().isEmpty()) {
             JOptionPane.showMessageDialog(this,
                 "Bạn phải điền đầy đủ thông tin!",
                 "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -236,5 +245,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
     private javax.swing.JButton Login;
     private javax.swing.JButton SignUp_Confirm;
     private javax.swing.JPanel White_Panel;
+    private javax.swing.JLabel tinhLabel;
+    private javax.swing.JTextField tinhTextField;
     // End of variables declaration//GEN-END:variables
 }

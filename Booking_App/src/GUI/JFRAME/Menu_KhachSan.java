@@ -5,7 +5,7 @@ import java.util.Vector;
 import java.util.Hashtable;
 import javax.swing.table.DefaultTableModel;
 import database.jdbcHelper;
-import model.Phong_KS;
+import MODEL.Phong_KS;
 import DAO.PhongKS_DAO;
 import GUI.Component.CustomScrollBar;
 import java.lang.Integer;

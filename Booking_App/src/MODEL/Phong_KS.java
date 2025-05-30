@@ -1,4 +1,4 @@
-package model;
+package MODEL;
 
 import java.lang.Integer;
 import java.lang.Long;
@@ -18,6 +18,7 @@ public class Phong_KS {
     private String location;
     private Integer star;
     private Integer numReviews;
+    private String tenKS;
 
     @Override
     public String toString() {
@@ -40,20 +41,29 @@ public class Phong_KS {
         this.numReviews = 0;
     }
 
-    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang, String location, Integer star, Integer numReviews) {
+    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, LocalDate ngayDang, String location, Integer star, Integer numReviews) {
         this.id = id;
         this.idKS = idKS;
         this.loaiPhong = loaiPhong;
         this.moTa = moTa;
         this.gia = gia;
         this.tongSoluong = tongSoluong;
-        this.soluongConLai = soluongConLai;
+        
         this.ngayDang = ngayDang;
         this.location = location;
         this.star = star;
         this.numReviews = numReviews;
     }
 
+    public String getTenKS() {
+        return tenKS;
+    }
+
+    public void setTenKS(String tenKS) {
+        this.tenKS = tenKS;
+    }
+
+    
     public Integer getId() {
         return id;
     }
