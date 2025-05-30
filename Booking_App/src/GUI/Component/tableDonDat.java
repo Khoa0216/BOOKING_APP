@@ -18,7 +18,7 @@ import utils.csvExporter;
 import DAO.DonDat_DAO;
 import java.util.ArrayList;
 import java.util.Arrays;
-import model.DonDat;
+import MODEL.DonDat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;

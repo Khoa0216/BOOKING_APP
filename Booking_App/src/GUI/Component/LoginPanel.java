@@ -200,13 +200,15 @@ public class LoginPanel extends javax.swing.JPanel {
         // lấy thông tin tài khoản và mật khẩu người dùng nhập
         String email = Dien_username.getText(); // Dien_username là TextField cho username
         String password = new String(Dien_password.getPassword());
+
         // Dien_password là PasswordField cho mật khẩu
         String accountType = Login_SignUp_Check.checkLogin(email, password);
-        
+
         if (accountType != null) 
         {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
+            
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
                 
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);

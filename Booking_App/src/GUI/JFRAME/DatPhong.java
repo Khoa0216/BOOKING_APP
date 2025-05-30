@@ -9,8 +9,8 @@ import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import model.DonDat;
-import model.Phong_KS;
+import MODEL.DonDat;
+import MODEL.Phong_KS;
 import utils.DateUtils;
 
 public class DatPhong extends javax.swing.JFrame {

@@ -20,7 +20,6 @@ public class Login_SignUp_Check {
     public static String checkLogin(String username, String password) {
         String query = "SELECT LOAITK FROM BOOKING_APP.NGUOIDUNG WHERE EMAIL = ? AND MATKHAU = ?"; //câu lệnh query SQL, ? là nơi sẽ thay thế giá trị vào. (*)
 
-        
         // cấu trúc try-with-resources
         /*
             try (resource res=...; resource res2=...){
@@ -30,8 +29,8 @@ public class Login_SignUp_Check {
         */
         try (Connection conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            
             // thiết lập các tham số trong câu lệnh SQL (*)
+            
             stmt.setString(1, username);
             stmt.setString(2, password);
 
@@ -40,6 +39,7 @@ public class Login_SignUp_Check {
 
             // nếu có kết quả trả về, lấy loại tài khoản
             if (rs.next()) { // .next() giống như con trỏ, trỏ đến từng dòng của câu lệnh query, khi còn kết quả trỏ sẽ trả về true, ngược lại là false.
+                System.out.println(rs.getString("LOAITK"));
                 return rs.getString("LOAITK");
             } else {
                 return null; // nếu không có kết quả, nghĩa là đăng nhập thất bại
@@ -196,10 +196,7 @@ public class Login_SignUp_Check {
     }
     
     public static void InsertThanhToan (ThanhToan_model tt) throws ParseException, SQLException{
-        java.sql.Date NgayGiaoDich;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date utilDate = sdf.parse(tt.getNgayGiaoDich());
-        NgayGiaoDich = new java.sql.Date(utilDate.getTime());
+        java.sql.Date NgayGiaoDich = java.sql.Date.valueOf(tt.getNgayGiaoDich());
         
         String sqlThanhToan = "INSERT INTO THANHTOAN (ID,NGAY_GIAODICH,SOTIEN,SOTHE,TEN_CHUTHE,TENTHE) VALUES (?,?,?,?,?,?)";
         
@@ -210,7 +207,7 @@ public class Login_SignUp_Check {
 
             try (PreparedStatement stmt = conn.prepareStatement(sqlThanhToan)) {
                 stmt.setInt(1, tt.getId());
-                stmt.setString(2, tt.getNgayGiaoDich());
+                stmt.setDate(2, NgayGiaoDich);
                 stmt.setDouble(3, tt.getSotien());
                 stmt.setString(4, tt.getSothe());
                 stmt.setString(5, tt.getChuthe());

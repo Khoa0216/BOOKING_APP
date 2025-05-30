@@ -1,4 +1,38 @@
 
+CREATE OR REPLACE FUNCTION SO_PHONG_TRONG (
+    v_phong_id      IN NUMBER,
+    v_ngay_nhan     IN DATE,
+    v_ngay_tra      IN DATE
+) RETURN NUMBER IS
+    v_tong_so_luong     NUMBER;
+    v_da_dat            NUMBER;
+    v_con_trong         NUMBER;
+BEGIN
+    -- Lấy tổng số lượng phòng từ bảng PHONG
+    SELECT TONGSOLUONG INTO v_tong_so_luong
+    FROM PHONG
+    WHERE ID = v_phong_id;
+
+    -- Tính tổng số lượng phòng đã được đặt trùng khoảng thời gian
+    SELECT NVL(SUM(SL), 0) INTO v_da_dat
+    FROM DATPHONG
+    WHERE PHONG_ID = v_phong_id
+      AND (
+            (v_ngay_nhan < NGAYTRA AND v_ngay_tra > NGAYNHAN)
+          );
+
+    -- Tính số phòng còn trống
+    v_con_trong := v_tong_so_luong - v_da_dat;
+
+    RETURN v_con_trong;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RETURN -1; -- lỗi
+END;
+/
+
 -- ===============================
 -- HỆ THỐNG ĐẶT PHÒNG - CHỈ HỖ TRỢ KHÁCH HÀNG VÀ KHÁCH SẠN
 -- ===============================
@@ -56,7 +90,7 @@ CREATE TABLE DATPHONG (
     NGAYNHAN DATE,
     NGAYTRA DATE,
     SL NUMBER,
-    TRANGTHAI VARCHAR2(20)
+    DIEMDANHGIA NUMBER
 );
 
 -- 7. THANH TOÁN

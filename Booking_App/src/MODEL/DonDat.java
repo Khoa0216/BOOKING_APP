@@ -1,9 +1,5 @@
 package MODEL;
 
-/**
- *
- * @author Admin
- */
 import java.lang.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
