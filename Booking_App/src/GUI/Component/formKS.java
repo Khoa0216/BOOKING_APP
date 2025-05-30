@@ -47,7 +47,7 @@ public class formKS extends javax.swing.JPanel {
         LocalDate today = LocalDate.now();
         
         return new Phong_KS(ID, ID_KS , loaiPhong, 
-                moTa, gia, soLuong, soLuongConLai, today);
+                moTa, gia, soLuong, soLuongConLai, today, "null", 0, 0);
     }
     
     public void setData(Object... args) {

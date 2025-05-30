@@ -20,6 +20,7 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import GUI.Component.PhotoFrame;
 import javax.swing.JOptionPane;
+import MODEL.NGUOIDUNG;
 
 public class Menu_KhachSan extends javax.swing.JFrame {
     
@@ -99,11 +100,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         }
     }
 
-    public Menu_KhachSan(String tenNguoiDung, Integer ID){
-        this.idKS = ID;
+    public Menu_KhachSan(NGUOIDUNG user){
+        this.idKS = user.getID();
         initComponents();
         loadTable();
-        jLabel6.setText("Hello " + tenNguoiDung);
+        jLabel6.setText("Hello " + user.getHOTEN());
     }
 
     /**

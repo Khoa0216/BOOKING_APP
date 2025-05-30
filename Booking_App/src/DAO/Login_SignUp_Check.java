@@ -178,11 +178,11 @@ public class Login_SignUp_Check {
             
         try {
             if (rs.next()){
-            nguoidung.setID(rs.getInt("ID"));
-            nguoidung.setEMAIL(rs.getString("EMAIL"));
-            nguoidung.setMATKHAU(rs.getString("MATKHAU"));
-            nguoidung.setHOTEN(rs.getString("HOTEN"));
-            nguoidung.setLOAITK(rs.getString("LOAITK"));
+                nguoidung.setID(rs.getInt("ID"));
+                nguoidung.setEMAIL(rs.getString("EMAIL"));
+                nguoidung.setMATKHAU(rs.getString("MATKHAU"));
+                nguoidung.setHOTEN(rs.getString("HOTEN"));
+                nguoidung.setLOAITK(rs.getString("LOAITK"));
             } else {
                 return null;
             }

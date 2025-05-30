@@ -19,15 +19,14 @@ import database.Oracle_connection;
 public class jdbcHelper {
 
 
-    private static String user;
-    private static String pass;
+    public static String user;
+    public static String pass;
 
     
     public jdbcHelper(String user, String pass){
         this.user = user;
         this.pass = pass;
     }
-    
     
 
     public static PreparedStatement getPstm(String sql, Object... args) throws SQLException {

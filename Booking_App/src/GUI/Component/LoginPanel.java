@@ -208,8 +208,8 @@ public class LoginPanel extends javax.swing.JPanel {
             // Hiển thị menu tùy theo loại tài khoản
             // Chuyển hướng tới giao diện chính cho người dùng
             if (accountType.equals("KHACHHANG")){// NẾU LÀ KHÁCH HÀNG.
-                
-                Menu_KhachHang MenuFrame= new Menu_KhachHang(email);
+                NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
+                Menu_KhachHang MenuFrame= new Menu_KhachHang(user);
                 
                 // Lấy kích thước màn hình
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -230,7 +230,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 
             } else if (accountType.equals("KHACHSAN")){ // NẾU LÀ DOANH NGHIỆP.
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
-                Menu_KhachSan MenuFrame = new Menu_KhachSan(user.getHOTEN(), user.getID());
+                Menu_KhachSan MenuFrame = new Menu_KhachSan(user);
                 
                 // Lấy kích thước màn hình
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -249,7 +249,7 @@ public class LoginPanel extends javax.swing.JPanel {
             }
             else if (accountType.equals("ADMIN")){
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
-                Menu_QuanLyDonDat MenuFrame = new Menu_QuanLyDonDat(user.getHOTEN());
+                Menu_QuanLyDonDat MenuFrame = new Menu_QuanLyDonDat(user);
                 
                 // Lấy kích thước màn hình
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

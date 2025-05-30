@@ -13,6 +13,10 @@ import GUI.Component.homeKhachHang;
 import GUI.Component.accKhachHang;
 import java.sql.ResultSet;
 import java.awt.CardLayout;
+import database.jdbcHelper;
+
+import MODEL.NGUOIDUNG;
+import java.sql.SQLException;
 
 
 
@@ -22,7 +26,8 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private accKhachHang accKH;
     private NGUOIDUNG nguoidung; 
     private String email;
-    private HomePage homePage = new HomePage();
+    private HomePage homePage;
+    private NGUOIDUNG user;
     
     public Menu_KhachHang() {
         initComponents();
@@ -41,12 +46,17 @@ public class Menu_KhachHang extends javax.swing.JFrame {
          
         CLayout.show(rightPanel, "Home page");
     }
-    public Menu_KhachHang(String email) {
+    public Menu_KhachHang(NGUOIDUNG user){
+        jdbcHelper.user = "nguoidung_user";
+        jdbcHelper.pass = "12345678";
+        
+        this.user = user;
         initComponents();
-        this.email = email;
+        this.email = user.getEMAIL();
         rightPanel.setLayout(new CardLayout());
         this.CLayout = (CardLayout) rightPanel.getLayout();
         
+        homePage = new HomePage(user);
         homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
         accKH = new accKhachHang(rightPanel, this.CLayout,email);
         
@@ -189,15 +199,13 @@ public class Menu_KhachHang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

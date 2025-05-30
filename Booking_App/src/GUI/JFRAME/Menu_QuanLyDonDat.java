@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Panel;
 import database.jdbcHelper;
 import utils.message;
+import MODEL.NGUOIDUNG;
 public class Menu_QuanLyDonDat extends javax.swing.JFrame {
 
     /**
@@ -21,13 +22,16 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
     private tableDonDat table;
     private DashBoard dashBoard;
     private HomePage homePage;
+    
+    private NGUOIDUNG user;
          
     public Menu_QuanLyDonDat() {
         initComponents();
         initCardLayout();
     }
     
-    public Menu_QuanLyDonDat(String name) {
+    public Menu_QuanLyDonDat(NGUOIDUNG user) {
+        this.user = user;
         initComponents();
         initCardLayout();
     }
@@ -38,7 +42,7 @@ public class Menu_QuanLyDonDat extends javax.swing.JFrame {
         
         dashBoard = new DashBoard();
         table = new tableDonDat();
-        homePage = new HomePage();
+        homePage = new HomePage(this.user);
         
         content.add(table, "table");
         content.add(dashBoard, "dashBoard");

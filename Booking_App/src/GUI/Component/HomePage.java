@@ -8,15 +8,26 @@ import java.awt.*;
 
 import model.PhongCard;
 import GUI.Component.HotelCard;
-import model.PhongCard;
+import MODEL.NGUOIDUNG;
+import DAO.PhongKS_DAO;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Vector;
+import model.Phong_KS;
 public class HomePage extends javax.swing.JPanel {
 
     /**
      * Creates new form HomePage2
      */
-    public HomePage() {
+    private NGUOIDUNG user;
+    private PhongKS_DAO phongKSDao = new PhongKS_DAO();
+    public HomePage(NGUOIDUNG user){
+        this.user = user;
         initComponents();
-        
+        loadData();
+    }
+    
+    public void loadData(){
         listCard.setLayout(new BoxLayout(listCard, BoxLayout.Y_AXIS));
         jScrollPane1.setBorder(null);
         add(jScrollPane1, BorderLayout.CENTER);
@@ -25,30 +36,24 @@ public class HomePage extends javax.swing.JPanel {
         listCard.setBackground(Color.WHITE);
         jScrollPane1.setViewportView(listCard);
         
-        
-        List<PhongCard> listPhong = this.fakeData();
-        
+        Vector<Phong_KS> listPhongKS = phongKSDao.showOnCard();
         int gap=10;
-        for (PhongCard phong : listPhong){
-            HotelCard card = new HotelCard(phong);
-            
+        for(Phong_KS phong : listPhongKS){
+            HotelCard card = new HotelCard(phong, user);
             listCard.add(card);
             listCard.add(Box.createVerticalStrut(gap));
-//            this.addCard(card);
         }
-        
         int cardH = listCard.getComponent(0).getPreferredSize().height;
-        int totalH = listPhong.size() * cardH + (listPhong.size() - 1) * gap;
+        int totalH = listPhongKS.size() * cardH + (listPhongKS.size() - 1) * gap;
         // chiều rộng bất kỳ (BoxLayout sẽ stretch full)
         listCard.setPreferredSize(new Dimension(0, totalH));
-
         // 5. Nhanh hơn cuộn dọc
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        
+        
     }
     
-    
-    
-    public List<PhongCard> fakeData(){
+    public List<PhongCard> fakeData() throws SQLException{
         List<PhongCard> cards = new ArrayList<>();
         String imagePath = "/image/phongKS.png";
         String[] tags = { "Bãi biển", "Miễn phí Wi-Fi", "Hồ bơi" };
@@ -119,9 +124,8 @@ public class HomePage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

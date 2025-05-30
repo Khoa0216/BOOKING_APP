@@ -8,12 +8,14 @@ import model.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
 import java.awt.HeadlessException;
-import java.util.List;
+import java.util.Vector;
 import java.lang.Integer;
 import java.sql.*;
 import javax.swing.*;
 import utils.message;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     @Override
@@ -61,7 +63,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
     }
 
     @Override
-    public List<Phong_KS> selectAll() {
+    public Vector<Phong_KS> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -82,11 +84,46 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
                 Long tongSoLuong = Long.valueOf(rs.getString("TongSoLuong"));
                 Date ngayDang = rs.getDate("Ngay_Dang");
                 return new Phong_KS(Id, idKS, loaiP, 
-                        moTa, gia, tongSoLuong, soLuongConLai, ngayDang.toLocalDate());
+                        moTa, gia, tongSoLuong, soLuongConLai, ngayDang.toLocalDate(),
+                        "null", 10, 10);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public Vector<Phong_KS> showOnCard(){
+        Vector<Phong_KS> listPhong = new Vector<Phong_KS>();
+        String sql = "select * from booking_app.phong p\n"
+                + "join booking_app.khachsan ks on ks.id = p.KhachSan_id";
+        
+        try {
+            ResultSet rs;
+            rs = jdbcHelper.query(sql);
+            while(rs.next()){
+                Integer id = rs.getInt("ID");
+                Integer idKS = rs.getInt("KhachSan_ID");
+                String loaiP = rs.getString("LoaiPhong");
+                Long gia = rs.getLong("gia");
+                String mota = rs.getString("mota");
+                Long soLuongConLai = rs.getLong("SoLuongConLai");
+                Long tongSoLuong = rs.getLong("TongSoLuong");
+                Date ngayDang = rs.getDate("Ngay_Dang");
+                String location = rs.getString("DiaChi"); 
+                Phong_KS phong = new Phong_KS(id, idKS, loaiP, 
+                            mota, gia, tongSoLuong, 
+                        soLuongConLai, ngayDang.toLocalDate(),
+                            location, 5, 10);
+                phong.setImage(0, rs.getBlob("ANH1"));
+                phong.setImage(1, rs.getBlob("ANH2"));
+                phong.setImage(2, rs.getBlob("ANH3"));
+                listPhong.add(phong);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listPhong;
     }
 }

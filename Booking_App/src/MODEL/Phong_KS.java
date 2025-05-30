@@ -3,8 +3,10 @@ package model;
 import java.lang.Integer;
 import java.lang.Long;
 import java.time.LocalDate; 
+import java.sql.*;
 
 public class Phong_KS {
+    private Blob[] images = new Blob[3];
     private Integer id;
     private Integer idKS;
     private String loaiPhong;
@@ -13,6 +15,9 @@ public class Phong_KS {
     private Long tongSoluong;
     private Long soluongConLai;
     private LocalDate ngayDang;
+    private String location;
+    private Integer star;
+    private Integer numReviews;
 
     public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang) {
         this.id = id;
@@ -23,6 +28,23 @@ public class Phong_KS {
         this.tongSoluong = tongSoluong;
         this.soluongConLai = soluongConLai;
         this.ngayDang = ngayDang;
+        this.location = "null";
+        this.star = 0;
+        this.numReviews = 0;
+    }
+
+    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang, String location, Integer star, Integer numReviews) {
+        this.id = id;
+        this.idKS = idKS;
+        this.loaiPhong = loaiPhong;
+        this.moTa = moTa;
+        this.gia = gia;
+        this.tongSoluong = tongSoluong;
+        this.soluongConLai = soluongConLai;
+        this.ngayDang = ngayDang;
+        this.location = location;
+        this.star = star;
+        this.numReviews = numReviews;
     }
 
     public Integer getId() {
@@ -89,5 +111,49 @@ public class Phong_KS {
         this.ngayDang = ngayDang;
     }
 
-    
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
+
+    public Integer getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(Integer numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    // Getter trả về toàn bộ mảng
+    public Blob[] getImages() {
+        return images;
+    }
+
+    // Setter gán toàn bộ mảng (đảm bảo độ dài = 3 nếu cần)
+    public void setImages(Blob[] images) {
+        if (images == null || images.length != 3) {
+            throw new IllegalArgumentException("Array phải có đúng 3 phần tử");
+        }
+        this.images = images;
+    }
+
+    // (Tùy chọn) Getter/Setter theo chỉ số
+    public Blob getImage(int index) {
+        return images[index];
+    }
+
+    public void setImage(int index, Blob image) {
+        images[index] = image;
+    }
 }

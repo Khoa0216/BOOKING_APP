@@ -7,19 +7,30 @@ package GUI.Component;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.sql.*;
 
 import model.PhongCard;
+import GUI.JFRAME.DatPhong;
+import MODEL.NGUOIDUNG;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Phong_KS;
 
 public class HotelCard extends javax.swing.JPanel {
 
     /**
      * Creates new form HotelCard2
      */
+    private NGUOIDUNG user;
     public HotelCard() {
         initComponents();
     }
     
-    public HotelCard(PhongCard data){
+    public HotelCard(Phong_KS data, NGUOIDUNG user){
+        this.user = user;
         initComponents();
         customImg(data);
         customContent(data);
@@ -29,25 +40,44 @@ public class HotelCard extends javax.swing.JPanel {
         return this;
     };
     
-    public void customImg(PhongCard data){
+    public void customImg(Phong_KS data){
         // ----- LEFT: ảnh lớn -----
-        String imagePath = data.getImagePath();
-        ImageIcon raw = new ImageIcon(getClass().getResource(imagePath));
-        Image scaled = raw.getImage()
-            .getScaledInstance(370, 290, Image.SCALE_SMOOTH);
-        
-        image.setIcon(new ImageIcon(scaled));
-        image.setBorder(new LineBorder(Color.LIGHT_GRAY,1,true));
+        Blob[] images = data.getImages();
+        for (int i = 0; i < 3; i++) {
+            if (images[i] != null) {
+                byte[] imageData;
+                try {
+                    imageData = images[i].getBytes(1, (int) images[i].length());
+                    BufferedImage img;
+                    try {
+                        img = ImageIO.read(new ByteArrayInputStream(imageData));
+                        ImageIcon icon = new ImageIcon(
+                            img.getScaledInstance(370, 290, Image.SCALE_SMOOTH));
+                        image.setIcon(icon);
+                        image.setBorder(new LineBorder(Color.LIGHT_GRAY,1,true));
+                    } catch (IOException ex) {
+                        Logger.getLogger(HotelCard.class.getName()).log(Level.SEVERE, null, ex);
+                    }                 
+                    return;
+                } catch (SQLException ex) {
+                    Logger.getLogger(HotelCard.class.getName()).log(Level.SEVERE, null, ex);
+                }   
+            } else {
+                image.setIcon(null);
+                image.setText("Không có ảnh");
+                image.setBorder(new LineBorder(Color.LIGHT_GRAY,1,true));
+            }
+        }
     }
     
-    public void customContent(PhongCard data){
+    public void customContent(Phong_KS data){
         //Title
         txtTitle.setText(data.getLoaiPhong());
         
         
         //Star
         numStar.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 0));
-        for (int i = 1; i <= data.getStart(); i++) {
+        for (int i = 1; i <= data.getStar(); i++) {
             String path = "/image/star.png";
             numStar.add(new JLabel(new ImageIcon(getClass().getResource(path))));
         }
@@ -57,16 +87,16 @@ public class HotelCard extends javax.swing.JPanel {
         
         
         //Desc
-        txtDescription.setText("<html><i>\"" + data.getDescription() + "\"</i></html>");
+        txtDescription.setText("<html><i>\"" + data.getMoTa()+ "\"</i></html>");
         txtDescription.setForeground(Color.DARK_GRAY);
         
         //Right Pannel
-        String desc_score = data.getScore() >= 9 ? "Xuất sắc" : data.getScore() >= 8 ? "Tuyệt vời" : "Rất tốt";
+        String desc_score = data.getStar() >= 4 ? "Xuất sắc" : data.getStar() >= 3 ? "Trung bình" : "Tệ";
         txtScore.setText(desc_score);
         
-        txtReviews.setText(data.getReviews() + " Reviews");
+        txtReviews.setText(data.getNumReviews()+ " Reviews");
         
-        txtPrice.setText(String.valueOf(data.getPrice()));
+        txtPrice.setText(String.valueOf(data.getGia()));
          
     }
 
@@ -155,6 +185,11 @@ public class HotelCard extends javax.swing.JPanel {
         btnDetail.setText("Xem chi tiết");
 
         btnBooking.setText("Đặt");
+        btnBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingActionPerformed(evt);
+            }
+        });
 
         txtScore.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtScore.setText("Score");
@@ -186,7 +221,7 @@ public class HotelCard extends javax.swing.JPanel {
                                 .addGap(21, 21, 21))))
                     .addGroup(rightPanlLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
+                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         rightPanlLayout.setVerticalGroup(
@@ -229,6 +264,14 @@ public class HotelCard extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
+        // TODO add your handling code here:
+        DatPhong datPhongFrame = new DatPhong();
+        datPhongFrame.pack();                        // hoặc setSize(...)
+        datPhongFrame.setLocationRelativeTo(null);   // canh giữa màn hình
+        datPhongFrame.setVisible(true);
+    }//GEN-LAST:event_btnBookingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
