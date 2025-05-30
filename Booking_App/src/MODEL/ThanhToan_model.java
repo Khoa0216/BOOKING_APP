@@ -1,15 +1,17 @@
 package MODEL;
 
+import java.time.LocalDate;
+
 public class ThanhToan_model {
     private int id;
-    private String NgayGiaoDich;
-    private double sotien;
+    private LocalDate NgayGiaoDich;
+    private Long sotien;
     private String sothe;
     private String chuthe;
     private String tenthe;
     
     public ThanhToan_model(){};
-    public ThanhToan_model(int id, double sotien){
+    public ThanhToan_model(int id, Long sotien){
         this.id=id;
         this.sotien=sotien;
     }
@@ -17,7 +19,7 @@ public class ThanhToan_model {
         return id;
     }
     
-    public String getNgayGiaoDich(){
+    public LocalDate getNgayGiaoDich(){
         return NgayGiaoDich;
     }
     
@@ -41,11 +43,11 @@ public class ThanhToan_model {
         this.id=id;
     }
     
-    public void setNgayGiaoDich(String NgayGiaoDich){
+    public void setNgayGiaoDich(LocalDate NgayGiaoDich){
         this.NgayGiaoDich=NgayGiaoDich;
     }
     
-    public void setSotien(double sotien){
+    public void setSotien(Long sotien){
         this.sotien=sotien;
     }
     

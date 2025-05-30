@@ -25,15 +25,17 @@ public class HotelCard extends javax.swing.JPanel {
      * Creates new form HotelCard2
      */
     private NGUOIDUNG user;
+    private Phong_KS phong;
     public HotelCard() {
         initComponents();
     }
     
-    public HotelCard(Phong_KS data, NGUOIDUNG user){
+    public HotelCard(Phong_KS phong, NGUOIDUNG user){
+        this.phong = phong;
         this.user = user;
         initComponents();
-        customImg(data);
-        customContent(data);
+        customImg(phong);
+        customContent(phong);
     }
     
     public JPanel getCard(){
@@ -267,7 +269,7 @@ public class HotelCard extends javax.swing.JPanel {
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
         // TODO add your handling code here:
-        DatPhong datPhongFrame = new DatPhong();
+        DatPhong datPhongFrame = new DatPhong(this.user, this.phong);
         datPhongFrame.pack();                        // hoặc setSize(...)
         datPhongFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         datPhongFrame.setVisible(true);

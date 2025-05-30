@@ -4,6 +4,7 @@ package DAO;
  *
  * @author Admin
  */
+import database.Oracle_connection;
 import java.lang.*;
 import java.sql.*;
 import model.DonDat;
@@ -14,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.message;
 import java.time.*;
+import java.sql.Date;
+
 public class DonDat_DAO {
     static public Vector<DonDat> selectAll(){
         Vector<DonDat> donDatList = new Vector<>();
@@ -67,5 +70,64 @@ public class DonDat_DAO {
                         "WHERE TRUNC(ngay_dat) = TO_DATE(?,'YYYY-MM-DD')";
         BigDecimal cnt = (BigDecimal) jdbcHelper.value(query, date);
         return cnt.intValue();
+    }
+    
+    static public int insert(DonDat d){
+        //insert xong sẽ trả về id vừa đc sinh ra
+        
+        String sqlInsert = "insert into booking_app.datphong\n"
+                + "(KhachHang_id, Phong_id, Ngay_dat, NgayNhan, Ngay_tra, SL)\n"
+                + "values (?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        
+        try {
+            int newId = 0;
+            conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
+            conn.setAutoCommit(false);
+
+            // 1. Insert DonDat và lấy ID sinh tự động
+            
+            try (PreparedStatement stmt1 = conn.prepareStatement(sqlInsert, new String[]{"ID"})) {
+                stmt1.setInt(1, d.getIdKH());
+                stmt1.setInt(2, d.getIdP());
+                stmt1.setDate(3, Date.valueOf(d.getNgayDat().toLocalDate()));
+                stmt1.setDate(4, Date.valueOf(d.getNgayNhan()));
+                stmt1.setDate(5, Date.valueOf(d.getNgayTra()));
+                stmt1.setInt(6, d.getSl());
+                stmt1.executeUpdate();
+
+                try (ResultSet rs = stmt1.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        newId = rs.getInt(1);
+                    } else {
+                        throw new SQLException("Không lấy được ID đon đặt vừa sinh ra");
+                    }
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+            if (newId == 0){
+                message.alert(null, "Không lấy được ID đon đặt vừa sinh ra");
+            }
+            
+            conn.commit();
+            return newId;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return 0;
+    }
+    
+    static public Long tongTien(DonDat d){
+        String sql = "select gia\n"
+                + "from booking_app.phong\n"
+                + "where id = ?";
+        BigDecimal bd = (BigDecimal) jdbcHelper.value(sql, d.getIdP());
+        if (bd == null) return 0L;
+        BigDecimal total = bd.multiply(BigDecimal.valueOf(d.getSl()));
+        return total.longValue();
     }
 }

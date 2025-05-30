@@ -6,11 +6,15 @@ package model;
  */
 import java.lang.*;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 public class DonDat {
     private Integer id, idKH, idKS, idP;
     private String tenKH, tenKS;
     private Long gia;
     private LocalDateTime ngayDat;
+    
+    private LocalDate ngayNhan, ngayTra;
+    Integer sl = 0;
 
     public DonDat() {
     }
@@ -25,6 +29,32 @@ public class DonDat {
         this.gia = gia;
         this.ngayDat = ngayDat;
     }
+
+    public Integer getSl() {
+        return sl;
+    }
+
+    public void setSl(Integer sl) {
+        this.sl = sl;
+    }
+
+    public LocalDate getNgayNhan() {
+        return ngayNhan;
+    }
+
+    public void setNgayNhan(LocalDate ngayNhan) {
+        this.ngayNhan = ngayNhan;
+    }
+
+    public LocalDate getNgayTra() {
+        return ngayTra;
+    }
+
+    public void setNgayTra(LocalDate ngayTra) {
+        this.ngayTra = ngayTra;
+    }
+    
+    
 
     public Integer getId() {
         return id;

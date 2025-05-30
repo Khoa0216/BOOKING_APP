@@ -15,6 +15,13 @@ public class NGUOIDUNG {
         this.HOTEN=HOTEN;
     }
 
+    @Override
+    public String toString() {
+        return "NGUOIDUNG{" + "ID=" + ID + ", EMAIL=" + EMAIL + ", MATKHAU=" + MATKHAU + ", HOTEN=" + HOTEN + ", LOAITK=" + LOAITK + '}';
+    }
+    
+    
+
     public String getEMAIL() {
         return EMAIL;
     }

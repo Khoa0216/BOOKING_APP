@@ -61,14 +61,16 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="textfield_chuthe" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="label_sothe" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textfield_sothe" alignment="0" pref="400" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textfield_chuthe" alignment="0" max="32767" attributes="0"/>
+                              <Component id="label_sothe" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="textfield_sothe" alignment="0" max="32767" attributes="0"/>
                               <Component id="label_tenchuthe" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="label_sotien" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="label_sotien" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtTongTien" min="-2" pref="168" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="label_hienthisotien" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -133,12 +135,15 @@
                       <Component id="textfield_ngayhethan" pref="35" max="32767" attributes="0"/>
                       <Component id="textfield_chuthe" pref="35" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="label_sotien" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="label_sotien" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTongTien" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="label_maPin" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="textfield_maPin" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="label_hienthisotien" min="-2" pref="35" max="-2" attributes="0"/>
@@ -151,7 +156,7 @@
                   <Component id="label_hoac" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="huy_button" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -439,6 +444,13 @@
               <Color blue="66" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTongTien">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f9" green="f9" red="f9" type="rgb"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

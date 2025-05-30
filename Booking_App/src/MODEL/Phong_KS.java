@@ -19,6 +19,13 @@ public class Phong_KS {
     private Integer star;
     private Integer numReviews;
 
+    @Override
+    public String toString() {
+        return "Phong_KS{" + "id=" + id + ", idKS=" + idKS + ", loaiPhong=" + loaiPhong + ", moTa=" + moTa + ", gia=" + gia + ", tongSoluong=" + tongSoluong + ", soluongConLai=" + soluongConLai + ", ngayDang=" + ngayDang + ", location=" + location + ", star=" + star + ", numReviews=" + numReviews + '}';
+    }
+    
+    
+
     public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang) {
         this.id = id;
         this.idKS = idKS;
