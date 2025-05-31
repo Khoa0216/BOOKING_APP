@@ -112,13 +112,13 @@ public class Phong_KS {
         this.tongSoluong = tongSoluong;
     }
 
-    public Long getSoluongConLai() {
-        return soluongConLai;
-    }
-
-    public void setSoluongConLai(Long soluongConLai) {
-        this.soluongConLai = soluongConLai;
-    }
+//    public Long getSoluongConLai() {
+//        return soluongConLai;
+//    }
+//
+//    public void setSoluongConLai(Long soluongConLai) {
+//        this.soluongConLai = soluongConLai;
+//    }
 
     public LocalDate getNgayDang() {
         return ngayDang;

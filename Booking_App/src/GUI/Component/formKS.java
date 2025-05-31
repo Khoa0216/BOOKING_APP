@@ -27,21 +27,18 @@ public class formKS extends javax.swing.JPanel {
         txtLoaiPhong.setText("");
         txtMota.setText("");
         txtSoLuong.setText("");
-        txtSoLuongConLai.setText("");
     }
     
     public void setFields(String LPString, String GiaString, String SLString, String CLString) {
         txtGia.setText(GiaString);
         txtLoaiPhong.setText(LPString);
         txtSoLuong.setText(SLString);
-        txtSoLuongConLai.setText(CLString);
     }
     
     public Phong_KS getData(Integer ID_KS){
         Integer ID = 1;
         String loaiPhong = txtLoaiPhong.getText();
         Long soLuong = Long.valueOf(txtSoLuong.getText());
-        Long soLuongConLai = Long.valueOf(txtSoLuongConLai.getText());
         Long gia = Long.valueOf(txtGia.getText());
         String moTa = txtMota.getText();
         LocalDate today = LocalDate.now();
@@ -54,7 +51,7 @@ public class formKS extends javax.swing.JPanel {
     // Tập hợp tất cả các thành phần cần gán dữ liệu
     JComponent[] components = new JComponent[] {
         txtLoaiPhong, txtSoLuong,
-        txtSoLuongConLai, txtGia, txtMota // txtMoTa là JTextArea
+        txtGia, txtMota // txtMoTa là JTextArea
     };
 
     int len = Math.min(args.length, components.length);
@@ -85,8 +82,6 @@ public class formKS extends javax.swing.JPanel {
         txtLoaiPhong = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSoLuongConLai = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMota = new javax.swing.JTextArea();
@@ -133,19 +128,6 @@ public class formKS extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(450, 20, 132, 22);
 
-        txtSoLuongConLai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSoLuongConLaiActionPerformed(evt);
-            }
-        });
-        add(txtSoLuongConLai);
-        txtSoLuongConLai.setBounds(620, 80, 170, 20);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel8.setText("Số lượng còn lại");
-        add(jLabel8);
-        jLabel8.setBounds(450, 80, 132, 22);
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Mô tả");
         add(jLabel9);
@@ -171,22 +153,16 @@ public class formKS extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoaiPhongActionPerformed
 
-    private void txtSoLuongConLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongConLaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoLuongConLaiActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtLoaiPhong;
     private javax.swing.JTextArea txtMota;
     private javax.swing.JTextField txtSoLuong;
-    private javax.swing.JTextField txtSoLuongConLai;
     // End of variables declaration//GEN-END:variables
 }

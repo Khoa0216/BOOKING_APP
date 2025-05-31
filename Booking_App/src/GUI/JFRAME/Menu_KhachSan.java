@@ -455,11 +455,10 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             Phong_KS data = this.Phong_dao.selectByID(ID);
             String loaiPhong = data.getLoaiPhong();
             Long soLuong = data.getTongSoluong();
-            Long soLuongConLai = data.getSoluongConLai();
             Long gia = data.getGia();
             String moTa = data.getMoTa();
             
-            formKS.setData(loaiPhong, soLuong, soLuongConLai, gia, moTa);
+            formKS.setData(loaiPhong, soLuong, gia, moTa);
 //            formKS.setFields(myTable.getModel().getValueAt(modelRow, 1).toString(),
 //                            myTable.getModel().getValueAt(modelRow, 2).toString(),
 //                            myTable.getModel().getValueAt(modelRow, 3).toString(),
