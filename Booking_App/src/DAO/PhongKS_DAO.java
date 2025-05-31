@@ -7,13 +7,14 @@ package DAO;
 import MODEL.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
+import database.Oracle_connection;
 import java.awt.HeadlessException;
 import java.util.Vector;
 import java.lang.Integer;
 import java.sql.*;
 import javax.swing.*;
 import utils.message;
-import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,9 +63,30 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
     }
 
-    @Override
-    public Vector<Phong_KS> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public Vector<Phong_KS> showListPhong(Integer idKS) {
+        Vector<Phong_KS> listPhongKs = new Vector<>();
+        try {
+            String sql = "select * from booking_app.phong\n"
+                    + "where KhachSan_id=?";
+            ResultSet rs = jdbcHelper.query(sql, idKS);
+            while(rs.next()){
+                Integer id = rs.getInt("id");
+                String loaiP = rs.getString("loaiphong");
+                Long gia = rs.getLong("gia");
+                String moTa = rs.getString("mota");
+                Long sl = rs.getLong("TongSoLuong");
+                Blob anh1 = rs.getBlob("anh1");
+                Blob anh2 = rs.getBlob("anh2");
+                Blob anh3 = rs.getBlob("anh3");
+                Phong_KS phong = new Phong_KS(id, idKS, loaiP, moTa, gia, sl);
+                
+                listPhongKs.add(phong);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listPhongKs;
     }
 
     @Override
@@ -227,5 +249,53 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
             Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listPhong;
+    }
+
+    @Override
+    public List<Phong_KS> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public int insertAndReturnID(Phong_KS phong){
+        String queryInsert = "Insert into booking_app.PHONG\n"
+                + "(KHACHSAN_ID, LOAIPHONG, GIA, MOTA , TONGSOLUONG, NGAY_DANG) \n" 
+                + "values (?, ?, ?, ?, ?, ?)\n"
+                + "returning id into ?";
+        try{
+            int newId = 0;
+            Connection conn = Oracle_connection.getConnection("khachsan", "123");
+            conn.setAutoCommit(false);
+            
+            try (PreparedStatement cstmt = conn.prepareStatement(queryInsert, new String[]{"ID"})) {
+            
+            
+                cstmt.setInt(1, phong.getIdKS());
+                cstmt.setString(2, phong.getLoaiPhong());
+                cstmt.setLong(3, phong.getGia());
+                cstmt.setString(4, phong.getMoTa());
+                cstmt.setLong(5, phong.getTongSoluong());
+                cstmt.setDate(6, Date.valueOf(phong.getNgayDang()));
+                
+                try (ResultSet rs = cstmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        newId = rs.getInt(1);
+                    } else {
+                        throw new SQLException("Không lấy được ID đon đặt vừa sinh ra");
+                    }
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+            conn.commit();
+            return newId;
+            
+        }catch(SQLException ex){
+            Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        message.alert(null, "Không lấy đc id phòng vừa sinh ra");
+        return 0;
     }
 }

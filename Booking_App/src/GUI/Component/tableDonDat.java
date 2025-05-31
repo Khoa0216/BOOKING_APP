@@ -203,7 +203,7 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
                 .addComponent(btnXuatExcel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearch)

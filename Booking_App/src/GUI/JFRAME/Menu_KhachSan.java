@@ -8,6 +8,8 @@ import database.jdbcHelper;
 import MODEL.Phong_KS;
 import DAO.PhongKS_DAO;
 import GUI.Component.CustomScrollBar;
+import GUI.Component.DashBoard;
+import GUI.Component.HomePage;
 import java.lang.Integer;
 import java.lang.Long;
 import utils.message;
@@ -18,20 +20,21 @@ import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
-import GUI.Component.PhotoFrame;
+import GUI.Component.tableDonDat;
+import GUI.Component.tablePhongKS;
 import javax.swing.JOptionPane;
 import MODEL.NGUOIDUNG;
+import java.awt.CardLayout;
 
 public class Menu_KhachSan extends javax.swing.JFrame {
     
-    private final String user = "khachsan";
-    private final String password = "123";
+    private CardLayout cardLayout;
+    private tablePhongKS table;
+    private DashBoard dashBoard;
+    private HomePage homePage;
     
-    private final String header[] = {"ID", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"}; 
-    private DefaultTableModel model;
-    
-    private PhongKS_DAO Phong_dao = new PhongKS_DAO();
     private Integer idKS;
+    private NGUOIDUNG user;
     private int selectedRow=-1;
     
     private int selectedPhongID = -1; //1 phần của chức năng thêm ảnh
@@ -39,73 +42,36 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     
 //    OracleDataBase_Connection my_conn = new OracleDataBase_Connection();
 //    Connection conn = null;
-    private jdbcHelper jdbc = new jdbcHelper(this.user, this.password);
     
     public Menu_KhachSan() {
         initComponents();
-        loadTable();
-    }
-    public boolean isCellEditable(int row, int column) {
-        return false; // KHÔNG cho sửa ô nào cả
     }
     
-    public void loadTable() {
-        scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());
-        scrollBar.getHorizontalScrollBar().setUI(new CustomScrollBar());
-        try {
-            this.model = new DefaultTableModel(header, 0);
-
-            String query = "SELECT id, loaiphong, gia, soluongconlai, tongsoluong " +
-                           "FROM booking_app.phong " +
-                           "WHERE KhachSan_ID = ? " +
-                           "ORDER BY gia DESC";
-
-            ResultSet result = this.jdbc.query(query, this.idKS);
-            ResultSetMetaData metadata = result.getMetaData();
-            int num_col = metadata.getColumnCount();
-
-            model.setRowCount(0);
-
-            while (result.next()) {
-                Vector<Object> row = new Vector<>();
-
-                for (int i = 1; i <= num_col; i++) {
-                    String colName = metadata.getColumnName(i).toLowerCase();
-                    Object value;
-
-                    switch (colName) {
-                        case "gia", "soluongconlai", "tongsoluong", "id" -> value = result.getLong(i);
-                        default -> value = result.getString(i);
-                    }
-
-                    row.add(value);
-                }
-                //System.out.println("Thêm row: " + row);
-                model.addRow(row);
-            }
-
-            result.close();
-
-            myTable.setRowSorter(null);     // Xóa RowSorter đang giữ trạng thái cũ
-            myTable.setModel(model);        // Gán lại model mới
-            myTable.revalidate();           // Cập nhật lại
-            myTable.repaint();
-            
-            // Ẩn cột ID (cột đầu tiên)
-            TableColumnModel columnModel = myTable.getColumnModel();
-            columnModel.removeColumn(columnModel.getColumn(0));
-
-        } catch (Exception e) {
-            e.printStackTrace(); // Ghi log lỗi để dễ debug hơn
-        }
-    }
-
     public Menu_KhachSan(NGUOIDUNG user){
+        new jdbcHelper("khachsan", "123");
         this.idKS = user.getID();
+        this.user = user;
         initComponents();
-        loadTable();
-        jLabel6.setText("Hello " + user.getHOTEN());
+        initCardLayout();
     }
+    
+    public void initCardLayout(){
+        content.setLayout(new CardLayout());
+        this.cardLayout = (CardLayout) content.getLayout();
+        
+        dashBoard = new DashBoard();
+        table = new tablePhongKS(this.user);
+        homePage = new HomePage(this.user);
+        
+        content.add(table, "table");
+        content.add(dashBoard, "dashBoard");
+        content.add(homePage, "Home Page");
+        
+        cardLayout.show(content, "table");
+    }
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,238 +83,135 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private void initComponents() {
 
         DashBoard = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         UserIcon = new javax.swing.JLabel();
-        scrollBar = new javax.swing.JScrollPane();
-        myTable = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        back = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
-        insert = new javax.swing.JButton();
-        update = new javax.swing.JButton();
-        txtSearch = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        formKS = new GUI.Component.formKS();
-        jLabel6 = new javax.swing.JLabel();
+        HomeBtn = new javax.swing.JButton();
+        ManageBtn = new javax.swing.JButton();
+        HelpBtn = new javax.swing.JButton();
+        AccountBtn = new javax.swing.JButton();
+        YourEmail = new javax.swing.JLabel();
+        orderBtn = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1720, 1025));
+        setPreferredSize(new java.awt.Dimension(1708, 1037));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 102, 102));
-        jButton3.setText("Thêm dịch vụ");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 102, 102));
-        jButton4.setText("Quản lý đơn đặt");
-        jButton4.setBorderPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 102, 102));
-        jButton5.setText("Quản lý tài khoản");
-        jButton5.setBorderPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user (1).png"))); // NOI18N
+
+        HomeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        HomeBtn.setForeground(new java.awt.Color(0, 102, 102));
+        HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-icon-silhouette.png"))); // NOI18N
+        HomeBtn.setText("Trang chủ");
+        HomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeBtnActionPerformed(evt);
+            }
+        });
+
+        ManageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        ManageBtn.setForeground(new java.awt.Color(0, 102, 102));
+        ManageBtn.setText("Quản lý đặt");
+        ManageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageBtnActionPerformed(evt);
+            }
+        });
+
+        HelpBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        HelpBtn.setForeground(new java.awt.Color(0, 102, 102));
+        HelpBtn.setText("Trợ giúp");
+
+        AccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        AccountBtn.setForeground(new java.awt.Color(0, 102, 102));
+        AccountBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
+        AccountBtn.setText("Tài khoản");
+        AccountBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccountBtnActionPerformed(evt);
+            }
+        });
+
+        YourEmail.setForeground(new java.awt.Color(255, 255, 255));
+        YourEmail.setText("Your Email");
+
+        orderBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        orderBtn.setForeground(new java.awt.Color(0, 102, 102));
+        orderBtn.setText("Đặt");
+        orderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderBtnActionPerformed(evt);
+            }
+        });
+
+        btnThongKe.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        btnThongKe.setForeground(new java.awt.Color(0, 102, 102));
+        btnThongKe.setText("Thống Kê");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DashBoardLayout = new javax.swing.GroupLayout(DashBoard);
         DashBoard.setLayout(DashBoardLayout);
         DashBoardLayout.setHorizontalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashBoardLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
+            .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(DashBoardLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(106, 106, 106))
         );
         DashBoardLayout.setVerticalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashBoardLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(UserIcon)
-                .addGap(88, 88, 88)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(UserIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
-        scrollBar.setPreferredSize(new java.awt.Dimension(1291, 432));
+        content.setMaximumSize(new java.awt.Dimension(32767, 1000000000));
+        content.setPreferredSize(new java.awt.Dimension(1320, 1025));
+        content.setRequestFocusEnabled(false);
 
-        myTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Loại Phòng", "Giá", "Số lượng còn lại", "Tổng số lượng"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        myTable.setCellSelectionEnabled(true);
-        myTable.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                myTableAncestorRemoved(evt);
-            }
-        });
-        myTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                myTableMouseClicked(evt);
-            }
-        });
-        scrollBar.setViewportView(myTable);
-        myTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-
-        back.setText("Quay lại");
-        back.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        back.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
-
-        delete.setText("Xóa");
-        delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        delete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-
-        insert.setText("Thêm");
-        insert.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        insert.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        insert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertActionPerformed(evt);
-            }
-        });
-
-        update.setText("Cập nhật");
-        update.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        update.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-
-        txtSearch.setText("tìm kiếm");
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Ảnh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(update)
-                        .addGap(18, 18, 18)
-                        .addComponent(insert)
-                        .addGap(18, 18, 18)
-                        .addComponent(delete)
-                        .addGap(18, 18, 18)
-                        .addComponent(back)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))))
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1402, Short.MAX_VALUE)
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {back, delete, insert, update});
-
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(insert)
-                    .addComponent(delete)
-                    .addComponent(back)
-                    .addComponent(update)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {back, delete, insert, update});
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel6.setText("User name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -356,133 +219,39 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(formKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1402, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DashBoard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(formKS, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(49, 49, 49))
+            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
+        cardLayout.show(content, "Home Page");
+    }//GEN-LAST:event_HomeBtnActionPerformed
+
+    private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        cardLayout.show(content, "table");
+    }//GEN-LAST:event_ManageBtnActionPerformed
 
-    private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
+    private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
+
+    }//GEN-LAST:event_AccountBtnActionPerformed
+
+    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
         // TODO add your handling code here:
-        Phong_KS data = formKS.getData(this.idKS);
+    }//GEN-LAST:event_orderBtnActionPerformed
 
-        this.Phong_dao.insert(data);
-        formKS.resetFields();
-        this.loadTable();
-    }//GEN-LAST:event_insertActionPerformed
-
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-
-        if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
-            int modelRow = myTable.convertRowIndexToModel(selectedRow);
-            Phong_KS data = formKS.getData(this.idKS);
-            data.setId(Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString()));
-            this.Phong_dao.update(data);
-            this.loadTable();
-            formKS.resetFields();
-        } else {
-            message.alert(null, "Vui lòng chọn Id trong bảng");
-        }     
-    }//GEN-LAST:event_updateActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
-        if (selectedRow != -1) { // Kiểm tra đã chọn dòng nào chưa
-            int modelRow = myTable.convertRowIndexToModel(selectedRow);
-            int ID = Integer.parseInt(myTable.getModel().getValueAt(modelRow, 0).toString());
-            
-            this.Phong_dao.delete(ID);
-            System.out.println("Tên phòng được chọn: " + ID);
-            this.loadTable();
-            formKS.resetFields();
-            model.removeRow(modelRow);
-        } else {
-            message.alert(null, "Vui lòng chọn Id trong bảng");
-        }
-    }//GEN-LAST:event_deleteActionPerformed
-
-    private void myTableAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_myTableAncestorRemoved
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_myTableAncestorRemoved
-
-    private void myTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myTableMouseClicked
-        // TODO add your handling code here:
-        selectedRow = myTable.getSelectedRow();
-        if (selectedRow != -1){
-            int modelRow = myTable.convertRowIndexToModel(selectedRow);
-            Integer ID = Integer.valueOf(myTable.getModel().getValueAt(modelRow, 0).toString());
-            this.selectedPhongID = ID;
-            Phong_KS data = this.Phong_dao.selectByID(ID);
-            String loaiPhong = data.getLoaiPhong();
-            Long soLuong = data.getTongSoluong();
-            Long gia = data.getGia();
-            String moTa = data.getMoTa();
-            
-            formKS.setData(loaiPhong, soLuong, gia, moTa);
-//            formKS.setFields(myTable.getModel().getValueAt(modelRow, 1).toString(),
-//                            myTable.getModel().getValueAt(modelRow, 2).toString(),
-//                            myTable.getModel().getValueAt(modelRow, 3).toString(),
-//                            myTable.getModel().getValueAt(modelRow, 4).toString());
-        }
-    }//GEN-LAST:event_myTableMouseClicked
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        // TODO add your handling code here:
-        selectedRow=-1;
-        formKS.resetFields();
-    }//GEN-LAST:event_backActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn một phòng trong bảng trước!");
-        return;
-    }
-    new PhotoFrame(selectedPhongID).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cardLayout.show(content, "dashBoard");
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,22 +296,15 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AccountBtn;
     private javax.swing.JPanel DashBoard;
+    private javax.swing.JButton HelpBtn;
+    private javax.swing.JButton HomeBtn;
+    private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
-    private javax.swing.JButton back;
-    private javax.swing.JButton delete;
-    private GUI.Component.formKS formKS;
-    private javax.swing.JButton insert;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable myTable;
-    private javax.swing.JScrollPane scrollBar;
-    private javax.swing.JTextField txtSearch;
-    private javax.swing.JButton update;
+    private javax.swing.JLabel YourEmail;
+    private javax.swing.JButton btnThongKe;
+    private javax.swing.JPanel content;
+    private javax.swing.JButton orderBtn;
     // End of variables declaration//GEN-END:variables
 }

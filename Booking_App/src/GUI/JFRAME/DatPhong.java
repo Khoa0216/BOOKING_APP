@@ -194,18 +194,14 @@ public class DatPhong extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNgayNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayNhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayNhanActionPerformed
-
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
         Integer slPhong = Integer.valueOf(txtSL.getText());
         LocalDate ngayNhan = DateUtils.fromCustom(txtNgayNhan.getText());
-        LocalDate ngayTra = DateUtils.fromCustom(txtNgayTra.getText()); 
-//        System.out.println(phong);
-//        System.out.println(user);
-        
+        LocalDate ngayTra = DateUtils.fromCustom(txtNgayTra.getText());
+        //        System.out.println(phong);
+        //        System.out.println(user);
+
         this.donDat = new DonDat();
         donDat.setIdKH(user.getID());
         donDat.setIdP(phong.getId());
@@ -213,11 +209,11 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayDat(LocalDateTime.now());
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
-        
+
         ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
-        
+
         this.setVisible(false);
-        
+
         thanhTaonFrame.pack();                        // hoặc setSize(...)
         thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         thanhTaonFrame.setVisible(true);
@@ -226,6 +222,10 @@ public class DatPhong extends javax.swing.JFrame {
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgayTraActionPerformed
+
+    private void txtNgayNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayNhanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgayNhanActionPerformed
 
     /**
      * @param args the command line arguments
