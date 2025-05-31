@@ -63,28 +63,22 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Business_Name" min="-2" max="-2" attributes="0"/>
-                              <Component id="Business_Name_Fill" alignment="0" pref="520" max="32767" attributes="0"/>
-                              <Component id="Label_Address" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Address_Fill" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tinhLabel" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="tinhComboBox" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                              <Component id="Label_Describe" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Business_Name" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Business_Name_Fill" alignment="0" pref="520" max="32767" attributes="0"/>
+                                  <Component id="Label_Address" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Address_Fill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tinhLabel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="Label_Describe" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tinhComboBox" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="Describe_Fill" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Check_condition" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Describe_Fill" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,22 +101,17 @@
                   <Component id="tinhComboBox" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="Label_Describe" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="205" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Describe_Fill" min="-2" pref="153" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="SignUp_Confirm" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Have_An_Account" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Login" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
-                      <Component id="Describe_Fill" min="-2" pref="153" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="184" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,7 +175,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="16" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="M&#xf4; T&#x1ea3;"/>
+            <Property name="text" type="java.lang.String" value="M&#xf4; T&#x1ea3;:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="Describe_Fill">
@@ -274,7 +263,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name=".AppleSystemUIFont" size="16" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#x1ec9;nh th&#xe0;nh"/>
+            <Property name="text" type="java.lang.String" value="T&#x1ec9;nh / Th&#xe0;nh ph&#x1ed1;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="tinhComboBox">
@@ -307,10 +296,10 @@
                 <StringItem index="20" value="Gia Lai"/>
                 <StringItem index="21" value="H&#xe0; Giang"/>
                 <StringItem index="22" value="H&#xe0; Nam"/>
-                <StringItem index="23" value="H&#xe0; N&#x1ed9;i (Th&#x1ee7; &#x111;&#xf4;)"/>
+                <StringItem index="23" value="H&#xe0; N&#x1ed9;i"/>
                 <StringItem index="24" value="H&#xe0; T&#x129;nh"/>
                 <StringItem index="25" value="H&#x1ea3;i D&#x1b0;&#x1a1;ng"/>
-                <StringItem index="26" value="H&#x1ea3;i Ph&#xf2;ng (TP tr&#x1ef1;c thu&#x1ed9;c TW)"/>
+                <StringItem index="26" value="H&#x1ea3;i Ph&#xf2;ng"/>
                 <StringItem index="27" value="H&#x1ead;u Giang"/>
                 <StringItem index="28" value="H&#xf2;a B&#xec;nh"/>
                 <StringItem index="29" value="H&#x1b0;ng Y&#xea;n"/>
@@ -348,9 +337,6 @@
                 <StringItem index="61" value="V&#x129;nh Ph&#xfa;c"/>
                 <StringItem index="62" value="Y&#xea;n B&#xe1;i"/>
               </StringArray>
-            </Property>
-            <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 40]"/>
             </Property>
           </Properties>
           <Events>
