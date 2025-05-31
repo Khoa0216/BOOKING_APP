@@ -4,6 +4,7 @@ package GUI.JFRAME;
  *
  * @author Admin
  */
+import DAO.DonDat_DAO;
 import javax.swing.*;
 import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
 import utils.DateUtils;
+import utils.message;
 
 public class DatPhong extends javax.swing.JFrame {
 
@@ -214,13 +216,22 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
         
-        ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
+        int phongcl=DonDat_DAO.checkSLC(donDat.getIdP(), ngayNhan.toString(), ngayTra.toString());
+        System.out.println(phongcl);
         
-        this.setVisible(false);
+        if (phongcl >= slPhong){
+            ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
+            this.setVisible(false);
         
-        thanhTaonFrame.pack();                        // hoặc setSize(...)
-        thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
-        thanhTaonFrame.setVisible(true);
+            thanhTaonFrame.pack();                        // hoặc setSize(...)
+            thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
+            thanhTaonFrame.setVisible(true);
+        } else{
+            message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
+        }
+        
+        
+        
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed

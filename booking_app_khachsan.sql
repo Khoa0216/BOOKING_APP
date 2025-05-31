@@ -18,7 +18,7 @@ BEGIN
     FROM DATPHONG
     WHERE PHONG_ID = v_phong_id
       AND (
-            (v_ngay_nhan < NGAYTRA AND v_ngay_tra > NGAYNHAN)
+            (v_ngay_nhan < NGAY_TRA AND v_ngay_tra > NGAYNHAN)
           );
 
     -- Tính số phòng còn trống
@@ -32,7 +32,7 @@ EXCEPTION
         RETURN -1; -- lỗi
 END;
 /
-
+commit
 -- ===============================
 -- HỆ THỐNG ĐẶT PHÒNG - CHỈ HỖ TRỢ KHÁCH HÀNG VÀ KHÁCH SẠN
 -- ===============================

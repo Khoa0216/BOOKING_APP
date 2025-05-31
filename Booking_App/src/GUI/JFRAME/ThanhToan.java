@@ -190,6 +190,11 @@ public class ThanhToan extends javax.swing.JFrame {
         huy_button.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         huy_button.setForeground(new java.awt.Color(0, 102, 102));
         huy_button.setText("Hủy");
+        huy_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                huy_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
@@ -357,6 +362,10 @@ public class ThanhToan extends javax.swing.JFrame {
     private void textfield_ngayhethanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_ngayhethanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textfield_ngayhethanActionPerformed
+
+    private void huy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huy_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_huy_buttonActionPerformed
 
     /**
      * @param args the command line arguments
