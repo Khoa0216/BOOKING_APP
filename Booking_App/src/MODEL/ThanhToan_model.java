@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class ThanhToan_model {
     private int id;
-    private LocalDate NgayGiaoDich;
     private Long sotien;
     private String sothe;
     private String chuthe;
@@ -17,10 +16,6 @@ public class ThanhToan_model {
     }
     public int getId(){
         return id;
-    }
-    
-    public LocalDate getNgayGiaoDich(){
-        return NgayGiaoDich;
     }
     
     public double getSotien(){
@@ -41,10 +36,6 @@ public class ThanhToan_model {
     
     public void setId(int id){
         this.id=id;
-    }
-    
-    public void setNgayGiaoDich(LocalDate NgayGiaoDich){
-        this.NgayGiaoDich=NgayGiaoDich;
     }
     
     public void setSotien(Long sotien){

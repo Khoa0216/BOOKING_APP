@@ -43,8 +43,13 @@ public class ThanhToan extends javax.swing.JFrame {
     public ThanhToan(DonDat donDat){
         initComponents();
         this.donDat = donDat;
-        this.tt_model = new ThanhToan_model();
-        txtTongTien.setText(String.valueOf(DonDat_DAO.tongTien(donDat)));
+        
+        int idDonDat = DonDat_DAO.insert(donDat);
+        
+        
+        this.tt_model = new ThanhToan_model(idDonDat,DonDat_DAO.tongTien(donDat));
+
+        label_hienthisotien.setText(" "+String.valueOf(DonDat_DAO.tongTien(donDat))+" VND.");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -78,7 +83,6 @@ public class ThanhToan extends javax.swing.JFrame {
         xacnhan_button = new javax.swing.JButton();
         label_hoac = new javax.swing.JLabel();
         huy_button = new javax.swing.JButton();
-        txtTongTien = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,10 +126,15 @@ public class ThanhToan extends javax.swing.JFrame {
         textfield_ngayhethan.setBackground(new java.awt.Color(249, 249, 249));
         textfield_ngayhethan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         textfield_ngayhethan.setForeground(new java.awt.Color(102, 102, 102));
-        textfield_ngayhethan.setText("MM/YYYY");
+        textfield_ngayhethan.setText("MM/YY");
         textfield_ngayhethan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textfield_ngayhethanMouseClicked(evt);
+            }
+        });
+        textfield_ngayhethan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfield_ngayhethanActionPerformed(evt);
             }
         });
 
@@ -182,8 +191,6 @@ public class ThanhToan extends javax.swing.JFrame {
         huy_button.setForeground(new java.awt.Color(0, 102, 102));
         huy_button.setText("Hủy");
 
-        txtTongTien.setBackground(new java.awt.Color(249, 249, 249));
-
         javax.swing.GroupLayout BackGroundLayout = new javax.swing.GroupLayout(BackGround);
         BackGround.setLayout(BackGroundLayout);
         BackGroundLayout.setHorizontalGroup(
@@ -195,16 +202,24 @@ public class ThanhToan extends javax.swing.JFrame {
                         .addComponent(tieude))
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textfield_chuthe)
-                            .addComponent(label_sothe)
-                            .addComponent(textfield_sothe)
-                            .addComponent(label_tenchuthe)
+                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cauhoixacnhan)
                             .addGroup(BackGroundLayout.createSequentialGroup()
+                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                                        .addComponent(label_hoac)
+                                        .addGap(63, 63, 63))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(huy_button, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(xacnhan_button, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(19, 19, 19))
+                            .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textfield_chuthe)
+                                .addComponent(label_sothe)
+                                .addComponent(textfield_sothe)
+                                .addComponent(label_tenchuthe)
                                 .addComponent(label_sotien)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(label_hienthisotien, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(label_hienthisotien, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(25, 25, 25)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(label_ngayhethan)
@@ -214,21 +229,6 @@ public class ThanhToan extends javax.swing.JFrame {
                             .addComponent(label_maPin)
                             .addComponent(textfield_maPin))))
                 .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addComponent(cauhoixacnhan)
-                        .addGap(267, 267, 267))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                        .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
-                                .addComponent(label_hoac)
-                                .addGap(63, 63, 63))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(huy_button, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(xacnhan_button, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(286, 286, 286))))
         );
         BackGroundLayout.setVerticalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,15 +253,13 @@ public class ThanhToan extends javax.swing.JFrame {
                     .addComponent(textfield_chuthe, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(label_sotien)
-                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_sotien)
                     .addComponent(label_maPin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textfield_maPin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_hienthisotien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textfield_maPin)
+                    .addComponent(label_hienthisotien, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(cauhoixacnhan)
                 .addGap(18, 18, 18)
                 .addComponent(xacnhan_button, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +267,7 @@ public class ThanhToan extends javax.swing.JFrame {
                 .addComponent(label_hoac)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(huy_button, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGap(112, 112, 112))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,25 +336,14 @@ public class ThanhToan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "CVV/CVC/PIN phải từ 3 đến 6 chữ số.");
             return;
         }
-        LocalDate ngayGiaoDich = LocalDate.now();
         
         this.tt_model.setChuthe(tenchuthe);
         this.tt_model.setSothe(last4);
         this.tt_model.setTenthe(tenthe);
-        this.tt_model.setNgayGiaoDich(ngayGiaoDich);
-        this.tt_model.setSotien(Long.valueOf(txtTongTien.getText()));
-        int idDonDat = DonDat_DAO.insert(donDat);
-        this.tt_model.setId(idDonDat);
+        
         
         ThanhToan_Dao.insert(tt_model);
         this.setVisible(false);
-//        try {
-//            Login_SignUp_Check.InsertThanhToan(tt_model);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_xacnhan_buttonActionPerformed
 
     private void textfield_ngayhethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textfield_ngayhethanMouseClicked
@@ -366,6 +353,10 @@ public class ThanhToan extends javax.swing.JFrame {
     private void textfield_maPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_maPinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textfield_maPinActionPerformed
+
+    private void textfield_ngayhethanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_ngayhethanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield_ngayhethanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,7 +411,6 @@ public class ThanhToan extends javax.swing.JFrame {
     private javax.swing.JTextField textfield_ngayhethan;
     private javax.swing.JTextField textfield_sothe;
     private javax.swing.JLabel tieude;
-    private javax.swing.JTextField txtTongTien;
     private javax.swing.JButton xacnhan_button;
     // End of variables declaration//GEN-END:variables
 }

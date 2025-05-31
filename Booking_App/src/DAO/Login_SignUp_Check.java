@@ -197,9 +197,8 @@ public class Login_SignUp_Check {
     }
     
     public static void InsertThanhToan (ThanhToan_model tt) throws ParseException, SQLException{
-        java.sql.Date NgayGiaoDich = java.sql.Date.valueOf(tt.getNgayGiaoDich());
         
-        String sqlThanhToan = "INSERT INTO THANHTOAN (ID,NGAY_GIAODICH,SOTIEN,SOTHE,TEN_CHUTHE,TENTHE) VALUES (?,?,?,?,?,?)";
+        String sqlThanhToan = "INSERT INTO THANHTOAN (ID,SOTIEN,SOTHE,TEN_CHUTHE,TENTHE) VALUES (?,?,?,?,?,?)";
         
         Connection conn = null;
         try {
@@ -208,11 +207,10 @@ public class Login_SignUp_Check {
 
             try (PreparedStatement stmt = conn.prepareStatement(sqlThanhToan)) {
                 stmt.setInt(1, tt.getId());
-                stmt.setDate(2, NgayGiaoDich);
-                stmt.setDouble(3, tt.getSotien());
-                stmt.setString(4, tt.getSothe());
-                stmt.setString(5, tt.getChuthe());
-                stmt.setString(6, tt.getTenthe());
+                stmt.setDouble(2, tt.getSotien());
+                stmt.setString(3, tt.getSothe());
+                stmt.setString(4, tt.getChuthe());
+                stmt.setString(5, tt.getTenthe());
                 stmt.executeUpdate();
             }
             
