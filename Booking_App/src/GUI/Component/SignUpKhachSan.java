@@ -49,8 +49,8 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         SignUp_Confirm = new javax.swing.JButton();
         Have_An_Account = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
-        tinhTextField = new javax.swing.JTextField();
         tinhLabel = new javax.swing.JLabel();
+        tinhComboBox = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(650, 750));
 
@@ -118,6 +118,15 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         tinhLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 16)); // NOI18N
         tinhLabel.setText("Tỉnh thành");
 
+        tinhComboBox.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        tinhComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa – Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội (Thủ đô)", "Hà Tĩnh", "Hải Dương", "Hải Phòng (TP trực thuộc TW)", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
+        tinhComboBox.setSize(new java.awt.Dimension(250, 40));
+        tinhComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tinhComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout White_PanelLayout = new javax.swing.GroupLayout(White_Panel);
         White_Panel.setLayout(White_PanelLayout);
         White_PanelLayout.setHorizontalGroup(
@@ -137,12 +146,12 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                         .addGap(66, 66, 66)
                         .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Business_Name)
-                            .addComponent(Label_Describe)
                             .addComponent(Business_Name_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                             .addComponent(Label_Address)
                             .addComponent(Address_Fill)
-                            .addComponent(tinhTextField)
-                            .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Describe))))
                 .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(White_PanelLayout.createSequentialGroup()
@@ -166,10 +175,10 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Address_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tinhTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Label_Describe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(SignUp_Confirm)
@@ -208,7 +217,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         this.khachsan.setTENDN(Business_Name_Fill.getText());
         this.khachsan.setDIACHI(Address_Fill.getText());
         this.khachsan.setMOTA(Describe_Mota_Fill.getText());
-        this.khachsan.setTINH(tinhTextField.getText());
+        this.khachsan.setTINH((String) tinhComboBox.getSelectedItem());
         
         
         if (!Check_condition.isSelected()) {
@@ -230,6 +239,10 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         cardLayout.show(parent, "login");
     }//GEN-LAST:event_LoginActionPerformed
 
+    private void tinhComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tinhComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address_Fill;
@@ -245,7 +258,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
     private javax.swing.JButton Login;
     private javax.swing.JButton SignUp_Confirm;
     private javax.swing.JPanel White_Panel;
+    private javax.swing.JComboBox<String> tinhComboBox;
     private javax.swing.JLabel tinhLabel;
-    private javax.swing.JTextField tinhTextField;
     // End of variables declaration//GEN-END:variables
 }

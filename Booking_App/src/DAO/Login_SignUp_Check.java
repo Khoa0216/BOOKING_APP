@@ -118,7 +118,7 @@ public class Login_SignUp_Check {
             
     public static void InsertDOANHNGHIEP(KHACHSAN doanhnghiep){
         String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'KHACHSAN')";
-        String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI, MOTA) VALUES (?, ?, ?, ?)";
+        String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI,TINH, MOTA) VALUES (?, ?, ?, ? , ?)";
 
         Connection conn = null;
         try {
@@ -147,7 +147,8 @@ public class Login_SignUp_Check {
                 stmt2.setInt(1, newId);
                 stmt2.setString(2, doanhnghiep.getTENDN());
                 stmt2.setString(3, doanhnghiep.getDIACHI());
-                stmt2.setString(4, doanhnghiep.getMOTA());
+                stmt2.setString(4, doanhnghiep.getTINH());
+                stmt2.setString(5, doanhnghiep.getMOTA());
                 stmt2.executeUpdate();
             }
 
