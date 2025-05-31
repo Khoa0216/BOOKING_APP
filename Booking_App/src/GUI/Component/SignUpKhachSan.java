@@ -76,7 +76,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Address_Fill.setForeground(new java.awt.Color(102, 102, 102));
 
         Label_Describe.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Label_Describe.setText("Mô Tả");
+        Label_Describe.setText("Mô Tả:");
 
         Describe_Mota_Fill.setBackground(new java.awt.Color(249, 249, 249));
         Describe_Mota_Fill.setColumns(20);
@@ -116,11 +116,10 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         });
 
         tinhLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 16)); // NOI18N
-        tinhLabel.setText("Tỉnh thành");
+        tinhLabel.setText("Tỉnh / Thành phố:");
 
         tinhComboBox.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        tinhComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa – Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội (Thủ đô)", "Hà Tĩnh", "Hải Dương", "Hải Phòng (TP trực thuộc TW)", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
-        tinhComboBox.setSize(new java.awt.Dimension(250, 40));
+        tinhComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa – Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
         tinhComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tinhComboBoxActionPerformed(evt);
@@ -144,22 +143,18 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                         .addComponent(Label_Information_Fill))
                     .addGroup(White_PanelLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Business_Name)
-                            .addComponent(Business_Name_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                            .addComponent(Label_Address)
-                            .addComponent(Address_Fill)
-                            .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_Describe))))
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(White_PanelLayout.createSequentialGroup()
-                    .addGap(65, 65, 65)
-                    .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Check_condition)
-                        .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(67, Short.MAX_VALUE)))
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Check_condition)
+                            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Business_Name)
+                                .addComponent(Business_Name_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                                .addComponent(Label_Address)
+                                .addComponent(Address_Fill)
+                                .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Label_Describe)
+                                .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         White_PanelLayout.setVerticalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,20 +175,17 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                 .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Label_Describe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Check_condition)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SignUp_Confirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
-            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(White_PanelLayout.createSequentialGroup()
-                    .addGap(383, 383, 383)
-                    .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Check_condition)
-                    .addContainerGap(184, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
