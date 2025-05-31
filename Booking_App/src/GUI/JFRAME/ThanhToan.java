@@ -19,6 +19,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import MODEL.DonDat;
+import PDF.HoaDonPDF;
+import java.io.File;
+import java.io.IOException;
 import utils.message;
 
 /**
@@ -349,6 +352,32 @@ public class ThanhToan extends javax.swing.JFrame {
         
         ThanhToan_Dao.insert(tt_model);
         this.setVisible(false);
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu hóa đơn");
+        fileChooser.setSelectedFile(new File("HoaDon_ThanhToan.pdf"));
+        
+        int userSelection = fileChooser.showSaveDialog(null);
+        
+        if (userSelection == JFileChooser.APPROVE_OPTION){
+            File fileToSave = fileChooser.getSelectedFile();
+            String filePath = fileToSave.getAbsolutePath();
+            
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            
+            HoaDonPDF.xuatHoaDonPDF(this.donDat, tenchuthe, tenthe, sothe, tt_model.getSotien(), filePath);
+            
+            try {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().open(new File(filePath));
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Hóa đơn lưu thành công, nhưng không thể mở file PDF.");
+            }
+        }
     }//GEN-LAST:event_xacnhan_buttonActionPerformed
 
     private void textfield_ngayhethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textfield_ngayhethanMouseClicked

@@ -7,6 +7,8 @@ package DAO;
 import MODEL.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
+import MODEL.DonDat;
+import database.Oracle_connection;
 import java.awt.HeadlessException;
 import java.util.Vector;
 import java.lang.Integer;
@@ -228,4 +230,71 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
         return listPhong;
     }
+    
+    public static String getTenPhong (int idP){
+        String sql = "SELECT LOAIPHONG FROM PHONG WHERE ID=?";
+        
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setInt(1, idP);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getString("LOAIPHONG");
+            } else {
+                return null;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static String getTenKH (int idKH){
+        String sql = "SELECT HOTEN FROM NGUOIDUNG WHERE ID=?";
+        
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setInt(1, idKH);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getString("HOTEN");
+            } else {
+                return null;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static void getKS(int idP, DonDat d) {
+        String sql = "SELECT KS.ID AS KS_ID, KS.TENDN AS KS_TENDN " +
+                     "FROM KHACHSAN KS " +
+                     "JOIN PHONG P ON KS.ID = P.KHACHSAN_ID " +
+                     "WHERE P.ID = ?";
+
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678");
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idP);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                d.setIdKS(rs.getInt("KS_ID"));
+                d.setTenKS(rs.getString("KS_TENDN"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 public class DonDat {
     private Integer id, idKH, idKS, idP;
-    private String tenKH, tenKS;
+    private String tenKH, tenKS, tenPhong;
     private Long gia;
     private LocalDateTime ngayDat;
     
@@ -49,8 +49,14 @@ public class DonDat {
     public void setNgayTra(LocalDate ngayTra) {
         this.ngayTra = ngayTra;
     }
-    
-    
+
+    public String getTenPhong() {
+        return tenPhong;
+    }
+
+    public void setTenPhong(String tenPhong) {
+        this.tenPhong = tenPhong;
+    }
 
     public Integer getId() {
         return id;

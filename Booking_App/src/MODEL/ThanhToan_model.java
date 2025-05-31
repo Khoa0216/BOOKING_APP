@@ -18,7 +18,7 @@ public class ThanhToan_model {
         return id;
     }
     
-    public double getSotien(){
+    public Long getSotien(){
         return sotien;
     }
     

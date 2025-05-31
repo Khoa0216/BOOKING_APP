@@ -5,6 +5,7 @@ package GUI.JFRAME;
  * @author Admin
  */
 import DAO.DonDat_DAO;
+import DAO.PhongKS_DAO;
 import javax.swing.*;
 import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
@@ -215,6 +216,12 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayDat(LocalDateTime.now());
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
+        
+        
+        donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
+        donDat.setTenKH(PhongKS_DAO.getTenKH(donDat.getIdKH()));
+        PhongKS_DAO.getKS(donDat.getIdP(),donDat);
+        
         
         int phongcl=DonDat_DAO.checkSLC(donDat.getIdP(), ngayNhan.toString(), ngayTra.toString());
         System.out.println(phongcl);
