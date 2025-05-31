@@ -130,4 +130,30 @@ public class DonDat_DAO {
         BigDecimal total = bd.multiply(BigDecimal.valueOf(d.getSl()));
         return total.longValue();
     }
+    
+    public static int checkSLC (int phongId, String ngayNhan, String ngayTra){
+        String sql = "{ ? = call SO_PHONG_TRONG(?, ?, ?)}";
+        
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678");
+             CallableStatement cs=conn.prepareCall(sql)) {
+            
+            // đăng ký biến trả về
+            cs.registerOutParameter(1, Types.INTEGER);
+
+            // set các tham số đầu vào
+            cs.setInt(2, phongId);
+            cs.setDate(3, Date.valueOf(ngayNhan));
+            cs.setDate(4, Date.valueOf(ngayTra));
+            
+            //thực hiện gọi hàm
+            cs.execute();
+
+            // lấy kq trả về
+            return cs.getInt(1);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }

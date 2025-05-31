@@ -4,6 +4,8 @@ package GUI.JFRAME;
  *
  * @author Admin
  */
+import DAO.DonDat_DAO;
+import DAO.PhongKS_DAO;
 import javax.swing.*;
 import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
 import utils.DateUtils;
+import utils.message;
 
 public class DatPhong extends javax.swing.JFrame {
 
@@ -209,6 +212,7 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayDat(LocalDateTime.now());
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
+<<<<<<< HEAD
 
         ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
 
@@ -217,6 +221,31 @@ public class DatPhong extends javax.swing.JFrame {
         thanhTaonFrame.pack();                        // hoặc setSize(...)
         thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         thanhTaonFrame.setVisible(true);
+=======
+        
+        
+        donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
+        donDat.setTenKH(PhongKS_DAO.getTenKH(donDat.getIdKH()));
+        PhongKS_DAO.getKS(donDat.getIdP(),donDat);
+        
+        
+        int phongcl=DonDat_DAO.checkSLC(donDat.getIdP(), ngayNhan.toString(), ngayTra.toString());
+        System.out.println(phongcl);
+        
+        if (phongcl >= slPhong){
+            ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
+            this.setVisible(false);
+        
+            thanhTaonFrame.pack();                        // hoặc setSize(...)
+            thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
+            thanhTaonFrame.setVisible(true);
+        } else{
+            message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
+        }
+        
+        
+        
+>>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed
