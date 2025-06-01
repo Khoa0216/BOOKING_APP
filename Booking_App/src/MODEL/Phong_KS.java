@@ -24,10 +24,19 @@ public class Phong_KS {
     public String toString() {
         return "Phong_KS{" + "id=" + id + ", idKS=" + idKS + ", loaiPhong=" + loaiPhong + ", moTa=" + moTa + ", gia=" + gia + ", tongSoluong=" + tongSoluong + ", soluongConLai=" + soluongConLai + ", ngayDang=" + ngayDang + ", location=" + location + ", star=" + star + ", numReviews=" + numReviews + '}';
     }
-    
+
+    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong) {
+        this.id = id;
+        this.idKS = idKS;
+        this.loaiPhong = loaiPhong;
+        this.moTa = moTa;
+        this.gia = gia;
+        this.tongSoluong = tongSoluong;
+    }
+
     
 
-    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, Long soluongConLai, LocalDate ngayDang) {
+    public Phong_KS(Integer id, Integer idKS, String loaiPhong, String moTa, Long gia, Long tongSoluong, LocalDate ngayDang) {
         this.id = id;
         this.idKS = idKS;
         this.loaiPhong = loaiPhong;
@@ -48,7 +57,6 @@ public class Phong_KS {
         this.moTa = moTa;
         this.gia = gia;
         this.tongSoluong = tongSoluong;
-        
         this.ngayDang = ngayDang;
         this.location = location;
         this.star = star;

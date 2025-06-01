@@ -20,10 +20,9 @@ import MODEL.ThanhToan_model;
 public class ThanhToan_Dao {
     static public void insert(ThanhToan_model thanhToan){
         String sqlInsert = "insert into booking_app.ThanhToan\n"
-                + "(ID, Ngay_giaoDich, SoThe, Ten_ChuThe, TenThe)\n"
+                + "(ID, SoThe, Ten_ChuThe, TenThe, Sotien)\n"
                 + "values(?, ?, ?, ?, ?)";
-        jdbcHelper.update(sqlInsert, thanhToan.getId(), thanhToan.getNgayGiaoDich(),
-                thanhToan.getSothe(), thanhToan.getChuthe(), thanhToan.getTenthe());
+        jdbcHelper.update(sqlInsert, thanhToan.getId(),thanhToan.getSothe(), thanhToan.getChuthe(), thanhToan.getTenthe(), thanhToan.getSotien());
         message.alert(null, "Đã đặt phòng thành công");
     }
 }

@@ -88,7 +88,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1720, 1025));
         setResizable(false);
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
