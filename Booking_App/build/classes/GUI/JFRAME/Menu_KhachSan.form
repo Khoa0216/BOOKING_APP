@@ -53,23 +53,24 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="AccountBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      <Component id="HelpBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      <Component id="HomeBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      <Component id="ManageBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      <Component id="orderBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      <Component id="btnThongKe" alignment="0" pref="250" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="UserIcon" min="-2" pref="64" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="YourEmail" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="dcsBtn" pref="250" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="AccountBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="HelpBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="HomeBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="ManageBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,16 +85,14 @@
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="HomeBtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="orderBtn" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="ManageBtn" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="dcsBtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="HelpBtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="btnThongKe" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="AccountBtn" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="343" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -173,32 +172,18 @@
             <Property name="text" type="java.lang.String" value="Your Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="orderBtn">
+        <Component class="javax.swing.JButton" name="dcsBtn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="20" style="1"/>
+              <Font name="Helvetica Neue" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; &#x111;&#x1a1;n ch&#x1ec9;nh s&#x1eed;a"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderBtnActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnThongKe">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="20" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dcsBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -222,7 +207,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1037" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

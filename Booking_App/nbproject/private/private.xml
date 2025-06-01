@@ -41,6 +41,9 @@
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/LoginPanel.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/MODEL/Chuyen_DangTai.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/MODEL/DonChinhSua.java</file>
+            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/tableDonChinhSua.java</file>
+            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/Interface/IKhachSan.java</file>
+            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/DAO/KhachSan_DAO.java</file>
         </group>
     </open-files>
 </project-private>
