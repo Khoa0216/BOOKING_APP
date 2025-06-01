@@ -82,6 +82,11 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         listdonTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1320, 1025));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         listdonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,6 +170,10 @@ public class tableDonChinhSua extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_listdonTableMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
