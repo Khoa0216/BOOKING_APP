@@ -116,15 +116,9 @@
                   <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSua" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                  <EmptySpace pref="617" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="110" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-=======
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnXuatExcel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="229" max="32767" attributes="0"/>
->>>>>>> 2b27fc73684d29125c4e674108c6f876fd420565
                   <Component id="txtFieldSearch" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
