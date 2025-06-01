@@ -300,7 +300,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         java.util.Date ngayNhanMoi = sdf.parse(ngayNhanMoiStr);
         java.util.Date ngayTraMoi = sdf.parse(ngayTraMoiStr);
         int slMoi = Integer.parseInt(slMoiStr);
-
+        System.out.println("11111111111111111111111");
         if (ngayNhanMoi.after(ngayTraMoi)) {
             JOptionPane.showMessageDialog(this, "Ngày trả phải sau ngày nhận!");
             return;
