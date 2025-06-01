@@ -114,7 +114,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        xoaBtn = new javax.swing.JButton();
+        huyBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
@@ -125,20 +125,20 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã đơn", "Ngày nhận", "Ngày trả", "Số lượng", "Giá", "Ngày đặt"
+                "Mã đơn", "Ngày nhận", "Ngày trả", "Số lượng", "Giá", "Ngày đặt", "Trạng thái đơn", "Trạng thái thanh toán"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -161,11 +161,11 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        xoaBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        xoaBtn.setText("Xoá");
-        xoaBtn.addActionListener(new java.awt.event.ActionListener() {
+        huyBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        huyBtn.setText("Huỷ");
+        huyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xoaBtnActionPerformed(evt);
+                huyBtnActionPerformed(evt);
             }
         });
 
@@ -195,7 +195,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(xoaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(huyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 714, Short.MAX_VALUE)
@@ -217,7 +217,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
                         .addComponent(findBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(xoaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(huyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -242,7 +242,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void xoaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaBtnActionPerformed
+    private void huyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyBtnActionPerformed
         // TODO add your handling code here     
     int selectedRow = jTable1.getSelectedRow();
     if (selectedRow == -1) {
@@ -273,7 +273,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
     } else {
         JOptionPane.showMessageDialog(this, "Xoá thất bại, vui lòng thử lại!");
     }
-    }//GEN-LAST:event_xoaBtnActionPerformed
+    }//GEN-LAST:event_huyBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
@@ -369,12 +369,12 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editBtn;
     private javax.swing.JButton findBtn;
+    private javax.swing.JButton huyBtn;
     private javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton xoaBtn;
     // End of variables declaration//GEN-END:variables
 }

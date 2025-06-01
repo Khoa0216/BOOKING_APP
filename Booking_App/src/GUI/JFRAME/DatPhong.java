@@ -252,7 +252,6 @@ public class DatPhong extends javax.swing.JFrame {
         
         
         
->>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed
