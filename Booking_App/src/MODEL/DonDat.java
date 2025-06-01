@@ -3,19 +3,33 @@ package MODEL;
 import java.lang.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.util.Date;
+
 public class DonDat {
-    private Integer id, idKH, idKS, idP;
+    private Integer id, idKH, idKS, idP,sl;
     private String tenKH, tenKS;
     private Long gia;
-    private LocalDateTime ngayDat;
+    private Date ngayDat;
     
-    private LocalDate ngayNhan, ngayTra;
-    Integer sl = 0;
+    
+    private Date ngayNhan, ngayTra;
+    
 
     public DonDat() {
     }
+    public DonDat(Integer id,Integer idKH,Date ngaynhan,Date ngaytra,Integer sl,Date ngaydat,Long gia) {
+        this.id = id;
+        this.idKH = idKH;
+        this.gia = gia;
+        this.ngayDat = ngaydat;
+        this.ngayNhan = ngaynhan;
+        this.ngayTra = ngaytra;
+        this.sl = sl;
+        this.gia = gia;
+    }
+    
 
-    public DonDat(Integer id, Integer idKH, Integer idKS, Integer idP, String tenKH, String tenKS, Long gia, LocalDateTime ngayDat) {
+    public DonDat(Integer id, Integer idKH, Integer idKS, Integer idP, String tenKH, String tenKS, Long gia, Date ngayDat) {
         this.id = id;
         this.idKH = idKH;
         this.idKS = idKS;
@@ -34,19 +48,19 @@ public class DonDat {
         this.sl = sl;
     }
 
-    public LocalDate getNgayNhan() {
+    public Date getNgayNhan() {
         return ngayNhan;
     }
 
-    public void setNgayNhan(LocalDate ngayNhan) {
+    public void setNgayNhan(Date ngayNhan) {
         this.ngayNhan = ngayNhan;
     }
 
-    public LocalDate getNgayTra() {
+    public Date getNgayTra() {
         return ngayTra;
     }
 
-    public void setNgayTra(LocalDate ngayTra) {
+    public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
     
@@ -108,11 +122,11 @@ public class DonDat {
         this.gia = gia;
     }
 
-    public LocalDateTime getNgayDat() {
+    public Date getNgayDat() {
         return ngayDat;
     }
 
-    public void setNgayDat(LocalDateTime ngayDat) {
+    public void setNgayDat(Date ngayDat) {
         this.ngayDat = ngayDat;
     }
     

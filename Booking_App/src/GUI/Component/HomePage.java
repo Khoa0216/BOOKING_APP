@@ -65,7 +65,7 @@ public class HomePage extends javax.swing.JPanel {
         }
 
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-        System.out.println("Số card đã add: " + listCard.getComponentCount());
+        //System.out.println("Số card đã add: " + listCard.getComponentCount());
         
     }
     

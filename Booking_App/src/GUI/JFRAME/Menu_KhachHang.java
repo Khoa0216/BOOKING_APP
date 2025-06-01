@@ -5,6 +5,7 @@ import GUI.Component.LoginPanel;
 import GUI.Component.RegisterPanel;
 import GUI.Component.SignUpKhachSan;
 import GUI.Component.SignUpKhachHang;
+import GUI.Component.quanlydatKhachHang;
 import database.QueryHelper;
 
 import GUI.Component.HomePage;
@@ -24,6 +25,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private CardLayout CLayout;
     private homeKhachHang homeKH;
     private accKhachHang accKH;
+    private quanlydatKhachHang qldKH;
     private NGUOIDUNG nguoidung; 
     private String email;
     private HomePage homePage;
@@ -59,10 +61,12 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         homePage = new HomePage(user);
         homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
         accKH = new accKhachHang(rightPanel, this.CLayout,email);
+        qldKH = new quanlydatKhachHang(rightPanel,this.CLayout,email);
         
         // Truyền tham chiếu của MainFrame cho mỗi panel (nếu cần)
         rightPanel.add(homeKH,"Home page");
         rightPanel.add(accKH,"acc");
+        rightPanel.add(qldKH,"qldat");
         rightPanel.add(homePage, "Home page");
          
         CLayout.show(rightPanel, "Home page");
@@ -213,6 +217,9 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
     private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBtnActionPerformed
         // TODO add your handling code here:
+        //CLayout = (CardLayout)(rightPanel.getLayout());
+        qldKH.loadtable();
+        CLayout.show(rightPanel,"qldat");
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed

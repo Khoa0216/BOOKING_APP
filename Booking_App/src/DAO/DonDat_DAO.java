@@ -13,11 +13,46 @@ import database.jdbcHelper;
 import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import java.time.LocalDateTime;
 import utils.message;
 import java.time.*;
 import java.sql.Date;
 
 public class DonDat_DAO {
+    public Vector<DonDat> selectByIDKH(Integer makh){
+        Vector<DonDat> donDatList = new Vector<>();
+        String querySelect = "SELECT DP.ID, DP.KHACHHANG_ID,DP.NGAYNHAN, DP.NGAY_TRA, DP.SL , TT.SOTIEN, DP.NGAY_DAT\n" +
+                            " FROM BOOKING_APP.DATPHONG DP JOIN BOOKING_APP.THANHTOAN TT ON DP.ID = TT.ID\n" +
+                            " WHERE DP.KHACHHANG_ID = ?" ;
+        try {
+            ResultSet rs = jdbcHelper.query(querySelect,makh);
+            ResultSetMetaData metaData = rs.getMetaData();
+            
+            while(rs.next()){
+                Integer id = rs.getInt("ID");
+                Integer idKH = rs.getInt("KHACHHANG_ID");
+                Long gia = rs.getLong("SOTIEN");
+                Date ngaydat = rs.getObject("NGAY_DAT",Date.class);
+                Date ngaynhan = rs.getObject("NGAYNHAN", Date.class);
+                Date ngaytra = rs.getObject("NGAY_TRA", Date.class);
+                Integer sl = rs.getInt("SL");
+//                System.out.println(idKH);
+//                System.out.println(gia);
+//                
+//                System.out.println(sl);
+//                System.out.println(ngaydat);
+//                System.out.println(ngaytra);
+
+                DonDat data = new DonDat(id , idKH,ngaynhan, ngaytra, sl , ngaydat, gia);
+                donDatList.add(data);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DonDat_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }              
+
+        return donDatList;
+    }
     static public Vector<DonDat> selectAll(){
         Vector<DonDat> donDatList = new Vector<>();
         String querySelect = "select dp.id, dp.khachhang_id,  hoten, p.id as phong_id,  p.khachsan_id,"
@@ -38,7 +73,7 @@ public class DonDat_DAO {
                 String tenKH = rs.getString("hoten");
                 String tenKS = rs.getString("tendn");
                 Long gia = rs.getLong("gia");
-                LocalDateTime ngayDat = rs.getObject("ngay_dat", LocalDateTime.class);
+                Date ngayDat = rs.getObject("ngay_dat", Date.class);
                 
                 DonDat data = new DonDat(id, idKH, idKS, idP, tenKH, tenKS, gia, ngayDat);
                 donDatList.add(data);
@@ -49,14 +84,24 @@ public class DonDat_DAO {
         return donDatList;
     }
     
-    static public void delete(Integer id){
-        String query = "delete from booking_app.datphong where id=?";
-        Integer row = jdbcHelper.update(query, id);
-        if (row > 0){
-            message.alert(null, "Xóa thành công");
-        }
-        else{
-            message.alert(null, "Xóa thất bại, vui lòng thử lại");
+    static public boolean delete(Integer id){
+        try {
+        // Xóa các bản ghi liên quan ở DON_CHINHSUA (nếu có)
+        String sql1 = "DELETE FROM BOOKING_APP.DON_CHINHSUA WHERE DATPHONG_ID = ?";
+        jdbcHelper.update(sql1, id);
+
+        // Xóa các bản ghi liên quan ở THANHTOAN (nếu có)
+        String sql2 = "DELETE FROM BOOKING_APP.THANHTOAN WHERE ID = ?";
+        jdbcHelper.update(sql2, id);
+
+        // Xóa bản ghi ở DATPHONG
+        String sql3 = "DELETE FROM BOOKING_APP.DATPHONG WHERE ID = ?";
+        int row = jdbcHelper.update(sql3, id);
+
+        return row > 0;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
         }
     }
     
@@ -90,9 +135,9 @@ public class DonDat_DAO {
             try (PreparedStatement stmt1 = conn.prepareStatement(sqlInsert, new String[]{"ID"})) {
                 stmt1.setInt(1, d.getIdKH());
                 stmt1.setInt(2, d.getIdP());
-                stmt1.setDate(3, Date.valueOf(d.getNgayDat().toLocalDate()));
-                stmt1.setDate(4, Date.valueOf(d.getNgayNhan()));
-                stmt1.setDate(5, Date.valueOf(d.getNgayTra()));
+                stmt1.setDate(3, new java.sql.Date(d.getNgayDat().getTime()));
+                stmt1.setDate(4, new java.sql.Date(d.getNgayNhan().getTime()));
+                stmt1.setDate(5, new java.sql.Date(d.getNgayTra().getTime()));
                 stmt1.setInt(6, d.getSl());
                 stmt1.executeUpdate();
 
@@ -130,4 +175,27 @@ public class DonDat_DAO {
         BigDecimal total = bd.multiply(BigDecimal.valueOf(d.getSl()));
         return total.longValue();
     }
+    public DonDat select(Integer id) {
+            String query = "SELECT DP.ID, DP.KHACHHANG_ID, DP.NGAYNHAN, DP.NGAY_TRA, DP.SL, DP.NGAY_DAT, TT.SOTIEN " +
+                           "FROM BOOKING_APP.DATPHONG DP " +
+                           "LEFT JOIN BOOKING_APP.THANHTOAN TT ON DP.ID = TT.ID " +
+                           "WHERE DP.ID = ?";
+            try {
+                ResultSet rs = jdbcHelper.query(query, id);
+                if (rs.next()) {
+                    Integer iddon = rs.getInt("ID");
+                    Integer idKH = rs.getInt("KHACHHANG_ID");
+                    Date ngaydat = rs.getObject("NGAY_DAT",Date.class);
+                    Date ngaynhan = rs.getObject("NGAYNHAN", Date.class);
+                    Date ngaytra = rs.getObject("NGAY_TRA", Date.class);
+                    Integer sl = rs.getInt("SL");
+                    Long gia = rs.getLong("SOTIEN");
+                    return new DonDat(iddon , idKH, ngaynhan, ngaytra, sl, ngaydat, gia);  
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return null;
+    }
+    
 }

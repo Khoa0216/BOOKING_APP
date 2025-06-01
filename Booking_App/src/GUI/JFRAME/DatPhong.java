@@ -8,6 +8,7 @@ import javax.swing.*;
 import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
 import java.time.LocalDate;
+import java.util.Date;
 import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
@@ -210,9 +211,9 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setIdKH(user.getID());
         donDat.setIdP(phong.getId());
         donDat.setSl(slPhong);
-        donDat.setNgayDat(LocalDateTime.now());
-        donDat.setNgayNhan(ngayNhan);
-        donDat.setNgayTra(ngayTra);
+        donDat.setNgayDat(java.sql.Date.valueOf(LocalDate.now()));
+        donDat.setNgayNhan(java.sql.Date.valueOf(ngayNhan));
+        donDat.setNgayTra(java.sql.Date.valueOf(ngayTra));
         
         ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
         

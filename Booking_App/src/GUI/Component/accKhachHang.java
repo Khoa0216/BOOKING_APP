@@ -28,6 +28,7 @@ public class accKhachHang extends javax.swing.JPanel {
     public void setText(String email){
         KhachHang_DAO khdao = new KhachHang_DAO();
         kh = khdao.select(email);
+        //System.out.println(kh.getID());
 
         emailTextField.setText(kh.getEMAIL());
         idTextField.setText(kh.getCCCD());
