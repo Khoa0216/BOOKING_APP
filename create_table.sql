@@ -251,9 +251,8 @@ GRANT SELECT, INSERT
 
 GRANT CREATE SESSION TO khachsan;
 GRANT INSERT, DELETE, UPDATE ON booking_app.phong TO khachsan;
-GRANT SELECT 
-  ON booking_app.phong 
-  TO khachsan;
+  
+grant update on booking_app.phong to
 
 -- ===============================
 -- COMMIT

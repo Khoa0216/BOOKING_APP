@@ -14,6 +14,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
+import java.time.ZoneId;
 import utils.DateUtils;
 import utils.message;
 
@@ -210,25 +211,14 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setIdKH(user.getID());
         donDat.setIdP(phong.getId());
         donDat.setSl(slPhong);
-<<<<<<< HEAD
-        donDat.setNgayDat(LocalDateTime.now());
-        donDat.setNgayNhan(ngayNhan);
-        donDat.setNgayTra(ngayTra);
 
-        ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
-
-        this.setVisible(false);
-
-        thanhTaonFrame.pack();                        // hoặc setSize(...)
-        thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
-        thanhTaonFrame.setVisible(true);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZoneId zone = ZoneId.systemDefault();
+        Date date = Date.from(localDateTime.atZone(zone).toInstant());
+        donDat.setNgayDat(date);
         
-=======
-
-        donDat.setNgayDat(java.sql.Date.valueOf(LocalDate.now()));
         donDat.setNgayNhan(java.sql.Date.valueOf(ngayNhan));
         donDat.setNgayTra(java.sql.Date.valueOf(ngayTra));
->>>>>>> 5a6a0679c78fb424fa307a8b94028343ec390e1b
         
         donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
         donDat.setTenKH(PhongKS_DAO.getTenKH(donDat.getIdKH()));
@@ -239,6 +229,7 @@ public class DatPhong extends javax.swing.JFrame {
         System.out.println(phongcl);
         
         if (phongcl >= slPhong){
+            ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
             this.setVisible(false);
         
             thanhTaonFrame.pack();                        // hoặc setSize(...)
@@ -247,12 +238,6 @@ public class DatPhong extends javax.swing.JFrame {
         } else{
             message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
         }
-        
-<<<<<<< HEAD
-        
-        
-=======
->>>>>>> 5a6a0679c78fb424fa307a8b94028343ec390e1b
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed

@@ -277,16 +277,11 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
         
         message.alert(null, "Không lấy đc id phòng vừa sinh ra");
         return 0;
     }
-=======
 
-        return id;
-}
->>>>>>> 5a6a0679c78fb424fa307a8b94028343ec390e1b
     
     public static String getTenPhong (int idP){
         String sql = "SELECT LOAIPHONG FROM PHONG WHERE ID=?";
