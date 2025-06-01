@@ -238,7 +238,6 @@ public class DatPhong extends javax.swing.JFrame {
         } else{
             message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
         }
-        
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed

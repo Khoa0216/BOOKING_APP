@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="DashBoard" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="content" pref="1384" max="32767" attributes="0"/>
+              <Component id="content" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -63,12 +63,10 @@
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="dcsBtn" pref="250" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="AccountBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="HelpBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="HomeBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="ManageBtn" alignment="0" pref="250" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="AccountBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                      <Component id="HelpBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                      <Component id="HomeBtn" alignment="0" pref="250" max="32767" attributes="0"/>
+                      <Component id="ManageBtn" alignment="0" pref="250" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
               </Group>
@@ -202,7 +200,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1384" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1320" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
