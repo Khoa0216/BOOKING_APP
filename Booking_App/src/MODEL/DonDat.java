@@ -6,13 +6,8 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class DonDat {
-<<<<<<< HEAD
     private Integer id, idKH, idKS, idP,sl;
-    private String tenKH, tenKS;
-=======
-    private Integer id, idKH, idKS, idP;
     private String tenKH, tenKS, tenPhong;
->>>>>>> 2b27fc73684d29125c4e674108c6f876fd420565
     private Long gia;
     private Date ngayDat;
     

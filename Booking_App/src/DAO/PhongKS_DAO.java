@@ -7,10 +7,7 @@ package DAO;
 import MODEL.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
-<<<<<<< HEAD
-=======
 import MODEL.DonDat;
->>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
 import database.Oracle_connection;
 import java.awt.HeadlessException;
 import java.util.Vector;
