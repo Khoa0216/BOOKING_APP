@@ -22,29 +22,26 @@ import java.sql.Date;
 public class DonDat_DAO {
     public Vector<DonDat> selectByIDKH(Integer makh){
         Vector<DonDat> donDatList = new Vector<>();
-        String querySelect = "SELECT DP.ID, DP.KHACHHANG_ID,DP.NGAYNHAN, DP.NGAY_TRA, DP.SL , TT.SOTIEN, DP.NGAY_DAT\n" +
-                            " FROM BOOKING_APP.DATPHONG DP JOIN BOOKING_APP.THANHTOAN TT ON DP.ID = TT.ID\n" +
-                            " WHERE DP.KHACHHANG_ID = ?" ;
+        String querySelect = """
+                             SELECT DP.ID AS ID_DP, P.ID AS ID_PHONG, P.LOAIPHONG, DP.KHACHHANG_ID,DP.NGAYNHAN, DP.NGAY_TRA, DP.SL , TT.SOTIEN, DP.NGAY_DAT
+                              FROM (BOOKING_APP.DATPHONG DP JOIN BOOKING_APP.THANHTOAN TT ON DP.ID = TT.ID) 
+                              JOIN BOOKING_APP.PHONG P ON P.ID = DP.PHONG_ID WHERE DP.KHACHHANG_ID = ?""" ;
         try {
             ResultSet rs = jdbcHelper.query(querySelect,makh);
             ResultSetMetaData metaData = rs.getMetaData();
             
             while(rs.next()){
-                Integer id = rs.getInt("ID");
+                Integer id_dp = rs.getInt("ID_DP");
+                Integer id_phong = rs.getInt("ID_PHONG");
+                String tenPhong = rs.getString("LOAIPHONG");
                 Integer idKH = rs.getInt("KHACHHANG_ID");
                 Long gia = rs.getLong("SOTIEN");
                 Date ngaydat = rs.getObject("NGAY_DAT",Date.class);
                 Date ngaynhan = rs.getObject("NGAYNHAN", Date.class);
                 Date ngaytra = rs.getObject("NGAY_TRA", Date.class);
                 Integer sl = rs.getInt("SL");
-//                System.out.println(idKH);
-//                System.out.println(gia);
-//                
-//                System.out.println(sl);
-//                System.out.println(ngaydat);
-//                System.out.println(ngaytra);
 
-                DonDat data = new DonDat(id , idKH,ngaynhan, ngaytra, sl , ngaydat, gia);
+                DonDat data = new DonDat(id_dp, id_phong, tenPhong, idKH, ngaynhan, ngaytra, sl , ngaydat, gia);
                 donDatList.add(data);
             }
         } catch (SQLException ex) {

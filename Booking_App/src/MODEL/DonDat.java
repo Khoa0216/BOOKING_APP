@@ -17,6 +17,20 @@ public class DonDat {
 
     public DonDat() {
     }
+    
+    public DonDat(Integer id, Integer idP, String tenPhong,Integer idKH,Date ngaynhan,Date ngaytra,Integer sl,Date ngaydat,Long gia) {
+        this.id = id;
+        this.idKH = idKH;
+        this.gia = gia;
+        this.ngayDat = ngaydat;
+        this.ngayNhan = ngaynhan;
+        this.ngayTra = ngaytra;
+        this.sl = sl;
+        this.gia = gia;
+        this.idP=idP;
+        this.tenPhong=tenPhong;
+    }
+    
     public DonDat(Integer id,Integer idKH,Date ngaynhan,Date ngaytra,Integer sl,Date ngaydat,Long gia) {
         this.id = id;
         this.idKH = idKH;

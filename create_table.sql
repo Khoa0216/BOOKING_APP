@@ -99,13 +99,14 @@ CREATE TABLE DON_CHINHSUA (
     CONSTRAINT FK_DATPHONG
         FOREIGN KEY (DATPHONG_ID) REFERENCES DATPHONG(ID) ON DELETE CASCADE
 );
+
 ALTER TABLE DON_CHINHSUA
 ADD CONSTRAINT CK_TTDONCHINHSUA_DUYET 
 CHECK (TRANGTHAI_DUYET IN ('CHỜ DUYỆT', 'ĐÃ DUYỆT', 'KHÔNG DUYỆT'));
 
 ALTER TABLE DON_CHINHSUA
 ADD CONSTRAINT CK_THANHTOAN 
-CHECK (TRANGTHAI_THANHTOAN IN ('ĐÃ THANH TOÁN', 'CHƯA THANH TOÁN'))
+CHECK (TRANGTHAI_THANHTOAN IN ('ĐÃ THANH TOÁN', 'CHƯA THANH TOÁN'));
 
 
 
@@ -175,7 +176,7 @@ BEGIN
   INTO :NEW.ID
   FROM dual;
 END;
-COMMIT
+/
 
 
 CREATE OR REPLACE FUNCTION SO_PHONG_TRONG (
@@ -211,48 +212,7 @@ EXCEPTION
         RETURN -1; -- lỗi
 END;
 /
-commit
 
--- ===============================
--- GRAMT QUYỀN
--- ===============================
-
-GRANT INSERT ON booking_app.nguoidung   TO nguoidung_user;
-GRANT INSERT ON booking_app.khachhang   TO nguoidung_user;
-GRANT INSERT ON booking_app.khachsan TO nguoidung_user;
-
-GRANT INSERT
-  ON booking_app.DON_CHINHSUA
-  TO nguoidung_user;
-
-GRANT DELETE
-  ON booking_app.datphong
-  TO nguoidung_user;
-
-GRANT DELETE
-  ON booking_app.datphong
-  TO nguoidung_user;
-  
-GRANT DELETE
-    ON booking_app.thanhtoan
-    TO nguoidung_user;
-
-GRANT SELECT, INSERT
-  ON booking_app.datphong
-  TO nguoidung_user;
-  
-GRANT SELECT, INSERT
-  ON booking_app.phong
-  TO nguoidung_user;
-  
-GRANT SELECT, INSERT
-  ON booking_app.thanhtoan
-  TO nguoidung_user;
-
-GRANT CREATE SESSION TO khachsan;
-GRANT INSERT, DELETE, UPDATE ON booking_app.phong TO khachsan;
-  
-grant update on booking_app.phong to
 
 -- ===============================
 -- COMMIT

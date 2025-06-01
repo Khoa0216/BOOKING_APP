@@ -93,6 +93,8 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             }
             model.addRow(new Object[]{
                 d.getId(),
+                d.getIdP(),
+                d.getTenPhong(),
                 d.getNgayNhan(),
                 d.getNgayTra(),
                 d.getSl(),
@@ -128,37 +130,32 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã đơn", "Ngày nhận", "Ngày trả", "Số lượng", "Giá", "Ngày đặt", "Trạng thái đơn", "Trạng thái thanh toán"
+                "Mã Đơn", "Mã Phòng", "Tên Phòng", "Ngày Nhận", "Ngày Trả", "Số Lượng", "Giá", "Ngày Đặt", "Trạng Thái Đơn", "Trạng Thái Thanh Toán"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
         jTable1.setToolTipText("");
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setRowHeight(30);
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(100);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(9).setPreferredWidth(130);
         }
 
         jScrollPane1.setViewportView(jScrollPane2);
@@ -288,9 +285,9 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
     }
 
     Integer maDon = (Integer) jTable1.getValueAt(selectedRow, 0);
-    java.util.Date ngayNhanCu = (java.util.Date) jTable1.getValueAt(selectedRow, 1);
-    java.util.Date ngayTraCu = (java.util.Date) jTable1.getValueAt(selectedRow, 2);
-    Integer slCu = (Integer) jTable1.getValueAt(selectedRow, 3);
+    java.util.Date ngayNhanCu = (java.util.Date) jTable1.getValueAt(selectedRow, 3);
+    java.util.Date ngayTraCu = (java.util.Date) jTable1.getValueAt(selectedRow, 4);
+    Integer slCu = (Integer) jTable1.getValueAt(selectedRow, 5);
 
     java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
     String ngayNhanMoiStr = JOptionPane.showInputDialog(this, "Nhập ngày nhận mới (dd/MM/yyyy):", sdf.format(ngayNhanCu));
@@ -331,6 +328,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         DonChinhSua_DAO dao = new DonChinhSua_DAO();
         dao.insertDonChinhSua(model);
 
+        loadtable();
         JOptionPane.showMessageDialog(this, "Gửi đơn chỉnh sửa thành công! Đơn đang chờ duyệt.");
     } catch (Exception ex) {
         ex.printStackTrace();

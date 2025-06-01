@@ -84,8 +84,7 @@ public class TaoPhong extends javax.swing.JFrame {
                 }
             });
         }
-        
-        
+
         btnAddImg.addActionListener(e ->chonAnh());
         btnUpdateImg.addActionListener(e ->chonAnh());
         btnDeleteImg.addActionListener(e -> xoaAnh());
@@ -379,8 +378,8 @@ public class TaoPhong extends javax.swing.JFrame {
     }
     
     private void luuAnhVaoDB() {
-        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
-            String sql = "UPDATE PHONG SET ANH1 = ?, ANH2 = ?, ANH3 = ? WHERE ID = ?";
+        try (Connection conn = Oracle_connection.getConnection("khachsan", "123")) {
+            String sql = "UPDATE booking_app.PHONG SET ANH1 = ?, ANH2 = ?, ANH3 = ? WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             for (int i = 0; i < 3; i++) {
@@ -408,8 +407,8 @@ public class TaoPhong extends javax.swing.JFrame {
     }
     
     private void loadAnhTuDatabase() {
-        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
-            String sql = "SELECT ANH1, ANH2, ANH3 FROM PHONG WHERE ID = ?";
+        try (Connection conn = Oracle_connection.getConnection("khachsan", "123")) {
+            String sql = "SELECT ANH1, ANH2, ANH3 FROM booking_app.PHONG WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, phongID);
             ResultSet rs = ps.executeQuery();
