@@ -1,4 +1,69 @@
 
+CREATE TABLE DON_CHINHSUA (
+    ID               NUMBER PRIMARY KEY,              -- Mã đơn chỉnh sửa
+    DATPHONG_ID      NUMBER NOT NULL,                 -- Tham chiếu tới đơn gốc
+    NGAYNHAN_MOI     DATE,
+    NGAY_TRA_MOI     DATE,
+    SL_MOI           NUMBER,
+    TRANGTHAI_DUYET  VARCHAR2(20),                    -- CHODUYET, DADUYET, TUCHOI
+    TRANGTHAI_THANHTOAN   VARCHAR(20),                 -- đã tt , 
+    CONSTRAINT FK_DATPHONG
+        FOREIGN KEY (DATPHONG_ID) REFERENCES DATPHONG(ID)
+);
+ALTER TABLE DON_CHINHSUA
+ADD CONSTRAINT CK_TTDONCHINHSUA_DUYET 
+CHECK (TRANGTHAI_DUYET IN ('CHỜ DUYỆT', 'ĐÃ DUYỆT', 'KHÔNG DUYỆT'));
+ALTER TABLE DON_CHINHSUA
+ADD CONSTRAINT CK_THANHTOAN 
+CHECK (TRANGTHAI_THANHTOAN IN ('ĐÃ THANH TOÁN', 'CHƯA THANH TOÁN'))
+
+GRANT INSERT
+  ON booking_app.DON_CHINHSUA
+  TO nguoidung_user;
+
+GRANT DELETE
+  ON booking_app.DON_CHINHSUA
+  TO nguoidung_user;
+
+
+
+GRANT DELETE
+  ON booking_app.datphong
+  TO nguoidung_user;
+
+GRANT DELETE
+  ON booking_app.datphong
+  TO nguoidung_user;
+  GRANT DELETE
+  ON booking_app.thanhtoan
+  TO nguoidung_user;
+
+GRANT SELECT, INSERT
+  ON booking_app.datphong
+  TO nguoidung_user;
+GRANT SELECT, INSERT
+  ON booking_app.phong
+  TO nguoidung_user;
+GRANT SELECT, INSERT
+  ON booking_app.thanhtoan
+  TO nguoidung_user;
+
+drop SEQUENCE SEQ_DONCHINHSUA;
+drop TRIGGER trg_auto_id_donchinhsua;
+
+CREATE SEQUENCE SEQ_DONCHINHSUA START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER trg_auto_id_donchinhsua
+BEFORE INSERT ON DON_CHINHSUA
+FOR EACH ROW
+BEGIN
+  SELECT SEQ_DONCHINHSUA.NEXTVAL
+  INTO :NEW.ID
+  FROM dual;
+END;
+/
+COMMIT;
+
 CREATE OR REPLACE FUNCTION SO_PHONG_TRONG (
     v_phong_id      IN NUMBER,
     v_ngay_nhan     IN DATE,

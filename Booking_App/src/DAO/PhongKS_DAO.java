@@ -257,48 +257,29 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public int insertAndReturnID(Phong_KS phong){
-        String queryInsert = "Insert into booking_app.PHONG\n"
-                + "(KHACHSAN_ID, LOAIPHONG, GIA, MOTA , TONGSOLUONG, NGAY_DANG) \n" 
-                + "values (?, ?, ?, ?, ?, ?)\n"
-                + "returning id into ?";
-        try{
-            int newId = 0;
-            Connection conn = Oracle_connection.getConnection("khachsan", "123");
-            conn.setAutoCommit(false);
-            
-            try (PreparedStatement cstmt = conn.prepareStatement(queryInsert, new String[]{"ID"})) {
-            
-            
-                cstmt.setInt(1, phong.getIdKS());
-                cstmt.setString(2, phong.getLoaiPhong());
-                cstmt.setLong(3, phong.getGia());
-                cstmt.setString(4, phong.getMoTa());
-                cstmt.setLong(5, phong.getTongSoluong());
-                cstmt.setDate(6, Date.valueOf(phong.getNgayDang()));
-                
-                try (ResultSet rs = cstmt.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        newId = rs.getInt(1);
-                    } else {
-                        throw new SQLException("Không lấy được ID đon đặt vừa sinh ra");
-                    }
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-            conn.commit();
-            return newId;
-            
-        }catch(SQLException ex){
-            Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
+    public int insertAndReturnID(Phong_KS phong) {
+        String query = "INSERT INTO PHONG (KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG) "
+                     + "VALUES (?, ?, ?, ?, ?, ?) RETURNING ID INTO ?";
+        int id = -1;
+
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
+            CallableStatement cs = conn.prepareCall("BEGIN " + query + "; END;");
+            cs.setInt(1, phong.getIdKS());
+            cs.setString(2, phong.getLoaiPhong());
+            cs.setLong(3, phong.getGia());
+            cs.setString(4, phong.getMoTa());
+            cs.setLong(5, phong.getTongSoluong());
+            cs.setDate(6, Date.valueOf(phong.getNgayDang()));
+            cs.registerOutParameter(7, java.sql.Types.INTEGER);
+
+            cs.execute();
+            id = cs.getInt(7);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
-        message.alert(null, "Không lấy đc id phòng vừa sinh ra");
-        return 0;
-    }
+
+        return id;
+}
     
     public static String getTenPhong (int idP){
         String sql = "SELECT LOAIPHONG FROM PHONG WHERE ID=?";

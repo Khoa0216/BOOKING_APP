@@ -38,6 +38,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         initComponents();
         loadtable();
         
+        
         javax.swing.table.DefaultTableCellRenderer dateRenderer = new javax.swing.table.DefaultTableCellRenderer() {
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
             @Override
@@ -49,6 +50,9 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
                 }
             }
         };
+        javax.swing.table.JTableHeader header = jTable1.getTableHeader();
+        javax.swing.table.DefaultTableCellRenderer headerRenderer = (javax.swing.table.DefaultTableCellRenderer) header.getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         // Gán renderer cho các cột có kiểu ngày
         jTable1.getColumnModel().getColumn(1).setCellRenderer(dateRenderer); // Ngày nhận
@@ -70,36 +74,35 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
     
     public void loadtable(){
         DonDat_DAO dao = new DonDat_DAO();
+        DonChinhSua_DAO dcsDao = new DonChinhSua_DAO();
         Vector<DonDat> list = dao.selectByIDKH(kh.getID());
-        
-//        System.out.println(kh.getID());
-//        System.out.println(kh.getEMAIL());
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // clear old rows
 
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
 
         for (DonDat d : list) {
-//            System.out.println("ID: " + d.getId());
-//            System.out.println("ngaynhan: " + d.getNgayNhan());
-//            System.out.println("ngaytra: " + d.getNgayTra());
-//            System.out.println("SL: " + d.getSl());
-//            System.out.println("gia: " + d.getGia());
-//            System.out.println("dat: " + d.getNgayDat());
+            // Lấy đơn chỉnh sửa theo mã đơn
+            DonChinhSua dcs = dcsDao.selectDonChinhSuaById(d.getId());
+            String trangThaiDuyet = "--";
+            String trangThaiThanhToan = "--";
+            if (dcs != null) {
+                trangThaiDuyet = dcs.getTrangThaiDuyet();
+                trangThaiThanhToan = dcs.getTrangThaiThanhToan();
+            }
             model.addRow(new Object[]{
                 d.getId(),
                 d.getNgayNhan(),
                 d.getNgayTra(),
                 d.getSl(),
                 d.getGia(),
-                d.getNgayDat()
+                d.getNgayDat(),
+                trangThaiDuyet,
+                trangThaiThanhToan
             });
         }
-
- 
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,6 +152,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setToolTipText("");
         jTable1.setRowHeight(30);
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
@@ -300,7 +304,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         java.util.Date ngayNhanMoi = sdf.parse(ngayNhanMoiStr);
         java.util.Date ngayTraMoi = sdf.parse(ngayTraMoiStr);
         int slMoi = Integer.parseInt(slMoiStr);
-
+        System.out.println("11111111111111111111111");
         if (ngayNhanMoi.after(ngayTraMoi)) {
             JOptionPane.showMessageDialog(this, "Ngày trả phải sau ngày nhận!");
             return;

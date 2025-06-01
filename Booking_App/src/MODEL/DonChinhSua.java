@@ -17,7 +17,12 @@ public class DonChinhSua {
     private String trangThaiDuyet;       // Trạng thái duyệt (CHỜ DUYỆT, ĐÃ DUYỆT, KHÔNG DUYỆT)
     private String trangThaiThanhToan;   // Trạng thái thanh toán (ĐÃ THANH TOÁN, CHƯA THANH TOÁN)
 
-    public DonChinhSua() {
+    
+    public DonChinhSua(){
+    }
+    public DonChinhSua(String ttd,String tttt) {
+        this.trangThaiDuyet = ttd;
+        this.trangThaiThanhToan = tttt;
     }
 
     public DonChinhSua(int id, int datPhongId, Date ngayNhanMoi, Date ngayTraMoi, int slMoi,

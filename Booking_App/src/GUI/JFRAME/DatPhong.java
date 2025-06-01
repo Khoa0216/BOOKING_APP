@@ -215,23 +215,6 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayNhan(java.sql.Date.valueOf(ngayNhan));
         donDat.setNgayTra(java.sql.Date.valueOf(ngayTra));
         
-
-        // donDat.setNgayDat(LocalDateTime.now());
-        // donDat.setNgayNhan(ngayNhan);
-        // donDat.setNgayTra(ngayTra);
-
-
-
-        ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
-
-        this.setVisible(false);
-
-        thanhTaonFrame.pack();                        // hoặc setSize(...)
-        thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
-        thanhTaonFrame.setVisible(true);
-
-        
-        
         donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
         donDat.setTenKH(PhongKS_DAO.getTenKH(donDat.getIdKH()));
         PhongKS_DAO.getKS(donDat.getIdP(),donDat);
@@ -241,6 +224,7 @@ public class DatPhong extends javax.swing.JFrame {
         System.out.println(phongcl);
         
         if (phongcl >= slPhong){
+            ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
             this.setVisible(false);
         
             thanhTaonFrame.pack();                        // hoặc setSize(...)
@@ -249,8 +233,6 @@ public class DatPhong extends javax.swing.JFrame {
         } else{
             message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
         }
-        
-        
         
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
