@@ -18,6 +18,13 @@ public class DonDat {
     public DonDat() {
     }
     
+    public DonDat(Date ngaynhan, Date ngaytra, Integer sl, Integer idP) {
+        this.ngayNhan = ngaynhan;
+        this.ngayTra = ngaytra;
+        this.sl = sl;
+        this.idP = idP;
+    }
+    
     public DonDat(Integer id, Integer idP, String tenPhong,Integer idKH,Date ngaynhan,Date ngaytra,Integer sl,Date ngaydat,Long gia) {
         this.id = id;
         this.idKH = idKH;

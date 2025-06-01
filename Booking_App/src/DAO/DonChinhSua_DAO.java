@@ -71,9 +71,32 @@ public class DonChinhSua_DAO {
         }
         return null;
     }
+    
+    public DonChinhSua selectDonChinhSuaByIdCS(Integer idDoncs) {
+        String sql = "SELECT * FROM BOOKING_APP.DON_CHINHSUA WHERE ID = ?";
+        try {
+            ResultSet rs = jdbcHelper.query(sql, idDoncs);
+            if (rs.next()) {
+                Integer id = rs.getInt("ID");
+                Integer datPhongId = rs.getInt("DATPHONG_ID");
+                java.util.Date ngayNhanMoi = rs.getDate("NGAYNHAN_MOI");
+                java.util.Date ngayTraMoi = rs.getDate("NGAY_TRA_MOI");
+                Integer slMoi = rs.getInt("SL_MOI");
+                String trangThaiDuyet = rs.getString("TRANGTHAI_DUYET");
+                String trangThaiThanhToan = rs.getString("TRANGTHAI_THANHTOAN");
+                DonChinhSua model = new DonChinhSua(id, datPhongId, ngayNhanMoi, ngayTraMoi, slMoi, trangThaiDuyet, trangThaiThanhToan);
+                return model;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Lỗi khi lấy đơn chỉnh sửa theo ID: " + e.getMessage());
+        }
+        return null;
+    }
+    
     public List<DonChinhSua> selectDonChinhSuaByKhachSanId(Integer khachSanId) {
         List<DonChinhSua> list = new ArrayList<>();
-        String sql = "SELECT DCS.ID , DCS.DATPHONG_ID , DCS.NGAYNHAN_MOI , DCS.NGAY_TRA_MOI , DCS.SL_MOI, DCS.TRANGTHAI_DUYET, DCS.TRANGTHAI_THANHTOAN\n" +
+        String sql = "SELECT DCS.ID , P.LOAIPHONG ,DCS.DATPHONG_ID , DCS.NGAYNHAN_MOI , DCS.NGAY_TRA_MOI , DCS.SL_MOI, DCS.TRANGTHAI_DUYET, DCS.TRANGTHAI_THANHTOAN\n" +
                     "FROM BOOKING_APP.DON_CHINHSUA DCS " +
                     " JOIN BOOKING_APP.DATPHONG DP ON DCS.DATPHONG_ID = DP.ID\n" +
                     " JOIN BOOKING_APP.PHONG P ON DP.PHONG_ID = P.ID\n" +
@@ -83,13 +106,14 @@ public class DonChinhSua_DAO {
             ResultSet rs = jdbcHelper.query(sql, khachSanId);
             while (rs.next()) {
                 Integer id = rs.getInt("ID");
+                String LoaiPhong = rs.getString("LOAIPHONG");
                 Integer datPhongId = rs.getInt("DATPHONG_ID");
                 java.util.Date ngayNhanMoi = rs.getDate("NGAYNHAN_MOI");
                 java.util.Date ngayTraMoi = rs.getDate("NGAY_TRA_MOI");
                 Integer slMoi = rs.getInt("SL_MOI");
                 String trangThaiDuyet = rs.getString("TRANGTHAI_DUYET");
                 String trangThaiThanhToan = rs.getString("TRANGTHAI_THANHTOAN");
-                DonChinhSua model = new DonChinhSua(id, datPhongId, ngayNhanMoi, ngayTraMoi, slMoi, trangThaiDuyet, trangThaiThanhToan);
+                DonChinhSua model = new DonChinhSua(id, LoaiPhong, datPhongId, ngayNhanMoi, ngayTraMoi, slMoi, trangThaiDuyet, trangThaiThanhToan);
                 list.add(model);
             }
         } catch (Exception e) {

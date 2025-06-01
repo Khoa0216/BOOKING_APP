@@ -50,6 +50,30 @@ public class DonDat_DAO {
 
         return donDatList;
     }
+    
+    public DonDat selectByIDD(Integer madondat){
+        String querySelect = " SELECT PHONG_ID, NGAYNHAN, NGAY_TRA, SL "
+                + " FROM BOOKING_APP.DATPHONG WHERE ID = ? " ;
+        DonDat dd=null;
+        
+        try {
+            ResultSet rs = jdbcHelper.query(querySelect,madondat);
+            
+            while(rs.next()){
+                Integer id_phong = rs.getInt("PHONG_ID");
+                Date ngaynhan = rs.getObject("NGAYNHAN", Date.class);
+                Date ngaytra = rs.getObject("NGAY_TRA", Date.class);
+                Integer sl = rs.getInt("SL");
+
+                dd = new DonDat(ngaynhan,ngaytra,sl,id_phong);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DonDat_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }              
+
+        return dd;
+    }
+    
     static public Vector<DonDat> selectAll(){
         Vector<DonDat> donDatList = new Vector<>();
         String querySelect = "select dp.id, dp.khachhang_id,  hoten, p.id as phong_id,  p.khachsan_id,"
