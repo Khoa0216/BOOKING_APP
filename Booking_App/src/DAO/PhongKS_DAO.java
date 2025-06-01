@@ -7,10 +7,7 @@ package DAO;
 import MODEL.Phong_KS;
 import database.jdbcHelper;
 import Interface.IPhongKS;
-<<<<<<< HEAD
-=======
 import MODEL.DonDat;
->>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
 import database.Oracle_connection;
 import java.awt.HeadlessException;
 import java.util.Vector;
@@ -254,7 +251,6 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
         return listPhong;
     }
-<<<<<<< HEAD
 
     @Override
     public List<Phong_KS> selectAll() {
@@ -303,7 +299,6 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         message.alert(null, "Không lấy đc id phòng vừa sinh ra");
         return 0;
     }
-=======
     
     public static String getTenPhong (int idP){
         String sql = "SELECT LOAIPHONG FROM PHONG WHERE ID=?";
@@ -371,5 +366,4 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
     }
 
->>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
 }

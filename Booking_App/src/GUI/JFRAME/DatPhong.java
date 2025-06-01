@@ -212,7 +212,6 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setNgayDat(LocalDateTime.now());
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
-<<<<<<< HEAD
 
         ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
 
@@ -221,7 +220,6 @@ public class DatPhong extends javax.swing.JFrame {
         thanhTaonFrame.pack();                        // hoặc setSize(...)
         thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         thanhTaonFrame.setVisible(true);
-=======
         
         
         donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
@@ -233,7 +231,6 @@ public class DatPhong extends javax.swing.JFrame {
         System.out.println(phongcl);
         
         if (phongcl >= slPhong){
-            ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);
             this.setVisible(false);
         
             thanhTaonFrame.pack();                        // hoặc setSize(...)
@@ -245,7 +242,6 @@ public class DatPhong extends javax.swing.JFrame {
         
         
         
->>>>>>> 84b9184f48c73bb1a856336dcfa2970505376eae
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed
