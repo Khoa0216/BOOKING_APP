@@ -10,12 +10,10 @@
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/DAO/DonDat_DAO.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/Main.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/MODEL/DonDat.java</file>
-            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/quanlydatKhachHang.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_QuanLyDonDat.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/homeKhachHang.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/accKhachHang.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/SignUpKhachHang.java</file>
-            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/PhotoFrame.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/CustomScrollBar.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/formKS.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/SignUpKhachSan.java</file>
@@ -29,13 +27,12 @@
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/HomePage.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/JFRAME/DatPhong.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/MODEL/KHACHHANG.java</file>
-            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/DAO/DonChinhSua_DAO.java</file>
-            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/MODEL/DonChinhSua.java</file>
-            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/Interface/IDonChinhSua.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/Interface/IKhachHang.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/Interface/IPhongKS.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/DAO/Chuyen_DangTaiDAO.java</file>
             <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/database/jdbcHelper.java</file>
+            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/GUI/Component/tableDonDat.java</file>
+            <file>file:/Users/bobui/Desktop/BOOKING_APP/Booking_App/src/DAO/DonChinhSua_DAO.java</file>
         </group>
     </open-files>
 </project-private>
