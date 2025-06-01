@@ -10,6 +10,7 @@ import DAO.PhongKS_DAO;
 import GUI.Component.CustomScrollBar;
 import GUI.Component.DashBoard;
 import GUI.Component.HomePage;
+import GUI.Component.tableDonChinhSua;
 import java.lang.Integer;
 import java.lang.Long;
 import utils.message;
@@ -32,6 +33,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private tablePhongKS table;
     private DashBoard dashBoard;
     private HomePage homePage;
+    private tableDonChinhSua dcs;
     
     private Integer idKS;
     private NGUOIDUNG user;
@@ -50,6 +52,8 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     public Menu_KhachSan(NGUOIDUNG user){
         new jdbcHelper("khachsan", "123");
         this.idKS = user.getID();
+        
+        System.out.println(this.idKS);
         this.user = user;
         initComponents();
         initCardLayout();
@@ -62,7 +66,10 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         dashBoard = new DashBoard();
         table = new tablePhongKS(this.user);
         homePage = new HomePage(this.user);
+        dcs = new tableDonChinhSua(content, this.cardLayout,this.user.getEMAIL());
+        System.out.print(this.user.getEMAIL());
         
+        content.add(dcs,"tabledcs");
         content.add(table, "table");
         content.add(dashBoard, "dashBoard");
         content.add(homePage, "Home Page");
@@ -89,12 +96,10 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         HelpBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
-        orderBtn = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
+        dcsBtn = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1708, 1037));
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
@@ -137,21 +142,12 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         YourEmail.setForeground(new java.awt.Color(255, 255, 255));
         YourEmail.setText("Your Email");
 
-        orderBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        orderBtn.setForeground(new java.awt.Color(0, 102, 102));
-        orderBtn.setText("Đặt");
-        orderBtn.addActionListener(new java.awt.event.ActionListener() {
+        dcsBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        dcsBtn.setForeground(new java.awt.Color(0, 102, 102));
+        dcsBtn.setText("Quản lý đơn chỉnh sửa");
+        dcsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderBtnActionPerformed(evt);
-            }
-        });
-
-        btnThongKe.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        btnThongKe.setForeground(new java.awt.Color(0, 102, 102));
-        btnThongKe.setText("Thống Kê");
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
+                dcsBtnActionPerformed(evt);
             }
         });
 
@@ -160,21 +156,21 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         DashBoardLayout.setHorizontalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashBoardLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                .addGap(0, 27, Short.MAX_VALUE))
-            .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(UserIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(106, 106, 106))
+            .addGroup(DashBoardLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dcsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
         DashBoardLayout.setVerticalGroup(
             DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,16 +182,14 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(dcsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         content.setMaximumSize(new java.awt.Dimension(32767, 1000000000));
@@ -206,11 +200,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1402, Short.MAX_VALUE)
+            .addGap(0, 1384, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1037, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,8 +213,9 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1402, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1384, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,14 +239,10 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
     }//GEN-LAST:event_AccountBtnActionPerformed
 
-    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
+    private void dcsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dcsBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_orderBtnActionPerformed
-
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(content, "dashBoard");
-    }//GEN-LAST:event_btnThongKeActionPerformed
+        cardLayout.show(content, "tabledcs");
+    }//GEN-LAST:event_dcsBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,8 +294,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
-    private javax.swing.JButton btnThongKe;
     private javax.swing.JPanel content;
-    private javax.swing.JButton orderBtn;
+    private javax.swing.JButton dcsBtn;
     // End of variables declaration//GEN-END:variables
 }

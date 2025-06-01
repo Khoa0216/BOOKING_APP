@@ -10,6 +10,7 @@ import javax.swing.*;
 import GUI.JFRAME.ThanhToan;
 import MODEL.NGUOIDUNG;
 import java.time.LocalDate;
+import java.util.Date;
 import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
@@ -209,6 +210,7 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setIdKH(user.getID());
         donDat.setIdP(phong.getId());
         donDat.setSl(slPhong);
+<<<<<<< HEAD
         donDat.setNgayDat(LocalDateTime.now());
         donDat.setNgayNhan(ngayNhan);
         donDat.setNgayTra(ngayTra);
@@ -221,6 +223,12 @@ public class DatPhong extends javax.swing.JFrame {
         thanhTaonFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         thanhTaonFrame.setVisible(true);
         
+=======
+
+        donDat.setNgayDat(java.sql.Date.valueOf(LocalDate.now()));
+        donDat.setNgayNhan(java.sql.Date.valueOf(ngayNhan));
+        donDat.setNgayTra(java.sql.Date.valueOf(ngayTra));
+>>>>>>> 5a6a0679c78fb424fa307a8b94028343ec390e1b
         
         donDat.setTenPhong(PhongKS_DAO.getTenPhong(donDat.getIdP()));
         donDat.setTenKH(PhongKS_DAO.getTenKH(donDat.getIdKH()));
@@ -240,8 +248,11 @@ public class DatPhong extends javax.swing.JFrame {
             message.alert(null, "Phòng còn lại là: "+phongcl+". Không đủ cho yêu cầu của bạn!\n Mời chọn phòng khác hoặc chọn ngày ở khác.");
         }
         
+<<<<<<< HEAD
         
         
+=======
+>>>>>>> 5a6a0679c78fb424fa307a8b94028343ec390e1b
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtNgayTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraActionPerformed

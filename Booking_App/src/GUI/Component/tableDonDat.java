@@ -44,8 +44,8 @@ public class tableDonDat extends javax.swing.JPanel {
     private final ImageIcon icSave    = new ImageIcon(getClass().getResource("/image/save_as.png"));
     private final ImageIcon icSearch = new ImageIcon(getClass().getResource("/image/search.png"));
     
-    private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", "Mã doanh nghiệp",
-        "Tên doang nghiệp", "Giá", "Ngày đặt"}; 
+    private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", 
+         "Giá", "Ngày đặt"}; 
     private DefaultTableModel model;
     
         
@@ -62,7 +62,6 @@ public class tableDonDat extends javax.swing.JPanel {
         btnSearch.setIcon(icSearch);
         btnSua.setIcon(icEdit);
         btnXoa.setIcon(icDelete);
-        btnXuatExcel.setIcon(icSave);
     }
     
     public void loadTable(){
@@ -118,30 +117,37 @@ public class tableDonDat extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        btnXuatExcel = new javax.swing.JButton();
         txtFieldSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         CBSort = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(520, 520));
+        setPreferredSize(new java.awt.Dimension(1320, 1025));
 
         myTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Đơn", "Mã Khách hàng", "Tên Khách hàng", "Mã Doanh Nghiệp", "Tên Doanh Nghiệp", "Giá", "Ngày Đặt"
+                "Mã Đơn", "Ngày nhận", "Ngày trả", "Số lượng", "Giá", "Ngày Đặt"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Long.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Long.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         myTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,6 +156,14 @@ public class tableDonDat extends javax.swing.JPanel {
             }
         });
         scrollBar.setViewportView(myTable);
+        if (myTable.getColumnModel().getColumnCount() > 0) {
+            myTable.getColumnModel().getColumn(0).setMinWidth(100);
+            myTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+            myTable.getColumnModel().getColumn(0).setMaxWidth(100);
+            myTable.getColumnModel().getColumn(1).setMinWidth(100);
+            myTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+            myTable.getColumnModel().getColumn(1).setMaxWidth(100);
+        }
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -162,13 +176,6 @@ public class tableDonDat extends javax.swing.JPanel {
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
-            }
-        });
-
-        btnXuatExcel.setText("Xuất excel");
-        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXuatExcelActionPerformed(evt);
             }
         });
 
@@ -193,6 +200,8 @@ public class tableDonDat extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Tìm theo mã đơn");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -201,9 +210,9 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addComponent(btnXoa)
                 .addGap(18, 18, 18)
                 .addComponent(btnSua)
-                .addGap(18, 18, 18)
-                .addComponent(btnXuatExcel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 617, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearch)
@@ -217,10 +226,10 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXoa)
                     .addComponent(btnSua)
-                    .addComponent(btnXuatExcel)
                     .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
-                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
@@ -241,7 +250,7 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollBar)
+                .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -252,12 +261,7 @@ public class tableDonDat extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        if (this.selectedRow != -1){
-            Integer rowModel = myTable.convertRowIndexToModel(selectedRow);
-            Integer ID = (Integer) myTable.getModel().getValueAt(rowModel, 0);
-            DonDat_DAO.delete(ID);
-            model.removeRow(rowModel);
-        }       
+         
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSearchActionPerformed
@@ -291,23 +295,9 @@ public class tableDonDat extends javax.swing.JPanel {
 
     private void myTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myTableMouseClicked
         // TODO add your handling code here:
-        this.selectedRow = myTable.getSelectedRow();
+        
+        
     }//GEN-LAST:event_myTableMouseClicked
-
-    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
-        // TODO add your handling code here:
-        LocalDate date = LocalDate.now();
-        String pathDir = "./CSV/DonDat";
-        String name = "donDat_" + String.valueOf(date) + ".csv";
-             
-        try {
-            csvExporter.exportToCSV(myTable, pathDir, name);
-            message.alert(null, "Xuất Excel thành công!");
-        } catch (Exception ex) {
-            Logger.getLogger(tableDonDat.class.getName()).log(Level.SEVERE, null, ex);
-            message.alert(null, "Lỗi: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_btnXuatExcelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,7 +305,7 @@ public class tableDonDat extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnXuatExcel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable myTable;
     private javax.swing.JScrollPane scrollBar;

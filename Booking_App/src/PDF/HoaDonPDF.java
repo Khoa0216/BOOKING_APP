@@ -5,7 +5,8 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 
 import java.io.FileOutputStream;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat; // Thay đổi
+import java.util.Date;
 
 public class HoaDonPDF {
 
@@ -20,15 +21,19 @@ public class HoaDonPDF {
             Font fontSub = new Font(Font.HELVETICA, 14, Font.BOLD);
             Font fontNormal = new Font(Font.HELVETICA, 12, Font.NORMAL);
 
-            DateTimeFormatter dfNgay = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            DateTimeFormatter dfNgayGio = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            // Sử dụng SimpleDateFormat thay vì DateTimeFormatter
+            SimpleDateFormat dfNgay = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dfNgayGio = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
             // Tiêu đề (căn giữa)
             Paragraph title = new Paragraph("HÓA ĐƠN THANH TOÁN", fontTitle);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
 
-            Paragraph ngayLap = new Paragraph("Ngày lập hóa đơn: " + don.getNgayDat().format(dfNgayGio), fontNormal);
+            // Định dạng ngày lập hóa đơn
+            Date ngayDat = don.getNgayDat();
+            String ngayLapFormatted = (ngayDat != null) ? dfNgayGio.format(ngayDat) : "N/A";
+            Paragraph ngayLap = new Paragraph("Ngày lập hóa đơn: " + ngayLapFormatted, fontNormal);
             ngayLap.setAlignment(Element.ALIGN_CENTER);
             document.add(ngayLap);
 
@@ -50,8 +55,15 @@ public class HoaDonPDF {
             document.add(new Paragraph("Khách Sạn: " + don.getTenKS() + " (ID: " + don.getIdKS() + ")", fontNormal));
             document.add(new Paragraph("Phòng: " + don.getTenPhong() + " (ID: " + don.getIdP() + ")", fontNormal));
             document.add(new Paragraph("Số lượng phòng: " + don.getSl(), fontNormal));
-            document.add(new Paragraph("Ngày nhận phòng: " + don.getNgayNhan().format(dfNgay), fontNormal));
-            document.add(new Paragraph("Ngày trả phòng: " + don.getNgayTra().format(dfNgay), fontNormal));
+
+            Date ngayNhan = don.getNgayNhan();
+            Date ngayTra = don.getNgayTra();
+
+            String ngayNhanFormatted = (ngayNhan != null) ? dfNgay.format(ngayNhan) : "N/A";
+            String ngayTraFormatted = (ngayTra != null) ? dfNgay.format(ngayTra) : "N/A";
+
+            document.add(new Paragraph("Ngày nhận phòng: " + ngayNhanFormatted, fontNormal));
+            document.add(new Paragraph("Ngày trả phòng: " + ngayTraFormatted, fontNormal));
 
             document.add(new Paragraph(" "));
 
@@ -70,4 +82,3 @@ public class HoaDonPDF {
     }
 
 }
-

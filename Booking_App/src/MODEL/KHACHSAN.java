@@ -14,10 +14,20 @@ public class KHACHSAN extends NGUOIDUNG{
         this.ID=ng.getID();
         this.LOAITK=ng.getLOAITK();
     }
+    public KHACHSAN(Integer id,String name,String email,String tenDN,String diachi,String tinh,String mota){
+        this.DIACHI = diachi;
+        this.ID = id;
+        this.HOTEN = name;
+        this.EMAIL = email;
+        this.TENDN = tenDN;
+        this.MOTA = mota;
+        this.TINH = tinh;                  
+    }
 
     public String getDIACHI() {
         return DIACHI;
     }
+    
 
     @Override
     public String getEMAIL() {
@@ -31,7 +41,7 @@ public class KHACHSAN extends NGUOIDUNG{
 
     @Override
     public int getID() {
-        return ID;
+        return this.ID;
     }
 
 

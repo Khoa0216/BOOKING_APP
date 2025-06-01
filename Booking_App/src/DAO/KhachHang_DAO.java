@@ -21,7 +21,7 @@ public class KhachHang_DAO implements IKhachHang<KHACHHANG, String>{
     
     @Override
     public KHACHHANG select(String email) {
-        String sql = "SELECT ND.HOTEN, KH.CCCD, TO_CHAR(KH.NGAYSINH, 'DD/MM/YYYY') AS NGAYSINH, ND.MATKHAU "
+        String sql = "SELECT ND.ID,ND.HOTEN, KH.CCCD, TO_CHAR(KH.NGAYSINH, 'DD/MM/YYYY') AS NGAYSINH, ND.MATKHAU "
                 + " FROM BOOKING_APP.NGUOIDUNG ND JOIN BOOKING_APP.KHACHHANG KH"
                 + " ON ND.ID = KH.ID "
                 + " WHERE EMAIL = ?";
@@ -29,12 +29,13 @@ public class KhachHang_DAO implements IKhachHang<KHACHHANG, String>{
         try {
             rs = this.jdbc.query(sql, email);
         if (rs.next()) {
+            int id = rs.getInt("ID");
             String name = rs.getString("HOTEN");
             String cccd = rs.getString("CCCD");
             String date = rs.getString("NGAYSINH");
             String pass = rs.getString("MATKHAU");
 
-            return new KHACHHANG(name, email, cccd, date, pass);
+            return new KHACHHANG(id,name, email, cccd, date, pass);
             }
         } catch (SQLException ex) {
             Logger.getLogger(KhachHang_DAO.class.getName()).log(Level.SEVERE, null, ex);

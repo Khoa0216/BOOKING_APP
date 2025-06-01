@@ -396,9 +396,8 @@ public class TaoPhong extends javax.swing.JFrame {
             ps.setInt(4, phongID);
 
             int rows = ps.executeUpdate();
-            if (rows > 0) {
-                JOptionPane.showMessageDialog(this, "Đã cập nhật ảnh thành công!");
-            } else {
+            if (rows <= 0) {
+                
                 JOptionPane.showMessageDialog(this, "Không tìm thấy phòng để cập nhật.");
             }
 
@@ -452,17 +451,36 @@ public class TaoPhong extends javax.swing.JFrame {
         Long gia = Long.valueOf(txtGia.getText());
         Long sl = Long.valueOf(txtSoLuong.getText());
         LocalDate today = LocalDate.now();
-        Phong_KS phong = new Phong_KS(null, idKS, loaiPhong, moTa, gia, sl,  today);
-        if (this.phong != null){
-            phong.setId(this.phong.getId());
+
+        if (this.phong != null) {
+            phong.setLoaiPhong(loaiPhong);
+            phong.setMoTa(moTa);
+            phong.setGia(gia);
+            phong.setTongSoluong(sl);
+            phong.setNgayDang(today);
+            
             phongKSDao.update(phong);
+            this.phongID = this.phong.getId();
+            luuAnhVaoDB();
+            
+        } else {
+            Phong_KS phong = new Phong_KS(null, idKS, loaiPhong, moTa, gia, sl, today);
+            int newId = phongKSDao.insertAndReturnID(phong);  // lấy ID mới từ DB
+            if (newId > 0) {
+                phong.setId(newId);               // gán ID vừa tạo lại vào đối tượng
+                this.phongID = newId;             // gán cho biến hiện tại dùng ở hàm lưu ảnh
+                this.phong = phong;               // cập nhật đối tượng để không bị null
+                this.luuAnhVaoDB();               // giờ mới gọi lưu ảnh
+            } else {
+                JOptionPane.showMessageDialog(this, "Không thể thêm phòng mới.");
+                return; // thoát nếu insert lỗi
+            }
         }
-        else{
-           this.phongID = phongKSDao.insertAndReturnID(phong);
-           this.luuAnhVaoDB();
-        }
+
         this.phong = null;
         this.setVisible(false);
+        
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoaiPhongActionPerformed
