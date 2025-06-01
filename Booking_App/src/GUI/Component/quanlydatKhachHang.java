@@ -93,6 +93,8 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             }
             model.addRow(new Object[]{
                 d.getId(),
+                d.getIdP(),
+                d.getTenPhong(),
                 d.getNgayNhan(),
                 d.getNgayTra(),
                 d.getSl(),
@@ -331,6 +333,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         DonChinhSua_DAO dao = new DonChinhSua_DAO();
         dao.insertDonChinhSua(model);
 
+        loadtable();
         JOptionPane.showMessageDialog(this, "Gửi đơn chỉnh sửa thành công! Đơn đang chờ duyệt.");
     } catch (Exception ex) {
         ex.printStackTrace();

@@ -51,7 +51,7 @@ public class DonChinhSua_DAO {
         return null;
     }
     public DonChinhSua selectDonChinhSuaById(Integer idDon) {
-        String sql = "SELECT * FROM BOOKING_APP.DON_CHINHSUA WHERE ID = ?";
+        String sql = "SELECT * FROM BOOKING_APP.DON_CHINHSUA WHERE DATPHONG_ID = ?";
         try {
             ResultSet rs = jdbcHelper.query(sql, idDon);
             if (rs.next()) {

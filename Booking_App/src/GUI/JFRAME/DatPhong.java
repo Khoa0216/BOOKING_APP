@@ -14,6 +14,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import MODEL.DonDat;
 import MODEL.Phong_KS;
+import java.time.ZoneId;
 import utils.DateUtils;
 import utils.message;
 
@@ -211,7 +212,11 @@ public class DatPhong extends javax.swing.JFrame {
         donDat.setIdP(phong.getId());
         donDat.setSl(slPhong);
 
-        donDat.setNgayDat(java.sql.Date.valueOf(LocalDate.now()));
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZoneId zone = ZoneId.systemDefault();
+        Date date = Date.from(localDateTime.atZone(zone).toInstant());
+        donDat.setNgayDat(date);
+        
         donDat.setNgayNhan(java.sql.Date.valueOf(ngayNhan));
         donDat.setNgayTra(java.sql.Date.valueOf(ngayTra));
         

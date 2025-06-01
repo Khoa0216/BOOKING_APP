@@ -48,11 +48,12 @@ public class ThanhToan extends javax.swing.JFrame {
         this.donDat = donDat;
         
         int idDonDat = DonDat_DAO.insert(donDat);
+        long millisDiff = donDat.getNgayTra().getTime() - donDat.getNgayNhan().getTime();
+        long daysDiff = millisDiff / (1000 * 60 * 60 * 24);
         
-        
-        this.tt_model = new ThanhToan_model(idDonDat,DonDat_DAO.tongTien(donDat));
+        this.tt_model = new ThanhToan_model(idDonDat,DonDat_DAO.tongTien(donDat)*daysDiff);
 
-        label_hienthisotien.setText(" "+String.valueOf(DonDat_DAO.tongTien(donDat))+" VND.");
+        label_hienthisotien.setText(String.valueOf(DonDat_DAO.tongTien(donDat)*daysDiff)+" VND.");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -367,6 +368,7 @@ public class ThanhToan extends javax.swing.JFrame {
                 filePath += ".pdf";
             }
             
+            System.out.println(this.donDat.getNgayDat());
             HoaDonPDF.xuatHoaDonPDF(this.donDat, tenchuthe, tenthe, sothe, tt_model.getSotien(), filePath);
             
             try {
