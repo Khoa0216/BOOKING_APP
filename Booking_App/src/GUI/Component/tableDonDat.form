@@ -117,10 +117,10 @@
                   <Component id="btnSua" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="702" max="32767" attributes="0"/>
+                  <EmptySpace pref="686" max="32767" attributes="0"/>
                   <Component id="txtFieldSearch" min="-2" pref="144" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSearch" min="-2" pref="83" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="CBSort" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -131,17 +131,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CBSort" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CBSort" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFieldSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
