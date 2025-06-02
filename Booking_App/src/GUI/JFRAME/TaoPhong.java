@@ -466,11 +466,14 @@ public class TaoPhong extends javax.swing.JFrame {
             Phong_KS phong = new Phong_KS(null, idKS, loaiPhong, moTa, gia, sl, today);
             int newId = phongKSDao.insertAndReturnID(phong);  // lấy ID mới từ DB
             if (newId > 0) {
+                //System.out.println(newId );
                 phong.setId(newId);               // gán ID vừa tạo lại vào đối tượng
                 this.phongID = newId;             // gán cho biến hiện tại dùng ở hàm lưu ảnh
                 this.phong = phong;               // cập nhật đối tượng để không bị null
                 this.luuAnhVaoDB();               // giờ mới gọi lưu ảnh
+                JOptionPane.showMessageDialog(this, "Thêm phòng mới thành công.");
             } else {
+                //System.out.println(newId );
                 JOptionPane.showMessageDialog(this, "Không thể thêm phòng mới.");
                 return; // thoát nếu insert lỗi
             }

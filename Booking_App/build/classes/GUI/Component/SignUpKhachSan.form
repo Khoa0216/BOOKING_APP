@@ -70,15 +70,15 @@
                                   <Component id="Business_Name_Fill" alignment="0" pref="520" max="32767" attributes="0"/>
                                   <Component id="Label_Address" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Address_Fill" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tinhLabel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   <Component id="Label_Describe" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="tinhComboBox" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Component id="tinhLabel" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                               </Group>
                               <Component id="Describe_Fill" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,7 +103,7 @@
                   <Component id="Label_Describe" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Describe_Fill" min="-2" pref="153" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
                   <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="SignUp_Confirm" min="-2" max="-2" attributes="0"/>

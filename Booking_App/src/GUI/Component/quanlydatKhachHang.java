@@ -96,7 +96,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             String trangThaiDuyet = "--";
             String trangThaiThanhToan = "--";
             if (dcs != null) {
-                if (!"KHÔNG DUYỆT".equals(dcs.getTrangThaiDuyet())){
+                if (!"ĐÃ DUYỆT".equals(dcs.getTrangThaiDuyet())){
                     trangThaiThanhToan = dcs.getTrangThaiThanhToan();
                 }
                 trangThaiDuyet = dcs.getTrangThaiDuyet();
@@ -303,8 +303,8 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         }
 
         // Xoá
-        boolean success = DonDat_DAO.delete(maDon);
-        if (success) {
+        int success = DonDat_DAO.delete(maDon);
+        if (success > 0) {
             JOptionPane.showMessageDialog(this, "Xoá đơn thành công!");
             loadtable(); // Tải lại bảng
         } else {
