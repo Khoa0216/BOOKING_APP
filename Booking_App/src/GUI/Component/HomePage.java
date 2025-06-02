@@ -38,6 +38,7 @@ public class HomePage extends javax.swing.JPanel {
         jScrollPane1.setViewportView(listCard);
         
         Vector<Phong_KS> listPhongKS = phongKSDao.showOnCard();
+        System.out.println("So phong: " + listPhongKS.size());
         
         int gap=10;
         for (Phong_KS phong : listPhongKS){

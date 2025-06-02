@@ -312,12 +312,6 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-<<<<<<< HEAD
-        message.alert(null, "Không lấy đc id phòng vừa sinh ra");
-=======
-        //message.alert(null, "Không lấy đc id phòng vừa sinh ra");
->>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
         return id;
     }
 

@@ -50,7 +50,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     }
     
     public Menu_KhachSan(NGUOIDUNG user){
-        new jdbcHelper("khachsan", "123");
+        new jdbcHelper("booking_app", "12345678");
         this.idKS = user.getID();
         System.out.println(this.idKS);
         this.user = user;
@@ -149,11 +149,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
         logoutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         logoutBtn.setForeground(new java.awt.Color(0, 102, 102));
-<<<<<<< HEAD
         logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout_1.png"))); // NOI18N
-=======
-        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
->>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
         logoutBtn.setText("Đăng xuất");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,11 +174,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-<<<<<<< HEAD
                     .addComponent(logoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
->>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
                 .addGap(0, 27, Short.MAX_VALUE))
         );
         DashBoardLayout.setVerticalGroup(
@@ -202,11 +194,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                 .addGap(43, 43, 43))
-=======
-                .addGap(66, 66, 66))
->>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
         );
 
         content.setMaximumSize(new java.awt.Dimension(32767, 1000000000));
@@ -263,10 +251,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-        // TODO add your handling code here:
-=======
->>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
         this.dispose();
 
         // Mở màn hình đăng nhập
