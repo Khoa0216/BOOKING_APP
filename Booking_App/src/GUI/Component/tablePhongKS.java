@@ -40,10 +40,7 @@ public class tablePhongKS extends javax.swing.JPanel {
     
     private handleIcon handleIcon = new handleIcon();
     
-    private final ImageIcon icDelete = new ImageIcon(getClass().getResource("/image/delete.png"));
-    private final ImageIcon icEdit   = new ImageIcon(getClass().getResource("/image/edit.png"));
-    private final ImageIcon icSave    = new ImageIcon(getClass().getResource("/image/save_as.png"));
-    private final ImageIcon icSearch = new ImageIcon(getClass().getResource("/image/search.png"));
+
     
     private final String header[] = {"Mã Phòng", "Loại Phòng", "Giá", "Tổng số lượng"}; 
     private DefaultTableModel model;

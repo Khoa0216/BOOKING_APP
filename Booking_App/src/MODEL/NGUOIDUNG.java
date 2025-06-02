@@ -8,6 +8,16 @@ public class NGUOIDUNG {
     protected String LOAITK;
     
     public NGUOIDUNG(){};
+
+    public NGUOIDUNG(int ID, String EMAIL, String MATKHAU, String HOTEN, String LOAITK) {
+        this.ID = ID;
+        this.EMAIL = EMAIL;
+        this.MATKHAU = MATKHAU;
+        this.HOTEN = HOTEN;
+        this.LOAITK = LOAITK;
+    }
+    
+    
     
     public NGUOIDUNG(String EMAIL, String MATKHAU, String HOTEN){
         this.EMAIL=EMAIL;

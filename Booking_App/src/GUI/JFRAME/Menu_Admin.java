@@ -22,6 +22,7 @@ public class Menu_Admin extends javax.swing.JFrame {
     private tableDonDat table;
     private DashBoard dashBoard;
     private HomePage homePage;
+    private tableAccount tableAccount;
     
     private NGUOIDUNG user;
          
@@ -43,12 +44,14 @@ public class Menu_Admin extends javax.swing.JFrame {
         dashBoard = new DashBoard();
         table = new tableDonDat();
         homePage = new HomePage(this.user);
+        tableAccount = new tableAccount();
         
         content.add(table, "table");
         content.add(dashBoard, "dashBoard");
         content.add(homePage, "Home Page");
+        content.add(tableAccount, "Table Account");
         
-        cardLayout.show(content, "table");
+        cardLayout.show(content, "Table Account");
     }
 
     /**
@@ -219,7 +222,7 @@ public class Menu_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
-
+        cardLayout.show(content, "Table Account");
     }//GEN-LAST:event_AccountBtnActionPerformed
 
     private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
