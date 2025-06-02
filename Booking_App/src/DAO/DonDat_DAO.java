@@ -4,6 +4,7 @@ package DAO;
  *
  * @author Admin
  */
+import MODEL.DonChinhSua;
 import database.Oracle_connection;
 import java.lang.*;
 import java.sql.*;
@@ -244,5 +245,48 @@ public class DonDat_DAO {
             e.printStackTrace();
             return -1;
         }
+    }
+    
+    public static Long GiaDon (int idD){
+        String query = "SELECT SOTIEN FROM THANHTOAN TT JOIN DATPHONG DP ON TT.ID=DP.ID "
+                + "WHERE DP.ID=?";
+            try {
+                ResultSet rs = jdbcHelper.query(query, idD);
+                if (rs.next()) {
+                    return rs.getLong("SOTIEN");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return null;
+    }
+    
+    public static long GiaPhong(int idP){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        
+        try {
+            String sql = "SELECT GIA FROM PHONG WHERE ID = ?";
+            ResultSet rs = jdbc.query(sql, idP);
+            if (rs.next()) {
+                return rs.getLong("GIA");
+            }
+        } catch (Exception e) {
+            message.alert(null, "Lỗi truy vấn giá phòng.");
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public static void UpdateDP(DonChinhSua dcs){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        
+        try {
+            String sql = "UPDATE DATPHONG SET NGAYNHAN=?, NGAY_TRA=?, SL=? WHERE ID=?";
+            jdbc.update(sql, dcs.getNgayNhanMoi(), dcs.getNgayTraMoi(), dcs.getSlMoi(), dcs.getDatPhongId());
+            return;
+        } catch (Exception e) {
+            message.alert(null, "Lỗi Cập Nhật Thông Tin Đơn.");
+        }
+         return;
     }
 }

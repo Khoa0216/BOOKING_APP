@@ -3,64 +3,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI.JFRAME;
+
 import DAO.DonDat_DAO;
-import DAO.Login_SignUp_Check;
 import DAO.ThanhToan_Dao;
 import MODEL.DonChinhSua;
-import MODEL.NGUOIDUNG;
-import MODEL.ThanhToan_model;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-import java.awt.*;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import MODEL.DonDat;
+import MODEL.ThanhToan_model;
 import PDF.HoaDonPDF;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import utils.message;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author LENOVO
  */
-public class ThanhToan extends javax.swing.JFrame {
+public class ThanhToanThem extends javax.swing.JFrame {
 
+    /**
+     * Creates new form ThanhToanThem
+     */
     private ThanhToan_model tt_model;
     private DonDat donDat;
+    private DonChinhSua dcs;
     
-    public ThanhToan(int id, Long sotien) {
-        initComponents();
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.tt_model=new ThanhToan_model(id, sotien);
-    }
-    
-    public ThanhToan() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    public ThanhToanThem() {
         initComponents();
     }
-    
-    public ThanhToan(DonDat donDat){
+
+    public ThanhToanThem(DonChinhSua DCS, DonDat DD, long STC){
         initComponents();
-        this.donDat = donDat;
+        this.dcs = DCS;
+        this.donDat=DD;
         
-        int idDonDat = DonDat_DAO.insert(donDat);
-        long millisDiff = donDat.getNgayTra().getTime() - donDat.getNgayNhan().getTime();
+        long millisDiff = dcs.getNgayTraMoi().getTime() - dcs.getNgayNhanMoi().getTime();
         long daysDiff = millisDiff / (1000 * 60 * 60 * 24);
         
-        this.tt_model = new ThanhToan_model(idDonDat,DonDat_DAO.tongTien(donDat)*daysDiff);
+        long GiaMoi=daysDiff * DonDat_DAO.GiaPhong(DD.getIdP()) * dcs.getSlMoi();
+        
+        this.tt_model = new ThanhToan_model(dcs.getDatPhongId(), GiaMoi);
 
-        label_hienthisotien.setText(String.valueOf(DonDat_DAO.tongTien(donDat)*daysDiff)+" VND.");
+        label_hienthisotien.setText(String.valueOf(GiaMoi-STC)+" VND.");
+        
+        donDat.setSl(dcs.getSlMoi());
+        donDat.setNgayNhan(dcs.getNgayNhanMoi());
+        donDat.setNgayTra(dcs.getNgayTraMoi());
+        
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
-
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,14 +84,14 @@ public class ThanhToan extends javax.swing.JFrame {
         huy_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         BackGround.setBackground(new java.awt.Color(244, 244, 242));
         BackGround.setPreferredSize(new java.awt.Dimension(750, 650));
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         tieude.setForeground(new java.awt.Color(0, 102, 102));
-        tieude.setText("Nhập Thông Tin Thanh Toán");
+        tieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tieude.setText("Nhập Thông Tin Thanh Toán Thêm");
 
         CardType.setBackground(new java.awt.Color(249, 249, 249));
         CardType.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -206,11 +200,11 @@ public class ThanhToan extends javax.swing.JFrame {
         BackGroundLayout.setHorizontalGroup(
             BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackGroundLayout.createSequentialGroup()
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(tieude))
-                    .addGroup(BackGroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BackGroundLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cauhoixacnhan)
@@ -302,27 +296,39 @@ public class ThanhToan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CardTypeActionPerformed
 
+    private void textfield_ngayhethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textfield_ngayhethanMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield_ngayhethanMouseClicked
+
+    private void textfield_ngayhethanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_ngayhethanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield_ngayhethanActionPerformed
+
+    private void textfield_maPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_maPinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfield_maPinActionPerformed
+
     private void xacnhan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xacnhan_buttonActionPerformed
         // TODO add your handling code here:
-        
+
         String tenchuthe = textfield_chuthe.getText().trim();
         String sothe = textfield_sothe.getText().trim();
         String last4=sothe.substring(sothe.length()-4);
         String tenthe=((String) CardType.getSelectedItem()).trim();
-        
+
         String ngayhethan=textfield_ngayhethan.getText().trim();
         String maPin=new String(textfield_maPin.getPassword()).trim();
-        
+
         if (tenchuthe.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên chủ thẻ.");
-        return;
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên chủ thẻ.");
+            return;
         }
-        
-//        if (!sothe.matches("\\d{16,19}")) {
-//            JOptionPane.showMessageDialog(this, "Số thẻ phải gồm từ 16 đến 19 chữ số.");
-//            return;
-//        }
-        
+
+        //        if (!sothe.matches("\\d{16,19}")) {
+            //            JOptionPane.showMessageDialog(this, "Số thẻ phải gồm từ 16 đến 19 chữ số.");
+            //            return;
+            //        }
+
         if (!ngayhethan.matches("\\d{2}/\\d{2}")) {
             JOptionPane.showMessageDialog(this, "Ngày hết hạn phải theo định dạng MM/YY.");
             return;
@@ -341,37 +347,36 @@ public class ThanhToan extends javax.swing.JFrame {
                 return;
             }
         }
-        
+
         if (!maPin.matches("\\d{3,6}")) {
             JOptionPane.showMessageDialog(this, "CVV/CVC/PIN phải từ 3 đến 6 chữ số.");
             return;
         }
-        
+
         this.tt_model.setChuthe(tenchuthe);
         this.tt_model.setSothe(last4);
         this.tt_model.setTenthe(tenthe);
-        
-        
-        ThanhToan_Dao.insert(tt_model);
+
+        ThanhToan_Dao.update(tt_model);
         this.setVisible(false);
-        
+
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Chọn nơi lưu hóa đơn");
         fileChooser.setSelectedFile(new File("HoaDon_ThanhToan.pdf"));
-        
+
         int userSelection = fileChooser.showSaveDialog(null);
-        
+
         if (userSelection == JFileChooser.APPROVE_OPTION){
             File fileToSave = fileChooser.getSelectedFile();
             String filePath = fileToSave.getAbsolutePath();
-            
+
             if (!filePath.toLowerCase().endsWith(".pdf")) {
                 filePath += ".pdf";
             }
-            
+
             System.out.println(this.donDat.getNgayDat());
             HoaDonPDF.xuatHoaDonPDF(this.donDat, tenchuthe, tenthe, sothe, tt_model.getSotien(), filePath);
-            
+
             try {
                 if (Desktop.isDesktopSupported()) {
                     Desktop.getDesktop().open(new File(filePath));
@@ -382,18 +387,6 @@ public class ThanhToan extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_xacnhan_buttonActionPerformed
-
-    private void textfield_ngayhethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textfield_ngayhethanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfield_ngayhethanMouseClicked
-
-    private void textfield_maPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_maPinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfield_maPinActionPerformed
-
-    private void textfield_ngayhethanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfield_ngayhethanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfield_ngayhethanActionPerformed
 
     private void huy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huy_buttonActionPerformed
         // TODO add your handling code here:
@@ -416,20 +409,20 @@ public class ThanhToan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThanhToanThem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThanhToanThem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThanhToanThem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThanhToanThem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThanhToan().setVisible(true);
+                new ThanhToanThem().setVisible(true);
             }
         });
     }

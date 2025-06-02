@@ -4,7 +4,10 @@
  */
 package GUI.JFRAME;
 
+import DAO.DonChinhSua_DAO;
 import DAO.DonDat_DAO;
+import DAO.ThanhToan_Dao;
+import GUI.Component.tableDonChinhSua;
 import MODEL.DonChinhSua;
 import MODEL.DonDat;
 import java.text.SimpleDateFormat;
@@ -23,15 +26,19 @@ public class CuaSoPheDuyet extends javax.swing.JFrame {
     private DonChinhSua dcs=null;
     private DonDat dd=null;
     private int phongcl=0;
+    private tableDonChinhSua trangchu;
+    private int idks;
     
     public CuaSoPheDuyet() {
         initComponents();
     }
 
-    public CuaSoPheDuyet(DonChinhSua DCS, DonDat DD) {
+    public CuaSoPheDuyet(DonChinhSua DCS, DonDat DD, tableDonChinhSua trangchu, int idks) {
         initComponents();
         this.dcs=DCS;
         this.dd=DD;
+        this.trangchu=trangchu;
+        this.idks=idks;
         
         if(dcs!=null){
             SoPhongCu.setText(dd.getSl().toString());
@@ -53,6 +60,21 @@ public class CuaSoPheDuyet extends javax.swing.JFrame {
         String formattedDate2 = sdf2.format(date2);
         
         phongcl=DonDat_DAO.checkSLC(dd.getIdP(), formattedDate1, formattedDate2);
+        System.out.println(dd.getIdP()+"   "+formattedDate1+"   "+formattedDate2);
+        System.out.println(phongcl);
+        
+        
+        Date ngayNhanMoi = dcs.getNgayNhanMoi(); // ngày nhận phòng mới
+        Date ngayTraMoi = dcs.getNgayTraMoi();   // ngày trả phòng mới
+
+        Date ngayNhanCu = dd.getNgayNhan();      // ngày nhận phòng cũ
+        Date ngayTraCu = dd.getNgayTra();        // ngày trả phòng cũ
+        
+        boolean trungKhoangThoiGian = ngayNhanMoi.before(ngayTraCu) && ngayTraMoi.after(ngayNhanCu);
+        
+        if (trungKhoangThoiGian) {
+            phongcl += dd.getSl();
+        }
         
         if (phongcl>=dcs.getSlMoi()){
             LabelTB.setText("Số phòng còn trống lúc đó: "+ phongcl +" . Thỏa yêu cầu sửa đổi! ");
@@ -287,6 +309,9 @@ public class CuaSoPheDuyet extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        DonChinhSua_DAO.UpdateTTDonSua(dcs.getId(), 0);
+        trangchu.loadTableData(idks);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -295,8 +320,24 @@ public class CuaSoPheDuyet extends javax.swing.JFrame {
             message.alert(null, "Không đủ phòng!");
             return;
         }
+        DonChinhSua_DAO.UpdateTTDonSua(dcs.getId(), 1);
+        long GiaCu=DonDat_DAO.GiaDon(dcs.getDatPhongId());
         
+        long millisDiff = dcs.getNgayTraMoi().getTime() - dcs.getNgayNhanMoi().getTime();
+        long daysDiff = millisDiff / (1000 * 60 * 60 * 24);
         
+        long GiaMoi=daysDiff * DonDat_DAO.GiaPhong(dd.getIdP()) * dcs.getSlMoi();
+        
+        if(GiaMoi<=GiaCu){
+            DonChinhSua_DAO.UpdateTT_ThanhToan(dcs.getId(), 1);
+            DonDat_DAO.UpdateDP(dcs);
+            ThanhToan_Dao.UpdateTT(GiaMoi, dcs.getDatPhongId());
+        }
+        else{
+            DonChinhSua_DAO.UpdateTT_ThanhToan(dcs.getId(), 0);
+        }
+        trangchu.loadTableData(idks);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

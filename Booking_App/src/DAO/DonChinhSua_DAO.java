@@ -8,6 +8,7 @@ import MODEL.DonChinhSua;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import utils.message;
 /**
  *
  * @author bobui
@@ -122,6 +123,49 @@ public class DonChinhSua_DAO {
         }
         return list;
     }
-
-
+    
+    public static void UpdateTTDonSua(Integer madcs, int tt){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        String trangthai=null;
+        if (tt == 1) {
+            trangthai = "ĐÃ DUYỆT";
+        } else if (tt == 0) {
+            trangthai = "KHÔNG DUYỆT";
+        } else {
+            message.alert(null, "Giá trị trạng thái không hợp lệ (chỉ chấp nhận 0 hoặc 1).");
+            return;
+        }
+        
+        try {
+            String sql = "UPDATE don_chinhsua SET trangthai_duyet = ? WHERE id = ?";
+            jdbc.update(sql, trangthai, madcs);
+            message.alert(null, "Đã Cập Nhật Trạng Thái.");
+            return;
+        } catch (Exception e) {
+            message.alert(null, "Lỗi Cập Nhật Trạng Thái.");
+        }
+         return;
+    }
+    
+    public static void UpdateTT_ThanhToan(Integer madcs, int tt){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        String trangthai=null;
+        if (tt == 1) {
+            trangthai = "ĐÃ THANH TOÁN";
+        } else if (tt == 0) {
+            trangthai = "CHƯA THANH TOÁN";
+        } else {
+            message.alert(null, "Giá trị trạng thái không hợp lệ (chỉ chấp nhận 0 hoặc 1).");
+            return;
+        }
+        
+        try {
+            String sql = "UPDATE don_chinhsua SET trangthai_thanhtoan = ? WHERE id = ?";
+            jdbc.update(sql, trangthai, madcs);
+            return;
+        } catch (Exception e) {
+            message.alert(null, "Lỗi Cập Nhật Trạng Thái Thanh Toán.");
+        }
+         return;
+    }
 }

@@ -49,16 +49,18 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         List<DonChinhSua> list = dao.selectDonChinhSuaByKhachSanId(id);
         for (DonChinhSua d : list) {
             //System.out.println(9999);
-            model.addRow(new Object[]{
-                d.getId(),
-                d.getDatPhongId(),
-                d.getNgayNhanMoi(),
-                d.getNgayTraMoi(),
-                d.getLoaiPhong(),
-                d.getSlMoi(),
-                d.getTrangThaiDuyet(),
-                d.getTrangThaiThanhToan()
-            });
+            if ("CHỜ DUYỆT".equals(d.getTrangThaiDuyet())){
+                model.addRow(new Object[]{
+                    d.getId(),
+                    d.getDatPhongId(),
+                    d.getNgayNhanMoi(),
+                    d.getNgayTraMoi(),
+                    d.getLoaiPhong(),
+                    d.getSlMoi(),
+                    d.getTrangThaiDuyet(),
+                    d.getTrangThaiThanhToan()
+                });
+            }
         }
         
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -163,7 +165,7 @@ public class tableDonChinhSua extends javax.swing.JPanel {
                 DonChinhSua dcs = new DonChinhSua_DAO().selectDonChinhSuaByIdCS(madonCS);
                 DonDat dd= new DonDat_DAO().selectByIDD(madondat);
                 
-                CuaSoPheDuyet CSPD = new CuaSoPheDuyet(dcs, dd);
+                CuaSoPheDuyet CSPD = new CuaSoPheDuyet(dcs, dd, this,ks.getID());
                 CSPD.pack();                        
                 CSPD.setLocationRelativeTo(null);
                 CSPD.setVisible(true);
