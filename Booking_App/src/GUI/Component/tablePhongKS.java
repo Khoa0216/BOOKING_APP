@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
-import utils.message;
+import utils.*;
 
 /**
  *
@@ -37,6 +37,8 @@ public class tablePhongKS extends javax.swing.JPanel {
     private NGUOIDUNG user;
     private int selectedRow = -1;
     private Integer selectecDonID = -1;
+    
+    private handleIcon handleIcon = new handleIcon();
     
     private final ImageIcon icDelete = new ImageIcon(getClass().getResource("/image/delete.png"));
     private final ImageIcon icEdit   = new ImageIcon(getClass().getResource("/image/edit.png"));
@@ -55,12 +57,18 @@ public class tablePhongKS extends javax.swing.JPanel {
     public tablePhongKS(NGUOIDUNG user) {
         this.user = user;
         initComponents();
-        
+        setIcon();
         txtTitle.setText("Hello " + user.getHOTEN());
         loadTable();
     }
     
     
+    public void setIcon(){
+        handleIcon.setIcon(btnXoa, "/image/delete.png");
+        handleIcon.setIcon(btnCreatePhong, "/image/add.png");
+        handleIcon.setIcon(btnReset, "/image/refresh.png");
+        handleIcon.setIcon(btnSearch, "/image/search.png");
+    }
     
     public void loadTable(){
         scrollBar.getVerticalScrollBar().setUI(new CustomScrollBar());

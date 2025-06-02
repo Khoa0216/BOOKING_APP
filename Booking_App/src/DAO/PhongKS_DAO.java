@@ -150,6 +150,39 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
         return listPhong;
     }
+    public Vector<Phong_KS> selectByTinh(String tinh) {
+        Vector<Phong_KS> listPhong = new Vector<>();
+        String sql = "SELECT p.ID, p.KHACHSAN_ID, p.LOAIPHONG, p.GIA, p.MOTA, p.TONGSOLUONG, p.NGAY_DANG, "
+                   + "p.ANH1, p.ANH2, p.ANH3, ks.DIACHI, ks.TENDN "
+                   + "FROM booking_app.PHONG p "
+                   + "JOIN booking_app.KHACHSAN ks ON ks.ID = p.KHACHSAN_ID "
+                   + "WHERE ks.TINH LIKE ?";
+        try {
+            ResultSet rs = jdbcHelper.query(sql, "%" + tinh + "%");
+            while (rs.next()) {
+                //System.out.println("ID: " + rs.getInt("ID") + ", KHACHSAN_ID: " + rs.getInt("KHACHSAN_ID"));
+                Integer id = rs.getInt("ID");
+                Integer idKS = rs.getInt("KHACHSAN_ID");
+                String loaiP = rs.getString("LOAIPHONG");
+                Long gia = rs.getLong("GIA");
+                String mota = rs.getString("MOTA");
+
+                Long tongSoLuong = rs.getLong("TONGSOLUONG");
+                Date ngayDang = rs.getDate("NGAY_DANG");
+                String location = rs.getString("DIACHI"); 
+                String tenKS = rs.getString("TENDN");
+                Phong_KS phong = new Phong_KS(id, idKS, loaiP, mota, gia, tongSoLuong, ngayDang.toLocalDate(), location, 5, 10);
+                phong.setImage(0, rs.getBlob("ANH1"));
+                phong.setImage(1, rs.getBlob("ANH2"));
+                phong.setImage(2, rs.getBlob("ANH3"));
+                phong.setTenKS(tenKS);
+                listPhong.add(phong);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PhongKS_DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listPhong;
+    }
     
     public Vector<Phong_KS> selectByDiaDiem(String diaDiem) {
         Vector<Phong_KS> listPhong = new Vector<>();
@@ -279,7 +312,7 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
         }
         
         message.alert(null, "Không lấy đc id phòng vừa sinh ra");
-        return 0;
+        return id;
     }
 
     

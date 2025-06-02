@@ -226,7 +226,7 @@ public class DatPhong extends javax.swing.JFrame {
         
         
         int phongcl=DonDat_DAO.checkSLC(donDat.getIdP(), ngayNhan.toString(), ngayTra.toString());
-        System.out.println(phongcl);
+        //System.out.println(phongcl);
         
         if (phongcl >= slPhong){
             ThanhToan thanhTaonFrame = new ThanhToan(this.donDat);

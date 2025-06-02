@@ -80,7 +80,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         UserIcon = new javax.swing.JLabel();
         HomeBtn = new javax.swing.JButton();
         ManageBtn = new javax.swing.JButton();
-        HelpBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
         orderBtn = new javax.swing.JButton();
@@ -114,10 +113,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
             }
         });
 
-        HelpBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        HelpBtn.setForeground(new java.awt.Color(0, 102, 102));
-        HelpBtn.setText("Trợ giúp");
-
         AccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         AccountBtn.setForeground(new java.awt.Color(0, 102, 102));
         AccountBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
@@ -142,7 +137,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         logoutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         logoutBtn.setForeground(new java.awt.Color(0, 102, 102));
-        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout_1.png"))); // NOI18N
         logoutBtn.setText("Đăng xuất");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +153,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,9 +177,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                 .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(48, 48, 48)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,7 +276,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountBtn;
     private javax.swing.JPanel DashBoard;
-    private javax.swing.JButton HelpBtn;
     private javax.swing.JButton HomeBtn;
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;

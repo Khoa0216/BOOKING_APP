@@ -6,6 +6,7 @@ package GUI.JFRAME;
 import DAO.DonDat_DAO;
 import DAO.Login_SignUp_Check;
 import DAO.ThanhToan_Dao;
+import MODEL.DonChinhSua;
 import MODEL.NGUOIDUNG;
 import MODEL.ThanhToan_model;
 import javax.swing.*;
@@ -32,6 +33,7 @@ public class ThanhToan extends javax.swing.JFrame {
 
     private ThanhToan_model tt_model;
     private DonDat donDat;
+    
     public ThanhToan(int id, Long sotien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,7 +58,6 @@ public class ThanhToan extends javax.swing.JFrame {
         label_hienthisotien.setText(String.valueOf(DonDat_DAO.tongTien(donDat)*daysDiff)+" VND.");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
 
 
 

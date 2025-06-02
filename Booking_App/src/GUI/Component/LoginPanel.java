@@ -252,7 +252,7 @@ public class LoginPanel extends javax.swing.JPanel {
             }
             else if (accountType.equals("ADMIN")){
                 NGUOIDUNG user = Login_SignUp_Check.getNguoiDung(email);
-                Menu_QuanLyDonDat MenuFrame = new Menu_QuanLyDonDat(user);
+                Menu_Admin MenuFrame = new Menu_Admin(user);
                 
                 // Lấy kích thước màn hình
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

@@ -4,14 +4,22 @@ import MODEL.KHACHHANG;
 import DAO.KhachHang_DAO;
 import DAO.DonChinhSua_DAO;
 import DAO.DonDat_DAO;
+import DAO.PhongKS_DAO;
+import GUI.JFRAME.ThanhToan;
+import GUI.JFRAME.ThanhToanThem;
 import MODEL.DonDat;
 import MODEL.DonChinhSua;
 import java.awt.CardLayout;
+import java.text.ParseException;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 import javax.swing.JOptionPane;  
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.SwingUtilities;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -37,7 +45,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         
         initComponents();
         loadtable();
-        
+        jTable1.setDefaultEditor(Object.class, null);
         
         javax.swing.table.DefaultTableCellRenderer dateRenderer = new javax.swing.table.DefaultTableCellRenderer() {
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
@@ -88,8 +96,10 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             String trangThaiDuyet = "--";
             String trangThaiThanhToan = "--";
             if (dcs != null) {
+                if (!"KHÔNG DUYỆT".equals(dcs.getTrangThaiDuyet())){
+                    trangThaiThanhToan = dcs.getTrangThaiThanhToan();
+                }
                 trangThaiDuyet = dcs.getTrangThaiDuyet();
-                trangThaiThanhToan = dcs.getTrangThaiThanhToan();
             }
             model.addRow(new Object[]{
                 d.getId(),
@@ -150,6 +160,11 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         jTable1.setToolTipText("");
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setRowHeight(30);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(100);
@@ -245,96 +260,129 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
 
     private void huyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyBtnActionPerformed
         // TODO add your handling code here     
-    int selectedRow = jTable1.getSelectedRow();
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Vui lòng chọn một đơn cần xoá!");
-        return;
-    }
-    Integer maDon = (Integer) jTable1.getValueAt(selectedRow, 0);
-    java.util.Date ngayNhan = (java.util.Date) jTable1.getValueAt(selectedRow, 1);
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một đơn cần xoá!");
+            return;
+        }
 
-    
-    java.util.Date now = new java.util.Date();
-    long diffMillis = ngayNhan.getTime() - now.getTime();
-    long oneDayMillis = 24 * 60 * 60 * 1000;
+        Integer maDon = (Integer) jTable1.getValueAt(selectedRow, 0);
 
-    if (diffMillis < oneDayMillis) {
-        JOptionPane.showMessageDialog(this, "Không thể xoá đơn này vì ngày nhận phòng đã gần kề!");
-        return;
-    }
-    int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xoá đơn này?", "Xác nhận xoá", JOptionPane.YES_NO_OPTION);
-    if (confirm != JOptionPane.YES_OPTION) {
-        return;
-    }
-    // Xoá
-    boolean success = DonDat_DAO.delete(maDon);
-    if (success) {
-        JOptionPane.showMessageDialog(this, "Xoá đơn thành công!");
-        loadtable(); // Tải lại bảng
-    } else {
-        JOptionPane.showMessageDialog(this, "Xoá thất bại, vui lòng thử lại!");
-    }
+        // Giả sử cột 1 chứa chuỗi định dạng ngày như "2025-06-10"
+        Object ngayNhanObj = jTable1.getValueAt(selectedRow, 3);
+        java.util.Date ngayNhan = null;
+
+        if (ngayNhanObj instanceof java.util.Date) {
+            ngayNhan = (java.util.Date) ngayNhanObj;
+        } else if (ngayNhanObj instanceof String) {
+            try {
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                ngayNhan = sdf.parse((String) ngayNhanObj);
+            } catch (java.text.ParseException e) {
+                JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày nhận!");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không thể xác định ngày nhận từ dữ liệu bảng!");
+            return;
+        }
+
+        // So sánh ngày
+        java.util.Date now = new java.util.Date();
+        long diffMillis = ngayNhan.getTime() - now.getTime();
+        long oneDayMillis = 24 * 60 * 60 * 1000;
+
+        if (diffMillis < oneDayMillis) {
+            JOptionPane.showMessageDialog(this, "Không thể xoá đơn này vì ngày nhận phòng đã gần kề!");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xoá đơn này?", "Xác nhận xoá", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        // Xoá
+        boolean success = DonDat_DAO.delete(maDon);
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Xoá đơn thành công!");
+            loadtable(); // Tải lại bảng
+        } else {
+            JOptionPane.showMessageDialog(this, "Xoá thất bại, vui lòng thử lại!");
+        }
+
     }//GEN-LAST:event_huyBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Vui lòng chọn một đơn cần chỉnh sửa!");
-        return;
-    }
-
-    Integer maDon = (Integer) jTable1.getValueAt(selectedRow, 0);
-    java.util.Date ngayNhanCu = (java.util.Date) jTable1.getValueAt(selectedRow, 3);
-    java.util.Date ngayTraCu = (java.util.Date) jTable1.getValueAt(selectedRow, 4);
-    Integer slCu = (Integer) jTable1.getValueAt(selectedRow, 5);
-
-    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
-    String ngayNhanMoiStr = JOptionPane.showInputDialog(this, "Nhập ngày nhận mới (dd/MM/yyyy):", sdf.format(ngayNhanCu));
-    String ngayTraMoiStr = JOptionPane.showInputDialog(this, "Nhập ngày trả mới (dd/MM/yyyy):", sdf.format(ngayTraCu));
-    String slMoiStr = JOptionPane.showInputDialog(this, "Nhập số lượng mới:", slCu);
-
-    if (ngayNhanMoiStr == null || ngayTraMoiStr == null || slMoiStr == null) return;
-
-    try {
-//        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date ngayNhanMoi = sdf.parse(ngayNhanMoiStr);
-        java.util.Date ngayTraMoi = sdf.parse(ngayTraMoiStr);
-        int slMoi = Integer.parseInt(slMoiStr);
-        System.out.println("11111111111111111111111");
-        if (ngayNhanMoi.after(ngayTraMoi)) {
-            JOptionPane.showMessageDialog(this, "Ngày trả phải sau ngày nhận!");
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một đơn cần chỉnh sửa!");
             return;
         }
-        if (slMoi <= 0) {
-            JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0!");
+        if (!"--".equals(jTable1.getValueAt(selectedRow, 8).toString())){
+            JOptionPane.showMessageDialog(this, "Đơn này bạn đã yêu cầu chỉnh sửa rồi! Không được yêu cầu tiếp.");
             return;
         }
 
-        java.sql.Date today = new java.sql.Date(System.currentTimeMillis());
-        if (!ngayNhanMoi.after(today)) {
-            JOptionPane.showMessageDialog(this, "Ngày nhận mới phải sau ngày hiện tại!");
-            return;
+        try {
+            Integer maDon = (Integer) jTable1.getValueAt(selectedRow, 0);
+
+            java.sql.Date ngayNhanCuSql = (java.sql.Date) jTable1.getValueAt(selectedRow, 3);
+            java.sql.Date ngayTraCuSql = (java.sql.Date) jTable1.getValueAt(selectedRow, 4);
+            Integer slCu = (Integer) jTable1.getValueAt(selectedRow, 5);
+
+            // Ép về java.util.Date để sử dụng với SimpleDateFormat
+            java.util.Date ngayNhanCu = new java.util.Date(ngayNhanCuSql.getTime());
+            java.util.Date ngayTraCu = new java.util.Date(ngayTraCuSql.getTime());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String ngayNhanMoiStr = JOptionPane.showInputDialog(this, "Nhập ngày nhận mới (dd/MM/yyyy):", sdf.format(ngayNhanCu));
+            String ngayTraMoiStr = JOptionPane.showInputDialog(this, "Nhập ngày trả mới (dd/MM/yyyy):", sdf.format(ngayTraCu));
+            String slMoiStr = JOptionPane.showInputDialog(this, "Nhập số lượng mới:", slCu);
+
+            if (ngayNhanMoiStr == null || ngayTraMoiStr == null || slMoiStr == null) return;
+
+            java.util.Date ngayNhanMoi = sdf.parse(ngayNhanMoiStr);
+            java.util.Date ngayTraMoi = sdf.parse(ngayTraMoiStr);
+            int slMoi = Integer.parseInt(slMoiStr);
+
+            if (ngayNhanMoi.after(ngayTraMoi)) {
+                JOptionPane.showMessageDialog(this, "Ngày trả phải sau ngày nhận!");
+                return;
+            }
+            if (slMoi <= 0) {
+                JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0!");
+                return;
+            }
+
+            Date today = new Date();
+            if (!ngayNhanMoi.after(today)) {
+                JOptionPane.showMessageDialog(this, "Ngày nhận mới phải sau ngày hiện tại!");
+                return;
+            }
+
+            DonChinhSua model = new DonChinhSua();
+            model.setDatPhongId(maDon);
+            model.setNgayNhanMoi(ngayNhanMoi);
+            model.setNgayTraMoi(ngayTraMoi);
+            model.setSlMoi(slMoi);
+            model.setTrangThaiDuyet("CHỜ DUYỆT");
+            model.setTrangThaiThanhToan("CHƯA THANH TOÁN");
+
+            DonChinhSua_DAO dao = new DonChinhSua_DAO();
+            dao.insertDonChinhSua(model);
+
+            loadtable(); // gọi lại bảng sau khi thêm
+            JOptionPane.showMessageDialog(this, "Gửi đơn chỉnh sửa thành công! Đơn đang chờ duyệt.");
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Định dạng ngày không hợp lệ!");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
         }
 
-        DonChinhSua model = new DonChinhSua();
-        model.setDatPhongId(maDon);
-        model.setNgayNhanMoi(ngayNhanMoi);
-        model.setNgayTraMoi(ngayTraMoi);
-        model.setSlMoi(slMoi);
-        model.setTrangThaiDuyet("CHỜ DUYỆT");
-        model.setTrangThaiThanhToan("CHƯA THANH TOÁN");
-
-        DonChinhSua_DAO dao = new DonChinhSua_DAO();
-        dao.insertDonChinhSua(model);
-
-        loadtable();
-        JOptionPane.showMessageDialog(this, "Gửi đơn chỉnh sửa thành công! Đơn đang chờ duyệt.");
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Dữ liệu nhập không hợp lệ!");
-    }
-        
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void findBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findBtnActionPerformed
@@ -366,6 +414,53 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_findBtnActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(evt)) {
+            int viewRow = jTable1.getSelectedRow();
+            if (viewRow != -1) {
+                // Chuyển sang model index
+                int modelRow = jTable1.convertRowIndexToModel(viewRow);
+
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                String trangthaiDon=model.getValueAt(modelRow, 8).toString();
+                String trangthaiTT=model.getValueAt(modelRow, 9).toString();
+                System.out.println(trangthaiDon+"   "+trangthaiTT);
+                if ("ĐÃ DUYỆT".equals(trangthaiDon) && "CHƯA THANH TOÁN".equals(trangthaiTT)){
+                    
+                    Integer madonDP = Integer.valueOf(model.getValueAt(modelRow, 0).toString());
+                    Integer maPhong = Integer.valueOf(model.getValueAt(modelRow, 1).toString());
+                    String tenPhong = model.getValueAt(modelRow, 2).toString();
+                    long sotiencu = Long.valueOf(model.getValueAt(modelRow, 6).toString());
+
+                    DonDat donDat = new DonDat();
+                    donDat.setIdKH(kh.getID());
+                    donDat.setIdP(maPhong);
+
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ZoneId zone = ZoneId.systemDefault();
+                    Date date = Date.from(localDateTime.atZone(zone).toInstant());
+                    donDat.setNgayDat(date);
+
+                    donDat.setTenPhong(tenPhong);
+                    donDat.setTenKH(kh.getHOTEN());
+                    PhongKS_DAO.getKS(donDat.getIdP(),donDat);
+
+                    DonChinhSua dcs = new DonChinhSua_DAO().selectDonChinhSuaById(madonDP);
+
+                    DonChinhSua_DAO.UpdateTT_ThanhToan(dcs.getId(), 1);
+                    DonDat_DAO.UpdateDP(dcs);
+                    System.out.println("111111111111111111111111111111");
+                    ThanhToanThem TT = new ThanhToanThem(dcs, donDat, sotiencu);
+                    TT.pack();                        
+                    TT.setLocationRelativeTo(null);
+                    TT.setVisible(true);
+                }
+            }
+            loadtable();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

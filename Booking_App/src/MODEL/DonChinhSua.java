@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class DonChinhSua {
     private int id;                      // Mã đơn chỉnh sửa
+    private String LoaiPhong;            // Tên loại phòng
     private int datPhongId;              // ID của đơn đặt phòng gốc
     private Date ngayNhanMoi;            // Ngày nhận mới
     private Date ngayTraMoi;             // Ngày trả mới
@@ -25,6 +26,18 @@ public class DonChinhSua {
         this.trangThaiThanhToan = tttt;
     }
 
+    public DonChinhSua(int id, String LoaiPhong, int datPhongId, Date ngayNhanMoi, Date ngayTraMoi, int slMoi,
+                       String trangThaiDuyet, String trangThaiThanhToan) {
+        this.id = id;
+        this.datPhongId = datPhongId;
+        this.ngayNhanMoi = ngayNhanMoi;
+        this.ngayTraMoi = ngayTraMoi;
+        this.slMoi = slMoi;
+        this.trangThaiDuyet = trangThaiDuyet;
+        this.trangThaiThanhToan = trangThaiThanhToan;
+        this.LoaiPhong=LoaiPhong;
+    }
+
     public DonChinhSua(int id, int datPhongId, Date ngayNhanMoi, Date ngayTraMoi, int slMoi,
                        String trangThaiDuyet, String trangThaiThanhToan) {
         this.id = id;
@@ -35,7 +48,7 @@ public class DonChinhSua {
         this.trangThaiDuyet = trangThaiDuyet;
         this.trangThaiThanhToan = trangThaiThanhToan;
     }
-
+    
     // Getter & Setter
     public int getId() {
         return id;
@@ -91,5 +104,13 @@ public class DonChinhSua {
 
     public void setTrangThaiThanhToan(String trangThaiThanhToan) {
         this.trangThaiThanhToan = trangThaiThanhToan;
+    }
+
+    public String getLoaiPhong() {
+        return LoaiPhong;
+    }
+
+    public void setLoaiPhong(String LoaiPhong) {
+        this.LoaiPhong = LoaiPhong;
     }
 }

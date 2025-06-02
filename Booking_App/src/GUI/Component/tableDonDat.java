@@ -16,6 +16,7 @@ import database.jdbcHelper;
 import utils.message;
 import utils.csvExporter;
 import DAO.DonDat_DAO;
+import GUI.JFRAME.TaoPhong;
 import java.util.ArrayList;
 import java.util.Arrays;
 import MODEL.DonDat;
@@ -25,6 +26,8 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableRowSorter;
 import java.time.*;
+import utils.*;
+import GUI.JFRAME.ThongKe;
 
 
 
@@ -39,12 +42,10 @@ public class tableDonDat extends javax.swing.JPanel {
     private int selectedRow = -1;
     private Integer selectecDonID = -1;
     
-    private final ImageIcon icDelete = new ImageIcon(getClass().getResource("/image/delete.png"));
-    private final ImageIcon icEdit   = new ImageIcon(getClass().getResource("/image/edit.png"));
-    private final ImageIcon icSave    = new ImageIcon(getClass().getResource("/image/save_as.png"));
-    private final ImageIcon icSearch = new ImageIcon(getClass().getResource("/image/search.png"));
+    private handleIcon handleIcon = new handleIcon();
     
-    private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", 
+    
+    private final String header[] = {"Mã đơn", "Mã khách hàng", "Tên khách hàng", "Mã khách sạn", "Tên khách sạn",
          "Giá", "Ngày đặt"}; 
     private DefaultTableModel model;
     
@@ -59,9 +60,11 @@ public class tableDonDat extends javax.swing.JPanel {
     }
     
     public void setIcon(){
-        btnSearch.setIcon(icSearch);
-        btnSua.setIcon(icEdit);
-        btnXoa.setIcon(icDelete);
+        handleIcon.setIcon(btnSua, "/image/edit.png");
+        handleIcon.setIcon(btnXoa, "/image/delete.png");
+        handleIcon.setIcon(csvExporter, "/image/save_as.png");
+        handleIcon.setIcon(btnSearch, "/image/search.png");
+        handleIcon.setIcon(btnThongKe, "/image/equalizer.png");
     }
     
     public void loadTable(){
@@ -120,6 +123,8 @@ public class tableDonDat extends javax.swing.JPanel {
         txtFieldSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         CBSort = new javax.swing.JComboBox<>();
+        csvExporter = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1320, 1025));
 
@@ -199,6 +204,20 @@ public class tableDonDat extends javax.swing.JPanel {
             }
         });
 
+        csvExporter.setText("Xuất csv");
+        csvExporter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csvExporterActionPerformed(evt);
+            }
+        });
+
+        btnThongKe.setText("Thống kê");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,10 +227,14 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 702, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(csvExporter)
+                .addGap(18, 18, 18)
+                .addComponent(btnThongKe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
                 .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSearch)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -220,15 +243,16 @@ public class tableDonDat extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa)
-                    .addComponent(btnSua)))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnXoa)
+                        .addComponent(btnSua)
+                        .addComponent(csvExporter)
+                        .addComponent(btnThongKe))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch)
+                        .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -248,7 +272,7 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
+                .addComponent(scrollBar)
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -259,7 +283,12 @@ public class tableDonDat extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-         
+         if (this.selectedRow != -1){
+            Integer rowModel = myTable.convertRowIndexToModel(selectedRow);
+            Integer ID = (Integer) myTable.getModel().getValueAt(rowModel, 0);
+            DonDat_DAO.delete(ID);
+            model.removeRow(rowModel);
+        }    
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSearchActionPerformed
@@ -293,16 +322,41 @@ public class tableDonDat extends javax.swing.JPanel {
 
     private void myTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myTableMouseClicked
         // TODO add your handling code here:
-        
-        
+        this.selectedRow = myTable.getSelectedRow();
+
     }//GEN-LAST:event_myTableMouseClicked
+
+    private void csvExporterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvExporterActionPerformed
+        // TODO add your handling code here:
+        LocalDate date = LocalDate.now();
+        String pathDir = "./CSV/DonDat";
+        String name = "donDat_" + String.valueOf(date) + ".csv";
+             
+        try {
+            utils.csvExporter.exportToCSV(myTable, pathDir, name);
+            message.alert(null, "Xuất Excel thành công!");
+        } catch (Exception ex) {
+            Logger.getLogger(tableDonDat.class.getName()).log(Level.SEVERE, null, ex);
+            message.alert(null, "Lỗi: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_csvExporterActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+        ThongKe thongKeFrame = new ThongKe();
+        thongKeFrame.pack();                        // hoặc setSize(...)
+        thongKeFrame.setLocationRelativeTo(null);   // canh giữa màn hình
+        thongKeFrame.setVisible(true);
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBSort;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton csvExporter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable myTable;
     private javax.swing.JScrollPane scrollBar;

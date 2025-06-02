@@ -23,6 +23,25 @@ public class ThanhToan_Dao {
                 + "(ID, SoThe, Ten_ChuThe, TenThe, Sotien)\n"
                 + "values(?, ?, ?, ?, ?)";
         jdbcHelper.update(sqlInsert, thanhToan.getId(),thanhToan.getSothe(), thanhToan.getChuthe(), thanhToan.getTenthe(), thanhToan.getSotien());
-        message.alert(null, "Đã đặt phòng thành công");
+        message.alert(null, "Thanh toán thành công");
+    }
+    
+    static public void update(ThanhToan_model thanhToan){
+        String sqlUPDATE = "UPDATE THANHTOAN SET SOTIEN=?, SOTHE=?, TEN_CHUTHE=?, TENTHE=? WHERE ID=?";
+        jdbcHelper.update(sqlUPDATE, thanhToan.getSotien(), thanhToan.getSothe(), thanhToan.getChuthe(), thanhToan.getTenthe(), thanhToan.getId());
+        message.alert(null, "Thanh toán thành công");
+    }
+    
+    public static void UpdateTT(Long sotien, int idDP){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        
+        try {
+            String sql = "UPDATE THANHTOAN SET SOTIEN=? WHERE ID=?";
+            jdbc.update(sql, sotien, idDP);
+            return;
+        } catch (Exception e) {
+            message.alert(null, "Lỗi Cập Nhật Thông Tin Đơn.");
+        }
+         return;
     }
 }

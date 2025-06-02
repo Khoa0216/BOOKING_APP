@@ -7,11 +7,15 @@ package GUI.Component;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import DAO.DonChinhSua_DAO;
+import DAO.DonDat_DAO;
 import DAO.KhachSan_DAO;
+import GUI.JFRAME.CuaSoPheDuyet;
 import MODEL.KHACHSAN;
 import MODEL.DonChinhSua;
+import MODEL.DonDat;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +37,8 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         this.ks = dao.select(email);
         
         loadTableData(ks.getID());
+        listdonTable.setDefaultEditor(Object.class, null);
+
         
     }
 
@@ -42,15 +48,19 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         DonChinhSua_DAO dao = new DonChinhSua_DAO();
         List<DonChinhSua> list = dao.selectDonChinhSuaByKhachSanId(id);
         for (DonChinhSua d : list) {
-            model.addRow(new Object[]{
-                d.getId(),
-                d.getDatPhongId(),
-                d.getNgayNhanMoi(),
-                d.getNgayTraMoi(),
-                d.getSlMoi(),
-                d.getTrangThaiDuyet(),
-                d.getTrangThaiThanhToan()
-            });
+            //System.out.println(9999);
+            if ("CHỜ DUYỆT".equals(d.getTrangThaiDuyet())){
+                model.addRow(new Object[]{
+                    d.getId(),
+                    d.getDatPhongId(),
+                    d.getNgayNhanMoi(),
+                    d.getNgayTraMoi(),
+                    d.getLoaiPhong(),
+                    d.getSlMoi(),
+                    d.getTrangThaiDuyet(),
+                    d.getTrangThaiThanhToan()
+                });
+            }
         }
         
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -73,22 +83,29 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         listdonTable = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(1320, 1025));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         listdonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã đơn chỉnh sửa", "Mã đơn đặt", "Ngàn nhận mới", "Ngày trả mới", "Số lượng mới", "Trạng thái duyệt", "Trạng thái thanh toán"
+                "Mã đơn chỉnh sửa", "Mã đơn đặt", "Ngàn nhận mới", "Ngày trả mới", "Tên phòng", "Số lượng mới", "Trạng thái duyệt", "Trạng thái thanh toán"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                true, true, true, true, false, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,19 +116,18 @@ public class tableDonChinhSua extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listdonTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         listdonTable.setRowHeight(40);
+        listdonTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listdonTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(listdonTable);
         if (listdonTable.getColumnModel().getColumnCount() > 0) {
-            listdonTable.getColumnModel().getColumn(0).setResizable(false);
             listdonTable.getColumnModel().getColumn(0).setPreferredWidth(100);
-            listdonTable.getColumnModel().getColumn(1).setResizable(false);
             listdonTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-            listdonTable.getColumnModel().getColumn(2).setResizable(false);
-            listdonTable.getColumnModel().getColumn(3).setResizable(false);
-            listdonTable.getColumnModel().getColumn(4).setResizable(false);
-            listdonTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-            listdonTable.getColumnModel().getColumn(5).setResizable(false);
-            listdonTable.getColumnModel().getColumn(6).setResizable(false);
+            listdonTable.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
         jScrollPane1.setViewportView(jScrollPane2);
@@ -125,10 +141,41 @@ public class tableDonChinhSua extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 225, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1471, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listdonTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listdonTableMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(evt)) {
+            int viewRow = listdonTable.getSelectedRow();
+            if (viewRow != -1) {
+                // Chuyển sang model index
+                int modelRow = listdonTable.convertRowIndexToModel(viewRow);
+
+                DefaultTableModel model = (DefaultTableModel) listdonTable.getModel();
+                
+                Integer madonCS = Integer.valueOf(model.getValueAt(modelRow, 0).toString());
+                Integer madondat = Integer.valueOf(model.getValueAt(modelRow, 1).toString());
+                
+                System.out.println(madonCS);
+                System.out.println(madondat);
+                
+                DonChinhSua dcs = new DonChinhSua_DAO().selectDonChinhSuaByIdCS(madonCS);
+                DonDat dd= new DonDat_DAO().selectByIDD(madondat);
+                
+                CuaSoPheDuyet CSPD = new CuaSoPheDuyet(dcs, dd, this,ks.getID());
+                CSPD.pack();                        
+                CSPD.setLocationRelativeTo(null);
+                CSPD.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_listdonTableMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
