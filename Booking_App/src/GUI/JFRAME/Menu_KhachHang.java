@@ -57,6 +57,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         this.email = user.getEMAIL();
         rightPanel.setLayout(new CardLayout());
         this.CLayout = (CardLayout) rightPanel.getLayout();
+        YourEmail.setText(this.email);
         
         homePage = new HomePage(user);
         homeKH = new homeKhachHang(rightPanel, this.CLayout,email);
@@ -82,17 +83,17 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         ManageBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
-        orderBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1720, 1025));
         setResizable(false);
 
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
 
-        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user (1).png"))); // NOI18N
+        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/account_circle.png"))); // NOI18N
 
         HomeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         HomeBtn.setForeground(new java.awt.Color(0, 102, 102));
@@ -106,6 +107,7 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         ManageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         ManageBtn.setForeground(new java.awt.Color(0, 102, 102));
+        ManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reservation (1).png"))); // NOI18N
         ManageBtn.setText("Quản lý đặt");
         ManageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,15 +127,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
 
         YourEmail.setForeground(new java.awt.Color(255, 255, 255));
         YourEmail.setText("Your Email");
-
-        orderBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        orderBtn.setForeground(new java.awt.Color(0, 102, 102));
-        orderBtn.setText("Đặt");
-        orderBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderBtnActionPerformed(evt);
-            }
-        });
 
         logoutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         logoutBtn.setForeground(new java.awt.Color(0, 102, 102));
@@ -155,7 +148,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
@@ -173,15 +165,13 @@ public class Menu_KhachHang extends javax.swing.JFrame {
                     .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(77, 77, 77)
                 .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(60, 60, 60)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(60, 60, 60)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(103, 103, 103))
         );
 
         rightPanel.setPreferredSize(new java.awt.Dimension(1320, 1025));
@@ -224,10 +214,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
         CLayout = (CardLayout)(rightPanel.getLayout());
         CLayout.show(rightPanel,"acc");
     }//GEN-LAST:event_AccountBtnActionPerformed
-
-    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orderBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
@@ -281,7 +267,6 @@ public class Menu_KhachHang extends javax.swing.JFrame {
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
     private javax.swing.JButton logoutBtn;
-    private javax.swing.JButton orderBtn;
     private javax.swing.JPanel rightPanel;
     // End of variables declaration//GEN-END:variables
 }
