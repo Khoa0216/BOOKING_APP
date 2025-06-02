@@ -96,7 +96,7 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             String trangThaiDuyet = "--";
             String trangThaiThanhToan = "--";
             if (dcs != null) {
-                if (!"ĐÃ DUYỆT".equals(dcs.getTrangThaiDuyet())){
+                if ("ĐÃ DUYỆT".equals(dcs.getTrangThaiDuyet())){
                     trangThaiThanhToan = dcs.getTrangThaiThanhToan();
                 }
                 trangThaiDuyet = dcs.getTrangThaiDuyet();
@@ -136,6 +136,11 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
         findBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1320, 1025));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -432,7 +437,8 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
                     Integer madonDP = Integer.valueOf(model.getValueAt(modelRow, 0).toString());
                     Integer maPhong = Integer.valueOf(model.getValueAt(modelRow, 1).toString());
                     String tenPhong = model.getValueAt(modelRow, 2).toString();
-                    long sotiencu = Long.valueOf(model.getValueAt(modelRow, 6).toString());
+                    long sotiencu = (long) Double.parseDouble(model.getValueAt(modelRow, 6).toString());
+                    System.out.println(madonDP+"   "+maPhong+"   "+tenPhong+"   "+sotiencu);
 
                     DonDat donDat = new DonDat();
                     donDat.setIdKH(kh.getID());
@@ -449,10 +455,9 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
 
                     DonChinhSua dcs = new DonChinhSua_DAO().selectDonChinhSuaById(madonDP);
 
-                    DonChinhSua_DAO.UpdateTT_ThanhToan(dcs.getId(), 1);
-                    DonDat_DAO.UpdateDP(dcs);
+                    
                     System.out.println("111111111111111111111111111111");
-                    ThanhToanThem TT = new ThanhToanThem(dcs, donDat, sotiencu);
+                    ThanhToanThem TT = new ThanhToanThem(dcs, donDat, sotiencu,this);
                     TT.pack();                        
                     TT.setLocationRelativeTo(null);
                     TT.setVisible(true);
@@ -461,6 +466,10 @@ public class quanlydatKhachHang extends javax.swing.JPanel {
             loadtable();
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

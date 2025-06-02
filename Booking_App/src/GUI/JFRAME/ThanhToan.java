@@ -33,6 +33,7 @@ public class ThanhToan extends javax.swing.JFrame {
 
     private ThanhToan_model tt_model;
     private DonDat donDat;
+    int idDonDat=0;
     
     public ThanhToan(int id, Long sotien) {
         initComponents();
@@ -49,7 +50,7 @@ public class ThanhToan extends javax.swing.JFrame {
         initComponents();
         this.donDat = donDat;
         
-        int idDonDat = DonDat_DAO.insert(donDat);
+        idDonDat = DonDat_DAO.insert(donDat);
         long millisDiff = donDat.getNgayTra().getTime() - donDat.getNgayNhan().getTime();
         long daysDiff = millisDiff / (1000 * 60 * 60 * 24);
         
@@ -397,6 +398,9 @@ public class ThanhToan extends javax.swing.JFrame {
 
     private void huy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huy_buttonActionPerformed
         // TODO add your handling code here:
+        System.out.println(idDonDat);
+        DonDat_DAO.DeleteDP(idDonDat);
+        this.setVisible(false);
     }//GEN-LAST:event_huy_buttonActionPerformed
 
     /**

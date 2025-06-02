@@ -32,7 +32,7 @@ public class accKhachSan extends javax.swing.JPanel {
         emailTextField.setText(ks.getEMAIL());
         tenDNTextField.setText(ks.getTENDN());
         nameTextField.setText(ks.getHOTEN());
-        bankTextField.setText(ks.getBANK());
+        tenBank.setSelectedItem(ks.getBANK());
         motaTextField.setText(ks.getMOTA());
         stkTextField.setText(ks.getSTK());
         
@@ -46,7 +46,7 @@ public class accKhachSan extends javax.swing.JPanel {
         setText(email);
         tenDNTextField.setEditable(false);
         motaTextField.setEditable(false);
-        bankTextField.setEditable(false);
+        tenBank.setEditable(false);
         stkTextField.setEditable(false);
         nameTextField.setEditable(false);
         
@@ -56,7 +56,7 @@ public class accKhachSan extends javax.swing.JPanel {
     public KHACHSAN getData(){
         String name = tenDNTextField.getText();
         String mota = motaTextField.getText();
-        String bank = bankTextField.getText();
+        String bank = (String) tenBank.getSelectedItem();
         String stk = stkTextField.getText();
                 
         return new KHACHSAN();
@@ -77,13 +77,10 @@ public class accKhachSan extends javax.swing.JPanel {
         NameLabel = new javax.swing.JLabel();
         tenDNTextField = new javax.swing.JTextField();
         bankLabel = new javax.swing.JLabel();
-        bankTextField = new javax.swing.JTextField();
         passLabel = new javax.swing.JLabel();
-        passconfirmTextField = new javax.swing.JTextField();
         changeBtn = new javax.swing.JButton();
         inforLabel = new javax.swing.JLabel();
         passLabel1 = new javax.swing.JLabel();
-        passTextField = new javax.swing.JTextField();
         commitBtn1 = new javax.swing.JButton();
         stkLabel = new javax.swing.JLabel();
         dateLabel2 = new javax.swing.JLabel();
@@ -91,6 +88,9 @@ public class accKhachSan extends javax.swing.JPanel {
         motaTextField = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
+        tenBank = new javax.swing.JComboBox<>();
+        passTextField = new javax.swing.JPasswordField();
+        passconfirmTextField = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(1400, 1200));
         setPreferredSize(new java.awt.Dimension(1320, 1025));
@@ -120,18 +120,9 @@ public class accKhachSan extends javax.swing.JPanel {
         bankLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         bankLabel.setText("Tên Ngân Hàng");
 
-        bankTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-
         passLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         passLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passLabel.setText("Xác nhận mật khẩu");
-
-        passconfirmTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        passconfirmTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passconfirmTextFieldActionPerformed(evt);
-            }
-        });
 
         changeBtn.setBackground(new java.awt.Color(0, 102, 102));
         changeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
@@ -151,13 +142,6 @@ public class accKhachSan extends javax.swing.JPanel {
         passLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         passLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passLabel1.setText("Mật khẩu");
-
-        passTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        passTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passTextFieldActionPerformed(evt);
-            }
-        });
 
         commitBtn1.setBackground(new java.awt.Color(0, 102, 102));
         commitBtn1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
@@ -194,6 +178,12 @@ public class accKhachSan extends javax.swing.JPanel {
             }
         });
 
+        tenBank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABBANK", "ACB", "ANZ VL", "Agribank", "BAOVIET Bank", "Bac A Bank", "BVBank", "BIDV", "CIMB", "Co-opBank", "DongA Bank", "Eximbank", "GPBank", "HLB VN", "HDBank", "HSBC", "IVB", "KienlongBank", "LienVietPostBank", "MB Bank", "MBV", "MSB", "Nam A Bank", "NCB", "OCB", "PBVN", "PGBank", "PVcomBank", "Sacombank", "SAIGONBANK", "SCB", "SCB VL", "SeABank", "SHB", "SHB VN", "Techcombank", "TPBank", "UOB", "VDB", "VCB Neo", "VIB", "VietABank", "VietCapitalBank", "Vietcombank", "VietinBank", "Vietbank", "VPBank", "VRB", "Woori Bank", "VBSP" }));
+
+        passTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        passconfirmTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,11 +203,7 @@ public class accKhachSan extends javax.swing.JPanel {
                     .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -225,13 +211,17 @@ public class accKhachSan extends javax.swing.JPanel {
                             .addComponent(dateLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bankLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(stkLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(motaTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                            .addComponent(bankTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(stkTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tenDNTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(50, 50, 50))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(motaTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(stkTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tenDNTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tenBank, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passconfirmTextField))
                 .addGap(141, 141, 141))
         );
         jPanel1Layout.setVerticalGroup(
@@ -250,30 +240,32 @@ public class accKhachSan extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tenDNTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(motaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bankTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tenBank, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(commitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(commitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -301,27 +293,19 @@ public class accKhachSan extends javax.swing.JPanel {
     private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
         tenDNTextField.setEditable(true);
         motaTextField.setEditable(true);
-        bankTextField.setEditable(true);
+        tenBank.setEditable(true);
         stkTextField.setEditable(true);
-        
+        nameTextField.setEditable(true);
         passTextField.setEditable(true);
         passconfirmTextField.setEditable(true);
     }//GEN-LAST:event_changeBtnActionPerformed
 
-    private void passconfirmTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passconfirmTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passconfirmTextFieldActionPerformed
-
-    private void passTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passTextFieldActionPerformed
-
     private void commitBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitBtn1ActionPerformed
         // TODO add your handling code here:
-        String email = emailTextField.getText();
+        String name = nameTextField.getText();
         String tendn = tenDNTextField.getText();
         String mota = motaTextField.getText();
-        String bank = bankTextField.getText();
+        String bank = (String) tenBank.getSelectedItem();
         String stk = stkTextField.getText();
         
         String password = passTextField.getText();
@@ -345,15 +329,25 @@ public class accKhachSan extends javax.swing.JPanel {
         ks.setMOTA(mota);
         ks.setBANK(bank);
         ks.setSTK(stk);
+        ks.setHOTEN(name);
+        
+        System.out.println("\n");
+        System.out.println(ks.getTENDN());
+        System.out.println(ks.getMOTA());
+        System.out.println(ks.getBANK());
+        System.out.println(ks.getSTK());
+        System.out.println(ks.getHOTEN());
+        System.out.println(ks.getMATKHAU());
         
         // cập nhật
         KhachSan_DAO dao = new KhachSan_DAO();
         dao.update(ks);
         
         tenDNTextField.setEditable(false);
-        bankTextField.setEditable(false);
         motaTextField.setEditable(false);
+        tenBank.setEditable(false);
         stkTextField.setEditable(false);
+        nameTextField.setEditable(false);
         passTextField.setEditable(false);
         passconfirmTextField.setEditable(false);
     }//GEN-LAST:event_commitBtn1ActionPerformed
@@ -366,7 +360,6 @@ public class accKhachSan extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NameLabel;
     private javax.swing.JLabel bankLabel;
-    private javax.swing.JTextField bankTextField;
     private javax.swing.JButton changeBtn;
     private javax.swing.JButton commitBtn1;
     private javax.swing.JLabel dateLabel2;
@@ -379,10 +372,11 @@ public class accKhachSan extends javax.swing.JPanel {
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel passLabel;
     private javax.swing.JLabel passLabel1;
-    private javax.swing.JTextField passTextField;
-    private javax.swing.JTextField passconfirmTextField;
+    private javax.swing.JPasswordField passTextField;
+    private javax.swing.JPasswordField passconfirmTextField;
     private javax.swing.JLabel stkLabel;
     private javax.swing.JTextField stkTextField;
+    private javax.swing.JComboBox<String> tenBank;
     private javax.swing.JTextField tenDNTextField;
     // End of variables declaration//GEN-END:variables
 }

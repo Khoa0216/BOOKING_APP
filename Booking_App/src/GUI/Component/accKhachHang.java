@@ -74,12 +74,12 @@ public class accKhachHang extends javax.swing.JPanel {
         dateLabel = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
         passLabel = new javax.swing.JLabel();
-        passconfirmTextField = new javax.swing.JTextField();
         changeBtn = new javax.swing.JButton();
         inforLabel = new javax.swing.JLabel();
         passLabel1 = new javax.swing.JLabel();
-        passTextField = new javax.swing.JTextField();
         commitBtn1 = new javax.swing.JButton();
+        passTextField = new javax.swing.JPasswordField();
+        passconfirmTextField = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(1400, 1200));
         setPreferredSize(new java.awt.Dimension(1320, 1025));
@@ -121,13 +121,6 @@ public class accKhachHang extends javax.swing.JPanel {
         passLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passLabel.setText("Xác nhận mật khẩu");
 
-        passconfirmTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        passconfirmTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passconfirmTextFieldActionPerformed(evt);
-            }
-        });
-
         changeBtn.setBackground(new java.awt.Color(0, 102, 102));
         changeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         changeBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,13 +140,6 @@ public class accKhachHang extends javax.swing.JPanel {
         passLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passLabel1.setText("Mật khẩu");
 
-        passTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        passTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passTextFieldActionPerformed(evt);
-            }
-        });
-
         commitBtn1.setBackground(new java.awt.Color(0, 102, 102));
         commitBtn1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         commitBtn1.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,6 +151,10 @@ public class accKhachHang extends javax.swing.JPanel {
             }
         });
 
+        passTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        passconfirmTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,32 +164,32 @@ public class accKhachHang extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(idLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(50, 50, 50))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(passLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(44, 44, 44)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(idLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(50, 50, 50))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(passLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(44, 44, 44)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(commitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passconfirmTextField)
-                            .addComponent(dateTextField))))
+                        .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(commitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateTextField)
+                    .addComponent(passTextField)
+                    .addComponent(passconfirmTextField))
                 .addGap(0, 141, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -223,14 +213,14 @@ public class accKhachHang extends javax.swing.JPanel {
                     .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passconfirmTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(commitBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -250,7 +240,7 @@ public class accKhachHang extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(300, 300, 300)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,14 +255,6 @@ public class accKhachHang extends javax.swing.JPanel {
         passTextField.setEditable(true);
         passconfirmTextField.setEditable(true);
     }//GEN-LAST:event_changeBtnActionPerformed
-
-    private void passconfirmTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passconfirmTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passconfirmTextFieldActionPerformed
-
-    private void passTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passTextFieldActionPerformed
 
     private void commitBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitBtn1ActionPerformed
         // TODO add your handling code here:
@@ -326,7 +308,7 @@ public class accKhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel passLabel;
     private javax.swing.JLabel passLabel1;
-    private javax.swing.JTextField passTextField;
-    private javax.swing.JTextField passconfirmTextField;
+    private javax.swing.JPasswordField passTextField;
+    private javax.swing.JPasswordField passconfirmTextField;
     // End of variables declaration//GEN-END:variables
 }

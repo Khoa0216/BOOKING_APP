@@ -289,4 +289,17 @@ public class DonDat_DAO {
         }
          return;
     }
+    
+    public static void DeleteDP(int iddd){
+        jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
+        
+        try {
+            String sql = "DELETE FROM DATPHONG WHERE ID=?";
+            jdbc.update(sql, iddd);
+            return;
+        } catch (Exception e) {
+            message.alert(null, "Lỗi khi Xóa Đơn Đặt.");
+        }
+         return;
+    }
 }

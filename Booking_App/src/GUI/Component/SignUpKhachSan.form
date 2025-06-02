@@ -50,47 +50,52 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Login" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Have_An_Account" alignment="0" pref="155" max="32767" attributes="0"/>
-                              <Component id="SignUp_Confirm" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Label_Information_Fill" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Business_Name" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Business_Name_Fill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Label_Address" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Address_Fill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="Label_Describe" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Describe_Fill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="stkLabel" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="stkTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="tinhLabel" max="32767" attributes="0"/>
+                                          <Component id="tinhComboBox" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" pref="155" max="-2" attributes="0"/>
+                                          <Component id="tenBank" min="-2" pref="185" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
-                              <Component id="Business_Name" min="-2" max="-2" attributes="0"/>
-                              <Component id="Business_Name_Fill" alignment="0" pref="520" max="32767" attributes="0"/>
-                              <Component id="Label_Address" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Address_Fill" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Label_Describe" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="tinhComboBox" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
-                              <Component id="tinhLabel" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                              <Component id="Describe_Fill" alignment="0" pref="520" max="32767" attributes="0"/>
-                              <Component id="stkLabel" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
-                              <Component id="bankTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="stkTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Login" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Have_An_Account" alignment="0" max="32767" attributes="0"/>
+                              <Component id="SignUp_Confirm" min="-2" pref="155" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
-                  <Component id="Label_Information_Fill" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="Label_Information_Fill" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="Business_Name" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Business_Name_Fill" min="-2" pref="40" max="-2" attributes="0"/>
@@ -99,30 +104,32 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Address_Fill" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tinhLabel" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tinhLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tinhComboBox" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tinhComboBox" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="tenBank" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="stkLabel" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="stkTextField" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="bankTextField" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="stkTextField" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="Label_Describe" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Describe_Fill" min="-2" pref="141" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="Check_condition" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="SignUp_Confirm" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Have_An_Account" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Login" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -257,6 +264,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Login">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f9" green="f9" red="f9" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="20" style="1"/>
             </Property>
@@ -279,8 +289,11 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="tinhComboBox">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f9" green="f9" red="f9" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="16" style="0"/>
+              <Font name="Segoe UI" size="16" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="63">
@@ -366,16 +379,93 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="stkTextField">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f9" green="f9" red="f9" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="16" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#xea;n ng&#xe2;n h&#xe0;ng"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="T&#xea;n ng&#xe2;n h&#xe0;ng:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="bankTextField">
+        <Component class="javax.swing.JComboBox" name="tenBank">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f9" green="f9" red="f9" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="50">
+                <StringItem index="0" value="ABBANK"/>
+                <StringItem index="1" value="ACB"/>
+                <StringItem index="2" value="ANZ VL"/>
+                <StringItem index="3" value="Agribank"/>
+                <StringItem index="4" value="BAOVIET Bank"/>
+                <StringItem index="5" value="Bac A Bank"/>
+                <StringItem index="6" value="BVBank"/>
+                <StringItem index="7" value="BIDV"/>
+                <StringItem index="8" value="CIMB"/>
+                <StringItem index="9" value="Co-opBank"/>
+                <StringItem index="10" value="DongA Bank"/>
+                <StringItem index="11" value="Eximbank"/>
+                <StringItem index="12" value="GPBank"/>
+                <StringItem index="13" value="HLB VN"/>
+                <StringItem index="14" value="HDBank"/>
+                <StringItem index="15" value="HSBC"/>
+                <StringItem index="16" value="IVB"/>
+                <StringItem index="17" value="KienlongBank"/>
+                <StringItem index="18" value="LienVietPostBank"/>
+                <StringItem index="19" value="MB Bank"/>
+                <StringItem index="20" value="MBV"/>
+                <StringItem index="21" value="MSB"/>
+                <StringItem index="22" value="Nam A Bank"/>
+                <StringItem index="23" value="NCB"/>
+                <StringItem index="24" value="OCB"/>
+                <StringItem index="25" value="PBVN"/>
+                <StringItem index="26" value="PGBank"/>
+                <StringItem index="27" value="PVcomBank"/>
+                <StringItem index="28" value="Sacombank"/>
+                <StringItem index="29" value="SAIGONBANK"/>
+                <StringItem index="30" value="SCB"/>
+                <StringItem index="31" value="SCB VL"/>
+                <StringItem index="32" value="SeABank"/>
+                <StringItem index="33" value="SHB"/>
+                <StringItem index="34" value="SHB VN"/>
+                <StringItem index="35" value="Techcombank"/>
+                <StringItem index="36" value="TPBank"/>
+                <StringItem index="37" value="UOB"/>
+                <StringItem index="38" value="VDB"/>
+                <StringItem index="39" value="VCB Neo"/>
+                <StringItem index="40" value="VIB"/>
+                <StringItem index="41" value="VietABank"/>
+                <StringItem index="42" value="VietCapitalBank"/>
+                <StringItem index="43" value="Vietcombank"/>
+                <StringItem index="44" value="VietinBank"/>
+                <StringItem index="45" value="Vietbank"/>
+                <StringItem index="46" value="VPBank"/>
+                <StringItem index="47" value="VRB"/>
+                <StringItem index="48" value="Woori Bank"/>
+                <StringItem index="49" value="VBSP"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

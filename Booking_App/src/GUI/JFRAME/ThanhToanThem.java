@@ -4,8 +4,10 @@
  */
 package GUI.JFRAME;
 
+import DAO.DonChinhSua_DAO;
 import DAO.DonDat_DAO;
 import DAO.ThanhToan_Dao;
+import GUI.Component.quanlydatKhachHang;
 import MODEL.DonChinhSua;
 import MODEL.DonDat;
 import MODEL.ThanhToan_model;
@@ -29,15 +31,17 @@ public class ThanhToanThem extends javax.swing.JFrame {
     private ThanhToan_model tt_model;
     private DonDat donDat;
     private DonChinhSua dcs;
+    private quanlydatKhachHang pr;
     
     public ThanhToanThem() {
         initComponents();
     }
 
-    public ThanhToanThem(DonChinhSua DCS, DonDat DD, long STC){
+    public ThanhToanThem(DonChinhSua DCS, DonDat DD, long STC, quanlydatKhachHang PR){
         initComponents();
         this.dcs = DCS;
         this.donDat=DD;
+        this.pr=PR;
         
         long millisDiff = dcs.getNgayTraMoi().getTime() - dcs.getNgayNhanMoi().getTime();
         long daysDiff = millisDiff / (1000 * 60 * 60 * 24);
@@ -356,10 +360,14 @@ public class ThanhToanThem extends javax.swing.JFrame {
         this.tt_model.setChuthe(tenchuthe);
         this.tt_model.setSothe(last4);
         this.tt_model.setTenthe(tenthe);
+        
+        DonDat_DAO.UpdateDP(dcs);
+        DonChinhSua_DAO.UpdateTT_ThanhToan(dcs.getId(), 1);  
 
         ThanhToan_Dao.update(tt_model);
         this.setVisible(false);
-
+        this.pr.loadtable();
+        
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Chọn nơi lưu hóa đơn");
         fileChooser.setSelectedFile(new File("HoaDon_ThanhToan.pdf"));
@@ -390,6 +398,7 @@ public class ThanhToanThem extends javax.swing.JFrame {
 
     private void huy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huy_buttonActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_huy_buttonActionPerformed
 
     /**

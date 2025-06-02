@@ -54,7 +54,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         stkLabel = new javax.swing.JLabel();
         stkTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        bankTextField = new javax.swing.JTextField();
+        tenBank = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(650, 750));
 
@@ -110,6 +110,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         Have_An_Account.setText("Tôi đã có tài khoản");
         Have_An_Account.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        Login.setBackground(new java.awt.Color(249, 249, 249));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         Login.setForeground(new java.awt.Color(0, 102, 102));
         Login.setText("Đăng Nhập");
@@ -122,7 +123,8 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         tinhLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 16)); // NOI18N
         tinhLabel.setText("Tỉnh / Thành phố:");
 
-        tinhComboBox.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        tinhComboBox.setBackground(new java.awt.Color(249, 249, 249));
+        tinhComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tinhComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa – Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" }));
         tinhComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,8 +135,17 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         stkLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         stkLabel.setText("Số tài khoản");
 
+        stkTextField.setBackground(new java.awt.Color(249, 249, 249));
+        stkTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        stkTextField.setForeground(new java.awt.Color(102, 102, 102));
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        jLabel1.setText("Tên ngân hàng");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Tên ngân hàng:");
+
+        tenBank.setBackground(new java.awt.Color(249, 249, 249));
+        tenBank.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tenBank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABBANK", "ACB", "ANZ VL", "Agribank", "BAOVIET Bank", "Bac A Bank", "BVBank", "BIDV", "CIMB", "Co-opBank", "DongA Bank", "Eximbank", "GPBank", "HLB VN", "HDBank", "HSBC", "IVB", "KienlongBank", "LienVietPostBank", "MB Bank", "MBV", "MSB", "Nam A Bank", "NCB", "OCB", "PBVN", "PGBank", "PVcomBank", "Sacombank", "SAIGONBANK", "SCB", "SCB VL", "SeABank", "SHB", "SHB VN", "Techcombank", "TPBank", "UOB", "VDB", "VCB Neo", "VIB", "VietABank", "VietCapitalBank", "Vietcombank", "VietinBank", "Vietbank", "VPBank", "VRB", "Woori Bank", "VBSP" }));
 
         javax.swing.GroupLayout White_PanelLayout = new javax.swing.GroupLayout(White_Panel);
         White_Panel.setLayout(White_PanelLayout);
@@ -143,39 +154,41 @@ public class SignUpKhachSan extends javax.swing.JPanel {
             .addGroup(White_PanelLayout.createSequentialGroup()
                 .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(White_PanelLayout.createSequentialGroup()
-                        .addGap(237, 237, 237)
+                        .addGap(50, 50, 50)
+                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Information_Fill)
+                            .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Check_condition)
+                                .addComponent(Business_Name)
+                                .addComponent(Business_Name_Fill)
+                                .addComponent(Label_Address)
+                                .addComponent(Address_Fill)
+                                .addComponent(Label_Describe)
+                                .addComponent(Describe_Fill)
+                                .addComponent(stkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(stkTextField)
+                                .addGroup(White_PanelLayout.createSequentialGroup()
+                                    .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tinhLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(180, 180, 180)
+                                    .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tenBank, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(White_PanelLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
                         .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Have_An_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(White_PanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Check_condition)
-                            .addComponent(Business_Name)
-                            .addComponent(Business_Name_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                            .addComponent(Label_Address)
-                            .addComponent(Address_Fill)
-                            .addComponent(Label_Describe)
-                            .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Describe_Fill, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                            .addComponent(stkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bankTextField)
-                            .addComponent(stkTextField))))
-                .addContainerGap(64, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, White_PanelLayout.createSequentialGroup()
-                .addGap(0, 47, Short.MAX_VALUE)
-                .addComponent(Label_Information_Fill)
-                .addGap(36, 36, 36))
+                            .addComponent(Have_An_Account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SignUp_Confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         White_PanelLayout.setVerticalGroup(
             White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(White_PanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(Label_Information_Fill)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Business_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Business_Name_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,30 +197,30 @@ public class SignUpKhachSan extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Address_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(White_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tenBank, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(bankTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Label_Describe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Describe_Fill, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Check_condition)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(SignUp_Confirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Have_An_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(59, 59, 59))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -232,7 +245,7 @@ public class SignUpKhachSan extends javax.swing.JPanel {
         this.khachsan.setDIACHI(Address_Fill.getText());
         this.khachsan.setMOTA(Describe_Mota_Fill.getText());
         this.khachsan.setTINH((String) tinhComboBox.getSelectedItem());
-        this.khachsan.setBANK(bankTextField.getText());
+        this.khachsan.setBANK((String) tenBank.getSelectedItem());
         this.khachsan.setSTK(stkTextField.getText());
         
         
@@ -276,10 +289,10 @@ public class SignUpKhachSan extends javax.swing.JPanel {
     private javax.swing.JButton Login;
     private javax.swing.JButton SignUp_Confirm;
     private javax.swing.JPanel White_Panel;
-    private javax.swing.JTextField bankTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel stkLabel;
     private javax.swing.JTextField stkTextField;
+    private javax.swing.JComboBox<String> tenBank;
     private javax.swing.JComboBox<String> tinhComboBox;
     private javax.swing.JLabel tinhLabel;
     // End of variables declaration//GEN-END:variables

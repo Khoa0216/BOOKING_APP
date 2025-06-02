@@ -5,6 +5,13 @@ GRANT INSERT ON booking_app.khachsan TO nguoidung_user;
 GRANT INSERT
   ON booking_app.DON_CHINHSUA
   TO nguoidung_user;
+  
+GRANT INSERT
+  ON booking_app.KHACHSAN
+  TO nguoidung_user;
+GRANT INSERT
+ON booking_app.NGUOIDUNG
+TO nguoidung_user;
 
 GRANT DELETE
   ON booking_app.datphong
