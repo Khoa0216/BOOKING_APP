@@ -304,14 +304,20 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
             cs.setLong(5, phong.getTongSoluong());
             cs.setDate(6, Date.valueOf(phong.getNgayDang()));
             cs.registerOutParameter(7, java.sql.Types.INTEGER);
+            
 
             cs.execute();
             id = cs.getInt(7);
+            //System.out.println(id );
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
+<<<<<<< HEAD
         message.alert(null, "Không lấy đc id phòng vừa sinh ra");
+=======
+        //message.alert(null, "Không lấy đc id phòng vừa sinh ra");
+>>>>>>> d9ab8bc882a69679773fb8bc5508867908599cd3
         return id;
     }
 

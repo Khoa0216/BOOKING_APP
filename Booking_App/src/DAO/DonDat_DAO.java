@@ -106,7 +106,7 @@ public class DonDat_DAO {
         return donDatList;
     }
     
-    static public boolean delete(Integer id){
+    static public int delete(Integer id){
         try {
         // Xóa các bản ghi liên quan ở DON_CHINHSUA (nếu có)
         String sql1 = "DELETE FROM BOOKING_APP.DON_CHINHSUA WHERE DATPHONG_ID = ?";
@@ -120,10 +120,10 @@ public class DonDat_DAO {
         String sql3 = "DELETE FROM BOOKING_APP.DATPHONG WHERE ID = ?";
         int row = jdbcHelper.update(sql3, id);
 
-        return row > 0;
+        return row;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return false;
+            return 0;
         }
     }
     
