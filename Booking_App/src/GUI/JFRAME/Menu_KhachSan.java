@@ -91,7 +91,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
         DashBoard = new javax.swing.JPanel();
         UserIcon = new javax.swing.JLabel();
-        HomeBtn = new javax.swing.JButton();
         ManageBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
@@ -106,19 +105,10 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/account_circle.png"))); // NOI18N
 
-        HomeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        HomeBtn.setForeground(new java.awt.Color(0, 102, 102));
-        HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-icon-silhouette.png"))); // NOI18N
-        HomeBtn.setText("Trang chủ");
-        HomeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HomeBtnActionPerformed(evt);
-            }
-        });
-
         ManageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         ManageBtn.setForeground(new java.awt.Color(0, 102, 102));
-        ManageBtn.setText("Quản lý phòng");
+        ManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bad (1).png"))); // NOI18N
+        ManageBtn.setText("Quản Lý Phòng");
         ManageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManageBtnActionPerformed(evt);
@@ -128,7 +118,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         AccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         AccountBtn.setForeground(new java.awt.Color(0, 102, 102));
         AccountBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
-        AccountBtn.setText("Tài khoản");
+        AccountBtn.setText("Tài Khoản");
         AccountBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AccountBtnActionPerformed(evt);
@@ -140,7 +130,8 @@ public class Menu_KhachSan extends javax.swing.JFrame {
 
         dcsBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         dcsBtn.setForeground(new java.awt.Color(0, 102, 102));
-        dcsBtn.setText("Quản lý đơn chỉnh sửa");
+        dcsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
+        dcsBtn.setText("Quản Lý Đơn sửa");
         dcsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dcsBtnActionPerformed(evt);
@@ -172,7 +163,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dcsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 27, Short.MAX_VALUE))
@@ -184,17 +174,15 @@ public class Menu_KhachSan extends javax.swing.JFrame {
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(UserIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(77, 77, 77)
-                .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(90, 90, 90)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(60, 60, 60)
                 .addComponent(dcsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(60, 60, 60)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(429, 429, 429)
                 .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         content.setMaximumSize(new java.awt.Dimension(32767, 1000000000));
@@ -205,11 +193,11 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1320, Short.MAX_VALUE)
+            .addGap(0, 1414, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1037, Short.MAX_VALUE)
+            .addGap(0, 1025, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,22 +206,18 @@ public class Menu_KhachSan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1414, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
-            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
+            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
-        cardLayout.show(content, "Home Page");
-    }//GEN-LAST:event_HomeBtnActionPerformed
 
     private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBtnActionPerformed
         // TODO add your handling code here:
@@ -305,7 +289,6 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountBtn;
     private javax.swing.JPanel DashBoard;
-    private javax.swing.JButton HomeBtn;
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;

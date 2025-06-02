@@ -60,10 +60,8 @@ public class tableDonDat extends javax.swing.JPanel {
     }
     
     public void setIcon(){
-        handleIcon.setIcon(btnSua, "/image/edit.png");
         handleIcon.setIcon(btnXoa, "/image/delete.png");
         handleIcon.setIcon(csvExporter, "/image/save_as.png");
-        handleIcon.setIcon(btnSearch, "/image/search.png");
         handleIcon.setIcon(btnThongKe, "/image/equalizer.png");
     }
     
@@ -118,10 +116,7 @@ public class tableDonDat extends javax.swing.JPanel {
         scrollBar = new javax.swing.JScrollPane();
         myTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        txtFieldSearch = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
         CBSort = new javax.swing.JComboBox<>();
         csvExporter = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
@@ -169,31 +164,10 @@ public class tableDonDat extends javax.swing.JPanel {
             myTable.getColumnModel().getColumn(1).setMaxWidth(100);
         }
 
-        btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
-            }
-        });
-
-        txtFieldSearch.setText("...");
-        txtFieldSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSearchActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setText("Tìm kiếm");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
             }
         });
 
@@ -223,19 +197,12 @@ public class tableDonDat extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSua)
-                .addGap(18, 18, 18)
                 .addComponent(btnXoa)
                 .addGap(18, 18, 18)
                 .addComponent(csvExporter)
                 .addGap(18, 18, 18)
                 .addComponent(btnThongKe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
-                .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -246,13 +213,9 @@ public class tableDonDat extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnXoa)
-                        .addComponent(btnSua)
                         .addComponent(csvExporter)
                         .addComponent(btnThongKe))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSearch)
-                        .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -262,7 +225,7 @@ public class tableDonDat extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollBar)
+                    .addComponent(scrollBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -277,10 +240,6 @@ public class tableDonDat extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSuaActionPerformed
-
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
          if (this.selectedRow != -1){
@@ -290,14 +249,6 @@ public class tableDonDat extends javax.swing.JPanel {
             model.removeRow(rowModel);
         }    
     }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void txtFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSearchActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void CBSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBSortActionPerformed
         // TODO add your handling code here:
@@ -352,14 +303,11 @@ public class tableDonDat extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBSort;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton csvExporter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable myTable;
     private javax.swing.JScrollPane scrollBar;
-    private javax.swing.JTextField txtFieldSearch;
     // End of variables declaration//GEN-END:variables
 }

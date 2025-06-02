@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/DAO/ThanhToan_Dao.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/utils/DateUtils.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/database/jdbcHelper.java</file>
@@ -26,6 +27,18 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/DAO/KhachSan_DAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/MODEL/NGUOIDUNG.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BOOKING_APP/Booking_App/src/GUI/Component/HomePage.java</file>
+=======
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/tablePhongKS.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/tableDonDat.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachHang.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_Admin.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/tableDonChinhSua.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/Main.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/JFRAME/Menu_KhachSan.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/HomePage.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/homeKhachHang.java</file>
+            <file>file:/C:/LapTrinhJava/DO_AN/Nam2-HK2/BOOKING_APP/Booking_App/src/GUI/Component/HotelCard.java</file>
+>>>>>>> cab490013857d2047babe75676640e51d9685171
         </group>
     </open-files>
 </project-private>

@@ -65,13 +65,10 @@ public class Menu_Admin extends javax.swing.JFrame {
 
         DashBoard = new javax.swing.JPanel();
         UserIcon = new javax.swing.JLabel();
-        HomeBtn = new javax.swing.JButton();
         ManageBtn = new javax.swing.JButton();
-        HelpBtn = new javax.swing.JButton();
         AccountBtn = new javax.swing.JButton();
         YourEmail = new javax.swing.JLabel();
-        orderBtn = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,30 +76,17 @@ public class Menu_Admin extends javax.swing.JFrame {
         DashBoard.setBackground(new java.awt.Color(0, 102, 102));
         DashBoard.setPreferredSize(new java.awt.Dimension(300, 1025));
 
-        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user (1).png"))); // NOI18N
-
-        HomeBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        HomeBtn.setForeground(new java.awt.Color(0, 102, 102));
-        HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-icon-silhouette.png"))); // NOI18N
-        HomeBtn.setText("Trang chủ");
-        HomeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HomeBtnActionPerformed(evt);
-            }
-        });
+        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/account_circle.png"))); // NOI18N
 
         ManageBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         ManageBtn.setForeground(new java.awt.Color(0, 102, 102));
-        ManageBtn.setText("Quản lý đặt");
+        ManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
+        ManageBtn.setText("Quản Lý Đơn Sửa");
         ManageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManageBtnActionPerformed(evt);
             }
         });
-
-        HelpBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        HelpBtn.setForeground(new java.awt.Color(0, 102, 102));
-        HelpBtn.setText("Trợ giúp");
 
         AccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         AccountBtn.setForeground(new java.awt.Color(0, 102, 102));
@@ -117,21 +101,13 @@ public class Menu_Admin extends javax.swing.JFrame {
         YourEmail.setForeground(new java.awt.Color(255, 255, 255));
         YourEmail.setText("Your Email");
 
-        orderBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        orderBtn.setForeground(new java.awt.Color(0, 102, 102));
-        orderBtn.setText("Đặt");
-        orderBtn.addActionListener(new java.awt.event.ActionListener() {
+        logoutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        logoutBtn.setForeground(new java.awt.Color(0, 102, 102));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout_1.png"))); // NOI18N
+        logoutBtn.setText("Đăng xuất");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderBtnActionPerformed(evt);
-            }
-        });
-
-        btnThongKe.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        btnThongKe.setForeground(new java.awt.Color(0, 102, 102));
-        btnThongKe.setText("Thống Kê");
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
+                logoutBtnActionPerformed(evt);
             }
         });
 
@@ -143,11 +119,8 @@ public class Menu_Admin extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(HelpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(HomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(ManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(orderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(DashBoardLayout.createSequentialGroup()
                 .addContainerGap()
@@ -163,19 +136,13 @@ public class Menu_Admin extends javax.swing.JFrame {
                 .addGroup(DashBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(UserIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(YourEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(77, 77, 77)
-                .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(121, 121, 121)
                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(HelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(60, 60, 60)
                 .addComponent(AccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addGap(515, 515, 515)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         content.setMaximumSize(new java.awt.Dimension(32767, 1000000000));
@@ -186,11 +153,11 @@ public class Menu_Admin extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1320, Short.MAX_VALUE)
+            .addGap(0, 1326, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1037, Short.MAX_VALUE)
+            .addGap(0, 1025, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,21 +167,17 @@ public class Menu_Admin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(DashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1326, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
-            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
+            .addComponent(DashBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
-        cardLayout.show(content, "Home Page");
-    }//GEN-LAST:event_HomeBtnActionPerformed
 
     private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBtnActionPerformed
         // TODO add your handling code here:
@@ -225,14 +188,17 @@ public class Menu_Admin extends javax.swing.JFrame {
         cardLayout.show(content, "Table Account");
     }//GEN-LAST:event_AccountBtnActionPerformed
 
-    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_orderBtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(content, "dashBoard");
-    }//GEN-LAST:event_btnThongKeActionPerformed
+        // Mở màn hình đăng nhập
+        Main_Login_Register_JF login = new Main_Login_Register_JF();
+        login.pack();
+        login.setLocationRelativeTo(null);//Hiện ở giữa màn hình
+        login.setVisible(true);
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,13 +239,10 @@ public class Menu_Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountBtn;
     private javax.swing.JPanel DashBoard;
-    private javax.swing.JButton HelpBtn;
-    private javax.swing.JButton HomeBtn;
     private javax.swing.JButton ManageBtn;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel YourEmail;
-    private javax.swing.JButton btnThongKe;
     private javax.swing.JPanel content;
-    private javax.swing.JButton orderBtn;
+    private javax.swing.JButton logoutBtn;
     // End of variables declaration//GEN-END:variables
 }
