@@ -5,6 +5,8 @@ public class KHACHSAN extends NGUOIDUNG{
     private String DIACHI;
     private String MOTA;
     private String TINH;
+    private String STK;
+    private String BANK;
     
     public KHACHSAN(){};
     public KHACHSAN(NGUOIDUNG ng){
@@ -14,6 +16,7 @@ public class KHACHSAN extends NGUOIDUNG{
         this.ID=ng.getID();
         this.LOAITK=ng.getLOAITK();
     }
+    
     public KHACHSAN(Integer id,String name,String email,String tenDN,String diachi,String tinh,String mota){
         this.DIACHI = diachi;
         this.ID = id;
@@ -23,6 +26,34 @@ public class KHACHSAN extends NGUOIDUNG{
         this.MOTA = mota;
         this.TINH = tinh;                  
     }
+    public KHACHSAN(Integer id,String name,String email,String tenDN,String diachi,String tinh,String mota,String bank,String stk){
+        this.DIACHI = diachi;
+        this.ID = id;
+        this.HOTEN = name;
+        this.EMAIL = email;
+        this.TENDN = tenDN;
+        this.MOTA = mota;
+        this.TINH = tinh;  
+        this.BANK = bank;
+        this.STK = stk;
+    }
+
+    public String getSTK() {
+        return STK;
+    }
+
+    public void setSTK(String STK) {
+        this.STK = STK;
+    }
+
+    public String getBANK() {
+        return BANK;
+    }
+
+    public void setBANK(String BANK) {
+        this.BANK = BANK;
+    }
+    
 
     public String getDIACHI() {
         return DIACHI;

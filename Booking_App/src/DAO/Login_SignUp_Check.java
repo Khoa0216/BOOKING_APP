@@ -118,7 +118,7 @@ public class Login_SignUp_Check {
             
     public static void InsertDOANHNGHIEP(KHACHSAN doanhnghiep){
         String sqlNguoiDung = "INSERT INTO booking_app.NGUOIDUNG (MATKHAU, HOTEN, EMAIL, LOAITK) VALUES (?, ?, ?, 'KHACHSAN')";
-        String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI,TINH, MOTA) VALUES (?, ?, ?, ? , ?)";
+        String sqlDoanhNghiep = "INSERT INTO booking_app.KHACHSAN (ID, TENDN, DIACHI,TINH, MOTA, BANK , STK) VALUES (?, ?, ?, ? ,?,?, ?)";
 
         Connection conn = null;
         try {
@@ -131,6 +131,8 @@ public class Login_SignUp_Check {
                 stmt1.setString(1, doanhnghiep.getMATKHAU());
                 stmt1.setString(2, doanhnghiep.getHOTEN());
                 stmt1.setString(3, doanhnghiep.getEMAIL());
+                
+                
                 stmt1.executeUpdate();
 
                 try (ResultSet rs = stmt1.getGeneratedKeys()) {
@@ -149,6 +151,8 @@ public class Login_SignUp_Check {
                 stmt2.setString(3, doanhnghiep.getDIACHI());
                 stmt2.setString(4, doanhnghiep.getTINH());
                 stmt2.setString(5, doanhnghiep.getMOTA());
+                stmt2.setString(6, doanhnghiep.getBANK());
+                stmt2.setString(7, doanhnghiep.getSTK());
                 stmt2.executeUpdate();
             }
 

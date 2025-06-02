@@ -23,9 +23,11 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import GUI.Component.tableDonDat;
 import GUI.Component.tablePhongKS;
+import GUI.Component.accKhachSan;
 import javax.swing.JOptionPane;
 import MODEL.NGUOIDUNG;
 import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 public class Menu_KhachSan extends javax.swing.JFrame {
     
@@ -34,6 +36,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     private DashBoard dashBoard;
     private HomePage homePage;
     private tableDonChinhSua dcs;
+    private accKhachSan accKS;
     
     private Integer idKS;
     private NGUOIDUNG user;
@@ -67,12 +70,14 @@ public class Menu_KhachSan extends javax.swing.JFrame {
         table = new tablePhongKS(this.user);
         homePage = new HomePage(this.user);
         dcs = new tableDonChinhSua(content, this.cardLayout,this.user.getEMAIL());
+        accKS = new accKhachSan(content ,this.cardLayout  ,this.user.getEMAIL());
         System.out.print(this.user.getEMAIL());
         
         content.add(dcs,"tabledcs");
         content.add(table, "table");
         content.add(dashBoard, "dashBoard");
         content.add(homePage, "Home Page");
+        content.add(accKS, "accKS");
         
         cardLayout.show(content, "table");
     }
@@ -225,7 +230,7 @@ public class Menu_KhachSan extends javax.swing.JFrame {
     }//GEN-LAST:event_ManageBtnActionPerformed
 
     private void AccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountBtnActionPerformed
-
+            cardLayout.show(content, "accKS");
     }//GEN-LAST:event_AccountBtnActionPerformed
 
     private void dcsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dcsBtnActionPerformed
