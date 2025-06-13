@@ -48,8 +48,6 @@ CREATE TABLE PHONG (
     ANH1 BLOB,
     ANH2 BLOB,
     ANH3 BLOB,
-    TRANGTHAI VARCHAR2(20),
-    CONSTRAINT chk_trangthai_phong CHECK (TRANGTHAI IN ('HOAT_DONG', 'DA_XOA'))
 );
 
 
@@ -210,6 +208,94 @@ END;
 /
 
 
--- ============
--- COMMIT
-COMMIT;
+-- Khách hàng
+INSERT INTO NGUOIDUNG (ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (1, 'kh1@gmail.com', '123', 'Nguyễn Văn A', 'KHACHHANG');
+INSERT INTO NGUOIDUNG (ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (2, 'kh2@gmail.com', '123', 'Trần Thị B', 'KHACHHANG');
+
+-- Khách sạn (doanh nghiệp)
+INSERT INTO NGUOIDUNG (ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (3, 'ks1@gmail.com', '123', 'Khách sạn Mặt Trời', 'KHACHSAN');
+INSERT INTO NGUOIDUNG (ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (4, 'ks2@gmail.com', '123', 'Khách sạn Biển Xanh', 'KHACHSAN');
+
+-- Nhân viên hệ thống
+INSERT INTO NGUOIDUNG (ID, EMAIL, MATKHAU, HOTEN, LOAITK) VALUES (5, 'admin1', 'admin', 'Ngô Văn C', 'ADMIN');
+
+
+INSERT INTO KHACHHANG (ID, CCCD, NGAYSINH) VALUES (1, '012345678901', TO_DATE('1995-05-15','YYYY-MM-DD'));
+INSERT INTO KHACHHANG (ID, CCCD, NGAYSINH) VALUES (2, '012345678902', TO_DATE('1990-08-20','YYYY-MM-DD'));
+
+
+INSERT INTO KHACHSAN (ID, TENDN, DIACHI, TINH, MOTA, STK, BANK) 
+VALUES (3, 'matroi_hotel', '123 Đường A, Quận 1', 'TP.HCM', 'Khách sạn cao cấp trung tâm TP.HCM', '123456789', 'Vietcombank');
+
+INSERT INTO KHACHSAN (ID, TENDN, DIACHI, TINH, MOTA, STK, BANK) 
+VALUES (4, 'bienxanh_hotel', '456 Đường B, Quận 3', 'TP.HCM', 'Khách sạn gần biển với view đẹp', '987654321', 'ACB');
+
+
+INSERT INTO NHANVIEN (ID, BOPHAN) VALUES (5, 'Quản trị hệ thống');
+commit;
+
+
+--10 phòng cho KS đầu tiên.
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (1, 3, 'Deluxe City View', 1200000, 'Phòng rộng rãi, có ban công nhìn ra thành phố.', 4, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (2, 3, 'Superior Double', 1050000, 'Phòng 2 người với nội thất sang trọng.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (3, 3, 'Standard', 900000, 'Phòng tiêu chuẩn với đầy đủ tiện nghi cơ bản.', 5, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (4, 3, 'Family Suite', 1800000, 'Phòng gia đình gồm 2 phòng ngủ và 1 phòng khách.', 2, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (5, 3, 'Junior Suite', 1500000, 'Phòng có khu tiếp khách nhỏ, thích hợp cho công tác.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (6, 3, 'Twin Room', 950000, 'Phòng có 2 giường đơn, phù hợp cho bạn bè đi cùng.', 4, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (7, 3, 'Single Room', 800000, 'Phòng đơn nhỏ gọn, giá cả phải chăng.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (8, 3, 'Presidential Suite', 3500000, 'Phòng tổng thống đẳng cấp, có hồ bơi riêng.', 1, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (9, 3, 'Studio Room', 1100000, 'Phòng dạng studio với bếp nhỏ tiện lợi.', 2, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (10, 3, 'Connecting Room', 1700000, 'Hai phòng thông nhau, lý tưởng cho nhóm bạn.', 2, SYSDATE);
+
+
+--10 phòng cho KS thứ hai
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (11, 4, 'Ocean View Deluxe', 1400000, 'Phòng hướng biển, có ban công rộng.', 4, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (12, 4, 'Beachfront Suite', 2200000, 'Phòng cao cấp sát bãi biển, đầy đủ tiện nghi.', 2, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (13, 4, 'Garden View Room', 1000000, 'Phòng nhìn ra vườn, yên tĩnh và trong lành.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (14, 4, 'Penthouse', 3800000, 'Căn hộ cao cấp tầng thượng với view 360 độ.', 1, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (15, 4, 'Economy Room', 850000, 'Phòng tiết kiệm dành cho khách du lịch bụi.', 4, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (16, 4, 'Couple Room', 1300000, 'Phòng đôi dành cho các cặp đôi nghỉ dưỡng.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (17, 4, 'Bungalow', 2000000, 'Phòng biệt lập dạng nhà gỗ sát biển.', 2, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (18, 4, 'Triple Room', 1150000, 'Phòng 3 giường đơn, phù hợp cho nhóm.', 3, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (19, 4, 'VIP Family Room', 1900000, 'Phòng gia đình cao cấp với không gian riêng.', 2, SYSDATE);
+
+INSERT INTO PHONG (ID, KHACHSAN_ID, LOAIPHONG, GIA, MOTA, TONGSOLUONG, NGAY_DANG)
+VALUES (20, 4, 'Pool Access Room', 1600000, 'Phòng có cửa ra hồ bơi trực tiếp.', 2, SYSDATE);
+
+commit;
