@@ -1,7 +1,3 @@
--- ===============================
--- HỆ THỐNG ĐẶT PHÒNG - CHỈ HỖ TRỢ KHÁCH HÀNG VÀ KHÁCH SẠN
--- ===============================
-
 -- 1. NGƯỜI DÙNG
 CREATE TABLE NGUOIDUNG (
     ID NUMBER PRIMARY KEY,
@@ -28,7 +24,9 @@ CREATE TABLE KHACHSAN (
     TENDN VARCHAR2(100),
     DIACHI VARCHAR2(200),
     TINH VARCHAR2(200),
-    MOTA CLOB
+    MOTA CLOB,
+    STK varchar(100),
+    BANK varchar(100)
 );
 
 
@@ -49,7 +47,9 @@ CREATE TABLE PHONG (
     NGAY_DANG DATE,
     ANH1 BLOB,
     ANH2 BLOB,
-    ANH3 BLOB
+    ANH3 BLOB,
+    TRANGTHAI VARCHAR2(20),
+    CONSTRAINT chk_trangthai_phong CHECK (TRANGTHAI IN ('HOAT_DONG', 'DA_XOA'))
 );
 
 
@@ -89,35 +89,33 @@ CREATE TABLE HOIDAP (
 
 --9. DON CHINH SUA
 CREATE TABLE DON_CHINHSUA (
-    ID               NUMBER PRIMARY KEY,              -- Mã đơn chỉnh sửa
-    DATPHONG_ID      NUMBER NOT NULL,                 -- Tham chiếu tới đơn gốc
+    ID               NUMBER PRIMARY KEY,
+    DATPHONG_ID      NUMBER NOT NULL,
     NGAYNHAN_MOI     DATE,
     NGAY_TRA_MOI     DATE,
     SL_MOI           NUMBER,
-    TRANGTHAI_DUYET  VARCHAR2(20),                    -- CHODUYET, DADUYET, TUCHOI
-    TRANGTHAI_THANHTOAN   VARCHAR(20),                 -- đã tt , 
-    CONSTRAINT FK_DATPHONG
-        FOREIGN KEY (DATPHONG_ID) REFERENCES DATPHONG(ID) ON DELETE CASCADE
+    TRANGTHAI_DUYET  VARCHAR2(20),
+    TRANGTHAI_THANHTOAN   VARCHAR(20), 
+    CONSTRAINT FK_DATPHONG FOREIGN KEY (DATPHONG_ID) REFERENCES DATPHONG(ID) ON DELETE CASCADE
 );
 
 ALTER TABLE DON_CHINHSUA
-ADD CONSTRAINT CK_TTDONCHINHSUA_DUYET 
-CHECK (TRANGTHAI_DUYET IN ('CHỜ DUYỆT', 'ĐÃ DUYỆT', 'KHÔNG DUYỆT'));
+ADD CONSTRAINT CK_TTDONCHINHSUA_DUYET CHECK (TRANGTHAI_DUYET IN ('CHỜ DUYỆT', 'ĐÃ DUYỆT', 'KHÔNG DUYỆT'));
 
 ALTER TABLE DON_CHINHSUA
-ADD CONSTRAINT CK_THANHTOAN 
-CHECK (TRANGTHAI_THANHTOAN IN ('ĐÃ THANH TOÁN', 'CHƯA THANH TOÁN'));
+ADD CONSTRAINT CK_THANHTOAN CHECK (TRANGTHAI_THANHTOAN IN ('ĐÃ THANH TOÁN', 'CHƯA THANH TOÁN'));
 
 
 
--- ===============================
+-- ===================
 -- SEQUENCE + TRIGGER
--- ===============================
+
 -- NGUOI DUNG
 CREATE SEQUENCE SEQ_NGUOIDUNG_ID START WITH 1 INCREMENT BY 1;
 
 CREATE OR REPLACE TRIGGER TRG_AUTO_ID_NGUOIDUNG
-BEFORE INSERT ON NGUOIDUNG
+BEFORE INSERT
+ON NGUOIDUNG
 FOR EACH ROW
 BEGIN
   IF :NEW.ID IS NULL THEN
@@ -128,15 +126,16 @@ END;
 
 -- 1. Tạo sequence cho PHONG.ID
 CREATE SEQUENCE seq_phong
-  START WITH 1
-  INCREMENT BY 1
-  NOCACHE
-  NOCYCLE;
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
 
 -- 2. Tạo trigger tự động gán ID trước khi insert
 CREATE OR REPLACE TRIGGER trg_phong_id
-  BEFORE INSERT ON PHONG
-  FOR EACH ROW
+BEFORE INSERT
+ON PHONG
+FOR EACH ROW
 BEGIN
   IF :NEW.ID IS NULL THEN
     :NEW.ID := seq_phong.NEXTVAL;
@@ -147,43 +146,40 @@ END;
 --Thêm trigger tự dộng tăng id DATPHONG :
  -- 1. Tạo sequence
 CREATE SEQUENCE seq_datphong
-  START WITH 1
-  INCREMENT BY 1
-  NOCACHE;  -- hoặc CACHE theo nhu cầu
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
 
 -- 2. Tạo trigger BEFORE INSERT
 CREATE OR REPLACE TRIGGER trg_datphong_bi
-  BEFORE INSERT ON datphong
-  FOR EACH ROW
+BEFORE INSERT
+ON datphong
+FOR EACH ROW
 BEGIN
-  IF :NEW.id IS NULL THEN
-    SELECT seq_datphong.NEXTVAL
-      INTO :NEW.id
-    FROM DUAL;
-  END IF;
+    IF :NEW.id IS NULL THEN
+        SELECT seq_datphong.NEXTVAL INTO :NEW.id
+        FROM DUAL;
+    END IF;
 END;
 /
 
 
---TRIGGER AI CHO DON CHINH SUA
+--TRIGGER ID CHO DON CHINH SUA
 CREATE SEQUENCE SEQ_DONCHINHSUA START WITH 1 INCREMENT BY 1;
 
 CREATE OR REPLACE TRIGGER trg_auto_id_donchinhsua
 BEFORE INSERT ON DON_CHINHSUA
 FOR EACH ROW
 BEGIN
-  SELECT SEQ_DONCHINHSUA.NEXTVAL
-  INTO :NEW.ID
-  FROM dual;
+    SELECT SEQ_DONCHINHSUA.NEXTVAL INTO :NEW.ID
+    FROM dual;
 END;
 /
 
 
-CREATE OR REPLACE FUNCTION SO_PHONG_TRONG (
-    v_phong_id      IN NUMBER,
-    v_ngay_nhan     IN DATE,
-    v_ngay_tra      IN DATE
-) RETURN NUMBER IS
+CREATE OR REPLACE FUNCTION SO_PHONG_TRONG (v_phong_id IN NUMBER, v_ngay_nhan IN DATE, v_ngay_tra IN DATE)
+RETURN NUMBER
+IS
     v_tong_so_luong     NUMBER;
     v_da_dat            NUMBER;
     v_con_trong         NUMBER;
@@ -196,25 +192,24 @@ BEGIN
     -- Tính tổng số lượng phòng đã được đặt trùng khoảng thời gian
     SELECT NVL(SUM(SL), 0) INTO v_da_dat
     FROM DATPHONG
-    WHERE PHONG_ID = v_phong_id
-      AND (
-            (v_ngay_nhan < NGAY_TRA AND v_ngay_tra > NGAYNHAN)
-          );
+    WHERE PHONG_ID=v_phong_id
+    AND(
+            (v_ngay_nhan<NGAY_TRA AND v_ngay_tra>NGAYNHAN)
+        );
 
     -- Tính số phòng còn trống
-    v_con_trong := v_tong_so_luong - v_da_dat;
+    v_con_trong:=v_tong_so_luong-v_da_dat;
 
     RETURN v_con_trong;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN 0;
     WHEN OTHERS THEN
-        RETURN -1; -- lỗi
+        RETURN -1;
 END;
 /
 
 
--- ===============================
+-- ============
 -- COMMIT
--- ===============================
 COMMIT;

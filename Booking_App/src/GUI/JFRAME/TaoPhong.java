@@ -378,7 +378,7 @@ public class TaoPhong extends javax.swing.JFrame {
     }
     
     private void luuAnhVaoDB() {
-        try (Connection conn = Oracle_connection.getConnection("khachsan", "123")) {
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
             String sql = "UPDATE booking_app.PHONG SET ANH1 = ?, ANH2 = ?, ANH3 = ? WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -407,7 +407,7 @@ public class TaoPhong extends javax.swing.JFrame {
     }
     
     private void loadAnhTuDatabase() {
-        try (Connection conn = Oracle_connection.getConnection("khachsan", "123")) {
+        try (Connection conn = Oracle_connection.getConnection("booking_app", "12345678")) {
             String sql = "SELECT ANH1, ANH2, ANH3 FROM booking_app.PHONG WHERE ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, phongID);
@@ -450,6 +450,13 @@ public class TaoPhong extends javax.swing.JFrame {
         Long gia = Long.valueOf(txtGia.getText());
         Long sl = Long.valueOf(txtSoLuong.getText());
         LocalDate today = LocalDate.now();
+
+        System.out.println("ID Khách sạn: " + idKS);
+        System.out.println("Loại phòng: " + loaiPhong);
+        System.out.println("Mô tả: " + moTa);
+        System.out.println("Giá: " + gia);
+        System.out.println("Số lượng: " + sl);
+        System.out.println("Ngày hôm nay: " + today);
 
         if (this.phong != null) {
             phong.setLoaiPhong(loaiPhong);

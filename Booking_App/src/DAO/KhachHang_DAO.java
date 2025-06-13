@@ -17,7 +17,7 @@ import java.util.Date;
 
 
 public class KhachHang_DAO implements IKhachHang<KHACHHANG, String>{
-    private jdbcHelper jdbc = new jdbcHelper("nguoidung_user","12345678");
+    private jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
     
     @Override
     public KHACHHANG select(String email) {

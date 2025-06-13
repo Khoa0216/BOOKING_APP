@@ -19,7 +19,7 @@ import utils.message;
  * @author bobui
  */
 public class KhachSan_DAO {
-    private jdbcHelper jdbc = new jdbcHelper("nguoidung_user","12345678");
+    private jdbcHelper jdbc = new jdbcHelper("booking_app","12345678");
     public KHACHSAN select(String email) {
         String sql = "SELECT ND.ID,ND.HOTEN, KS.TENDN,  KS.DIACHI, KS.TINH, KS.MOTA ,KS.BANK, KS.STK" +
                         " FROM BOOKING_APP.NGUOIDUNG ND JOIN BOOKING_APP.KHACHSAN KS " +

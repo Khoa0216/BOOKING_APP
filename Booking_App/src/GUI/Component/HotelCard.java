@@ -4,6 +4,7 @@ package GUI.Component;
  *
  * @author Admin
  */
+import GUI.JFRAME.ChiTietPhong;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -79,25 +80,26 @@ public class HotelCard extends javax.swing.JPanel {
         tenKSLabel.setText(data.getTenKS());
         
         //Star
-        numStar.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 0));
-        for (int i = 1; i <= data.getStar(); i++) {
-            String path = "/image/star.png";
-            numStar.add(new JLabel(new ImageIcon(getClass().getResource(path))));
-        }
+//        numStar.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 0));
+//        for (int i = 1; i <= data.getStar(); i++) {
+//            String path = "/image/star.png";
+//            numStar.add(new JLabel(new ImageIcon(getClass().getResource(path))));
+//        }
         
         //Location
         txtLocation.setText("<html><font color='#007BFF'><u>" + data.getLocation() + "</u></font></html>");
         
         //Desc
+        
         txtDescription.setText("<html><i>\"" + data.getMoTa()+ "\"</i></html>");
         txtDescription.setForeground(Color.DARK_GRAY);
         
         //Right Pannel
-        String desc_score = data.getStar() >= 4 ? "Xuất sắc" : data.getStar() >= 3 ? "Trung bình" : "Tệ";
-        txtScore.setText(desc_score);
-        
-        txtReviews.setText(data.getNumReviews()+ " Reviews");
-        
+//        String desc_score = data.getStar() >= 4 ? "Xuất sắc" : data.getStar() >= 3 ? "Trung bình" : "Tệ";
+//        txtScore.setText(desc_score);
+//        
+//        txtReviews.setText(data.getNumReviews()+ " Reviews");
+//        
         txtPrice.setText(String.valueOf(data.getGia()));
          
     }
@@ -190,6 +192,11 @@ public class HotelCard extends javax.swing.JPanel {
         );
 
         btnDetail.setText("Xem chi tiết");
+        btnDetail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailActionPerformed(evt);
+            }
+        });
 
         btnBooking.setText("Đặt");
         btnBooking.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +206,6 @@ public class HotelCard extends javax.swing.JPanel {
         });
 
         txtScore.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtScore.setText("Score");
-
-        txtReviews.setText("Số lượt reviews");
 
         txtPrice.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         txtPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -258,7 +262,7 @@ public class HotelCard extends javax.swing.JPanel {
                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(rightPanl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,6 +285,14 @@ public class HotelCard extends javax.swing.JPanel {
         datPhongFrame.setLocationRelativeTo(null);   // canh giữa màn hình
         datPhongFrame.setVisible(true);
     }//GEN-LAST:event_btnBookingActionPerformed
+
+    private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
+        // TODO add your handling code here:
+        ChiTietPhong CTPhong= new ChiTietPhong(phong);
+        CTPhong.pack();
+        CTPhong.setLocationRelativeTo(null);//Hiện ở giữa màn hình
+        CTPhong.setVisible(true);
+    }//GEN-LAST:event_btnDetailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

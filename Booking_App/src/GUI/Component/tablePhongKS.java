@@ -61,7 +61,6 @@ public class tablePhongKS extends javax.swing.JPanel {
     
     
     public void setIcon(){
-        handleIcon.setIcon(btnXoa, "/image/delete.png");
         handleIcon.setIcon(btnCreatePhong, "/image/add.png");
         handleIcon.setIcon(btnReset, "/image/refresh.png");
         handleIcon.setIcon(btnSearch, "/image/search.png");
@@ -130,7 +129,6 @@ public class tablePhongKS extends javax.swing.JPanel {
         txtFieldSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         CBSort = new javax.swing.JComboBox<>();
-        btnXoa = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         txtTitle = new javax.swing.JLabel();
 
@@ -190,13 +188,6 @@ public class tablePhongKS extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-
         btnReset.setText("Làm mới");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,11 +201,9 @@ public class tablePhongKS extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(btnCreatePhong)
-                .addGap(18, 18, 18)
-                .addComponent(btnXoa)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 629, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 731, Short.MAX_VALUE)
                 .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearch)
@@ -230,7 +219,6 @@ public class tablePhongKS extends javax.swing.JPanel {
                     .addComponent(txtFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXoa)
                     .addComponent(btnReset))
                 .addContainerGap())
         );
@@ -341,20 +329,6 @@ public class tablePhongKS extends javax.swing.JPanel {
         sorter.setSortKeys(keys);
     }//GEN-LAST:event_CBSortActionPerformed
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        Integer selectedRow = myTable.getSelectedRow();
-        Integer modelRow = myTable.convertRowIndexToModel(selectedRow);
-        if (modelRow != -1){
-            Integer idP = Integer.valueOf(model.getValueAt(modelRow, 0).toString());
-            phongKSDao.delete(idP);
-            model.removeRow(modelRow);
-        }
-        else{
-            message.alert(null, "Cần chọn phòng muốn xóa");
-        }
-    }//GEN-LAST:event_btnXoaActionPerformed
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         this.loadTable();
@@ -366,7 +340,6 @@ public class tablePhongKS extends javax.swing.JPanel {
     private javax.swing.JButton btnCreatePhong;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnXoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTable myTable;

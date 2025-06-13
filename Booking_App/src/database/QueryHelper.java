@@ -4,7 +4,7 @@ import java.sql.*;
 public class QueryHelper {
     public static ResultSet executeSelect(String sql, Object... params) {
         try {
-            Connection conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
+            Connection conn = Oracle_connection.getConnection("booking_app", "12345678");
             PreparedStatement ps = conn.prepareStatement(sql);
             
             for (int i = 0; i < params.length; i++) {

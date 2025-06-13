@@ -149,7 +149,7 @@ public class DonDat_DAO {
         
         try {
             int newId = 0;
-            conn = Oracle_connection.getConnection("nguoidung_user", "12345678");
+            conn = Oracle_connection.getConnection("booking_app", "12345678");
             conn.setAutoCommit(false);
 
             // 1. Insert DonDat và lấy ID sinh tự động

@@ -82,8 +82,6 @@ public class HomePage extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         tinhComboBox = new javax.swing.JComboBox<>();
         locdiadiemLabel = new javax.swing.JLabel();
-        locdanhgiaLabel = new javax.swing.JLabel();
-        danhgiaComboBox = new javax.swing.JComboBox<>();
         timKSTextField = new javax.swing.JTextField();
         timKSLabel = new javax.swing.JLabel();
         timBtn = new javax.swing.JButton();
@@ -136,13 +134,6 @@ public class HomePage extends javax.swing.JPanel {
         locdiadiemLabel.setText("Lọc theo địa điểm");
         locdiadiemLabel.setAutoscrolls(true);
         locdiadiemLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        locdanhgiaLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        locdanhgiaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        locdanhgiaLabel.setText("Lọc theo đánh giá");
-        locdanhgiaLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        danhgiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 ★ - 1 ★", "1 ★ - 2 ★", "2 ★ - 3 ★", "3 ★ - 4 ★", "4 ★ - 5 ★", " " }));
 
         timKSTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,15 +197,11 @@ public class HomePage extends javax.swing.JPanel {
                         .addComponent(locdiadiemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(locdanhgiaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(danhgiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(tinhLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tinhComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(timKSLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(timKSTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,8 +222,6 @@ public class HomePage extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tinhComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(locdiadiemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(locdanhgiaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(danhgiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tinhComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -368,12 +353,10 @@ public class HomePage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefresh;
-    private javax.swing.JComboBox<String> danhgiaComboBox;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel listCard;
-    private javax.swing.JLabel locdanhgiaLabel;
     private javax.swing.JLabel locdiadiemLabel;
     private javax.swing.JButton rsBtn;
     private javax.swing.JButton timBtn;

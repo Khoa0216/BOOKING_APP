@@ -37,11 +37,12 @@ public class PhongKS_DAO implements IPhongKS<Phong_KS, Integer>{
 
     @Override
     public void update(Phong_KS e) {
+        jdbcHelper newwHelper= new jdbcHelper("booking_app", "12345678");
        try{
            String sql = "update booking_app.PHONG set LOAIPHONG=?,"
                    + " GIA=?, MOTA=?, TONGSOLUONG=?, NGAY_DANG=?"
                    + " where ID=?";
-           int row = jdbcHelper.update(sql, e.getLoaiPhong(), e.getGia(),
+           int row = newwHelper.update(sql, e.getLoaiPhong(), e.getGia(),
                    e.getMoTa(), e.getTongSoluong(),
                    e.getNgayDang(), e.getId());
            if (row > 0) {

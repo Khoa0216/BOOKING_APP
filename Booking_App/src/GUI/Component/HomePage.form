@@ -139,15 +139,11 @@
                               <Component id="locdiadiemLabel" min="-2" pref="143" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tinhComboBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="locdanhgiaLabel" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="danhgiaComboBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="tinhLabel" min="-2" pref="87" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="tinhComboBox1" min="-2" pref="134" max="-2" attributes="0"/>
-                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="timKSLabel" min="-2" pref="152" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="timKSTextField" min="-2" pref="208" max="-2" attributes="0"/>
@@ -173,8 +169,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="tinhComboBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="locdiadiemLabel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="locdanhgiaLabel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="danhgiaComboBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="tinhComboBox1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -233,37 +227,6 @@
                   </Border>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="locdanhgiaLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Helvetica Neue" size="14" style="0"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo &#x111;&#xe1;nh gi&#xe1;"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="danhgiaComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="0 &#x2605; - 1 &#x2605;"/>
-                    <StringItem index="1" value="1 &#x2605; - 2 &#x2605;"/>
-                    <StringItem index="2" value="2 &#x2605; - 3 &#x2605;"/>
-                    <StringItem index="3" value="3 &#x2605; - 4 &#x2605;"/>
-                    <StringItem index="4" value="4 &#x2605; - 5 &#x2605;"/>
-                    <StringItem index="5" value=" "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="timKSTextField">
               <Events>

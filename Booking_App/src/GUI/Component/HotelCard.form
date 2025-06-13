@@ -35,7 +35,7 @@
               <Component id="content" min="-2" pref="542" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="rightPanl" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -213,6 +213,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetailActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBooking">
           <Properties>
@@ -227,13 +230,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Score"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txtReviews">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;t reviews"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txtPrice">
           <Properties>
