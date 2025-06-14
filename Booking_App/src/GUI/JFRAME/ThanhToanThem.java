@@ -101,7 +101,7 @@ public class ThanhToanThem extends javax.swing.JFrame {
         CardType.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         CardType.setForeground(new java.awt.Color(51, 51, 51));
         CardType.setMaximumRowCount(10);
-        CardType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Visa", "Mastercard", "JCB", "ABBANK", "ACB", "ANZ VL", "Agribank", "BAOVIET Bank", "Bac A Bank", "BVBank", "BIDV", "CIMB", "Co-opBank", "DongA Bank", "Eximbank", "GPBank", "HLB VN", "HDBank", "HSBC", "IVB", "KienlongBank", "LienVietPostBank", "MB Bank", "MBV", "MSB", "Nam A Bank", "NCB", "OCB", "PBVN", "PGBank", "PVcomBank", "Sacombank", "SAIGONBANK", "SCB", "SCB VL", "SeABank", "SHB", "SHB VN", "Techcombank", "TPBank", "UOB", "VDB", "VCB Neo", "VIB", "VietABank", "VietCapitalBank", "Vietcombank", "VietinBank", "Vietbank", "VPBank", "VRB", "Woori Bank", "VBSP" }));
+        CardType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABBANK", "ACB", "ANZ VL", "Agribank", "BAOVIET Bank", "Bac A Bank", "BVBank", "BIDV", "CIMB", "Co-opBank", "DongA Bank", "Eximbank", "GPBank", "HLB VN", "HDBank", "HSBC", "IVB", "KienlongBank", "LienVietPostBank", "MB Bank", "MBV", "MSB", "Nam A Bank", "NCB", "OCB", "PBVN", "PGBank", "PVcomBank", "Sacombank", "SAIGONBANK", "SCB", "SCB VL", "SeABank", "SHB", "SHB VN", "Techcombank", "TPBank", "UOB", "VDB", "VCB Neo", "VIB", "VietABank", "VietCapitalBank", "Vietcombank", "VietinBank", "Vietbank", "VPBank", "VRB", "Woori Bank", "VBSP" }));
         CardType.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CardType.setVerifyInputWhenFocusTarget(false);
         CardType.addActionListener(new java.awt.event.ActionListener() {
